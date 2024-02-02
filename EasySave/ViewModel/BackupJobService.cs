@@ -60,5 +60,13 @@ namespace EasySave.ViewModel
 
                 Console.WriteLine($"Le travail {backupJob.Name} créé depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
             }
+
+        public BackupJob GetJob(int id)
+        {
+            string cheminFichierJson = ".\\Jobs.json";
+            string contenuExistant = File.Exists(cheminFichierJson) ? File.ReadAllText(cheminFichierJson) : "";
+            var sauvegardesExistantes = JsonConvert.DeserializeObject<List<BackupJob>>(contenuExistant) ?? new List<BackupJob>();
+            return sauvegardesExistantes.Find(s => s.Id == id);
+        }   
     }
 }

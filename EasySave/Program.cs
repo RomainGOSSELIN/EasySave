@@ -10,6 +10,7 @@ namespace EasySave;
 class Program
 {
     private static BackupJobService backupJobService = new BackupJobService();
+    private static BackupService backupService = new BackupService();
 
     public static async Task<int> Main(string[] args)
     {
@@ -133,7 +134,9 @@ class Program
 
     private static void OnRunJob(int id)
     {
+
         Console.WriteLine($"Le travail a lancer est: {id}");
+        backupService.ExecuteBackupJob(backupJobService.GetJob(id));
     }
 
     private static void OnShowJob(int id)
