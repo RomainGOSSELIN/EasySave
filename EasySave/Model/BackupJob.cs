@@ -8,5 +8,11 @@ namespace EasySave.Model
 {
     internal class BackupJob
     {
+        public required int id;
+        public required string name;
+        public required string sourceDir;
+        public required string targetDir;
+        public required string Type { get; set; }
+
     }
 }
