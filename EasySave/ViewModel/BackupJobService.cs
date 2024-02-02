@@ -11,14 +11,8 @@ namespace EasySave.ViewModel
             {
 
                 // Chemin du fichier JSON
-                string cheminFichierJson = "C:\\Users\\damie\\Desktop\\Cours 3ème Année\\Bloc 2 - Programmation système\\Projet\\Test\\Save.json";
+                string cheminFichierJson = ".\\Jobs.json";
 
-                // Vérification de l'existence du fichier
-                if (!File.Exists(cheminFichierJson))
-                {
-                    // Si le fichier n'est pas trouvé, le fichier est créé avec ce nom de fichier
-                    cheminFichierJson = "C:\\Users\\damie\\Desktop\\Cours 3ème Année\\Bloc 2 - Programmation système\\Projet\\Test\\Backup.json";
-                }
 
                 // Lecture du contenu existant du fichier
                 string contenuExistant = File.Exists(cheminFichierJson) ? File.ReadAllText(cheminFichierJson) : "";
