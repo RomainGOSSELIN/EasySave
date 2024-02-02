@@ -8,12 +8,12 @@ namespace EasySave.Model
 {
     internal class BackupLog
     {
-        public required DateTime timestamp;
-        public required string backupName;
-        public required string sourceFile;
-        public required string targetFile;
-        public required long fileSize;
-        public required int transferTime;
-        public required string Type { get; set; }
+        public  DateTime timestamp;
+        public string BackupName;
+        public  string sourceFile;
+        public  string targetFile;
+        public  long fileSize;
+        public  int transferTime;
+        public  string Type { get; set; }
     }
 }

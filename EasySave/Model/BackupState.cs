@@ -9,13 +9,11 @@ namespace EasySave.Model
 {
     internal class BackupState
     {
-        public required DateTime timestamp;
-        public required string backupName;
-        public required int totalFiles;
-        public required long totalSize;
-        public required string Type { get; set; }
-
-
+        public  DateTime timestamp;
+        public  string backupName;
+        public  int totalFiles;
+        public  long totalSize;
+        public  string Type { get; set; }
 
     }
 }

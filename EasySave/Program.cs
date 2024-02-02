@@ -1,27 +1,22 @@
-﻿using System;
+﻿using EasySave.Model;
+using EasySave.ViewModel;
+using System;
 using System.CommandLine;
 using System.IO;
+using static EasySave.Model.Enum;
 
 namespace EasySave;
 
 class Program
 {
-    public enum Languages
-    {
-        en,
-        fr
-    };
+    private static BackupJobService backupJobService = new BackupJobService();
 
-    public enum JobType
-    {
-        full,
-        differential
-    };
     public static async Task<int> Main(string[] args)
     {
 
 
-        string asciiart = @"
+
+    string asciiart = @"
 ####################################################
 #     ______                 _____                 #
 #    / ____/___ ________  __/ ___/____ __   _____  #
@@ -35,7 +30,7 @@ class Program
         //Console.WriteLine(asciiart);
 
 
-        var jobName = new Option<string>(
+    var jobName = new Option<string>(
                 name: "--name",
                 description: "Le nom du travil de sauvegarde")
         { IsRequired = true };
@@ -50,7 +45,7 @@ class Program
             description: "La destination du répertoire du travil de sauvegarde")
         { IsRequired = true };
 
-        var type = new Option<JobType>(
+        var type = new Option<JobTypeEnum>(
             name: "--type",
             description: "Pour choisir un travil de sauvegarde complet")
         { IsRequired = true };
@@ -147,9 +142,11 @@ class Program
     }
 
 
-    private static void OnCreateJob(string jobName,string source, string dest, JobType type)
+    private static void OnCreateJob(string jobName,string source, string dest, JobTypeEnum type)
     {
-        Console.WriteLine($"Le travail {jobName} créé depuis {source} à {dest} avec un type {type}");
+        BackupJob backupJob = new BackupJob(jobName, source, dest, type);
+
+        backupJobService.CreateJob(backupJob);
     }
 
     private static void OnChangeLanguage(Languages language)
