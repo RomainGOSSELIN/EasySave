@@ -58,7 +58,8 @@ namespace EasySave.ViewModel
                 // Écriture du JSON dans le fichier
                 File.WriteAllText(cheminFichierJson, json);
 
-                Console.WriteLine($"Le travail {backupJob.Name} créé depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
+                Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
             }
     }
 }
+    
