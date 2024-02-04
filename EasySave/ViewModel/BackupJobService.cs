@@ -1,5 +1,6 @@
 ﻿using EasySave.Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace EasySave.ViewModel
@@ -66,7 +67,29 @@ namespace EasySave.ViewModel
             string cheminFichierJson = ".\\Jobs.json";
             string contenuExistant = File.Exists(cheminFichierJson) ? File.ReadAllText(cheminFichierJson) : "";
             var sauvegardesExistantes = JsonConvert.DeserializeObject<List<BackupJob>>(contenuExistant) ?? new List<BackupJob>();
-            return sauvegardesExistantes.Find(s => s.Id == id);
-        }   
+            BackupJob backupJob = sauvegardesExistantes.Find(s => s.Id == id);
+            if( backupJob == null )
+            {
+                Console.WriteLine($"Backup job {id} n'existe pas");
+            }
+                return backupJob;
+            
+             
+        }
+
+        public List<BackupJob> GetJobs(List<int> ids)
+        {
+            List < BackupJob > jobs = new List < BackupJob>();
+            foreach (int id in ids)
+            {
+                jobs.Add(GetJob(id));
+            }
+
+            return jobs;
+        }
+
+
+
+
     }
 }

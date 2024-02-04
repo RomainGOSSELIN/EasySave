@@ -8,7 +8,7 @@ namespace EasySave.Model
 {
     internal class Enum
     {
-        public enum Languages
+        public enum LanguageEnum
         {
             en,
             fr

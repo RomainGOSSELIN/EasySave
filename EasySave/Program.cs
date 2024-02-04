@@ -1,23 +1,18 @@
-﻿using EasySave.Model;
+﻿using ConsoleTables;
 using EasySave.ViewModel;
-using System;
 using System.CommandLine;
-using System.IO;
 using static EasySave.Model.Enum;
 
 namespace EasySave;
 
 class Program
 {
-    private static BackupJobService backupJobService = new BackupJobService();
-    private static BackupService backupService = new BackupService();
+   private static BackupViewModel _viewModel = new BackupViewModel();
 
     public static async Task<int> Main(string[] args)
     {
 
-
-
-    string asciiart = @"
+        string asciiart = @"
 ####################################################
 #     ______                 _____                 #
 #    / ____/___ ________  __/ ___/____ __   _____  #
@@ -32,36 +27,36 @@ class Program
 
 
     var jobName = new Option<string>(
-                name: "--name",
+            aliases: ["--name", "-n"],
                 description: "Le nom du travil de sauvegarde")
         { IsRequired = true };
 
         var source = new Option<string>(
-            name: "--source",
+            aliases: ["--source", "-s"],
             description: "La source du répertoire du travail de sauvegarde")
         { IsRequired = true };
 
         var dest = new Option<string>(
-            name: "--dest",
+            aliases :["--dest","-d"],
             description: "La destination du répertoire du travil de sauvegarde")
         { IsRequired = true };
 
         var type = new Option<JobTypeEnum>(
-            name: "--type",
+            aliases: ["--type", "-t"],
             description: "Pour choisir un travil de sauvegarde complet")
         { IsRequired = true };
 
 
-        var id = new Option<int>(
-            name: "--id",
-            description: "L'id du travail de sauvegarde")
+        var id = new Option<string>(
+            aliases: ["--job", "-j"],
+            description: "Le numéro du travail de sauvegarde")
         { IsRequired = true };
 
 
 
-        var lang = new Option<Languages>(
-           name: "-l",
-           description: "Pour choisir la langue en français");
+        var lang = new Option<LanguageEnum>(
+           aliases: ["--lang", "-l"],
+           description: "Pour choisir la langue");
 
 
 
@@ -87,7 +82,7 @@ class Program
         {
                 id,
         };
-        var languageCommand = new Command("options", "Régler les options comme la langue")
+        var languageCommand = new Command("options", "Régler les options (comme la langue)")
         {
                 lang
         };
@@ -132,34 +127,35 @@ class Program
     }
 
 
-    private static void OnRunJob(int id)
+    private static void OnRunJob(string id)
     {
-
-        Console.WriteLine($"Le travail a lancer est: {id}");
-        backupService.ExecuteBackupJob(backupJobService.GetJob(id));
+        _viewModel.ExecuteJob(id);
     }
 
-    private static void OnShowJob(int id)
+    private static void OnShowJob(string id)
     {
-        Console.WriteLine($"Le travail a montrer est: {id}");
+        
+        var table = _viewModel.ShowJob(id);
+
+        table.Write();
+
+
     }
 
 
     private static void OnCreateJob(string jobName,string source, string dest, JobTypeEnum type)
     {
-        BackupJob backupJob = new BackupJob(jobName, source, dest, type);
-
-        backupJobService.CreateJob(backupJob);
+        _viewModel.CreateJob(jobName, source, dest, type);
     }
 
-    private static void OnChangeLanguage(Languages language)
+    private static void OnChangeLanguage(LanguageEnum language)
     {
         Console.WriteLine($"La Langue est language");
     }
 
-    private static void OnDeleteJob(int id)
+    private static void OnDeleteJob(string id)
     {
-        Console.WriteLine($"La Langue est language : {id}");
+        Console.WriteLine($"Le job à supprimer : {id}");
     }
 
 
