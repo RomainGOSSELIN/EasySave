@@ -122,7 +122,34 @@ class Program
         }, id);
 
 
-        return await rootCommand.InvokeAsync(args);
+        if (args.Length == 0)
+        {
+
+            Console.WriteLine("\nBienvenue dans le logiciel de gestion de Sauvegarde EasySave. Ecrire 'exit' pour quitter.");
+
+            await rootCommand.InvokeAsync("--help");
+
+            while (true)
+            {
+                Console.Write("> ");
+                var input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
+                    continue;
+
+                if (input.Equals("exit", StringComparison.OrdinalIgnoreCase))
+                    break;
+
+                var result = await rootCommand.InvokeAsync(input.Split(' '));
+                
+            }
+        }
+        else
+        {
+            return await rootCommand.InvokeAsync(args);
+        }
+        return 0;
+
 
     }
 
@@ -134,11 +161,9 @@ class Program
 
     private static void OnShowJob(string id)
     {
-        
+
         var table = _viewModel.ShowJob(id);
-
         table.Write();
-
 
     }
 
@@ -150,7 +175,7 @@ class Program
 
     private static void OnChangeLanguage(LanguageEnum language)
     {
-        Console.WriteLine($"La Langue est language");
+        Console.WriteLine($"La Langue est {language}");
     }
 
     private static void OnDeleteJob(string id)

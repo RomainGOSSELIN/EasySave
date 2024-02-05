@@ -1,8 +1,7 @@
 {
   "profiles": {
     "EasySave": {
-      "commandName": "Project",
-      "commandLineArgs": "EasySave create -n travail2"
+      "commandName": "Project"
     }
   }
 }

@@ -42,11 +42,15 @@ namespace EasySave.ViewModel
         internal ConsoleTable ShowJob(string id)
         {
             BackupJob job = BackupJobService.GetJob(int.Parse(id));
+            var table = new ConsoleTable("Numero", "Nom du Travail", "Source", "Destination", "Type");
 
-            var table = new ConsoleTable("Numero", "Nom", "Source", "Destination", "Type");
-            table.AddRow(job.Id, job.Name, job.SourceDir, job.TargetDir, (job.Type) );
+            if (job != null)
+            {
+                table.AddRow(job.Id, job.Name, job.SourceDir, job.TargetDir, (job.Type));
 
+            }
             return table;
+
         }
     }
 }
