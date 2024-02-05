@@ -157,9 +157,9 @@ class Program
         Console.WriteLine($"La Langue est language");
     }
 
-    private static void OnDeleteJob(int id)
+    private static void OnDeleteJob(int idToDelete)
     {
-        Console.WriteLine($"La Langue est language : {id}");
+        backupJobService.DeleteJob(idToDelete);
     }
 
 

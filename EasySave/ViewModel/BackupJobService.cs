@@ -13,7 +13,6 @@ namespace EasySave.ViewModel
                 // Chemin du fichier JSON
                 string cheminFichierJson = ".\\Jobs.json";
 
-
                 // Lecture du contenu existant du fichier
                 string contenuExistant = File.Exists(cheminFichierJson) ? File.ReadAllText(cheminFichierJson) : "";
 
@@ -22,12 +21,17 @@ namespace EasySave.ViewModel
 
                 // Vérification de l'ID et du nombre total d'éléments
                 if (backupJob.Id <= 0)
+            {
+                // Recherche de l'ID disponible le plus bas
+                int nouvelId = 1;
+                while (sauvegardesExistantes.Any(s => s.Id == nouvelId))
                 {
-                    // Si aucun ID n'est indiqué, incrémenter automatiquement l'ID
-                    backupJob.Id = sauvegardesExistantes.Count + 1;
+                    nouvelId++;
                 }
+                backupJob.Id = nouvelId;
+            }
 
-                if (backupJob.Id > 5)
+            if (backupJob.Id > 5)
                 {
                 Console.ForegroundColor = ConsoleColor.Red;
 
@@ -61,6 +65,8 @@ namespace EasySave.ViewModel
                 Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
             }
 
+
+
         public BackupJob GetJob(int id)
         {
             string cheminFichierJson = ".\\Jobs.json";
@@ -68,6 +74,44 @@ namespace EasySave.ViewModel
             var sauvegardesExistantes = JsonConvert.DeserializeObject<List<BackupJob>>(contenuExistant) ?? new List<BackupJob>();
             return sauvegardesExistantes.Find(s => s.Id == id);
         }   
+
+
+
+        public void DeleteJob (int idToDelete)
+        {
+            // Spécifiez le chemin du fichier JSON
+            string filePath = ".\\Jobs.json";
+
+            // Lire le contenu du fichier JSON
+            string jsonString = File.ReadAllText(filePath);
+
+            // Convertir la chaîne JSON en tableau d'objets JObject
+            JArray jsonArray = JArray.Parse(jsonString);
+
+            // Spécifiez l'ID que vous souhaitez supprimer
+            int idToDelete = 3;
+
+            // Trouver l'objet avec l'ID spécifié et le supprimer du tableau
+            JObject itemToRemove = jsonArray
+                .FirstOrDefault(item => item["Id"] != null && item["Id"].Value<int>() == idToDelete) as JObject;
+
+            if (itemToRemove != null)
+            {
+                jsonArray.Remove(itemToRemove);
+
+                // Convertir le tableau modifié en chaîne JSON
+                string modifiedJsonString = jsonArray.ToString(Formatting.Indented);
+
+                // Réécrire le fichier avec les données mises à jour
+                File.WriteAllText(filePath, modifiedJsonString);
+
+                Console.WriteLine($"Le travail liées à l'ID {idToDelete} ont été supprimées avec succès.");
+            }
+            else
+            {
+                Console.WriteLine($"Aucune information trouvée avec l'ID {idToDelete}.");
+            }
+        }
     }
 }
     
