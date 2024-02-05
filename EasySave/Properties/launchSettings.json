@@ -1,8 +1,7 @@
 {
   "profiles": {
     "EasySave": {
-      "commandName": "Project",
-      "commandLineArgs": "EasySave --help"
+      "commandName": "Project"
     }
   }
 }
