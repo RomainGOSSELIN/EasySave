@@ -38,6 +38,11 @@ namespace EasySave.ViewModel
             BackupJob backupJob = new BackupJob(jobName, source, dest, type);
             BackupJobService.CreateJob(backupJob);
         }
+        internal void DeleteJob(string idToDelete)
+        {
+            int intIdToDelete = Int32.Parse(idToDelete);
+            BackupJobService.DeleteJob(intIdToDelete);
+        }
 
         internal ConsoleTable ShowJob(string id)
         {

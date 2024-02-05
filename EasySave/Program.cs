@@ -178,9 +178,10 @@ class Program
         Console.WriteLine($"La Langue est {language}");
     }
 
-    private static void OnDeleteJob(int idToDelete)
+    private static void OnDeleteJob(string idToDelete)
     {
-        backupJobService.DeleteJob(idToDelete);
+        _viewModel.DeleteJob(idToDelete);
+
     }
 
 }

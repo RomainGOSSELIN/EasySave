@@ -1,5 +1,6 @@
 ﻿using EasySave.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -96,8 +97,6 @@ namespace EasySave.ViewModel
             // Convertir la chaîne JSON en tableau d'objets JObject
             JArray jsonArray = JArray.Parse(jsonString);
 
-            // Spécifiez l'ID que vous souhaitez supprimer
-            int idToDelete = 3;
 
             // Trouver l'objet avec l'ID spécifié et le supprimer du tableau
             JObject itemToRemove = jsonArray
@@ -113,7 +112,7 @@ namespace EasySave.ViewModel
                 // Réécrire le fichier avec les données mises à jour
                 File.WriteAllText(filePath, modifiedJsonString);
 
-                Console.WriteLine($"Le travail liées à l'ID {idToDelete} ont été supprimées avec succès.");
+                Console.WriteLine($"Le travail numéro {idToDelete} a été supprimé avec succès.");
             }
             else
             {
