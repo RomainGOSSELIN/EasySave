@@ -178,11 +178,9 @@ class Program
         Console.WriteLine($"La Langue est {language}");
     }
 
-    private static void OnDeleteJob(string id)
+    private static void OnDeleteJob(int idToDelete)
     {
-        Console.WriteLine($"Le job à supprimer : {id}");
+        backupJobService.DeleteJob(idToDelete);
     }
-
-
 
 }
