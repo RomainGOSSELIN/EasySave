@@ -10,8 +10,8 @@ namespace EasySave.Model
     {
         public enum LanguageEnum
         {
-            en,
-            fr
+            fr,
+            en
         };
 
         public enum JobTypeEnum
