@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.CommandLine;
+using System.Globalization;
 using static EasySave.Model.Enum;
 
 namespace EasySave;
@@ -23,6 +24,8 @@ class Program
 
     public static async Task<int> Main(string[] args)
     {
+        Resources.Translation.Culture = new CultureInfo("es");
+
         var builder = new ConfigurationBuilder();
         var configuration = BuildConfiguration(builder);
 
@@ -51,28 +54,29 @@ class Program
 
     var jobName = new Option<string>(
             aliases: ["--name", "-n"],
-                description: "Le nom du travil de sauvegarde")
+                description: Resources.Translation.option_name)
         { IsRequired = true };
 
         var source = new Option<string>(
             aliases: ["--source", "-s"],
-            description: "La source du répertoire du travail de sauvegarde")
+            description: Resources.Translation.option_source)
         { IsRequired = true };
 
         var dest = new Option<string>(
             aliases :["--dest","-d"],
-            description: "La destination du répertoire du travil de sauvegarde")
+            description: Resources.Translation.option_dest)
         { IsRequired = true };
 
         var type = new Option<JobTypeEnum>(
             aliases: ["--type", "-t"],
-            description: "Pour choisir un travil de sauvegarde complet")
+            description: Resources.Translation.option_type)
         { IsRequired = true };
 
 
         var id = new Option<string>(
             aliases: ["--job", "-j"],
-            description: "Le numéro du travail de sauvegarde");
+            description: Resources.Translation.option_id)
+        { IsRequired = true };
 
         var all = new Option<bool>(
             aliases: ["--all", "-a"],
@@ -80,34 +84,34 @@ class Program
 
         var lang = new Option<LanguageEnum>(
            aliases: ["--lang", "-l"],
-           description: "Pour choisir la langue");
+           description: Resources.Translation.option_lang);
 
 
 
-        var rootCommand = new RootCommand(asciiart +"\n \n Application de sauvegarde de fichiers");
+        var rootCommand = new RootCommand(asciiart + "\n \n" + Resources.Translation.title);
         
  
-        var createCommand = new Command("create", "Créer un nouveau travail de sauvegarde")
+        var createCommand = new Command("create", Resources.Translation.desc_create)
         {
                 jobName,
                 source,
                 dest,
                 type
         };
-        var deleteCommand = new Command("delete", "Supprimer un travail de sauvegarde")
+        var deleteCommand = new Command("delete", Resources.Translation.desc_delete)
         {
                 id,
         };
-        var showCommand = new Command("show", "Afficher un travail de sauvegarde")
+        var showCommand = new Command("show", Resources.Translation.desc_show)
         {
                 id,
                 all,
         };
-        var runCommand = new Command("run", "Lancer un travail de sauvegarde")
+        var runCommand = new Command("run", Resources.Translation.desc_run)
         {
                 id,
         };
-        var languageCommand = new Command("options", "Régler les options (comme la langue)")
+        var languageCommand = new Command("options", Resources.Translation.desc_options)
         {
                 lang
         };
@@ -150,7 +154,7 @@ class Program
         if (args.Length == 0)
         {
 
-            Console.WriteLine("\nBienvenue dans le logiciel de gestion de Sauvegarde EasySave. Ecrire 'exit' pour quitter.");
+            Console.WriteLine(Resources.Translation.welcome);
 
             await rootCommand.InvokeAsync("--help");
 
