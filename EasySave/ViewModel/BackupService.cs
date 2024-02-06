@@ -1,4 +1,5 @@
 ﻿using EasySave.Model;
+using static EasySave.Model.Enum;
 
 namespace EasySave.ViewModel
 {
@@ -8,7 +9,6 @@ namespace EasySave.ViewModel
         {
             if (job != null)
             {
-
                 Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
 
                 try
@@ -16,30 +16,50 @@ namespace EasySave.ViewModel
                     // Vérifier si le répertoire source existe
                     if (Directory.Exists(job.SourceDir))
                     {
-                        // Créer le répertoire cible s'il n'existe pas encore
+                        // Vérifier si le répertoire cible existe
                         if (!Directory.Exists(job.TargetDir))
                         {
                             Directory.CreateDirectory(job.TargetDir);
                         }
 
-                        // Obtenir la liste des fichiers dans le répertoire source
-                        string[] files = Directory.GetFiles(job.SourceDir);
-
-                        // Copier chaque fichier dans le répertoire cible
-                        foreach (string file in files)
+                        // Copier les fichiers en fonction du type de sauvegarde
+                        string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
+                        if (job.Type == JobTypeEnum.full)
                         {
-                            string fileName = Path.GetFileName(file);
-                            string destFile = Path.Combine(job.TargetDir, fileName);
-                            File.Copy(file, destFile, true);
+                            Console.WriteLine("Copie des fichiers...");
+                            foreach (string sourceFile in sourceFiles)
+                            {
+                                string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
+                                Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
+                                File.Copy(sourceFile, targetFilePath, true);
+                                Console.WriteLine($"Copie du fichier : {sourceFile}");
+                            }
+                            Console.WriteLine("Copie terminée !");
                         }
+                        else if (job.Type == JobTypeEnum.differential)
+                        {
+                            Console.WriteLine("Copie des fichiers différentielle...");
+                            // Obtenez la liste des fichiers modifiés ou nouveaux
+                            foreach (string sourceFile in sourceFiles)
+                            {
+                                FileInfo originalFile = new FileInfo(sourceFile);
+                                FileInfo destFile = new FileInfo(sourceFile.Replace(job.SourceDir, job.TargetDir));
 
+                                if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                                {
+                                    Directory.CreateDirectory(destFile.DirectoryName);
+                                    originalFile.CopyTo(destFile.FullName, true);
+                                    Console.WriteLine($"Copie du fichier : {sourceFile}");
+                                }
+                            }
+                            Console.WriteLine("Copie terminée !");
+                        }
                         Console.WriteLine("La sauvegarde a été effectuée avec succès !");
                     }
                     else
                     {
                         Console.WriteLine("Le répertoire source n'existe pas.");
                     }
-
                 }
                 catch (Exception ex)
                 {
