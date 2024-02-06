@@ -11,6 +11,9 @@ namespace EasySave.ViewModel
             {
                 Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
 
+                long maxFileSize = 1024 * 1024 * 100; // 100 Mo
+                List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
+
                 try
                 {
                     // Vérifier si le répertoire source existe
@@ -22,17 +25,36 @@ namespace EasySave.ViewModel
                             Directory.CreateDirectory(job.TargetDir);
                         }
 
-                        // Copier les fichiers en fonction du type de sauvegarde
-                        string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
+                        int fileCount = 0; // Nombre de fichiers copiés
+                                           // Copier les fichiers en fonction du type de sauvegarde
                         if (job.Type == JobTypeEnum.full)
                         {
                             Console.WriteLine("Copie des fichiers...");
+                            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                             foreach (string sourceFile in sourceFiles)
                             {
-                                string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
-                                Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
-                                File.Copy(sourceFile, targetFilePath, true);
-                                Console.WriteLine($"Copie du fichier : {sourceFile}");
+                                FileInfo fileInfo = new FileInfo(sourceFile);
+                                // Vérifier la taille maximale du fichier
+                                if (fileInfo.Length <= maxFileSize)
+                                {
+                                    // Vérifier le format de sauvegarde du fichier
+                                    if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
+                                    {
+                                        string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
+                                        Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
+                                        File.Copy(sourceFile, targetFilePath, true);
+                                        Console.WriteLine($"Copie du fichier : {sourceFile}");
+                                        fileCount++;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
+                                }
                             }
                             Console.WriteLine("Copie terminée !");
                         }
@@ -40,6 +62,7 @@ namespace EasySave.ViewModel
                         {
                             Console.WriteLine("Copie des fichiers différentielle...");
                             // Obtenez la liste des fichiers modifiés ou nouveaux
+                            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                             foreach (string sourceFile in sourceFiles)
                             {
                                 FileInfo originalFile = new FileInfo(sourceFile);
@@ -47,14 +70,32 @@ namespace EasySave.ViewModel
 
                                 if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                                 {
-                                    Directory.CreateDirectory(destFile.DirectoryName);
-                                    originalFile.CopyTo(destFile.FullName, true);
-                                    Console.WriteLine($"Copie du fichier : {sourceFile}");
+                                    // Vérifier la taille maximale du fichier
+                                    if (originalFile.Length <= maxFileSize)
+                                    {
+                                        // Vérifier le format de sauvegarde du fichier
+                                        if (allowedFormats.Contains(originalFile.Extension.ToLower()))
+                                        {
+                                            Directory.CreateDirectory(destFile.DirectoryName);
+                                            originalFile.CopyTo(destFile.FullName, true);
+                                            Console.WriteLine($"Copie du fichier : {sourceFile}");
+                                            fileCount++;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
+                                    }
                                 }
                             }
                             Console.WriteLine("Copie terminée !");
                         }
-                        Console.WriteLine("La sauvegarde a été effectuée avec succès !");
+
+                        Console.WriteLine($"La sauvegarde a été effectuée avec succès ! Nombre total de fichiers copiés : {fileCount}");
                     }
                     else
                     {
@@ -65,6 +106,10 @@ namespace EasySave.ViewModel
                 {
                     Console.WriteLine($"Une erreur s'est produite lors de la sauvegarde : {ex.Message}");
                 }
+            }
+            else
+            {
+                Console.WriteLine("Le travail de sauvegarde est vide.");
             }
         }
     }
