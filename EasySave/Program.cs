@@ -1,5 +1,8 @@
 ﻿using ConsoleTables;
 using EasySave.ViewModel;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.CommandLine;
 using System.Globalization;
 using static EasySave.Model.Enum;
@@ -8,21 +11,42 @@ namespace EasySave;
 
 class Program
 {
-    private static BackupViewModel _viewModel = new BackupViewModel();
+
+    static IConfiguration BuildConfiguration(IConfigurationBuilder builder)
+    {
+        return builder
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+    }
+
+    private static BackupController _backupController;
 
     public static async Task<int> Main(string[] args)
     {
         Resources.Translation.Culture = new CultureInfo("es");
-        
+
+        var builder = new ConfigurationBuilder();
+        var configuration = BuildConfiguration(builder);
+
+        var host = Host.CreateDefaultBuilder()
+            .ConfigureServices((context, services) =>
+            {
+                services.AddSingleton<IBackupController, BackupController>();
+            })
+            .Build();
+
+        _backupController = ActivatorUtilities.CreateInstance<BackupController>(host.Services);
+
         string asciiart = @"
-####################################################
-#     ______                 _____                 #
-#    / ____/___ ________  __/ ___/____ __   _____  #
-#   / __/ / __ `/ ___/ / / /\__ \/ __ `/ | / / _ \ #
-#  / /___/ /_/ (__  ) /_/ /___/ / /_/ /| |/ /  __/ #
-# /_____/\__,_/____/\__, //____/\__,_/ |___/\___/  #
-#                  /____/                          #                      
-####################################################";
+##########################################################
+#     ______                    _____                    #
+#    / ____/____ _ _____ __  __/ ___/ ____ _ _   __ ___  #
+#   / __/  / __ `// ___// / / /\__ \ / __ `/| | / // _ \ #
+#  / /___ / /_/ /(__  )/ /_/ /___/ // /_/ / | |/ //  __/ #
+# /_____/ \__,_//____/ \__, //____/ \__,_/  |___/ \___/  #
+#                     /____/                             #                     
+##########################################################";
 
 
         //Console.WriteLine(asciiart);
@@ -54,7 +78,9 @@ class Program
             description: Resources.Translation.option_id)
         { IsRequired = true };
 
-
+        var all = new Option<bool>(
+            aliases: ["--all", "-a"],
+            description: "Pour choisir tous les travaux de sauvegarde");
 
         var lang = new Option<LanguageEnum>(
            aliases: ["--lang", "-l"],
@@ -79,6 +105,7 @@ class Program
         var showCommand = new Command("show", Resources.Translation.desc_show)
         {
                 id,
+                all,
         };
         var runCommand = new Command("run", Resources.Translation.desc_run)
         {
@@ -108,10 +135,10 @@ class Program
             OnCreateJob(name, source, dest, type);
         }, jobName, source, dest, type);
 
-        showCommand.SetHandler((id) =>
+        showCommand.SetHandler((id, all) =>
         {
-            OnShowJob(id);
-        }, id);
+            OnShowJob(id, all);
+        }, id, all);
 
         languageCommand.SetHandler((lang) =>
         {
@@ -158,13 +185,13 @@ class Program
 
     private static void OnRunJob(string id)
     {
-        _viewModel.ExecuteJob(id);
+        _backupController.ExecuteJob(id);
     }
 
-    private static void OnShowJob(string id)
+    private static void OnShowJob(string id , bool all)
     {
 
-        var table = _viewModel.ShowJob(id);
+        var table = _backupController.ShowJob(id,all);
         table.Write();
 
     }
@@ -172,8 +199,8 @@ class Program
 
     private static void OnCreateJob(string jobName,string source, string dest, JobTypeEnum type)
     {
-        _viewModel.CreateJob(jobName, source, dest, type);
-    } 
+        _backupController.CreateJob(jobName, source, dest, type);
+    }
 
     private static void OnChangeLanguage(LanguageEnum language)
     {
@@ -182,7 +209,7 @@ class Program
 
     private static void OnDeleteJob(string idToDelete)
     {
-        _viewModel.DeleteJob(idToDelete);
+        _backupController.DeleteJob(idToDelete);
 
     }
 
