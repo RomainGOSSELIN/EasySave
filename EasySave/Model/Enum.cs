@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasySave.Model
 {
-    internal class Enum
+    public class Enum
     {
         public enum LanguageEnum
         {
