@@ -1,124 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="EasySave.Model.BackupJob">
-    <Position X="24" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAQAAAAQAAAAAAAAAQQAAAAAAAAA=</HashCode>
-      <FileName>Model\BackupJob.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Model.BackupLog">
-    <Position X="25.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAGAAAgAAAAAAAAAAAgJAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Model\BackupLog.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Model.BackupState">
-    <Position X="24" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAiAIAAACABAAAAIAAAAAAAAgBAAAAAA=</HashCode>
-      <FileName>Model\BackupState.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Model.Enum">
-    <Position X="25.75" Y="4.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Enum Name="EasySave.Model.Enum.LanguageEnum" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Model\Enum.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="EasySave.Model.Enum.JobTypeEnum" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Model\Enum.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Enum.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Program">
-    <Position X="19" Y="1" Width="2.25" />
+  <Class Name="EasySave.Program" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIEIAAAAAAAAABAAAQCAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EasySave.ViewModel.BackupController" BaseTypeListCollapsed="true">
-    <Position X="16.25" Y="1" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAARAAEQgAAAAAAAAAAAAAAAEEAEAAAAA=</HashCode>
-      <FileName>Controller\BackupController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.ViewModel.BackupJobService" BaseTypeListCollapsed="true">
-    <Position X="21.75" Y="1" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AACAAEAAgAAAAAAAAAgAAAAgAAAAAIAABIEAAAAAAAA=</HashCode>
-      <FileName>Controller\BackupJobService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasySave.ViewModel.BackupService" BaseTypeListCollapsed="true">
-    <Position X="13" Y="1.25" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>Controller\BackupService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasySave.ViewModel.JsonService">
-    <Position X="17" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Controller\JsonService.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Resources.Translation">
-    <Position X="11.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAQAAAAACAAAABEAAAUYCAAAAoACAAAEAAAIQ=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.View.ConsoleView">
-    <Position X="9.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>View\ConsoleView.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasySave.Startup">
-    <Position X="6.5" Y="1.25" Width="2" />
+  <Class Name="EasySave.Startup" Collapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAAAAAA=</HashCode>
       <FileName>Startup.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="EasySave.ViewModel.IBackupController">
-    <Position X="15" Y="5" Width="1.5" />
+  <Class Name="EasySave.Model.BackupJob" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAQAAAAQAAAAAAAAAQQAAAAAAAAA=</HashCode>
+      <FileName>Model\BackupJob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Model.BackupLog" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAAAgAAAgAAAAAAQAAAIAAAAAA=</HashCode>
+      <FileName>Model\BackupLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Model.BackupState" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAiAIAAACABAAAAIAAAAAAAAgBAAAAAA=</HashCode>
+      <FileName>Model\BackupState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Model.Enum" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Enum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Controller.BackupController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAARAAEQgAACAAAAAAgAAAAAEEAEAAAAA=</HashCode>
+      <FileName>Controller\BackupController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasySave.Controller.BackupJobService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAgAAAAAAAAAgAAAAgAAAAAIAABIEAAAAAAAA=</HashCode>
+      <FileName>Controller\BackupJobService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySave.Controller.BackupService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Controller\BackupService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySave.Controller.JsonService" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\JsonService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Resources.Translation" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAAAAACAAAABEAAAUYCAAAAoACAAAEAAAIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.View.ConsoleView" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ConsoleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySave.Controller.StateLogService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAgAAAAAAAAAAAAAAAAAAAACAAAIEAAEAEAAA=</HashCode>
+      <FileName>Controller\StateLogService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySave.Controller.DailyLogService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAQACAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controller\DailyLogService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="EasySave.Controller.IBackupController" Collapsed="true">
+    <Position X="12.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEAEAAAAA=</HashCode>
       <FileName>Controller\Interfaces\IBackupController.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasySave.Controller.Interfaces.IBackupJobService" Collapsed="true">
-    <Position X="18" Y="4.25" Width="1.5" />
+    <Position X="14.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAEAAAAAAAAAAAAgAAAAgAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\Interfaces\IBackupJobService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasySave.Controller.Interfaces.IBackupService" Collapsed="true">
-    <Position X="19.75" Y="4.25" Width="1.5" />
+    <Position X="16.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Controller\Interfaces\IBackupService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EasySave.Controller.Interfaces.IStateLogService" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAA=</HashCode>
+      <FileName>Controller\Interfaces\IStateLogService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EasySave.Controller.IDailyLogService" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\IDailyLogService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

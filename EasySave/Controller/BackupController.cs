@@ -3,15 +3,17 @@ using EasySave.Controller;
 using EasySave.Controller.Interfaces;
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 using static EasySave.Model.Enum;
 
-namespace EasySave.ViewModel
+namespace EasySave.Controller
 {
     public class BackupController : IBackupController
     {
         private static IBackupJobService _backupJobService;
         private static IBackupService _backupService;
         private static IStateLogService _stateLogService;
+        private static IDailyLogService _dailyLogService ;
 
         private static IConfiguration _configuration;
         public BackupController(IConfiguration configuration)
@@ -20,6 +22,7 @@ namespace EasySave.ViewModel
             _backupJobService = new BackupJobService(_configuration);
             _backupService = new BackupService();
             _stateLogService = new StateLogService(_configuration);
+            _dailyLogService = new DailyLogService(_configuration);
 
         }
 
@@ -37,9 +40,14 @@ namespace EasySave.ViewModel
 
             foreach (var backupJob in backupJobs)
             {
+                var stopwatch = new Stopwatch();
+                var FileSize = GetDirectorySize(backupJob.SourceDir);
 
+                stopwatch.Start();
                 _backupService.ExecuteBackupJob(backupJob);
+                stopwatch.Stop();
 
+                _dailyLogService.AddDailyLog(backupJob, FileSize, (int)stopwatch.ElapsedMilliseconds);
             }
 
         }
@@ -59,6 +67,12 @@ namespace EasySave.ViewModel
             {
                 _stateLogService.DeleteStateLog(intIdToDelete);
             }
+        }
+        public long GetDirectorySize(string path)
+        {
+            return Directory.GetFiles(path, "*", SearchOption.AllDirectories)
+                .Select(file => new FileInfo(file).Length)
+                .Sum();
         }
 
         public ConsoleTable ShowJob(string id, bool all)
@@ -135,4 +149,7 @@ namespace EasySave.ViewModel
 
       
     }
+
+    
+
 }

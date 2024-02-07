@@ -1,5 +1,5 @@
 ﻿using ConsoleTables;
-using EasySave.ViewModel;
+using EasySave.Controller;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -172,6 +172,7 @@ class Program
 
             while (true)
             {
+
                 Console.Write("> ");
                 var input = Console.ReadLine();
 

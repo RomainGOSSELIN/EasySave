@@ -2,7 +2,7 @@
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
 
-namespace EasySave.ViewModel
+namespace EasySave.Controller
 {
     public class BackupJobService : IBackupJobService
     {

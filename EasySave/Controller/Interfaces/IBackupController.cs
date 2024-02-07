@@ -1,7 +1,7 @@
 using ConsoleTables;
 using static EasySave.Model.Enum;
 
-namespace EasySave.ViewModel
+namespace EasySave.Controller
 {
     public interface IBackupController
     {

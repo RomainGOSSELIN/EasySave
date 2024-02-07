@@ -2,7 +2,7 @@
 using EasySave.Model;
 using static EasySave.Model.Enum;
 
-namespace EasySave.ViewModel
+namespace EasySave.Controller
 {
     internal class BackupService : IBackupService
     {
@@ -43,6 +43,7 @@ namespace EasySave.ViewModel
                                     {
                                         string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
                                         Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
+
                                         File.Copy(sourceFile, targetFilePath, true);
                                         Console.WriteLine($"Copie du fichier : {sourceFile}");
                                         fileCount++;
