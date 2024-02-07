@@ -14,7 +14,7 @@ namespace EasySave.Controller
         private static IBackupService _backupService;
         private static IStateLogService _stateLogService;
         private static IDailyLogService _dailyLogService ;
-
+        private static ISettingsService _settingsService;
         private static IConfiguration _configuration;
         public BackupController(IConfiguration configuration)
         {
@@ -23,7 +23,7 @@ namespace EasySave.Controller
             _backupService = new BackupService(_configuration);
             _stateLogService = new StateLogService(_configuration);
             _dailyLogService = new DailyLogService(_configuration);
-
+            _settingsService = new SettingsService();
         }
 
         public void ExecuteJob(string id)
@@ -147,7 +147,12 @@ namespace EasySave.Controller
             return result;
         }
 
-      
+        public void ChangeLanguage(LanguageEnum language)
+        {
+            _settingsService.ChangeLanguage(language);
+        }
+
+
     }
 
     

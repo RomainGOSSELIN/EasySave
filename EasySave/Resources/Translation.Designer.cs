@@ -61,6 +61,15 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les changements auront lieu au prochain démarrage.
+        /// </summary>
+        public static string change_at_restart {
+            get {
+                return ResourceManager.GetString("change_at_restart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Créer un nouveau travail de sauvegarde.
         /// </summary>
         public static string desc_create {

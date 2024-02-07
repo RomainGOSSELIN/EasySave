@@ -156,4 +156,7 @@
   <data name="desc_create" xml:space="preserve">
     <value>Creare un nuovo lavoro di backup</value>
   </data>
+  <data name="change_at_restart" xml:space="preserve">
+    <value>Le modifiche verranno apportate al prossimo avvio</value>
+  </data>
 </root>
