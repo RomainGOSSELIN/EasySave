@@ -24,20 +24,29 @@ class Program
 
     public static async Task<int> Main(string[] args)
     {
-        Resources.Translation.Culture = new CultureInfo("es");
 
         var builder = new ConfigurationBuilder();
         var configuration = BuildConfiguration(builder);
 
-        var host = Host.CreateDefaultBuilder()
-            .ConfigureServices((context, services) =>
-            {
-                services.AddSingleton<IBackupController, BackupController>();
-            })
-            .Build();
+
+        var host = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    config.AddConfiguration(configuration);
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    new Startup(configuration).ConfigureServices(services);
+                })
+                .Build();
+
+
 
         _backupController = ActivatorUtilities.CreateInstance<BackupController>(host.Services);
 
+        Resources.Translation.Culture = new CultureInfo(configuration["AppConfig:Language"]);
+
+        #region ASCII Art
         string asciiart = @"
 ##########################################################
 #     ______                    _____                    #
@@ -48,11 +57,10 @@ class Program
 #                     /____/                             #                     
 ##########################################################";
 
+        #endregion
 
-        //Console.WriteLine(asciiart);
-
-
-    var jobName = new Option<string>(
+        #region Options
+        var jobName = new Option<string>(
             aliases: ["--name", "-n"],
                 description: Resources.Translation.option_name)
         { IsRequired = true };
@@ -75,8 +83,7 @@ class Program
 
         var id = new Option<string>(
             aliases: ["--job", "-j"],
-            description: Resources.Translation.option_id)
-        { IsRequired = true };
+            description: Resources.Translation.option_id);
 
         var all = new Option<bool>(
             aliases: ["--all", "-a"],
@@ -86,11 +93,13 @@ class Program
            aliases: ["--lang", "-l"],
            description: Resources.Translation.option_lang);
 
+        #endregion
 
+        #region Commands
 
         var rootCommand = new RootCommand(asciiart + "\n \n" + Resources.Translation.title);
         
- 
+        
         var createCommand = new Command("create", Resources.Translation.desc_create)
         {
                 jobName,
@@ -122,8 +131,9 @@ class Program
         rootCommand.AddCommand(languageCommand);
         rootCommand.AddCommand(deleteCommand);
 
+        #endregion
 
-
+        #region Handlers
 
         runCommand.SetHandler((id) =>
         {
@@ -149,6 +159,8 @@ class Program
         {
             OnDeleteJob(id);
         }, id);
+
+        #endregion 
 
 
         if (args.Length == 0)
@@ -182,7 +194,7 @@ class Program
 
     }
 
-
+    #region handlers methods
     private static void OnRunJob(string id)
     {
         _backupController.ExecuteJob(id);
@@ -212,5 +224,5 @@ class Program
         _backupController.DeleteJob(idToDelete);
 
     }
-
+    #endregion
 }

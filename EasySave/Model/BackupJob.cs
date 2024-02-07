@@ -7,7 +7,7 @@ using static EasySave.Model.Enum;
 
 namespace EasySave.Model
 {
-    internal class BackupJob
+    public class BackupJob
     {
         public  int? Id { get; set; }
         public  string Name { get; set; }

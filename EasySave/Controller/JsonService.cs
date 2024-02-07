@@ -26,7 +26,7 @@ namespace EasySave.ViewModel
         
         public void SaveLog<T>(List<T> logs, string directory)
         {
-            string contenu = JsonConvert.SerializeObject(logs);
+            string contenu = JsonConvert.SerializeObject(logs, Formatting.Indented) ;
             File.WriteAllText(directory, contenu);
         }
 

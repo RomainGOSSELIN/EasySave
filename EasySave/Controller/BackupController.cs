@@ -1,4 +1,6 @@
 ﻿using ConsoleTables;
+using EasySave.Controller;
+using EasySave.Controller.Interfaces;
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
 using static EasySave.Model.Enum;
@@ -7,44 +9,56 @@ namespace EasySave.ViewModel
 {
     public class BackupController : IBackupController
     {
-        private static BackupJobService _backupJobService;
-        private static BackupService BackupService = new BackupService();
+        private static IBackupJobService _backupJobService;
+        private static IBackupService _backupService;
+        private static IStateLogService _stateLogService;
 
         private static IConfiguration _configuration;
         public BackupController(IConfiguration configuration)
         {
             _configuration = configuration;
             _backupJobService = new BackupJobService(_configuration);
+            _backupService = new BackupService();
+            _stateLogService = new StateLogService(_configuration);
+
         }
 
         public void ExecuteJob(string id)
         {
             var separators = new Char [] { ':', ';' };
+            List<BackupJob> backupJobs = [];
 
             if (separators.Any(id.Contains)) {
-                List<BackupJob> backupJobs = _backupJobService.GetJobs(id.Split(separators).Select(int.Parse).ToList());
-
-                foreach(var backupJob in backupJobs)
-                {
-                    BackupService.ExecuteBackupJob(backupJob);
-                }
+                backupJobs = _backupJobService.GetJobs(id.Split(separators).Select(int.Parse).ToList());
             }
             else {
-                BackupService.ExecuteBackupJob(_backupJobService.GetJob(int.Parse(id)));
+                backupJobs.Add(_backupJobService.GetJob(int.Parse(id)));
+            };
 
-            }; 
-            
+            foreach (var backupJob in backupJobs)
+            {
+
+                _backupService.ExecuteBackupJob(backupJob);
+
+            }
+
         }
 
         public void CreateJob(string jobName, string source, string dest , JobTypeEnum type)
         {
             BackupJob backupJob = new BackupJob(jobName, source, dest, type);
-            _backupJobService.CreateJob(backupJob);
+            if (_backupJobService.CreateJob(backupJob))
+            {
+                _stateLogService.CreateStateLog(backupJob);
+            };
         }
         public void DeleteJob(string idToDelete)
         {
             int intIdToDelete = Int32.Parse(idToDelete);
-            _backupJobService.DeleteJob(intIdToDelete);
+            if (_backupJobService.DeleteJob(intIdToDelete))
+            {
+                _stateLogService.DeleteStateLog(intIdToDelete);
+            }
         }
 
         public ConsoleTable ShowJob(string id, bool all)
@@ -65,6 +79,12 @@ namespace EasySave.ViewModel
            
 
             var table = new ConsoleTable("Numero", "Nom du Travail", "Source", "Destination", "Type");
+            if(jobs == null)
+            {
+                Console.WriteLine("Aucun travail trouvé");
+            }
+            else
+            {
 
             foreach (var job in jobs)
             {
@@ -75,6 +95,7 @@ namespace EasySave.ViewModel
 
             }
 
+            }
             return table;
 
         }

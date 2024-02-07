@@ -1,30 +1,38 @@
-﻿using EasySave.Model;
+﻿using EasySave.Controller.Interfaces;
+using EasySave.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace EasySave.ViewModel
 {
-    internal class BackupJobService
+    public class BackupJobService : IBackupJobService
     {
         private readonly IConfiguration _configuration;
-
-        private JsonService JsonService = new JsonService();
-        public void CreateJob(BackupJob backupJob)
+        private static string _jobsFilePath;
+        public BackupJobService(IConfiguration configuration)
         {
-            string cheminFichierJson = ".\\Jobs.json";
+            _configuration = configuration;
+            _jobsFilePath = _configuration["AppConfig:JobsFilePath"];
+        }
 
-            List<BackupJob> jobs = JsonService.GetLog<BackupJob>(cheminFichierJson);
-           
+        private JsonService _jsonService = new JsonService();
+        public bool CreateJob(BackupJob backupJob)
+        {
+
+            List<BackupJob> jobs = _jsonService.GetLog<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
+
 
             if (jobs.Count < 5)
             {
                 backupJob.Id = jobs.Count + 1;
                 jobs.Add(backupJob);
-                JsonService.SaveLog(jobs, cheminFichierJson);
+                _jsonService.SaveLog(jobs, _jobsFilePath);
                 Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
+                return true;
             }
             else
             {
                 Console.WriteLine("Vous ne pouvez pas créer plus de 5 travaux.");
+                return false;
             }
 
 
@@ -75,21 +83,26 @@ namespace EasySave.ViewModel
 
             //Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
         }
-
-        public BackupJobService(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
         public BackupJob? GetJob(int id)
         {
-            string cheminFichierJson = _configuration["AppConfig:JobsFilePath"]; ;
+             List<BackupJob> jobs = _jsonService.GetLog<BackupJob>(_jobsFilePath);
+             BackupJob? backupJob;
 
-            BackupJob? backupJob = JsonService.GetLog<BackupJob>(cheminFichierJson).Find(s => s.Id == id);
-
-            if (backupJob == null)
+            if (jobs == null)
             {
                 Console.WriteLine($"Backup job {id} n'existe pas");
+                return null;
             }
+
+            else
+            {
+                backupJob = jobs.Find(j => j.Id == id);
+                if (backupJob == null)
+                {
+                    Console.WriteLine($"Backup job {id} n'existe pas");
+                }
+            }
+           
 
             return backupJob;
 
@@ -108,28 +121,27 @@ namespace EasySave.ViewModel
 
         public List<BackupJob> GetAllJobs()
         {
-            string filePath = ".\\Jobs.json";
-            //configuration["AppConfig:Language"];
-            return JsonService.GetLog<BackupJob>(filePath);
+            return _jsonService.GetLog<BackupJob>(_jobsFilePath);
         }
 
-        public void DeleteJob(int idToDelete)
+        public bool DeleteJob(int idToDelete)
         {
-            string filePath = ".\\Jobs.json";
 
-            List<BackupJob> jobs = JsonService.GetLog<BackupJob>(filePath);
+            List<BackupJob> jobs = _jsonService.GetLog<BackupJob>(_jobsFilePath);
             BackupJob? jobToDelete = jobs.Find(j => j.Id == idToDelete);
 
             if (jobToDelete != null)
             {
                 jobs.Remove(jobToDelete);
                 UpdateIds(jobs);
-                JsonService.SaveLog(jobs,filePath);
+                _jsonService.SaveLog(jobs, _jobsFilePath);
                 Console.WriteLine($"Le travail numéro {idToDelete} a été supprimé avec succès.");
+                return true;
             }
             else
             {
                 Console.WriteLine($"Aucune information trouvée avec l'ID {idToDelete}.");
+                return false;
             }
         }
 

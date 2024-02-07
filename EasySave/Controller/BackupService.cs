@@ -1,9 +1,10 @@
-﻿using EasySave.Model;
+﻿using EasySave.Controller.Interfaces;
+using EasySave.Model;
 using static EasySave.Model.Enum;
 
 namespace EasySave.ViewModel
 {
-    internal class BackupService
+    internal class BackupService : IBackupService
     {
         public void ExecuteBackupJob(BackupJob job)
         {
