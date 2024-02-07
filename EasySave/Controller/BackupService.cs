@@ -9,133 +9,128 @@ namespace EasySave.ViewModel
     internal class BackupService : IBackupService
     {
         private static IConfiguration _configuration;
+        private IStateLogService _stateLogService;
+        private BackupState _backupState;
+        private long maxFileSize = 1024 * 1024 * 100; // 100 Mo
+        private List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
+
         public BackupService(IConfiguration configuration)
         {
             _configuration = configuration;
+            _stateLogService = new StateLogService(_configuration);
         }
-
-        private IStateLogService _stateLogService;
-        private BackupState _backupState;
 
         public void ExecuteBackupJob(BackupJob job)
         {
-            _stateLogService = new StateLogService(_configuration);
-
-
-            if (job != null)
+            if (job == null)
             {
-                Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
+                Console.WriteLine("Le travail de sauvegarde est vide.");
+                return;
+            }
 
-                long maxFileSize = 1024 * 1024 * 100; // 100 Mo
-                List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
+            Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
 
-                try
+            int totalFilesToCopy = new DirectoryInfo(job.SourceDir).EnumerateFiles("*", SearchOption.AllDirectories).Count();
+            long totalFilesSize = (int)new DirectoryInfo(job.SourceDir).EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+
+            try
+            {
+                if (!Directory.Exists(job.SourceDir))
                 {
-                    // Vérifier si le répertoire source existe
-                    if (Directory.Exists(job.SourceDir))
-                    {
-                        // Vérifier si le répertoire cible existe
-                        if (!Directory.Exists(job.TargetDir))
-                        {
-                            Directory.CreateDirectory(job.TargetDir);
-                        }
-
-                        int fileCount = 0; // Nombre de fichiers copiés
-                        // Copier les fichiers en fonction du type de sauvegarde
-                        string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
-                        int totalFilesToCopy = sourceFiles.Length;
-                        DirectoryInfo sourceDirInfo = new DirectoryInfo(job.SourceDir);
-                        long totalSizeSource = sourceDirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
-
-
-                        if (job.Type == JobTypeEnum.full)
-                        {
-                            Console.WriteLine("Copie des fichiers...");
-                            foreach (string sourceFile in sourceFiles)
-                            {
-                                FileInfo fileInfo = new FileInfo(sourceFile);
-                                // Vérifier la taille maximale du fichier
-                                if (fileInfo.Length <= maxFileSize)
-                                {
-                                    // Vérifier le format de sauvegarde du fichier
-                                    if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
-                                    {
-                                        DirectoryInfo targetDir = new DirectoryInfo(job.TargetDir);
-                                        long totalSizeTarget = targetDir.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
-                                        string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
-                                        Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
-                                        int nbFilesLeftToDo = totalFilesToCopy - fileCount;
-                                        _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalSizeSource, nbFilesLeftToDo, totalSizeSource-totalSizeTarget, sourceFile, targetFilePath);
-                                        _stateLogService.UpdateStateLog(_backupState);
-                                        File.Copy(sourceFile, targetFilePath, true);
-                                        Console.WriteLine($"Copie du fichier : {sourceFile}");
-                                        fileCount++;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
-                                    }
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
-                                }
-                            }
-                            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
-                            Console.WriteLine("Copie terminée !");
-                        }
-                        else if (job.Type == JobTypeEnum.differential)
-                        {
-                            Console.WriteLine("Copie des fichiers différentielle...");
-                            // Obtenez la liste des fichiers modifiés ou nouveaux
-                            foreach (string sourceFile in sourceFiles)
-                            {
-                                FileInfo originalFile = new FileInfo(sourceFile);
-                                FileInfo destFile = new FileInfo(sourceFile.Replace(job.SourceDir, job.TargetDir));
-
-                                if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
-                                {
-                                    // Vérifier la taille maximale du fichier
-                                    if (originalFile.Length <= maxFileSize)
-                                    {
-                                        // Vérifier le format de sauvegarde du fichier
-                                        if (allowedFormats.Contains(originalFile.Extension.ToLower()))
-                                        {
-                                            Directory.CreateDirectory(destFile.DirectoryName);
-                                            originalFile.CopyTo(destFile.FullName, true);
-                                            Console.WriteLine($"Copie du fichier : {sourceFile}");
-                                            fileCount++;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
-                                    }
-                                }
-                            }
-                            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
-                            Console.WriteLine("Copie terminée !");
-                        }
-                        _stateLogService.UpdateStateLog(_backupState);
-                        Console.WriteLine($"La sauvegarde a été effectuée avec succès ! Nombre total de fichiers copiés : {fileCount}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Le répertoire source n'existe pas.");
-                    }
+                    Console.WriteLine("Le répertoire source n'existe pas.");
+                    return;
                 }
-                catch (Exception ex)
+
+                if (!Directory.Exists(job.TargetDir))
                 {
-                    Console.WriteLine($"Une erreur s'est produite lors de la sauvegarde : {ex.Message}");
+                    Directory.CreateDirectory(job.TargetDir);
+                }
+
+                if (job.Type == JobTypeEnum.full)
+                {
+                    CopyFullBackup(job, totalFilesToCopy, totalFilesSize);
+                }
+                else if (job.Type == JobTypeEnum.differential)
+                {
+                    CopyDifferentialBackup(job, totalFilesToCopy, totalFilesSize);
+                }
+                _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", totalFilesToCopy, totalFilesSize, 0, 0, job.SourceDir, job.TargetDir);
+                _stateLogService.UpdateStateLog(_backupState);
+                Console.WriteLine($"La sauvegarde a été effectuée avec succès !");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Une erreur s'est produite lors de la sauvegarde : {ex.Message}");
+            }
+        }
+
+        private void CopyFullBackup(BackupJob job, int totalFilesToCopy, long totalFilesSize)
+        {
+            int fileCount = 0; // Nombre de fichiers copiés
+
+            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
+
+            foreach (string sourceFile in sourceFiles)
+            {
+                Save(sourceFile, job, fileCount, totalFilesToCopy, totalFilesSize);
+                fileCount++;
+            }
+
+            Console.WriteLine($"La copie terminée ! Nombre total de fichiers copiés : {fileCount}");
+        }
+
+        private void CopyDifferentialBackup(BackupJob job, int totalFilesToCopy, long totalFilesSize)
+        {
+            int fileCount = 0; // Nombre de fichiers copiés
+
+            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
+
+            foreach (string sourceFile in sourceFiles)
+            {
+                FileInfo originalFile = new FileInfo(sourceFile);
+                FileInfo destFile = new FileInfo(sourceFile.Replace(job.SourceDir, job.TargetDir));
+
+                if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                {
+                    Save(sourceFile, job, fileCount, totalFilesToCopy, totalFilesSize);
+                    fileCount++;
+                }
+            }
+
+            Console.WriteLine($"La copie terminée ! Nombre total de fichiers copiés : {fileCount}");
+        }
+
+        private void Save(string sourceFile, BackupJob job, int fileCount, int totalFilesToCopy, long totalFilesSize)
+        {
+            FileInfo fileInfo = new FileInfo(sourceFile);
+
+            if (fileInfo.Length <= maxFileSize)
+            {
+                if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
+                {
+
+                    string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
+                    Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
+
+                    long totalSizeTarget = new DirectoryInfo(job.TargetDir).EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                    long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
+                    int nbFilesLeftToDo = totalFilesToCopy - fileCount;
+
+
+                    _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, job.SourceDir, job.TargetDir);
+                    _stateLogService.UpdateStateLog(_backupState);
+
+                    File.Copy(sourceFile, targetFilePath, true);
+                    Console.WriteLine($"Copie du fichier : {sourceFile}");
+                }
+                else
+                {
+                    Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
                 }
             }
             else
             {
-                Console.WriteLine("Le travail de sauvegarde est vide.");
+                Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
             }
         }
     }
