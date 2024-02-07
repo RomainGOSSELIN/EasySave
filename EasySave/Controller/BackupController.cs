@@ -20,7 +20,7 @@ namespace EasySave.Controller
         {
             _configuration = configuration;
             _backupJobService = new BackupJobService(_configuration);
-            _backupService = new BackupService();
+            _backupService = new BackupService(_configuration);
             _stateLogService = new StateLogService(_configuration);
             _dailyLogService = new DailyLogService(_configuration);
 
