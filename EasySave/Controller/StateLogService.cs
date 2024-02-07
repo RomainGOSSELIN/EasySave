@@ -51,6 +51,26 @@ namespace EasySave.Controller
             Console.WriteLine("DeleteStateLog");
         }
 
+        public void UpdateStateLog(BackupState state)
+        {
+            List<BackupState> states = _jsonService.GetLog<BackupState>(_stateLogPath);
+
+            var stateToUpdate = states.FirstOrDefault(x => x.Id == state.Id);
+
+            if (stateToUpdate != null)
+            {
+                stateToUpdate.State = state.State;
+                stateToUpdate.NbFilesLeftToDo = state.NbFilesLeftToDo;
+                stateToUpdate.NbFilesSizeLeftToDo = state.NbFilesSizeLeftToDo;
+                stateToUpdate.TotalFilesToCopy = state.TotalFilesToCopy;
+                stateToUpdate.TotalFilesSize = state.TotalFilesSize;
+                stateToUpdate.SourceFilePath = state.SourceFilePath;
+                stateToUpdate.TargetFilePath = state.TargetFilePath;
+            }
+
+            _jsonService.SaveLog(states, _stateLogPath);
+        }
+
         private void UpdateIds(List<BackupState> states)
         {
             for (int i = 0; i < states.Count; i++)

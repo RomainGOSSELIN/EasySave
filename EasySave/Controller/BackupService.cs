@@ -1,13 +1,27 @@
-﻿using EasySave.Controller.Interfaces;
+﻿using EasySave.Controller;
+using EasySave.Controller.Interfaces;
 using EasySave.Model;
+using Microsoft.Extensions.Configuration;
 using static EasySave.Model.Enum;
 
 namespace EasySave.ViewModel
 {
     internal class BackupService : IBackupService
     {
+        private static IConfiguration _configuration;
+        public BackupService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        private IStateLogService _stateLogService;
+        private BackupState _backupState;
+
         public void ExecuteBackupJob(BackupJob job)
         {
+            _stateLogService = new StateLogService(_configuration);
+
+
             if (job != null)
             {
                 Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
@@ -27,11 +41,16 @@ namespace EasySave.ViewModel
                         }
 
                         int fileCount = 0; // Nombre de fichiers copiés
-                                           // Copier les fichiers en fonction du type de sauvegarde
+                        // Copier les fichiers en fonction du type de sauvegarde
+                        string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
+                        int totalFilesToCopy = sourceFiles.Length;
+                        DirectoryInfo sourceDirInfo = new DirectoryInfo(job.SourceDir);
+                        long totalSizeSource = sourceDirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+
+
                         if (job.Type == JobTypeEnum.full)
                         {
                             Console.WriteLine("Copie des fichiers...");
-                            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                             foreach (string sourceFile in sourceFiles)
                             {
                                 FileInfo fileInfo = new FileInfo(sourceFile);
@@ -41,8 +60,13 @@ namespace EasySave.ViewModel
                                     // Vérifier le format de sauvegarde du fichier
                                     if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
                                     {
+                                        DirectoryInfo targetDir = new DirectoryInfo(job.TargetDir);
+                                        long totalSizeTarget = targetDir.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
                                         string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
                                         Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
+                                        int nbFilesLeftToDo = totalFilesToCopy - fileCount;
+                                        _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalSizeSource, nbFilesLeftToDo, totalSizeSource-totalSizeTarget, sourceFile, targetFilePath);
+                                        _stateLogService.UpdateStateLog(_backupState);
                                         File.Copy(sourceFile, targetFilePath, true);
                                         Console.WriteLine($"Copie du fichier : {sourceFile}");
                                         fileCount++;
@@ -57,13 +81,13 @@ namespace EasySave.ViewModel
                                     Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
                                 }
                             }
+                            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
                             Console.WriteLine("Copie terminée !");
                         }
                         else if (job.Type == JobTypeEnum.differential)
                         {
                             Console.WriteLine("Copie des fichiers différentielle...");
                             // Obtenez la liste des fichiers modifiés ou nouveaux
-                            string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                             foreach (string sourceFile in sourceFiles)
                             {
                                 FileInfo originalFile = new FileInfo(sourceFile);
@@ -93,9 +117,10 @@ namespace EasySave.ViewModel
                                     }
                                 }
                             }
+                            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
                             Console.WriteLine("Copie terminée !");
                         }
-
+                        _stateLogService.UpdateStateLog(_backupState);
                         Console.WriteLine($"La sauvegarde a été effectuée avec succès ! Nombre total de fichiers copiés : {fileCount}");
                     }
                     else

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EasySave.Model
 {
-    internal class BackupState
+    public class BackupState
     {
         public int? Id { get; set; } = 0;
         public string BackupName { get; set; }
