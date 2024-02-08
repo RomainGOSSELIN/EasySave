@@ -126,9 +126,6 @@
   <data name="option_type" xml:space="preserve">
     <value>Selezionare un lavoro di backup completo</value>
   </data>
-  <data name="option_source" xml:space="preserve">
-    <value>Directory di origine del processo di backup</value>
-  </data>
   <data name="option_name" xml:space="preserve">
     <value>Nome del lavoro di backup</value>
   </data>
@@ -137,9 +134,6 @@
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Numero del lavoro di backup</value>
-  </data>
-  <data name="option_dest" xml:space="preserve">
-    <value>Destinazione della directory del lavoro di backup</value>
   </data>
   <data name="desc_show" xml:space="preserve">
     <value>Visualizzazione di un lavoro di backup</value>
@@ -204,9 +198,6 @@
   <data name="backup_error" xml:space="preserve">
     <value>Si è verificato un errore durante il salvataggio: {0}</value>
   </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>La copia è terminata!</value>
-  </data>
   <data name="copy_file" xml:space="preserve">
     <value>Copia del file: {0}</value>
   </data>
@@ -215,5 +206,23 @@
   </data>
   <data name="maxsize_error" xml:space="preserve">
     <value>Il file {0} supera la dimensione massima consentita.</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>La copia è terminata! Numero totale di file copiati: {0}</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Destinazione della directory del processo di backup (tra virgolette)</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Origine della directory del processo di backup (tra virgolette)</value>
+  </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>L'ID deve essere un numero.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>I percorsi devono essere tra virgolette</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>La directory di origine e quella di destinazione non possono essere le stesse.</value>
   </data>
 </root>

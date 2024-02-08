@@ -188,6 +188,15 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à L&apos;ID doit être un nombre..
+        /// </summary>
+        public static string id_must_number {
+            get {
+                return ResourceManager.GetString("id_must_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Le format du fichier {0} n&apos;est pas autorisé pour la sauvegarde..
         /// </summary>
         public static string incorrect_format {
@@ -251,7 +260,7 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Destination du répertoire du travail de sauvegarde.
+        ///   Recherche une chaîne localisée semblable à Destination du répertoire du travail de sauvegarde (entre guillemets).
         /// </summary>
         public static string option_dest {
             get {
@@ -287,7 +296,7 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde.
+        ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde (entre guillemets).
         /// </summary>
         public static string option_source {
             get {
@@ -301,6 +310,15 @@ namespace EasySave.Resources {
         public static string option_type {
             get {
                 return ResourceManager.GetString("option_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les chemins doivent être entre guillemets.
+        /// </summary>
+        public static string path_must_contain_brackets {
+            get {
+                return ResourceManager.GetString("path_must_contain_brackets", resourceCulture);
             }
         }
         
@@ -328,6 +346,15 @@ namespace EasySave.Resources {
         public static string source_directory_doesnt_exist {
             get {
                 return ResourceManager.GetString("source_directory_doesnt_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le répertoire source et cible ne peuvent pas être les mêmes..
+        /// </summary>
+        public static string target_source_must_be_different {
+            get {
+                return ResourceManager.GetString("target_source_must_be_different", resourceCulture);
             }
         }
         

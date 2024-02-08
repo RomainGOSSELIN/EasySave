@@ -135,9 +135,6 @@
   <data name="desc_show" xml:space="preserve">
     <value>Display a backup job</value>
   </data>
-  <data name="option_dest" xml:space="preserve">
-    <value>Destination of the backup job directory</value>
-  </data>
   <data name="option_id" xml:space="preserve">
     <value>Backup job number</value>
   </data>
@@ -146,9 +143,6 @@
   </data>
   <data name="option_name" xml:space="preserve">
     <value>Name of the backup job</value>
-  </data>
-  <data name="option_source" xml:space="preserve">
-    <value>Source directory of the backup job</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Select a complete backup job</value>
@@ -204,9 +198,6 @@
   <data name="backup_error" xml:space="preserve">
     <value>An error occurred while saving: {0}</value>
   </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>The copy is finished!</value>
-  </data>
   <data name="copy_file" xml:space="preserve">
     <value>Copy of file: {0}</value>
   </data>
@@ -215,5 +206,23 @@
   </data>
   <data name="maxsize_error" xml:space="preserve">
     <value>File {0} exceeds the maximum allowed size.</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>The copy is finished! Total number of files copied: {0}</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Destination of the backup job directory (in quotes)</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Backup job directory source (in quotes)</value>
+  </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>The ID must be a number.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Paths must be in quotes</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>The source and target directory cannot be the same.</value>
   </data>
 </root>
