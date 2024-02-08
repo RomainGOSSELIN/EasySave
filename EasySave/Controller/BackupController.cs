@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml.Linq;
 using static EasySave.Model.Enum;
 using Spectre.Console;
+using System.Linq;
 
 namespace EasySave.Controller
 {
@@ -37,8 +38,10 @@ namespace EasySave.Controller
             List<BackupJob> backupJobs = [];
 
             if (separators.Any(id.Contains)) {
-                backupJobs = _backupJobService.GetJobs(id.Split(separators).Select(int.Parse).ToList());
+                var ids = ParseInputString(id);
+                backupJobs = _backupJobService.GetJobs(ids);
             }
+
             else {
                 // Check if the id is a number
                 if (!int.TryParse(id, out _))
