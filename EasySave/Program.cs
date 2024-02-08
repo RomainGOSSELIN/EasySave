@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.CommandLine;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using static EasySave.Model.Enum;
 using Spectre.Console;
 
@@ -74,6 +75,7 @@ class Program
             aliases: ["--source", "-s"],
             description: Resources.Translation.option_source)
         { IsRequired = true };
+
 
         var dest = new Option<string>(
             aliases :["--dest","-d"],
@@ -187,6 +189,8 @@ class Program
 
                 Console.Write("> ");
                 var input = Console.ReadLine();
+                MatchCollection matches = Regex.Matches(input, @"[""].+?[""]|[^ ]+");
+                args = matches.Select(match => match.Value).ToArray();
 
                 if (string.IsNullOrWhiteSpace(input))
                     continue;
@@ -194,7 +198,7 @@ class Program
                 if (input.Equals("exit", StringComparison.OrdinalIgnoreCase))
                     break;
 
-                var result = await rootCommand.InvokeAsync(input.Split(' '));
+                var result = await rootCommand.InvokeAsync(args);
                 
             }
         }
@@ -223,6 +227,11 @@ class Program
 
     private static void OnCreateJob(string jobName,string source, string dest, JobTypeEnum type)
     {
+        string pattern = "\"(.+?)\"";
+
+        source = Regex.Match(source, pattern).Groups[1].Value;
+        dest = Regex.Match(dest, pattern).Groups[1].Value;
+
         _backupController.CreateJob(jobName, source, dest, type);
     }
 
