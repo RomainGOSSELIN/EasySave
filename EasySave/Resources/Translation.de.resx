@@ -216,4 +216,13 @@
   <data name="option_source" xml:space="preserve">
     <value>Quelle des Sicherungsauftragsverzeichnisses (in Anführungszeichen)</value>
   </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>Die ID muss eine Zahl sein.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Pfade müssen in Anführungszeichen stehen</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>Das Quell- und Zielverzeichnis dürfen nicht identisch sein.</value>
+  </data>
 </root>

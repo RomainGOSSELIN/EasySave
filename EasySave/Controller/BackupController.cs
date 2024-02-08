@@ -43,7 +43,7 @@ namespace EasySave.Controller
                 // Check if the id is a number
                 if (!int.TryParse(id, out _))
                 {
-                    Console.WriteLine("L'ID doit être un nombre.");
+                    Console.WriteLine(Resources.Translation.id_must_number);
                     return;
                 }
                 backupJobs.Add(_backupJobService.GetJob(int.Parse(id)));
@@ -62,7 +62,7 @@ namespace EasySave.Controller
                 }
                 else 
                 {
-                    Console.WriteLine("Aucun travail trouvé");
+                    Console.WriteLine(Resources.Translation.no_job_found);
                     return;
                 }
                
@@ -82,7 +82,7 @@ namespace EasySave.Controller
         {
             if (!int.TryParse(idToDelete, out _))
             {
-                Console.WriteLine("L'ID doit être un nombre.");
+                Console.WriteLine(Resources.Translation.id_must_number);
                 return;
             }
 
@@ -112,11 +112,11 @@ namespace EasySave.Controller
                 jobs = _backupJobService.GetJobs(ids);
             }
             var table = new Table();
-            table.AddColumn(new TableColumn("ID").RightAligned().Width(2).LeftAligned());
-            table.AddColumn(new TableColumn("Nom").Width(20).LeftAligned());
-            table.AddColumn(new TableColumn("Source").Width(40).LeftAligned());
-            table.AddColumn(new TableColumn("Destination").Width(40).LeftAligned());
-            table.AddColumn(new TableColumn("Type").Width(12).LeftAligned());
+            table.AddColumn(new TableColumn(Resources.Translation.number).RightAligned().Width(2).LeftAligned());
+            table.AddColumn(new TableColumn(Resources.Translation.job_name).Width(20).LeftAligned());
+            table.AddColumn(new TableColumn(Resources.Translation.source).Width(40).LeftAligned());
+            table.AddColumn(new TableColumn(Resources.Translation.destination).Width(40).LeftAligned());
+            table.AddColumn(new TableColumn(Resources.Translation.type).Width(12).LeftAligned());
             if (jobs == null || jobs.Count == 0)
             {
                 Console.WriteLine(Resources.Translation.no_job_found);

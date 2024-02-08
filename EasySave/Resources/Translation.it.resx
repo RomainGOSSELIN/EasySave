@@ -216,4 +216,13 @@
   <data name="option_source" xml:space="preserve">
     <value>Origine della directory del processo di backup (tra virgolette)</value>
   </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>L'ID deve essere un numero.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>I percorsi devono essere tra virgolette</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>La directory di origine e quella di destinazione non possono essere le stesse.</value>
+  </data>
 </root>

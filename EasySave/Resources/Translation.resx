@@ -217,4 +217,13 @@
   <data name="maxsize_error" xml:space="preserve">
     <value>Le fichier {0} dépasse la taille maximale autorisée.</value>
   </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>L'ID doit être un nombre.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Les chemins doivent être entre guillemets</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>Le répertoire source et cible ne peuvent pas être les mêmes.</value>
+  </data>
 </root>

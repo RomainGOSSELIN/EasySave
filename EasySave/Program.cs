@@ -231,6 +231,11 @@ class Program
     {
         string pattern = "\"(.+?)\"";
 
+        if(Regex.Match(source, pattern).Groups[1].Value == "" || Regex.Match(dest, pattern).Groups[1].Value == "")
+        {
+            Console.WriteLine(Resources.Translation.path_must_contain_brackets);
+            return;
+        }
         source = Regex.Match(source, pattern).Groups[1].Value;
         dest = Regex.Match(dest, pattern).Groups[1].Value;
 

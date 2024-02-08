@@ -216,4 +216,13 @@
   <data name="option_source" xml:space="preserve">
     <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
   </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>El DNI debe ser un número.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Las rutas deben estar entre comillas.</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>El directorio de origen y de destino no pueden ser el mismo.</value>
+  </data>
 </root>

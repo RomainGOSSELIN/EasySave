@@ -216,4 +216,13 @@
   <data name="option_source" xml:space="preserve">
     <value>Backup job directory source (in quotes)</value>
   </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>The ID must be a number.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Paths must be in quotes</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>The source and target directory cannot be the same.</value>
+  </data>
 </root>
