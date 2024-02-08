@@ -54,11 +54,11 @@ namespace EasySave.Controller
                 {
                     Console.WriteLine(Resources.Translation.save_type_error);
                 }
-                fileCount = 0;
                 _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
                 _stateLogService.UpdateStateLog(_backupState);
                 Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
                 Console.WriteLine(Resources.Translation.backup_success);
+                fileCount = 0;
             }
             catch (Exception ex)
             {
@@ -118,6 +118,7 @@ namespace EasySave.Controller
                     _stateLogService.UpdateStateLog(_backupState);
                     File.Copy(sourceFile, targetFilePath, true);
                     Console.WriteLine(String.Format(Resources.Translation.copy_file, sourceFile));
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
             //    }
             //    else
             //    {
