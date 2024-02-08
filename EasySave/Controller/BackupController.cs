@@ -4,7 +4,10 @@ using EasySave.Controller.Interfaces;
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using System.Text;
+using System.Xml.Linq;
 using static EasySave.Model.Enum;
+using Spectre.Console;
 
 namespace EasySave.Controller
 {
@@ -94,11 +97,9 @@ namespace EasySave.Controller
                 .Sum();
         }
 
-        public ConsoleTable ShowJob(string id, bool all)
+        public Table ShowJob(string id, bool all)
         {
-
             List<BackupJob> jobs = new List<BackupJob>();
-
             if (all)
             {
                 jobs = _backupJobService.GetAllJobs();
@@ -106,32 +107,31 @@ namespace EasySave.Controller
             else
             {
                 var ids = ParseInputString(id);
-
                 jobs = _backupJobService.GetJobs(ids);
             }
-           
-
-            var table = new ConsoleTable("Numero", "Nom du Travail", "Source", "Destination", "Type");
-            if(jobs == null)
+            var table = new Table();
+            table.AddColumn(new TableColumn("ID").RightAligned().Width(2).LeftAligned());
+            table.AddColumn(new TableColumn("Nom").Width(20).LeftAligned());
+            table.AddColumn(new TableColumn("Source").Width(40).LeftAligned());
+            table.AddColumn(new TableColumn("Destination").Width(40).LeftAligned());
+            table.AddColumn(new TableColumn("Type").Width(12).LeftAligned());
+            if (jobs == null || jobs.Count == 0)
             {
                 Console.WriteLine("Aucun travail trouvé");
             }
             else
             {
-
-            foreach (var job in jobs)
-            {
-                if (job != null)
+                foreach (var job in jobs)
                 {
-                    table.AddRow(job.Id, job.Name, job.SourceDir, job.TargetDir, (job.Type));
+                    table.AddRow(job.Id.ToString(), job.Name.ToString(), job.SourceDir.ToString(), job.TargetDir.ToString(), job.Type.ToString());
+                    table.AddEmptyRow();
                 }
-
-            }
-
             }
             return table;
-
         }
+
+
+
 
         static List<int> ParseInputString(string input)
         {

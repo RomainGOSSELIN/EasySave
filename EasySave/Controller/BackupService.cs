@@ -12,8 +12,8 @@ namespace EasySave.Controller
         private static IConfiguration _configuration;
         private IStateLogService _stateLogService;
         private BackupState _backupState;
-        private long maxFileSize = 1024 * 1024 * 100; // 100 Mo
-        private List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
+        //private long maxFileSize = 1024 * 1024 * 100; // 100 Mo
+        //private List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
         private int fileCount = 0;
         public BackupService(IConfiguration configuration)
         {
@@ -108,10 +108,10 @@ namespace EasySave.Controller
         private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, string[] targetFiles)
         {
             FileInfo fileInfo = new FileInfo(sourceFile);
-            if (fileInfo.Length <= maxFileSize)
-            {
-                if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
-                {
+            //if (fileInfo.Length <= maxFileSize)
+            //{
+            //    if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
+            //    {
                     string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
                     Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
                     long totalSizeTarget = targetFiles.Select(file => new FileInfo(file).Length).Sum();
@@ -121,16 +121,16 @@ namespace EasySave.Controller
                     _stateLogService.UpdateStateLog(_backupState);
                     File.Copy(sourceFile, targetFilePath, true);
                     Console.WriteLine($"Copie du fichier : {sourceFile}");
-                }
-                else
-                {
-                    Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
-            }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
+            //}
         }
     }
 }
