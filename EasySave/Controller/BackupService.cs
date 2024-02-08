@@ -44,11 +44,11 @@ namespace EasySave.Controller
                 string[] targetFiles = Directory.GetFiles(job.TargetDir, "*", SearchOption.AllDirectories);
                 if (job.Type == JobTypeEnum.full)
                 {
-                    CopyFullBackup(job, sourceFiles, targetFiles);
+                    CopyFullBackup(job, sourceFiles);
                 }
                 else if (job.Type == JobTypeEnum.differential)
                 {
-                    CopyDifferentialBackup(job, sourceFiles, targetFiles);
+                    CopyDifferentialBackup(job, sourceFiles);
                 }
                 else
                 {
@@ -65,20 +65,26 @@ namespace EasySave.Controller
                 Console.WriteLine(String.Format(Resources.Translation.backup_error ,ex.Message));
             }
         }
-        private void CopyFullBackup(BackupJob job, string[] sourceFiles, string[] targetFiles)
+        private void CopyFullBackup(BackupJob job, string[] sourceFiles)
         {
             int totalFilesToCopy = sourceFiles.Length;
             long totalFilesSize = sourceFiles.Select(file => new FileInfo(file).Length).Sum();
+            long totalSizeTarget = 0;
             foreach (string sourceFile in sourceFiles)
             {
-                Save(sourceFile, job, totalFilesToCopy, totalFilesSize, targetFiles);
+                FileInfo originalFile = new FileInfo(sourceFile);
+                totalSizeTarget += originalFile.Length;
+                long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
+                Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
                 fileCount++;
             }
         }
-        private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles, string[] targetFiles)
+        private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles)
         {
             int totalFilesToCopy = 0;
             long totalFilesSize = 0;
+            long totalSizeTarget = 0;
+
             foreach (string sourceFile in sourceFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
@@ -88,8 +94,9 @@ namespace EasySave.Controller
                 {
                     totalFilesToCopy++;
                     totalFilesSize += originalFile.Length;
-                }   
+                }
             }
+
             foreach (string sourceFile in sourceFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
@@ -97,12 +104,16 @@ namespace EasySave.Controller
 
                 if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, targetFiles);
+                    totalSizeTarget += originalFile.Length;
+                    long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
+                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
                     fileCount++;
                 }
             }
+
         }
-        private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, string[] targetFiles)
+
+        private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, long nbFilesSizeLeftToDo)
         {
             FileInfo fileInfo = new FileInfo(sourceFile);
             //if (fileInfo.Length <= maxFileSize)
@@ -111,8 +122,6 @@ namespace EasySave.Controller
             //    {
                     string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
                     Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
-                    long totalSizeTarget = targetFiles.Select(file => new FileInfo(file).Length).Sum();
-                    long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
                     int nbFilesLeftToDo = totalFilesToCopy - fileCount;
                     _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
                     _stateLogService.UpdateStateLog(_backupState);

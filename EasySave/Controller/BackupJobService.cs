@@ -66,6 +66,7 @@ namespace EasySave.Controller
                 if (backupJob == null)
                 {
                     Console.WriteLine(String.Format(Resources.Translation.job_doesnt_exist, id));
+                    return null;
                 }
             }
            

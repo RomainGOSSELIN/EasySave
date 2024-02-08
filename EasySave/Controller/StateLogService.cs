@@ -31,7 +31,7 @@ namespace EasySave.Controller
 
             List<BackupState> state = _jsonService.GetLog<BackupState>(_stateLogPath);
 
-            var newstate = new BackupState(job.Id, job.Name, DateTime.Now,"END",0,0,0,0,"","");
+            var newstate = new BackupState(job.Id, job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")), "END",0,0,0,0,"","");
 
             state.Add(newstate);
 
@@ -58,6 +58,7 @@ namespace EasySave.Controller
 
             if (stateToUpdate != null)
             {
+                stateToUpdate.Timestamp = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"));
                 stateToUpdate.State = state.State;
                 stateToUpdate.NbFilesLeftToDo = state.NbFilesLeftToDo;
                 stateToUpdate.NbFilesSizeLeftToDo = state.NbFilesSizeLeftToDo;
