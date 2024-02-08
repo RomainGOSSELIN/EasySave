@@ -125,7 +125,8 @@ class Program
 
         var lang = new Option<LanguageEnum>(
            aliases: ["--lang", "-l"],
-           description: Resources.Translation.option_lang);
+           description: Resources.Translation.option_lang)
+        { IsRequired = true };
 
         #endregion
 
