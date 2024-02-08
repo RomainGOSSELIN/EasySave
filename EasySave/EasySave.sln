@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySave", "EasySave.csproj", "{12AB8D96-4AB3-49A6-9338-C39586A18E34}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EasySaveSetup", "..\EasySaveSetup\EasySaveSetup.vdproj", "{AB47FAC4-0D46-485C-A243-5BC3CCA31442}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12AB8D96-4AB3-49A6-9338-C39586A18E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12AB8D96-4AB3-49A6-9338-C39586A18E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12AB8D96-4AB3-49A6-9338-C39586A18E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12AB8D96-4AB3-49A6-9338-C39586A18E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB47FAC4-0D46-485C-A243-5BC3CCA31442}.Debug|Any CPU.ActiveCfg = Debug
+		{AB47FAC4-0D46-485C-A243-5BC3CCA31442}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_PrefixTranslations = False
+		RESX_NeutralResourcesLanguage = fr-FR
+		RESX_CultureCountyOverrides = fr=fr-KM
+		SolutionGuid = {98E1572F-3F4E-4150-9EE3-504DB1560F5C}
+	EndGlobalSection
+EndGlobal
