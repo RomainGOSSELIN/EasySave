@@ -12,8 +12,8 @@ namespace EasySave.Controller
         private static IConfiguration _configuration;
         private IStateLogService _stateLogService;
         private BackupState _backupState;
-        private long maxFileSize = 1024 * 1024 * 100; // 100 Mo
-        private List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
+        //private long maxFileSize = 1024 * 1024 * 100; // 100 Mo
+        //private List<string> allowedFormats = new List<string> { ".txt", ".docx", ".xlsx" };
         private int fileCount = 0;
         public BackupService(IConfiguration configuration)
         {
@@ -55,6 +55,9 @@ namespace EasySave.Controller
                     Console.WriteLine(Resources.Translation.save_type_error);
                 }
                 fileCount = 0;
+                _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
+                _stateLogService.UpdateStateLog(_backupState);
+                Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
                 Console.WriteLine(Resources.Translation.backup_success);
             }
             catch (Exception ex)
@@ -71,9 +74,6 @@ namespace EasySave.Controller
                 Save(sourceFile, job, totalFilesToCopy, totalFilesSize, targetFiles);
                 fileCount++;
             }
-            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", totalFilesToCopy, totalFilesSize, 0, 0, job.SourceDir, job.TargetDir);
-            _stateLogService.UpdateStateLog(_backupState);
-            Console.WriteLine( String.Format(Resources.Translation.copy_success, fileCount));
         }
         private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles, string[] targetFiles)
         {
@@ -101,36 +101,33 @@ namespace EasySave.Controller
                     fileCount++;
                 }
             }
-            _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", totalFilesToCopy, totalFilesSize, 0, 0, job.SourceDir, job.TargetDir);
-            _stateLogService.UpdateStateLog(_backupState);
-            Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
         }
         private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, string[] targetFiles)
         {
             FileInfo fileInfo = new FileInfo(sourceFile);
-            if (fileInfo.Length <= maxFileSize)
-            {
-                if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
-                {
+            //if (fileInfo.Length <= maxFileSize)
+            //{
+            //    if (allowedFormats.Contains(fileInfo.Extension.ToLower()))
+            //    {
                     string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
                     Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
                     long totalSizeTarget = targetFiles.Select(file => new FileInfo(file).Length).Sum();
                     long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
                     int nbFilesLeftToDo = totalFilesToCopy - fileCount;
-                    _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, job.SourceDir, job.TargetDir);
+                    _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
                     _stateLogService.UpdateStateLog(_backupState);
                     File.Copy(sourceFile, targetFilePath, true);
                     Console.WriteLine(String.Format(Resources.Translation.copy_file, sourceFile));
-                }
-                else
-                {
-                    Console.WriteLine(String.Format(Resources.Translation.incorrect_format, sourceFile));
-                }
-            }
-            else
-            {
-                Console.WriteLine(String.Format(Resources.Translation.maxsize_error, sourceFile));
-            }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(String.Format(Resources.Translation.incorrect_format, sourceFile));
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine(String.Format(Resources.Translation.maxsize_error, sourceFile));
+            //}
         }
     }
 }

@@ -9,6 +9,7 @@ using System.CommandLine;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using static EasySave.Model.Enum;
+using Spectre.Console;
 
 namespace EasySave;
 
@@ -222,8 +223,7 @@ class Program
     {
 
         var table = _backupController.ShowJob(id,all);
-        table.Write();
-
+        AnsiConsole.Render(table);
     }
 
 

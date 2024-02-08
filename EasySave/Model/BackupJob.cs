@@ -15,7 +15,7 @@ namespace EasySave.Model
         public  string TargetDir { get; set; }
         public  JobTypeEnum Type { get; set; }
 
-        public BackupJob( string name, string sourceDir, string targetDir, JobTypeEnum type, int? id = 0) {
+        public BackupJob(string name, string sourceDir, string targetDir, JobTypeEnum type, int? id = 0) {
 
             Id = id;
             Name = name;

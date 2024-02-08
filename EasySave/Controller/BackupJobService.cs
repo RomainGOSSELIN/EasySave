@@ -26,6 +26,11 @@ namespace EasySave.Controller
 
             if (jobs.Count < 5)
             {
+                if (backupJob.SourceDir == backupJob.TargetDir)
+                {
+                    Console.WriteLine("Le répertoire source et cible ne peuvent pas être les mêmes.");
+                    return false;
+                }
                 backupJob.Id = jobs.Count + 1;
                 if (!System.IO.Directory.Exists(backupJob.SourceDir) || !System.IO.Directory.Exists(backupJob.TargetDir))
                 {
