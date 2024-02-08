@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using static EasySave.Model.Enum;
 using Spectre.Console;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasySave;
 
@@ -64,7 +65,23 @@ class Program
 ║ | /          /   /_____/ \__,_//____/ \__, //____/ \__,_/  |___/ \___/  ║
 ║ |/__________/                        /____/                             ║                     
 ╚═════════════════════════════════════════════════════════════════════════╝";
+        int initialLeft = Console.CursorLeft;
+        int initialTop = Console.CursorTop;
 
+
+        while (!Console.KeyAvailable)
+        {
+
+            Console.SetCursorPosition(initialLeft, initialTop);
+
+            Console.ForegroundColor = GetRandomConsoleColorExcludingBlack();
+
+            Console.Write(asciiart+"\n Press a key to start...");
+
+            Thread.Sleep(1000);
+        }
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.White;
         #endregion
 
         #region Options
@@ -254,4 +271,20 @@ class Program
 
     }
     #endregion
+    static ConsoleColor GetRandomConsoleColorExcludingBlack()
+    {
+        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+        ConsoleColor color;
+        do
+        {
+            color = (ConsoleColor)consoleColors.GetValue(new Random().Next(consoleColors.Length));
+        } while (color == ConsoleColor.Black);
+        return color;
+    }
+
+    static ConsoleColor GetRandomConsoleColor()
+    {
+        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+        return (ConsoleColor)consoleColors.GetValue(new Random().Next(consoleColors.Length));
+    }
 }
