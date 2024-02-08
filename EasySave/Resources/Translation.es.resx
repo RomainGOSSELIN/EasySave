@@ -135,9 +135,6 @@
   <data name="desc_show" xml:space="preserve">
     <value>Visualizar un trabajo de copia de seguridad</value>
   </data>
-  <data name="option_dest" xml:space="preserve">
-    <value>Destino del directorio del trabajo de copia de seguridad</value>
-  </data>
   <data name="option_id" xml:space="preserve">
     <value>Número de trabajo de copia de seguridad</value>
   </data>
@@ -146,9 +143,6 @@
   </data>
   <data name="option_name" xml:space="preserve">
     <value>Nombre del trabajo de copia de seguridad</value>
-  </data>
-  <data name="option_source" xml:space="preserve">
-    <value>Fuente del directorio del trabajo de copia de seguridad</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Elegir un trabajo de copia de seguridad completo</value>
@@ -204,9 +198,6 @@
   <data name="backup_error" xml:space="preserve">
     <value>Se produjo un error al guardar: {0}</value>
   </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>¡La copia está terminada!</value>
-  </data>
   <data name="copy_file" xml:space="preserve">
     <value>Copia del archivo: {0}</value>
   </data>
@@ -215,5 +206,14 @@
   </data>
   <data name="maxsize_error" xml:space="preserve">
     <value>El archivo {0} excede el tamaño máximo permitido.</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Destino del directorio de la tarea de respaldo (entre comillas)</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
   </data>
 </root>

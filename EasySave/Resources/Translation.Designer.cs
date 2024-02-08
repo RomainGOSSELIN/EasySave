@@ -251,7 +251,7 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Destination du répertoire du travail de sauvegarde.
+        ///   Recherche une chaîne localisée semblable à Destination du répertoire du travail de sauvegarde (entre guillemets).
         /// </summary>
         public static string option_dest {
             get {
@@ -287,7 +287,7 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde.
+        ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde (entre guillemets).
         /// </summary>
         public static string option_source {
             get {

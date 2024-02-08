@@ -126,9 +126,6 @@
   <data name="option_type" xml:space="preserve">
     <value>Wählen Sie einen vollständigen Sicherungsauftrag</value>
   </data>
-  <data name="option_source" xml:space="preserve">
-    <value>Quellverzeichnis des Sicherungsauftrags</value>
-  </data>
   <data name="option_name" xml:space="preserve">
     <value>Name des Sicherungsauftrags</value>
   </data>
@@ -137,9 +134,6 @@
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Nummer des Sicherungsauftrags</value>
-  </data>
-  <data name="option_dest" xml:space="preserve">
-    <value>Zielverzeichnis für den Sicherungsauftrag</value>
   </data>
   <data name="desc_show" xml:space="preserve">
     <value>Einen Sicherungsauftrag anzeigen</value>
@@ -204,9 +198,6 @@
   <data name="backup_error" xml:space="preserve">
     <value>Beim Speichern ist ein Fehler aufgetreten: {0}</value>
   </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>Die Kopie ist fertig!</value>
-  </data>
   <data name="copy_file" xml:space="preserve">
     <value>Kopie der Datei: {0}</value>
   </data>
@@ -215,5 +206,14 @@
   </data>
   <data name="maxsize_error" xml:space="preserve">
     <value>Datei {0} überschreitet die maximal zulässige Größe.</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>Gesamtzahl der kopierten Dateien: {0}</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Ziel des Backup-Job-Verzeichnisses (in Anführungszeichen)</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Quelle des Sicherungsauftragsverzeichnisses (in Anführungszeichen)</value>
   </data>
 </root>
