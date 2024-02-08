@@ -37,19 +37,32 @@ namespace EasySave.Controller
                 backupJobs = _backupJobService.GetJobs(id.Split(separators).Select(int.Parse).ToList());
             }
             else {
+                // Check if the id is a number
+                if (!int.TryParse(id, out _))
+                {
+                    Console.WriteLine("L'ID doit être un nombre.");
+                    return;
+                }
                 backupJobs.Add(_backupJobService.GetJob(int.Parse(id)));
             };
-
             foreach (var backupJob in backupJobs)
             {
-                var stopwatch = new Stopwatch();
-                var FileSize = GetDirectorySize(backupJob.SourceDir);
+                if (backupJob != null)
+                {
+                     var stopwatch = new Stopwatch();
+                    var FileSize = GetDirectorySize(backupJob.SourceDir);
 
-                stopwatch.Start();
-                _backupService.ExecuteBackupJob(backupJob);
-                stopwatch.Stop();
-
-                _dailyLogService.AddDailyLog(backupJob, FileSize, (int)stopwatch.ElapsedMilliseconds);
+                    stopwatch.Start();
+                    _backupService.ExecuteBackupJob(backupJob);
+                    stopwatch.Stop();
+                    _dailyLogService.AddDailyLog(backupJob, FileSize, (int)stopwatch.ElapsedMilliseconds);
+                }
+                else 
+                {
+                    Console.WriteLine("Aucun travail trouvé");
+                    return;
+                }
+               
             }
 
         }
@@ -64,6 +77,12 @@ namespace EasySave.Controller
         }
         public void DeleteJob(string idToDelete)
         {
+            if (!int.TryParse(idToDelete, out _))
+            {
+                Console.WriteLine("L'ID doit être un nombre.");
+                return;
+            }
+
             int intIdToDelete = Int32.Parse(idToDelete);
             if (_backupJobService.DeleteJob(intIdToDelete))
             {
