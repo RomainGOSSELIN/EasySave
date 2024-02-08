@@ -80,6 +80,7 @@ class Program
 
             Thread.Sleep(1000);
         }
+        Console.ReadKey(true);
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.White;
         #endregion
@@ -238,8 +239,11 @@ class Program
 
     private static void OnShowJob(string id , bool all)
     {
-
         var table = _backupController.ShowJob(id,all);
+        if (table == null)
+        {
+            return;
+        }
         AnsiConsole.Render(table);
     }
 

@@ -26,7 +26,7 @@ namespace EasySave.Controller
 
             List<BackupLog> logs = _jsonService.GetLog<BackupLog>(_dailyLogPath);
 
-            var newlog = new BackupLog(job.Name, DateTime.Now, job.SourceDir, job.TargetDir, fileSize, transferTime);
+            var newlog = new BackupLog(job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")), job.SourceDir, job.TargetDir, fileSize, transferTime);
 
             logs.Add(newlog);
 

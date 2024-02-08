@@ -101,7 +101,8 @@ namespace EasySave.Controller
 
         public Table ShowJob(string id, bool all)
         {
-            List<BackupJob> jobs = new List<BackupJob>();
+            List<BackupJob> jobs;
+
             if (all)
             {
                 jobs = _backupJobService.GetAllJobs();
@@ -111,35 +112,46 @@ namespace EasySave.Controller
                 var ids = ParseInputString(id);
                 jobs = _backupJobService.GetJobs(ids);
             }
+
+            if (jobs == null)
+            {
+                Console.WriteLine(Resources.Translation.no_job_found);
+                return null;
+            }
+
             var table = new Table();
             table.AddColumn(new TableColumn(Resources.Translation.number).RightAligned().Width(2).LeftAligned());
             table.AddColumn(new TableColumn(Resources.Translation.job_name).Width(20).LeftAligned());
             table.AddColumn(new TableColumn(Resources.Translation.source).Width(40).LeftAligned());
             table.AddColumn(new TableColumn(Resources.Translation.destination).Width(40).LeftAligned());
             table.AddColumn(new TableColumn(Resources.Translation.type).Width(12).LeftAligned());
-            if (jobs == null || jobs.Count == 0)
+
+            foreach (var job in jobs)
             {
-                Console.WriteLine(Resources.Translation.no_job_found);
-            }
-            else
-            {
-                foreach (var job in jobs)
+                if (job != null)
                 {
-                    table.AddRow(job.Id.ToString(), job.Name.ToString(), job.SourceDir.ToString(), job.TargetDir.ToString(), job.Type.ToString());
+                    table.AddRow(
+                        job.Id?.ToString() ?? "",
+                        job.Name ?? "",
+                        job.SourceDir ?? "",
+                        job.TargetDir ?? "",
+                        job.Type.ToString() ?? ""
+                    );
                     table.AddEmptyRow();
                 }
             }
+
             return table;
         }
 
 
-
-
         static List<int> ParseInputString(string input)
         {
-            string[] parts = input.Split(':', ';');
-            List<int> ids = new List<int>();
             List<int> result = new List<int>();
+            List<int> ids = new List<int>();
+            if (input != null)
+            {
+            string[] parts = input.Split(':', ';');
 
             foreach (string part in parts)
             {
@@ -164,6 +176,7 @@ namespace EasySave.Controller
                     result.Add(i);
                 }
 
+            }
             }
             return result;
         }
