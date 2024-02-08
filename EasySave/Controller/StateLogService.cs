@@ -61,7 +61,6 @@ namespace EasySave.Controller
             UpdateIds(state);
 
             _jsonService.SaveLog(state, _stateLogPath);
-            Console.WriteLine("DeleteStateLog");
         }
 
         public void UpdateStateLog(BackupState state)

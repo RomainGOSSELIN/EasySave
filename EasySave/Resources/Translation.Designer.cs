@@ -61,11 +61,75 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une erreur s&apos;est produite lors de la sauvegarde : {0}.
+        /// </summary>
+        public static string backup_error {
+            get {
+                return ResourceManager.GetString("backup_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La sauvegarde a été effectuée avec succès !.
+        /// </summary>
+        public static string backup_success {
+            get {
+                return ResourceManager.GetString("backup_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous ne pouvez pas créer plus de 5 travaux..
+        /// </summary>
+        public static string cant_create_more_job {
+            get {
+                return ResourceManager.GetString("cant_create_more_job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Les changements auront lieu au prochain démarrage.
         /// </summary>
         public static string change_at_restart {
             get {
                 return ResourceManager.GetString("change_at_restart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Copie du fichier : {0}.
+        /// </summary>
+        public static string copy_file {
+            get {
+                return ResourceManager.GetString("copy_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La copie terminée ! Nombre total de fichiers copiés : {0}.
+        /// </summary>
+        public static string copy_success {
+            get {
+                return ResourceManager.GetString("copy_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Le travail {0} a été créé à l&apos;emplacement {1} depuis {2} à {3} avec un type {4}
+        ///.
+        /// </summary>
+        public static string create_job_success {
+            get {
+                return ResourceManager.GetString("create_job_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le travail numéro {0} a été supprimé avec succès..
+        /// </summary>
+        public static string delete_job_success {
+            get {
+                return ResourceManager.GetString("delete_job_success", resourceCulture);
             }
         }
         
@@ -111,6 +175,78 @@ namespace EasySave.Resources {
         public static string desc_show {
             get {
                 return ResourceManager.GetString("desc_show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Destination.
+        /// </summary>
+        public static string destination {
+            get {
+                return ResourceManager.GetString("destination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le format du fichier {0} n&apos;est pas autorisé pour la sauvegarde..
+        /// </summary>
+        public static string incorrect_format {
+            get {
+                return ResourceManager.GetString("incorrect_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le travail {0} n&apos;existe pas.
+        /// </summary>
+        public static string job_doesnt_exist {
+            get {
+                return ResourceManager.GetString("job_doesnt_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Exécution du travail de sauvegarde : {0}.
+        /// </summary>
+        public static string job_execution {
+            get {
+                return ResourceManager.GetString("job_execution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nom du Travail.
+        /// </summary>
+        public static string job_name {
+            get {
+                return ResourceManager.GetString("job_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le fichier {0} dépasse la taille maximale autorisée..
+        /// </summary>
+        public static string maxsize_error {
+            get {
+                return ResourceManager.GetString("maxsize_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aucun travail trouvé.
+        /// </summary>
+        public static string no_job_found {
+            get {
+                return ResourceManager.GetString("no_job_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Numéro.
+        /// </summary>
+        public static string number {
+            get {
+                return ResourceManager.GetString("number", resourceCulture);
             }
         }
         
@@ -169,11 +305,47 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le type de sauvegarde n&apos;est pas valide..
+        /// </summary>
+        public static string save_type_error {
+            get {
+                return ResourceManager.GetString("save_type_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Source.
+        /// </summary>
+        public static string source {
+            get {
+                return ResourceManager.GetString("source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le répertoire source n&apos;existe pas..
+        /// </summary>
+        public static string source_directory_doesnt_exist {
+            get {
+                return ResourceManager.GetString("source_directory_doesnt_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Application de sauvegarde de fichiers.
         /// </summary>
         public static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type.
+        /// </summary>
+        public static string type {
+            get {
+                return ResourceManager.GetString("type", resourceCulture);
             }
         }
         

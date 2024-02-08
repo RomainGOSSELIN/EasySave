@@ -1,4 +1,5 @@
 ﻿using EasySave.Controller;
+using EasySave.Controller.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,12 @@ namespace EasySave
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBackupController, BackupController>();
+            services.AddSingleton<IBackupJobService, BackupJobService>();
+            services.AddSingleton<IBackupService, BackupService>();
+            services.AddSingleton<IDailyLogService, DailyLogService>();
+            services.AddSingleton<ISettingsService, SettingsService>();
+            services.AddSingleton<IStateLogService, StateLogService>();
+           
         }
     }
 }

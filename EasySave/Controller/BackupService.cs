@@ -27,12 +27,12 @@ namespace EasySave.Controller
                 Console.WriteLine("Le travail de sauvegarde est vide.");
                 return;
             }
-            Console.WriteLine($"Exécution du travail de sauvegarde : {job.Name}");
+            Console.WriteLine(String.Format(Resources.Translation.job_execution,job.Name));
             try
             {
                 if (!Directory.Exists(job.SourceDir))
                 {
-                    Console.WriteLine("Le répertoire source n'existe pas.");
+                    Console.WriteLine(Resources.Translation.source_directory_doesnt_exist);
                     return;
                 }
 
@@ -52,14 +52,14 @@ namespace EasySave.Controller
                 }
                 else
                 {
-                    Console.WriteLine("Le type de sauvegarde n'est pas valide.");
+                    Console.WriteLine(Resources.Translation.save_type_error);
                 }
                 fileCount = 0;
-                Console.WriteLine($"La sauvegarde a été effectuée avec succès !");
+                Console.WriteLine(Resources.Translation.backup_success);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Une erreur s'est produite lors de la sauvegarde : {ex.Message}");
+                Console.WriteLine(String.Format(Resources.Translation.backup_error ,ex.Message));
             }
         }
         private void CopyFullBackup(BackupJob job, string[] sourceFiles, string[] targetFiles)
@@ -73,7 +73,7 @@ namespace EasySave.Controller
             }
             _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", totalFilesToCopy, totalFilesSize, 0, 0, job.SourceDir, job.TargetDir);
             _stateLogService.UpdateStateLog(_backupState);
-            Console.WriteLine($"La copie terminée ! Nombre total de fichiers copiés : {fileCount}");
+            Console.WriteLine( String.Format(Resources.Translation.copy_success, fileCount));
         }
         private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles, string[] targetFiles)
         {
@@ -103,7 +103,7 @@ namespace EasySave.Controller
             }
             _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", totalFilesToCopy, totalFilesSize, 0, 0, job.SourceDir, job.TargetDir);
             _stateLogService.UpdateStateLog(_backupState);
-            Console.WriteLine($"La copie terminée ! Nombre total de fichiers copiés : {fileCount}");
+            Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
         }
         private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, string[] targetFiles)
         {
@@ -120,16 +120,16 @@ namespace EasySave.Controller
                     _backupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, job.SourceDir, job.TargetDir);
                     _stateLogService.UpdateStateLog(_backupState);
                     File.Copy(sourceFile, targetFilePath, true);
-                    Console.WriteLine($"Copie du fichier : {sourceFile}");
+                    Console.WriteLine(String.Format(Resources.Translation.copy_file, sourceFile));
                 }
                 else
                 {
-                    Console.WriteLine($"Le format du fichier {sourceFile} n'est pas autorisé pour la sauvegarde.");
+                    Console.WriteLine(String.Format(Resources.Translation.incorrect_format, sourceFile));
                 }
             }
             else
             {
-                Console.WriteLine($"Le fichier {sourceFile} dépasse la taille maximale autorisée.");
+                Console.WriteLine(String.Format(Resources.Translation.maxsize_error, sourceFile));
             }
         }
     }

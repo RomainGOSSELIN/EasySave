@@ -159,4 +159,61 @@
   <data name="change_at_restart" xml:space="preserve">
     <value>Änderungen werden beim nächsten Start vorgenommen</value>
   </data>
+  <data name="number" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>Keine Jobs gefunden</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Berufsbezeichnung</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Quelle</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Art</value>
+  </data>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>Sie können nicht mehr als 5 Jobs erstellen.</value>
+  </data>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>Jobnummer {0} wurde erfolgreich gelöscht.</value>
+  </data>
+  <data name="create_job_success" xml:space="preserve">
+    <value>Job {0} wurde am Standort {1} von {2} bis {3} mit Typ {4} erstellt</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>Job {0} existiert nicht</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Sicherungsjob wird ausgeführt: {0}</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>Das Quellverzeichnis existiert nicht.</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>Der Sicherungstyp ist ungültig.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Beim Speichern ist ein Fehler aufgetreten: {0}</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>Die Kopie ist fertig!</value>
+  </data>
+  <data name="copy_file" xml:space="preserve">
+    <value>Kopie der Datei: {0}</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>Das Dateiformat {0} ist für die Sicherung nicht zulässig.</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>Datei {0} überschreitet die maximal zulässige Größe.</value>
+  </data>
 </root>
