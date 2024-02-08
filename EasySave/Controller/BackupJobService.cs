@@ -1,6 +1,9 @@
 ﻿using EasySave.Controller.Interfaces;
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Xml.Linq;
 
 namespace EasySave.Controller
 {
@@ -36,62 +39,15 @@ namespace EasySave.Controller
                 }
                 jobs.Add(backupJob);
                 _jsonService.SaveLog(jobs, _jobsFilePath);
-                Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
+                Console.WriteLine(String.Format(Resources.Translation.create_job_success, backupJob.Name, backupJob.Id, backupJob.SourceDir,backupJob.TargetDir,backupJob.Type));
+
                 return true;
             }
             else
             {
-                Console.WriteLine("Vous ne pouvez pas créer plus de 5 travaux.");
+                Console.WriteLine(Resources.Translation.cant_create_more_job);
                 return false;
             }
-
-
-            //// Chemin du fichier JSON
-            //string cheminFichierJson = ".\\Jobs.json";
-
-            //var sauvegardesExistantes = JsonService.GetLog<BackupJob>(cheminFichierJson);
-
-            //// Vérification de l'ID et du nombre total d'éléments
-            //if (backupJob.Id <= 0)
-            //{
-            //    // Recherche de l'ID disponible le plus bas
-            //    int nouvelId = 1;
-            //    while (sauvegardesExistantes.Any(s => s.Id == nouvelId))
-            //    {
-            //        nouvelId++;
-            //    }
-            //    backupJob.Id = nouvelId;
-            //}
-
-            //if (backupJob.Id > 5)
-            //{
-            //    Console.ForegroundColor = ConsoleColor.Red;
-
-            //    Console.WriteLine("Vous ne pouvez pas créer plus de 5 travaux.");
-            //    Console.ResetColor();
-            //    return;
-            //}
-
-            //var existingSauvegarde = sauvegardesExistantes.Find(s => s.Id == backupJob.Id);
-
-            //if (existingSauvegarde != null)
-            //{
-            //    // Si l'ID existe déjà, mettre à jour les informations
-            //    existingSauvegarde.Name = backupJob.Name;
-            //    existingSauvegarde.SourceDir = backupJob.SourceDir;
-            //    existingSauvegarde.TargetDir = backupJob.TargetDir;
-            //    existingSauvegarde.Type = backupJob.Type;
-            //}
-            //else
-            //{
-            //    // Sinon, ajouter la nouvelle sauvegarde à la liste existante
-            //    sauvegardesExistantes.Add(backupJob);
-            //}
-
-            //JsonService.SaveLog(sauvegardesExistantes, cheminFichierJson);
-
-
-            //Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
         }
         public BackupJob? GetJob(int id)
         {
@@ -100,7 +56,7 @@ namespace EasySave.Controller
 
             if (jobs == null)
             {
-                Console.WriteLine($"Backup job {id} n'existe pas");
+                Console.WriteLine(String.Format(Resources.Translation.job_doesnt_exist, id));
                 return null;
             }
 
@@ -109,7 +65,7 @@ namespace EasySave.Controller
                 backupJob = jobs.Find(j => j.Id == id);
                 if (backupJob == null)
                 {
-                    Console.WriteLine($"Backup job {id} n'existe pas");
+                    Console.WriteLine(String.Format(Resources.Translation.job_doesnt_exist, id));
                 }
             }
            
@@ -145,12 +101,12 @@ namespace EasySave.Controller
                 jobs.Remove(jobToDelete);
                 UpdateIds(jobs);
                 _jsonService.SaveLog(jobs, _jobsFilePath);
-                Console.WriteLine($"Le travail numéro {idToDelete} a été supprimé avec succès.");
+                Console.WriteLine(String.Format(Resources.Translation.delete_job_success, idToDelete));
                 return true;
             }
             else
             {
-                Console.WriteLine($"Aucune information trouvée avec l'ID {idToDelete}.");
+                Console.WriteLine(String.Format(Resources.Translation.job_doesnt_exist, idToDelete));
                 return false;
             }
         }

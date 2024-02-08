@@ -159,4 +159,61 @@
   <data name="welcome" xml:space="preserve">
     <value>Bienvenido al software de gestión de copias de seguridad EasySave. Escriba 'exit' para salir.</value>
   </data>
+  <data name="number" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>No se encontraron trabajos</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Nombre del trabajo</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Fuente</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Destino</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Amable</value>
+  </data>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>No se pueden crear más de 5 puestos de trabajo.</value>
+  </data>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>El número de trabajo {0} se eliminó correctamente.</value>
+  </data>
+  <data name="create_job_success" xml:space="preserve">
+    <value>El trabajo {0} se creó en la ubicación {1} de {2} a {3} con tipo {4}</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>El trabajo {0} no existe</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Ejecutando trabajo de copia de seguridad: {0}</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>El directorio de origen no existe.</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>El tipo de copia de seguridad no es válido.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>¡La copia de seguridad se completó con éxito!</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Se produjo un error al guardar: {0}</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>¡La copia está terminada!</value>
+  </data>
+  <data name="copy_file" xml:space="preserve">
+    <value>Copia del archivo: {0}</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>El formato de archivo {0} no está permitido para la copia de seguridad.</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>El archivo {0} excede el tamaño máximo permitido.</value>
+  </data>
 </root>

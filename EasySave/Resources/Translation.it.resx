@@ -159,4 +159,61 @@
   <data name="change_at_restart" xml:space="preserve">
     <value>Le modifiche verranno apportate al prossimo avvio</value>
   </data>
+  <data name="number" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>Nessun lavoro trovato</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Nome del lavoro</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Fonte</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Destinazione</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>Non puoi creare più di 5 lavori.</value>
+  </data>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>Il lavoro numero {0} è stato eliminato con successo.</value>
+  </data>
+  <data name="create_job_success" xml:space="preserve">
+    <value>Il lavoro {0} è stato creato nella posizione {1} da {2} a {3} con tipo {4}</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>Il lavoro {0} non esiste</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Processo di backup in esecuzione: {0}</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>La directory di origine non esiste.</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>Il tipo di backup non è valido.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>Il backup è stato completato con successo!</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Si è verificato un errore durante il salvataggio: {0}</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>La copia è terminata!</value>
+  </data>
+  <data name="copy_file" xml:space="preserve">
+    <value>Copia del file: {0}</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>Il formato file {0} non è consentito per il backup.</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>Il file {0} supera la dimensione massima consentita.</value>
+  </data>
 </root>

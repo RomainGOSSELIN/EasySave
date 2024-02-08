@@ -1,5 +1,4 @@
 ﻿using ConsoleTables;
-using EasySave.Controller;
 using EasySave.Controller.Interfaces;
 using EasySave.Model;
 using Microsoft.Extensions.Configuration;
@@ -19,14 +18,17 @@ namespace EasySave.Controller
         private static IDailyLogService _dailyLogService ;
         private static ISettingsService _settingsService;
         private static IConfiguration _configuration;
-        public BackupController(IConfiguration configuration)
+
+        public BackupController(IBackupJobService backupJobService, IBackupService backupService,
+                                IStateLogService stateLogService, IDailyLogService dailyLogService,
+                                ISettingsService settingsService, IConfiguration configuration)
         {
             _configuration = configuration;
-            _backupJobService = new BackupJobService(_configuration);
-            _backupService = new BackupService(_configuration);
-            _stateLogService = new StateLogService(_configuration);
-            _dailyLogService = new DailyLogService(_configuration);
-            _settingsService = new SettingsService();
+            _backupJobService = backupJobService;
+            _backupService = backupService;
+            _stateLogService = stateLogService;
+            _dailyLogService = dailyLogService;
+            _settingsService = settingsService;
         }
 
         public void ExecuteJob(string id)
@@ -117,7 +119,7 @@ namespace EasySave.Controller
             table.AddColumn(new TableColumn("Type").Width(12).LeftAligned());
             if (jobs == null || jobs.Count == 0)
             {
-                Console.WriteLine("Aucun travail trouvé");
+                Console.WriteLine(Resources.Translation.no_job_found);
             }
             else
             {

@@ -2,7 +2,7 @@
 
 namespace EasySave.Controller.Interfaces
 {
-    internal interface IBackupService
+    public interface IBackupService
     {
         void ExecuteBackupJob(BackupJob job);
     }
