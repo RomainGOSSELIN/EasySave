@@ -39,19 +39,6 @@ namespace EasySave.Controller
 
         }
 
-        public void UpdateStateLog(BackupJob job)
-        {
-
-            //List<BackupState> state = _jsonService.GetLog<BackupState>(_stateLogPath);
-
-            //var newstate = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
-
-            //state.Add(newstate);
-
-            //_jsonService.SaveLog(state, _stateLogPath);
-
-        }
-
         public void DeleteStateLog(int idToDelete) {
 
             List<BackupState> state = _jsonService.GetLog<BackupState>(_stateLogPath);
@@ -61,7 +48,6 @@ namespace EasySave.Controller
             UpdateIds(state);
 
             _jsonService.SaveLog(state, _stateLogPath);
-            Console.WriteLine("DeleteStateLog");
         }
 
         public void UpdateStateLog(BackupState state)

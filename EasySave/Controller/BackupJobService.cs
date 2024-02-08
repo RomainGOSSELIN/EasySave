@@ -24,6 +24,11 @@ namespace EasySave.Controller
             if (jobs.Count < 5)
             {
                 backupJob.Id = jobs.Count + 1;
+                if (!System.IO.Directory.Exists(backupJob.SourceDir) || !System.IO.Directory.Exists(backupJob.TargetDir))
+                {
+                    Console.WriteLine("Le répertoire source ou cible n'existe pas.");
+                    return false;
+                }
                 jobs.Add(backupJob);
                 _jsonService.SaveLog(jobs, _jobsFilePath);
                 Console.WriteLine($"Le travail {backupJob.Name} a été créé à l'emplacement {backupJob.Id} depuis {backupJob.SourceDir} à {backupJob.TargetDir} avec un type {backupJob.Type}");
