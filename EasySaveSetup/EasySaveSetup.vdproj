@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_54C0B480A6904BDAA804BADC1E9EAF51"
+        "MsmKey" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B5F81EED62104271BB28AEA53552251E"
+        "MsmKey" = "8:_DC58F87A2A564477BED006CE2B09D964"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -43,6 +43,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,6 +75,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -90,7 +122,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B5F81EED62104271BB28AEA53552251E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_818A1E8AF99A4939B98A4C501D708FE8"
             {
             "SourcePath" = "8:..\\EasySave\\EasySaveLogo.ico"
             "TargetName" = "8:EasySaveLogo.ico"
@@ -140,7 +172,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_972290D1FFB146B5B93BF98D797CEAEB"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -176,9 +208,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:EasySaveSetup"
+        "ProductName" = "8:EasySave"
         "ProductCode" = "8:{6C47DF00-0BD6-4890-9426-13A2FE0160A0}"
-        "PackageCode" = "8:{35E26556-970D-47BE-B28B-C3F293D7EB8E}"
+        "PackageCode" = "8:{5E3DEA53-9873-4CB9-973E-FA8C66B3E69D}"
         "UpgradeCode" = "8:{24EE8E89-F21D-418D-838D-EB6DB85A5947}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -195,11 +227,11 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -298,7 +330,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_16222EEE81BD483DA916C13568105A75"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3792DE61EF004BF1A6E7663858C920CD"
             {
             "Name" = "8:EasySave"
             "Arguments" = "8:"
@@ -306,24 +338,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_54C0B480A6904BDAA804BADC1E9EAF51"
+            "Target" = "8:_DC58F87A2A564477BED006CE2B09D964"
             "Folder" = "8:_BCFC431A100045FFB5927751078A3776"
             "WorkingFolder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
-            "Icon" = "8:_B5F81EED62104271BB28AEA53552251E"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F3D07EC684914A12BED06C5911DCA74E"
-            {
-            "Name" = "8:EasySave"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_54C0B480A6904BDAA804BADC1E9EAF51"
-            "Folder" = "8:_C19DDBA8F5A14514889FC5A08835C6FE"
-            "WorkingFolder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
-            "Icon" = "8:_B5F81EED62104271BB28AEA53552251E"
+            "Icon" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
             "Feature" = "8:"
             }
         }
@@ -725,9 +743,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_54C0B480A6904BDAA804BADC1E9EAF51"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DC58F87A2A564477BED006CE2B09D964"
             {
-            "SourcePath" = "8:..\\EasySave\\obj\\Release\\net8.0\\apphost.exe"
+            "SourcePath" = "8:..\\EasySave\\obj\\Debug\\net8.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"

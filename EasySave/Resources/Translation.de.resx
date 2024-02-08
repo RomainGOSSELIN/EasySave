@@ -156,4 +156,7 @@
   <data name="desc_create" xml:space="preserve">
     <value>Einen neuen Sicherungsauftrag erstellen</value>
   </data>
+  <data name="change_at_restart" xml:space="preserve">
+    <value>Änderungen werden beim nächsten Start vorgenommen</value>
+  </data>
 </root>

@@ -3,6 +3,8 @@ using EasySave.Controller;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System.CommandLine;
 using System.Globalization;
 using static EasySave.Model.Enum;
@@ -44,6 +46,8 @@ class Program
 
         _backupController = ActivatorUtilities.CreateInstance<BackupController>(host.Services);
 
+        var culture = configuration["AppConfig:Language"];
+
         Resources.Translation.Culture = new CultureInfo(configuration["AppConfig:Language"]);
 
         #region ASCII Art
@@ -83,6 +87,11 @@ class Program
 
         var id = new Option<string>(
             aliases: ["--job", "-j"],
+            description: Resources.Translation.option_id)
+        { IsRequired = true };
+
+        var idNotRequired = new Option<string>(
+            aliases: ["--job", "-j"],
             description: Resources.Translation.option_id);
 
         var all = new Option<bool>(
@@ -111,9 +120,11 @@ class Program
         {
                 id,
         };
+
+
         var showCommand = new Command("show", Resources.Translation.desc_show)
         {
-                id,
+                idNotRequired,
                 all,
         };
         var runCommand = new Command("run", Resources.Translation.desc_run)
@@ -217,7 +228,8 @@ class Program
 
     private static void OnChangeLanguage(LanguageEnum language)
     {
-        Console.WriteLine($"La Langue est {language}");
+        _backupController.ChangeLanguage(language);
+        Console.WriteLine(Resources.Translation.change_at_restart);
     }
 
     private static void OnDeleteJob(string idToDelete)
