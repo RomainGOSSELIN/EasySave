@@ -225,4 +225,7 @@
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>La directory di origine e quella di destinazione non possono essere le stesse.</value>
   </data>
+  <data name="press_key" xml:space="preserve">
+    <value>Premere un tasto per iniziare...</value>
+  </data>
 </root>

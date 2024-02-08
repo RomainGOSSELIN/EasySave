@@ -323,6 +323,15 @@ namespace EasySave.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Appuyez sur une touche pour démarrer....
+        /// </summary>
+        public static string press_key {
+            get {
+                return ResourceManager.GetString("press_key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Le type de sauvegarde n&apos;est pas valide..
         /// </summary>
         public static string save_type_error {

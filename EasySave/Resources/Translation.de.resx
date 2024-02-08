@@ -225,4 +225,7 @@
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>Das Quell- und Zielverzeichnis dürfen nicht identisch sein.</value>
   </data>
+  <data name="press_key" xml:space="preserve">
+    <value>Zum Starten eine Taste drücken...</value>
+  </data>
 </root>

@@ -226,4 +226,7 @@
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>Le répertoire source et cible ne peuvent pas être les mêmes.</value>
   </data>
+  <data name="press_key" xml:space="preserve">
+    <value>Appuyez sur une touche pour démarrer...</value>
+  </data>
 </root>

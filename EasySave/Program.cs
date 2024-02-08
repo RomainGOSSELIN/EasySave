@@ -76,7 +76,9 @@ class Program
 
             Console.ForegroundColor = GetRandomConsoleColorExcludingBlack();
 
-            Console.Write(asciiart+"\n Press a key to start...");
+            Console.WriteLine(asciiart);
+
+            Console.Write(Resources.Translation.press_key);
 
             Thread.Sleep(1000);
         }
