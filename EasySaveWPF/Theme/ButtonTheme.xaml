@@ -9,9 +9,9 @@
                     <ControlTemplate TargetType="Button">
                         <Grid Background="{TemplateBinding Background}">
                             <TextBlock Text="{TemplateBinding Content}"
-                                   Height="50"
+                                   Height="20"
                                    Foreground="White"
-                                   FontSize="9"
+                                   FontSize="10"
                                    HorizontalAlignment="Right"
                                    Margin="0 4 4 0"/>
                         </Grid>

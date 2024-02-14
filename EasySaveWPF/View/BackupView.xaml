@@ -22,19 +22,21 @@
                      Grid.Column="1"
                      Style="{StaticResource SearchBar}"/>
 
-        <Button Grid.Column="1"
+        <Button Grid.Column="1"  
                     Content="Run all"
-                    Width="50"
-                    Height="20"
-                    Margin="400 0 0 0"
+                    Width="60"
+                    Height="25"
+                    VerticalAlignment="Top"
+                    Margin="350 20 0 0"
                     Style="{StaticResource Button}">
         </Button>
 
         <Button Grid.Column="1"
                     Content="Add Backup"
-                    Width="75"
-                    Height="20"
-                    Margin="550 0 0 0"
+                    Width="80"
+                    Height="25"
+                    VerticalAlignment="Top"
+                    Margin="550 20 0 0"
                     Style="{StaticResource Button}">
         </Button>
 
@@ -55,7 +57,7 @@
                   Margin="370 0 0 0">
 
             <Image.Source>
-                <BitmapImage UriSource="Images/runall.png"/>
+                <BitmapImage UriSource="Images/ajouter.png"/>
             </Image.Source>
         </Image>
 

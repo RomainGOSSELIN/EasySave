@@ -15,11 +15,12 @@ using System.Windows.Shapes;
 
 namespace EasySaveWPF.View
 {
-    public partial class Settings : Page
+    public partial class Settings : UserControl
     {
         public Settings()
         {
             InitializeComponent();
+
             this.DataContext = new ViewModel.SettingsViewModel();
         }
     }

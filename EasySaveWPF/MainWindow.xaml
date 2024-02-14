@@ -4,18 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasySaveWPF"
+        xmlns:viewModel="clr-namespace:EasySaveWPF.ViewModel"
         xmlns:view="clr-namespace:EasySaveWPF.View"
         mc:Ignorable="d"
         Title="EasySave"
         Height="600" Width="920"
-        WindowStyle="None"
-        Background="Transparent"
-        AllowsTransparency="True">
+        Background="Transparent">
 
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
 
-
-    <Border Background="#0d0c27"
-            CornerRadius="20">
+    <Border Background="#0d0c27">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width ="200"/>
@@ -23,44 +23,50 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel Background="#2d2c4d">
-                <Image Margin="10,10,10,0">
-                    <Image.Source>
-                        <BitmapImage UriSource="Images/logoES.png"/>
-                    </Image.Source>
-                </Image>
-            </StackPanel>
+
 
             <StackPanel Grid.Row="1" Background="#2d2c4d">
-                <TextBlock Text="by ProSoft"
-                           HorizontalAlignment="Center"
-                           Foreground="#9a4af1"/>
+                <StackPanel Background="#2d2c4d">
+                    <Image Margin="10,10,10,0">
+                        <Image.Source>
+                            <BitmapImage UriSource="Images/logoES.png"/>
+                        </Image.Source>
+                    </Image>
+                    <TextBlock Text="by ProSoft"
+                               HorizontalAlignment="Center"
+                               Foreground="#9a4af1"/>
+                </StackPanel>
 
                 <RadioButton Content="Backup"
                              Margin="0 100 0 0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Checked="RadioButton_Checked"/>
+                             IsChecked="True"
+                             Command="{Binding BackupViewCommand}"/>
+
+                <Image Width="50">
+                    <Image.Source>
+                        <BitmapImage UriSource="Images/logoBackup.png"/>
+                    </Image.Source>
+                </Image>
 
                 <RadioButton Content="Settings"
-                             Style="{StaticResource MenuButtonTheme}"/>
-
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"/>
+                <Image Width="50">
+                    <Image.Source>
+                        <BitmapImage UriSource="Images/logoSetting.png"/>
+                    </Image.Source>
+                </Image>
 
             </StackPanel>
-
-
-
+            
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Margin="10">
-                <ContentControl.Content>
-                    <view:BackupView/>
-                </ContentControl.Content>
-            </ContentControl>
-
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
 
         </Grid>
     </Border>
