@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\logoES.png" />
+    <None Remove="Images\runall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\logoES.png" />
+    <Resource Include="Images\runall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Model\BackupJob.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
