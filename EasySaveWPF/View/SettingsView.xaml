@@ -4,16 +4,101 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EasySaveWPF.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      mc:Ignorable="d" d:DesignWidth="800" Height="500">
 
-    <Grid>
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <!-- Settings -->
         <TextBlock Text="Settings"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="30"
-                   Margin="0,20,0,0"
-                   Foreground="White"/>
+                   Foreground="White" FontWeight="Bold" Margin="10,-24,0,0" Height="40" Width="115"/>
+
+        <!-- Language section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,21,0,0"
+            Foreground="White" Text="Language" FontWeight="Bold" Height="29" Width="101"/>
+
+        <!-- French -->
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,55,390,0" Height="41">
+            <RadioButton Content="" VerticalAlignment="Center" Checked="RadioButton_Checked_1"/>
+            <Image Source="/Images/france.png" Width="50" Height="41" Stretch="Uniform" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <!-- English -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="108,55,293,0" Height="41">
+            <RadioButton Content="" VerticalAlignment="Center" Checked="RadioButton_Checked_1"/>
+            <Image Source="/Images/uk.png" Width="50" Height="41" Stretch="Uniform" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <!-- Spanish -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="225,55,181,0" Height="41">
+            <RadioButton Content="" VerticalAlignment="Center" Checked="RadioButton_Checked_1"/>
+            <Image Source="/Images/spain.png" Width="61" Height="41" Stretch="Uniform"/>
+        </StackPanel>
+
+        <!-- Italian -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="348,55,59,0" Height="41">
+            <RadioButton Content="" VerticalAlignment="Center" Checked="RadioButton_Checked_1"/>
+            <Image Source="/Images/italy.png" Width="65" Height="41" Stretch="Uniform"/>
+        </StackPanel>
+
+        <!-- German -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="470,55,101,0" Height="41">
+            <RadioButton Content="" VerticalAlignment="Center" Checked="RadioButton_Checked_1"/>
+            <Image Source="/Images/germany.png" Width="61" Height="41" Stretch="Uniform"/>
+        </StackPanel>
+
+        <!-- Business Software section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,111,0,0"
+            Foreground="White" Text="Business Software" FontWeight="Bold" Height="29" Width="187"/>
+
+        <!-- Logs Format section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,200,0,0"
+            Foreground="White" Text="Logs Format" FontWeight="Bold" Height="29" Width="128"/>
+
+        <RadioButton x:Name="logs_format_json" Content="JSON" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Width="60" Checked="RadioButton_Checked" FontSize="16" Foreground="White" Height="20"/>
+        <RadioButton x:Name="logs_format_xml" Content="XML" HorizontalAlignment="Left" Margin="95,244,0,0" VerticalAlignment="Top" Width="60" Checked="RadioButton_Checked" FontSize="16" Foreground="White" Height="20"/>
+
+        <!-- Extension for encryption section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,281,0,0"
+            Foreground="White" FontWeight="Bold" Height="29" Width="415"><Run Language="fr-fr" Text="Add/ Remove extension for encryyption"/></TextBlock>
+
+        <!-- List of extension for encryption section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,361,0,0"
+            Foreground="White" Text="List of extension for encryption" FontWeight="Bold" Height="29" Width="325"/>
+
+        <!-- Theme section -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="22"
+            Margin="10,440,0,0"
+            Foreground="White" FontWeight="Bold" Height="29" Width="70"><Run Language="fr-fr" Text="Theme"/></TextBlock>
+
+        <RadioButton x:Name="theme_light" Content="Light" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="60" Checked="RadioButton_Checked" FontSize="16" Foreground="White" Height="20"/>
+        <RadioButton x:Name="theme_dark" Content="Dark" HorizontalAlignment="Left" Margin="95,479,0,0" VerticalAlignment="Top" Width="60" Checked="RadioButton_Checked" FontSize="16" Foreground="White" Height="20"/>
+
 
     </Grid>
 </UserControl>

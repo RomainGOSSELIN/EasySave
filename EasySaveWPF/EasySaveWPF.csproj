@@ -6,22 +6,38 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logoES_v2.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Images\ajouter.png" />
+    <None Remove="Images\france.png" />
+    <None Remove="Images\germany.png" />
+    <None Remove="Images\italy.png" />
     <None Remove="Images\logoBackup.png" />
+    <None Remove="Images\logoES.ico" />
     <None Remove="Images\logoES.png" />
+    <None Remove="Images\logoES_v2.ico" />
     <None Remove="Images\logoSetting.png" />
     <None Remove="Images\runall.png" />
+    <None Remove="Images\spain.png" />
+    <None Remove="Images\uk.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\ajouter.png" />
+    <Resource Include="Images\france.png" />
+    <Content Include="logoES_v2.ico" />
+    <Resource Include="Images\germany.png" />
+    <Resource Include="Images\italy.png" />
     <Resource Include="Images\logoBackup.png" />
     <Resource Include="Images\logoES.png" />
+    <Resource Include="Images\logoES.ico" />
+    <Resource Include="Images\logoES_v2.ico" />
     <Resource Include="Images\logoSetting.png" />
     <Resource Include="Images\runall.png" />
+    <Resource Include="Images\spain.png" />
+    <Resource Include="Images\uk.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,8 +8,8 @@
         xmlns:view="clr-namespace:EasySaveWPF.View"
         mc:Ignorable="d"
         Title="EasySave"
-        Height="600" Width="920"
-        Background="Transparent">
+        Icon="Images/logoES_v2.ico"
+        Background="Transparent" Width="920" Height="600">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -44,8 +44,7 @@
                              Margin="0 100 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding BackupViewCommand}"/>
-
+                             Command="{Binding BackupViewCommand}" Width="201" Checked="RadioButton_Checked_1"/>
                 <Image Width="50">
                     <Image.Source>
                         <BitmapImage UriSource="Images/logoBackup.png"/>
@@ -54,7 +53,7 @@
 
                 <RadioButton Content="Settings"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding SettingsViewCommand}"/>
+                             Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>
                 <Image Width="50">
                     <Image.Source>
                         <BitmapImage UriSource="Images/logoSetting.png"/>
@@ -62,11 +61,11 @@
                 </Image>
 
             </StackPanel>
-            
+
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}" Width="700" Height="565"/>
 
         </Grid>
     </Border>
