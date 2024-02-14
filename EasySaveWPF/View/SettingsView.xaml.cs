@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+// Pour l'explorateur de fichiers
+using Microsoft.Win32;
 
 namespace EasySaveWPF.View
 {
@@ -29,9 +31,43 @@ namespace EasySaveWPF.View
 
         }
 
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        private void Language_Choice(object sender, RoutedEventArgs e)
         {
 
         }
-    }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Files_Explorer(object sender, RoutedEventArgs e)
+        {
+            OpenFile(); // Appelle la méthode OpenFile lorsque le bouton est cliqué
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Méthode pour ouvrir l'explorateur de fichiers et permettre à l'utilisateur de sélectionner un fichier
+        private void OpenFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Sélectionnez un fichier";
+            openFileDialog.Filter = "Tous les fichiers (*.*)|*.*"; // Exemple de filtre pour tous les fichiers
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;
+                PathTextBox.Text = filePath; // Affecte le chemin du fichier à la TextBox
+            }
+        }
+    }   
 }
