@@ -5,13 +5,117 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EasySaveWPF.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Cursor="">
         <TextBlock Text="Create Backup"
            HorizontalAlignment="Left"
            VerticalAlignment="Top"
            FontSize="30"
-           Foreground="White" FontWeight="Bold" Margin="10,-24,0,0" Height="40" Width="200"/>
+           Foreground="White" FontWeight="Bold" Margin="10,10,0,0" Height="40" Width="200"/>
 
+        <Grid>
+            <Button 
+                   Style="{StaticResource ButtonThemeCreate}"
+                Height="40" Width="100" HorizontalAlignment="Left" Margin="40,508,0,0" VerticalAlignment="Top">
+
+                <Image Source="/Images/CheckArrow.png" />
+            </Button>
+
+
+
+            <Button  Style="{StaticResource ButtonThemeCreate}"
+                    Height="40" Width="100" HorizontalAlignment="Left" Margin="562,508,0,0" VerticalAlignment="Top">
+            <Image Source="/Images/BackArrow.png" />
+            </Button>
+
+            <TextBox 
+                x:Name="BackupSource_Textbox" 
+                HorizontalAlignment="Left" 
+                Margin="12,229,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="309" />
+            <Button 
+                x:Name="PathSource_Backup" 
+                Content="..." 
+                HorizontalAlignment="Left" 
+                Margin="330,229,0,0" 
+                VerticalAlignment="Top" 
+                Height="18" 
+                Click="Files_Explorer" 
+                Width="30" 
+                Background="White"/>
+            <TextBox 
+
+                x:Name="BackupDestination_Textbox" 
+                HorizontalAlignment="Left" 
+                Margin="12,318,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="309"/>
+            <Button 
+                x:Name="PathDestination_Backup" 
+                Content="..." 
+                HorizontalAlignment="Left" 
+                Margin="330,318,0,0" 
+                VerticalAlignment="Top" 
+                Height="18" 
+                Click="Files_Explorer_2" 
+                Width="30" 
+                Background="White"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
+        </Grid>
+        <TextBlock Text="Name"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="10,89,0,0" Height="40" Width="200"/>
+        <TextBlock Text="Backup Source"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="200"/>
+        <TextBlock Text="Backup Destination"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="12,266,0,0" Height="40" Width="200"/>
+        <TextBlock Text="Type"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="12,351,0,0" Height="40" Width="200"/>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,412,0,0" Height="45">
+            <!-- Differential -->
+            <RadioButton 
+        x:Name="radioButtonDifferentiale" 
+        GroupName="ThemeOptions" 
+        Content="Differential" 
+        VerticalAlignment="Center" 
+        Checked="RadioButton_Checked" 
+        ClickMode="Press" 
+        Cursor="Hand" 
+        Margin="5,0" 
+        Width="130" 
+        FontSize="16" 
+        Foreground="White" 
+        Height="20"/>
+
+            <!-- Full -->
+            <RadioButton 
+        x:Name="radioButtonTypeFull" 
+        GroupName="ThemeOptions" 
+        Content="Full" 
+        VerticalAlignment="Center" 
+        Checked="RadioButton_Checked" 
+        ClickMode="Press" 
+        Cursor="Hand" 
+        Margin="5,0" 
+        Width="60" 
+        FontSize="16" 
+        Foreground="White" 
+        Height="20"/>
+        </StackPanel>
     </Grid>
 </UserControl>
