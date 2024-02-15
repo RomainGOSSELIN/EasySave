@@ -26,22 +26,21 @@ namespace EasySaveWPF.View
             this.DataContext = new ViewModel.SettingsViewModel();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void RadioButtonLightTheme_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RadioButtonDarkTheme_Checked(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void LogsFormatXML_Checked(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void LogsFormatJSON_Checked(object sender, RoutedEventArgs e)
         {
 
         }
@@ -51,46 +50,75 @@ namespace EasySaveWPF.View
 
         }
 
+        private void PathBusinessSoftware_Changed(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         private void Files_Explorer(object sender, RoutedEventArgs e)
         {
-            OpenFile(); // Appelle la méthode OpenFile lorsque le bouton est cliqué
+            OpenFile();
         }
 
-        private void AddText_Click(object sender, RoutedEventArgs e)
+        private const string ExtensionSeparator = " ";
+
+        private void AddExtension_Click(object sender, RoutedEventArgs e)
         {
-            // Vérifie si le TextBlock contient déjà le texte de la TextBox
-            // Utilisez StringComparison.OrdinalIgnoreCase pour une comparaison insensible à la casse
-            if (!outputTextBlock.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Contains(inputTextBox.Text, StringComparer.OrdinalIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(InputExtension.Text))
             {
-                // Ajoute le contenu de la TextBox au TextBlock, avec un espace si le TextBlock n'est pas vide
-                outputTextBlock.Text += (outputTextBlock.Text.Length > 0 ? " " : "") + inputTextBox.Text;
+                var extension = InputExtension.Text.Trim();
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
+                {
+                    var extensions = GetExtensionsList();
+                    if (!extensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                    {
+                        extensions.Add(extension);
+                        UpdateListExtensions(extensions);
+                    }
+                }
+                else
+                {
+                    // Afficher un message d'erreur indiquant que l'extension est invalide
+                    MessageBox.Show("Invalid extension. Extension should start with a dot (.) and not contain spaces.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
-        private void RemoveText_Click(object sender, RoutedEventArgs e)
+        private void RemoveExtension_Click(object sender, RoutedEventArgs e)
         {
-            // Obtient un tableau des mots dans le TextBlock
-            var words = outputTextBlock.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-
-            // Cherche le texte de la TextBox dans la liste des mots
-            var index = words.FindIndex(word => word.Equals(inputTextBox.Text, StringComparison.OrdinalIgnoreCase));
-
-            if (index != -1)
+            if (!string.IsNullOrWhiteSpace(InputExtension.Text))
             {
-                // Supprime le mot de la liste
-                words.RemoveAt(index);
-
-                // Reconstruit le texte du TextBlock à partir de la liste mise à jour des mots
-                outputTextBlock.Text = string.Join(" ", words);
+                var extension = InputExtension.Text.Trim();
+                if (extension.StartsWith("."))
+                {
+                    var extensions = GetExtensionsList();
+                    extensions.Remove(extension);
+                    UpdateListExtensions(extensions);
+                }
+                else
+                {
+                    // Afficher un message d'erreur indiquant que l'extension est invalide
+                    MessageBox.Show("Invalid extension. Extension should start with a dot (.)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
-        private void ClearText_Click(object sender, RoutedEventArgs e)
+
+        private void ClearListExtension_Click(object sender, RoutedEventArgs e)
         {
-            // Efface le contenu du TextBlock
-            outputTextBlock.Text = "";
+            ListExtension.Text = "";
         }
+
+        private List<string> GetExtensionsList()
+        {
+            return ListExtension.Text.Split(new[] { ExtensionSeparator }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private void UpdateListExtensions(List<string> extensions)
+        {
+            ListExtension.Text = string.Join(ExtensionSeparator, extensions);
+        }
+
 
         // Méthode pour ouvrir l'explorateur de fichiers et permettre à l'utilisateur de sélectionner un fichier
         private void OpenFile()
@@ -102,7 +130,7 @@ namespace EasySaveWPF.View
             if (openFileDialog.ShowDialog() == true)
             {
                 string filePath = openFileDialog.FileName;
-                PathTextBox.Text = filePath; // Affecte le chemin du fichier à la TextBox
+                PathBusinessSoftware.Text = filePath; // Affecte le chemin du fichier à la TextBox
             }
         }
     }   

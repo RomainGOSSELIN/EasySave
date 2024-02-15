@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EasySaveWPF.View"
-      mc:Ignorable="d" d:DesignWidth="800" Height="500" Loaded="UserControl_Loaded">
+      mc:Ignorable="d" d:DesignWidth="800" Height="500">
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <!-- Settings -->
@@ -68,13 +68,13 @@
             Width="187"/>
 
         <TextBox 
-            x:Name="PathTextBox" 
+            x:Name="PathBusinessSoftware" 
             HorizontalAlignment="Left" 
             Margin="10,161,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="309" 
-            TextChanged="TextBox_TextChanged"/>
+            TextChanged="PathBusinessSoftware_Changed"/>
 
         <Button 
             Content="..." 
@@ -99,11 +99,11 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,235,0,0" Height="45">
             <!-- JSON Format -->
             <RadioButton 
-                x:Name="LogsFormatJson" 
+                x:Name="LogsFormatJSON" 
                 GroupName="LogsFormatOptions" 
                 Content="JSON" 
                 VerticalAlignment="Center" 
-                Checked="RadioButton_Checked" 
+                Checked="LogsFormatJSON_Checked" 
                 ClickMode="Press" 
                 Cursor="Hand" 
                 Margin="5,0" 
@@ -118,7 +118,7 @@
                 GroupName="LogsFormatOptions" 
                 Content="XML" 
                 VerticalAlignment="Center" 
-                Checked="RadioButton_Checked" 
+                Checked="LogsFormatXML_Checked" 
                 ClickMode="Press" Cursor="Hand" 
                 Margin="5,0" Width="60" 
                 FontSize="16" 
@@ -134,11 +134,11 @@
             VerticalAlignment="Top"
             FontSize="22"
             Margin="10,281,0,0"
-            Foreground="White" FontWeight="Bold" Height="29" Width="415"><Run Language="fr-fr" Text="Add/ Remove extension for encryyption"/></TextBlock>
+            Foreground="White" FontWeight="Bold" Height="29" Width="415"><Run Language="fr-fr" Text="Add / Remove extension for encryption"/></TextBlock>
 
         <!-- Input Extension -->
         <TextBox
-            x:Name="inputTextBox"
+            x:Name="InputExtension"
             HorizontalAlignment="Left" 
             Margin="10,330,0,0" 
             TextWrapping="Wrap" 
@@ -152,7 +152,7 @@
             Margin="134,330,0,0" 
             VerticalAlignment="Top" 
             Height="18" 
-            Click="AddText_Click" 
+            Click="AddExtension_Click" 
             Width="30" 
             Background="White" 
             RenderTransformOrigin="1.177,0.528"/>
@@ -164,7 +164,7 @@
             Margin="180,330,0,0" 
             VerticalAlignment="Top"
             Height="18" 
-            Click="RemoveText_Click" 
+            Click="RemoveExtension_Click" 
             Width="30" 
             Background="White"/>
 
@@ -175,7 +175,7 @@
             Margin="225,330,0,0" 
             VerticalAlignment="Top"
             Height="18" 
-            Click="ClearText_Click" 
+            Click="ClearListExtension_Click" 
             Width="30" 
             Background="White"/>
 
@@ -191,11 +191,11 @@
             FontWeight="Bold" 
             Height="20" 
             Width="325"
-            Text="List of extension for encryyption"/>
+            Text="List of extension for encryption"/>
 
-        <!-- Output Extension -->
+        <!-- List of extension -->
         <TextBlock
-            x:Name="outputTextBlock"
+            x:Name="ListExtension"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="12"
@@ -222,7 +222,7 @@
                 GroupName="ThemeOptions" 
                 Content="Light" 
                 VerticalAlignment="Center" 
-                Checked="RadioButton_Checked" 
+                Checked="RadioButtonLightTheme_Checked" 
                 ClickMode="Press" 
                 Cursor="Hand" 
                 Margin="5,0" 
@@ -237,7 +237,7 @@
                 GroupName="ThemeOptions" 
                 Content="Dark" 
                 VerticalAlignment="Center" 
-                Checked="RadioButton_Checked" 
+                Checked="RadioButtonLightTheme_Checked" 
                 ClickMode="Press" 
                 Cursor="Hand" 
                 Margin="5,0" 
