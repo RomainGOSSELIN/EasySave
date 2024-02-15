@@ -15,14 +15,12 @@ using System.Windows.Shapes;
 
 namespace EasySaveWPF.View
 {
-    public partial class BackupView : UserControl
+    public partial class CreateBackupView : UserControl
     {
-        public BackupView()
+        public CreateBackupView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.BackupViewModel();
-
-
+            this.DataContext = new ViewModel.CreateBackupViewModel();
         }
     }
 }

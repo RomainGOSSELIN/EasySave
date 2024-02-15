@@ -20,6 +20,10 @@
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:Settings/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateBackupViewModel}">
+                <view:CreateBackupView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
