@@ -8,11 +8,16 @@
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <!-- Settings -->
-        <TextBlock Text="Settings"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   FontSize="30"
-                   Foreground="White" FontWeight="Bold" Margin="10,-24,0,0" Height="40" Width="115"/>
+        <TextBlock 
+            Text="Settings"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="30"
+            Foreground="White" 
+            FontWeight="Bold" 
+            Margin="10,-24,0,0" 
+            Height="40" 
+            Width="115"/>
 
         <!-- Language section -->
         <TextBlock
@@ -20,43 +25,69 @@
             VerticalAlignment="Top"
             FontSize="22"
             Margin="10,21,0,0"
-            Foreground="White" Text="Language" FontWeight="Bold" Height="29" Width="101"/>
+            Foreground="White" 
+            Text="Language" 
+            FontWeight="Bold" 
+            Height="29" 
+            Width="101"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,55,0,0" Height="45">
             <!-- French -->
-            <RadioButton x:Name="radioButtonFrench" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton x:Name="Language_Choice_French" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/france.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- English -->
-            <RadioButton x:Name="radioButtonEnglish" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton x:Name="Language_Choice_English" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/uk.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- Spanish -->
-            <RadioButton x:Name="radioButtonSpanish" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton x:Name="Language_Choice_Spanish" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/spain.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- Italian -->
-            <RadioButton x:Name="radioButtonItalian" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton x:Name="Language_Choice_Italian" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/italy.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
-            <!-- German -->
-            <RadioButton x:Name="radioButtonGerman" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <!-- Deutsch -->
+            <RadioButton x:Name="Language_Choice_Deutsch" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/germany.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
         </StackPanel>
 
 
+        
         <!-- Business Software section -->
         <TextBlock
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="22"
             Margin="10,111,0,0"
-            Foreground="White" Text="Business Software" FontWeight="Bold" Height="29" Width="187"/>
+            Foreground="White" 
+            Text="Business Software" 
+            FontWeight="Bold" 
+            Height="29" 
+            Width="187"/>
 
-        <TextBox x:Name="PathTextBox" HorizontalAlignment="Left" Margin="10,161,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="309" TextChanged="TextBox_TextChanged"/>
+        <TextBox 
+            x:Name="PathTextBox" 
+            HorizontalAlignment="Left" 
+            Margin="10,161,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="309" 
+            TextChanged="TextBox_TextChanged"/>
+
+        <Button 
+            Content="..." 
+            HorizontalAlignment="Left" 
+            Margin="328,161,0,0" 
+            VerticalAlignment="Top" 
+            Height="18" 
+            Click="Files_Explorer" 
+            Width="30" 
+            Background="White"/>
+
         
-        <Button Content="..." HorizontalAlignment="Left" Margin="328,161,0,0" VerticalAlignment="Top" Height="18" Click="Files_Explorer" Width="30" Background="White"/>
-
+        
         <!-- Logs Format section -->
         <TextBlock
             HorizontalAlignment="Left"
@@ -67,11 +98,34 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,235,0,0" Height="45">
             <!-- JSON Format -->
-            <RadioButton x:Name="radioButtonJson" GroupName="LogsFormatOptions" Content="JSON" VerticalAlignment="Center" Checked="RadioButton_Checked" ClickMode="Press" Cursor="Hand" Margin="5,0" Width="60" FontSize="16" Foreground="White" Height="20"/>
-            
+            <RadioButton 
+                x:Name="LogsFormatJson" 
+                GroupName="LogsFormatOptions" 
+                Content="JSON" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                ClickMode="Press" 
+                Cursor="Hand" 
+                Margin="5,0" 
+                Width="60" 
+                FontSize="16" 
+                Foreground="White" 
+                Height="20"/>
+
             <!-- XML Format -->
-            <RadioButton x:Name="radioButtonXml" GroupName="LogsFormatOptions" Content="XML" VerticalAlignment="Center" Checked="RadioButton_Checked" ClickMode="Press" Cursor="Hand" Margin="5,0" Width="60" FontSize="16" Foreground="White" Height="20"/>
+            <RadioButton 
+                x:Name="LogsFormatXML" 
+                GroupName="LogsFormatOptions" 
+                Content="XML" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                ClickMode="Press" Cursor="Hand" 
+                Margin="5,0" Width="60" 
+                FontSize="16" 
+                Foreground="White" 
+                Height="20"/>
         </StackPanel>
+
 
 
         <!-- Extension for encryption section -->
@@ -82,22 +136,77 @@
             Margin="10,281,0,0"
             Foreground="White" FontWeight="Bold" Height="29" Width="415"><Run Language="fr-fr" Text="Add/ Remove extension for encryyption"/></TextBlock>
 
-        <TextBox HorizontalAlignment="Left" Margin="10,330,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="108" TextChanged="TextBox_TextChanged"/>
+        <!-- Input Extension -->
+        <TextBox
+            x:Name="inputTextBox"
+            HorizontalAlignment="Left" 
+            Margin="10,330,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="108"/>
 
-        <Button Content="+" HorizontalAlignment="Left" Margin="134,330,0,0" VerticalAlignment="Top" Height="18" Click="Button_Click" Width="30" Background="White" RenderTransformOrigin="1.177,0.528"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="180,330,0,0" VerticalAlignment="Top" Height="18" Click="Button_Click" Width="30" Background="White"/>
+        <!-- Add Extension -->
+        <Button 
+            Content="+" 
+            HorizontalAlignment="Left" 
+            Margin="134,330,0,0" 
+            VerticalAlignment="Top" 
+            Height="18" 
+            Click="AddText_Click" 
+            Width="30" 
+            Background="White" 
+            RenderTransformOrigin="1.177,0.528"/>
+
+        <!-- Remove Extension -->
+        <Button 
+            Content="-" 
+            HorizontalAlignment="Left" 
+            Margin="180,330,0,0" 
+            VerticalAlignment="Top"
+            Height="18" 
+            Click="RemoveText_Click" 
+            Width="30" 
+            Background="White"/>
+
+        <!-- Clear Extension -->
+        <Button 
+            Content="x" 
+            HorizontalAlignment="Left" 
+            Margin="225,330,0,0" 
+            VerticalAlignment="Top"
+            Height="18" 
+            Click="ClearText_Click" 
+            Width="30" 
+            Background="White"/>
+
         
-
+        
         <!-- List of extension for encryption section -->
         <TextBlock
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            FontSize="22"
-            Margin="10,361,0,0"
-            Foreground="White" Text="List of extension for encryption" FontWeight="Bold" Height="29" Width="325"/>
+            FontSize="16"
+            Margin="10,370,0,0"
+            Foreground="White"
+            FontWeight="Bold" 
+            Height="20" 
+            Width="325"
+            Text="List of extension for encryyption"/>
 
-        <TextBox HorizontalAlignment="Left" Margin="10,410,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="230" TextChanged="TextBox_TextChanged"/>
-        
+        <!-- Output Extension -->
+        <TextBlock
+            x:Name="outputTextBlock"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="12"
+            Margin="10,406,0,0"
+            Foreground="Black" 
+            Background="White"
+            Height="20" 
+            Width="325"/>
+
+
+
         <!-- Theme section -->
         <TextBlock
             HorizontalAlignment="Left"
@@ -108,9 +217,34 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,465,0,0" Height="45">
             <!-- Light Theme -->
-            <RadioButton x:Name="radioButtonLightTheme" GroupName="ThemeOptions" Content="Light" VerticalAlignment="Center" Checked="RadioButton_Checked" ClickMode="Press" Cursor="Hand" Margin="5,0" Width="60" FontSize="16" Foreground="White" Height="20"/>
+            <RadioButton 
+                x:Name="radioButtonLightTheme" 
+                GroupName="ThemeOptions" 
+                Content="Light" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                ClickMode="Press" 
+                Cursor="Hand" 
+                Margin="5,0" 
+                Width="60" 
+                FontSize="16" 
+                Foreground="White" 
+                Height="20"/>
+            
             <!-- Dark Theme -->
-            <RadioButton x:Name="radioButtonDarkTheme" GroupName="ThemeOptions" Content="Dark" VerticalAlignment="Center" Checked="RadioButton_Checked" ClickMode="Press" Cursor="Hand" Margin="5,0" Width="60" FontSize="16" Foreground="White" Height="20"/>
+            <RadioButton 
+                x:Name="radioButtonDarkTheme" 
+                GroupName="ThemeOptions" 
+                Content="Dark" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                ClickMode="Press" 
+                Cursor="Hand" 
+                Margin="5,0" 
+                Width="60" 
+                FontSize="16" 
+                Foreground="White" 
+                Height="20"/>
         </StackPanel>
 
     </Grid>

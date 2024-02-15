@@ -22,6 +22,7 @@ namespace EasySaveWPF.View
             InitializeComponent();
             this.DataContext = new ViewModel.BackupViewModel();
 
+
         }
     }
 }

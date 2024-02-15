@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <None Remove="Images\ajouter.png" />
+    <None Remove="Images\BackArrow.png" />
+    <None Remove="Images\CheckArrow.png" />
     <None Remove="Images\france.png" />
     <None Remove="Images\germany.png" />
     <None Remove="Images\italy.png" />
@@ -26,6 +28,8 @@
 
   <ItemGroup>
     <Resource Include="Images\ajouter.png" />
+    <Resource Include="Images\BackArrow.png" />
+    <Resource Include="Images\CheckArrow.png" />
     <Resource Include="Images\france.png" />
     <Content Include="logoES_v2.ico" />
     <Resource Include="Images\germany.png" />

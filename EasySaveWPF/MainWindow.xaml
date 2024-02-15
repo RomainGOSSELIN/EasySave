@@ -51,6 +51,15 @@
                     </Image.Source>
                 </Image>
 
+                <RadioButton Content="Add Backup"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding CreateBackupViewCommand}"/>
+                <Image Width="50">
+                    <Image.Source>
+                        <BitmapImage UriSource="Images/ajouter.png"/>
+                    </Image.Source>
+                </Image>
+                
                 <RadioButton Content="Settings"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>
