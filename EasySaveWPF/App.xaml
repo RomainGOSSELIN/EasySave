@@ -11,6 +11,7 @@ Startup="OnStartup">
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/SearchBarTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonThemeCreate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:BackupViewModel}">
@@ -19,6 +20,10 @@ Startup="OnStartup">
 
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:Settings/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateBackupViewModel}">
+                <view:CreateBackupView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
