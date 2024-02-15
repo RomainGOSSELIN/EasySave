@@ -1,12 +1,22 @@
 ﻿<Window x:Class="EasySaveWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:view="clr-namespace:EasySaveWPF.View"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasySaveWPF"
+        xmlns:viewModel="clr-namespace:EasySaveWPF.ViewModel"
+        xmlns:view="clr-namespace:EasySaveWPF.View"
+        mc:Ignorable="d"
+        Title="EasySave"
         Height="600" Width="920"
         ResizeMode="NoResize"
         Background="Transparent">
 
-    <Border Background="#0d0c27"
-            CornerRadius="20">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#0d0c27">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width ="200"/>
@@ -19,38 +29,45 @@
 
 
             <StackPanel Grid.Row="1" Background="#2d2c4d">
-                <Image Source="Images/logoES.png" Margin="10,10,10,0"/>
-                <TextBlock Text="by ProSoft"
-                           HorizontalAlignment="Center"
-                           Foreground="#9a4af1"/>
+                <StackPanel Background="#2d2c4d">
+                    <Image Margin="10,10,10,0">
+                        <Image.Source>
+                            <BitmapImage UriSource="Images/logoES.png"/>
+                        </Image.Source>
+                    </Image>
+                    <TextBlock Text="by ProSoft"
+                               HorizontalAlignment="Center"
+                               Foreground="#9a4af1"/>
+                </StackPanel>
 
                 <RadioButton Content="Backup"
                              Margin="0 100 0 0"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding BackupViewCommand}"/>
+
+                <Image Width="50">
+                    <Image.Source>
+                        <BitmapImage UriSource="Images/logoBackup.png"/>
+                    </Image.Source>
+                </Image>
 
                 <RadioButton Content="Settings"
-                             Style="{StaticResource MenuButtonTheme}"/>
-
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"/>
+                <Image Width="50">
+                    <Image.Source>
+                        <BitmapImage UriSource="Images/logoSetting.png"/>
+                    </Image.Source>
+                </Image>
 
             </StackPanel>
-
-            <TextBlock Text="Backup List :"
-                       FontSize="20"
-                       Foreground="White"
-                       Margin="40 20 0 0"
-                       Grid.Column="1"/>
-
-            <TextBox Width="250"
-                     Height="30"
-                     VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Top"
-                     Margin="250 15 0 0"
-                     Grid.Column="1"/>
-            <view:JobListingView Margin="10,90,10,0" Grid.Column="1"/>
+            
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
 
         </Grid>
-
     </Border>
-
 </Window>

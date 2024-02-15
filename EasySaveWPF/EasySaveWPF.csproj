@@ -9,6 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ajouter.png" />
+    <None Remove="Images\logoBackup.png" />
+    <None Remove="Images\logoES.png" />
+    <None Remove="Images\logoSetting.png" />
+    <None Remove="Images\runall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ajouter.png" />
+    <Resource Include="Images\logoBackup.png" />
+    <Resource Include="Images\logoES.png" />
+    <Resource Include="Images\logoSetting.png" />
+    <Resource Include="Images\runall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.json" />
   </ItemGroup>
 
