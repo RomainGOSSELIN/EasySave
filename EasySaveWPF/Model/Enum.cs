@@ -22,5 +22,11 @@ namespace EasySaveWPF.Model
             full,
             differential
         };
+
+        public enum LogType
+        {
+            Json,
+            Xaml
+        };
     }
 }

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EasySaveWPF.Commands.CommandBase" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\CommandBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasySaveWPF.Commands.DeleteJobCommand">
+    <Position X="1" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAEAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\DeleteJobCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Commands.RunJobCommand" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABQAAEAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\RunJobCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Core.ObservableObject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Core.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Model.LogFactory.LoggerFactory" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LogFactory\LoggerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Model.BackupJob" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAQAAAAQAAAAAAAAAQQAAAAAAAAA=</HashCode>
+      <FileName>Model\BackupJob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Model.BackupLog" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAAAgAAAgAAAAAAQAAAIAAAAAA=</HashCode>
+      <FileName>Model\BackupLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Model.BackupState" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAiAIAAACABAAAAIAAAAAAAAgBAAAAAA=</HashCode>
+      <FileName>Model\BackupState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Model.Enum" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Enum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Resources.Translation" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAIgVQRUAAAQAKAAAABEAQAUYGBEARoADEABEEAgIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.Services.BackupJobService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAwAAAAgIAAAAIAABIEAAAAAAAA=</HashCode>
+      <FileName>Services\BackupJobService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Services.BackupService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAIAAAACEEAIAIAAAAAAAAQAAAEEAAAAAAAA=</HashCode>
+      <FileName>Services\BackupService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Services.JsonService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\JsonService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Services.StateLogService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAgAAAAAAAAAAAAAAAAAAAACAAAIEAAEAEAAA=</HashCode>
+      <FileName>Services\StateLogService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.Services.XamlService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\XamlService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.View.JobListingView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\JobListingView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasySaveWPF.ViewModel.JobListingViewModel" Collapsed="true">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAREAAAAAAAACMIBACBAAQCAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\JobListingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasySaveWPF.App" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasySaveWPF.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="EasySaveWPF.Model.LogFactory.ILogger" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LogFactory\ILogger.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EasySaveWPF.Services.Interfaces.IBackupJobService" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAgAAAAgAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IBackupJobService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EasySaveWPF.Services.Interfaces.IBackupService" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IBackupService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EasySaveWPF.Services.Interfaces.IStateLogService" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAA=</HashCode>
+      <FileName>Services\Interfaces\IStateLogService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
