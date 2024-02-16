@@ -101,31 +101,17 @@
             <RadioButton 
         x:Name="radioButtonDifferentiale" 
         GroupName="ThemeOptions" 
-        Content="Differential" 
-        VerticalAlignment="Center" 
-        Checked="RadioButton_Checked" 
-        ClickMode="Press" 
-        Cursor="Hand" 
-        Margin="5,0" 
-        Width="130" 
-        FontSize="16" 
-        Foreground="White" 
-        Height="20"/>
+        Style="{StaticResource RadioButtonTheme}"/>
+            <TextBlock  Text="Differential" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
 
             <!-- Full -->
             <RadioButton 
         x:Name="radioButtonTypeFull" 
         GroupName="ThemeOptions" 
-        Content="Full" 
-        VerticalAlignment="Center" 
-        Checked="RadioButton_Checked" 
-        ClickMode="Press" 
-        Cursor="Hand" 
-        Margin="5,0" 
-        Width="60" 
-        FontSize="16" 
-        Foreground="White" 
-        Height="20"/>
+        Style="{StaticResource RadioButtonTheme}" Cursor=""/>
+            <TextBlock Text="Full" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </UserControl>
