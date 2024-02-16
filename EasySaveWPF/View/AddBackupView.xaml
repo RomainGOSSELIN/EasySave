@@ -9,8 +9,8 @@
     
     <Grid Width="Auto">
         <TextBlock 
-           Name="TitleCreate"
-           Text="Create Backup"
+           Name="AddBackup"
+           Text="Add Backup"
            HorizontalAlignment="Left"
            VerticalAlignment="Top"
            FontSize="30"
@@ -19,9 +19,12 @@
         <Grid Width="Auto">
             
             <Button 
-                   Style="{StaticResource ButtonThemeCreate}"
-                Height="40" Width="100" HorizontalAlignment="Left" Margin="40,508,0,0" VerticalAlignment="Top">
-
+                Style="{StaticResource ButtonThemeCreate}"
+                Height="40" 
+                Width="100" 
+                HorizontalAlignment="Left" 
+                Margin="40,508,0,0" 
+                VerticalAlignment="Top">
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
