@@ -8,6 +8,6 @@ namespace EasySaveWPF.Services.Interfaces
         void CreateStateLog(BackupJob job);
         void SaveStateLog(string state, string directory);
         void UpdateStateLog(BackupState state);
-        void DeleteStateLog(int idToDelete);
+        void DeleteStateLog(BackupJob job);
     }
 }

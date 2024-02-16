@@ -21,7 +21,7 @@ namespace EasySaveWPF.View
         public CreateBackupView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.CreateBackupViewModel();
+            //this.DataContext = new ViewModel.CreateBackupViewModel();
         }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {

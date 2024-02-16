@@ -33,8 +33,7 @@ namespace EasySaveWPF.Services
                 List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
 
 
-                if (jobs.Count < 5)
-                {
+                
                     if (backupJob.SourceDir == backupJob.TargetDir)
                     {
                         Console.WriteLine(Resources.Translation.target_source_must_be_different);
@@ -51,12 +50,8 @@ namespace EasySaveWPF.Services
                     Console.WriteLine(String.Format(Resources.Translation.create_job_success, backupJob.Name, backupJob.Id, backupJob.SourceDir, backupJob.TargetDir, backupJob.Type));
 
                     return true;
-                }
-                else
-                {
-                    Console.WriteLine(Resources.Translation.cant_create_more_job);
-                    return false;
-                }
+                
+     
             }
             public BackupJob? GetJob(int id)
             {

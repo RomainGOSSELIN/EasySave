@@ -13,6 +13,8 @@ namespace EasySaveWPF.ViewModel
         private LoggerFactory _loggerFactory;
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
+        private IStateLogService _stateLogService;
+
         private ILogger _logger;
 
         private ObservableCollection<BackupJob> _backupJobs;
@@ -60,16 +62,17 @@ namespace EasySaveWPF.ViewModel
             }
         }
 
-        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService)
+        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IStateLogService stateLogService)
         {
             _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
             _backupJobService = backupJobService;
             _backupService = backupService;
-            _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;;
+            _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
+            _stateLogService = stateLogService;
 
             _backupJobs = new ObservableCollection<BackupJob>(backupJobService.GetAllJobs());
-            DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs);
+            DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
             RunCommand = new RunJobCommand(_backupService);
 
         }

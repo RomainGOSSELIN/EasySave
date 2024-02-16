@@ -29,7 +29,10 @@ namespace EasySaveWPF.Services
 
             List<BackupState> state = _logger.GetLog<BackupState>(_stateLogPath);
 
-            var newstate = new BackupState(job.Id, job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")), "END",0,0,0,0,"","");
+
+            DateTime today = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), CultureInfo.InvariantCulture);
+
+            var newstate = new BackupState(job.Id, job.Name, today, "END",0,0,0,0,"","");
 
             state.Add(newstate);
 
@@ -37,11 +40,11 @@ namespace EasySaveWPF.Services
 
         }
 
-        public void DeleteStateLog(int idToDelete) {
+        public void DeleteStateLog(BackupJob job) {
 
             List<BackupState> state = _logger.GetLog<BackupState>(_stateLogPath);
 
-            state.RemoveAll(x => x.Id == idToDelete);
+            state.RemoveAll(x => x.Id == job.Id);
 
             UpdateIds(state);
 

@@ -31,16 +31,16 @@ namespace EasySaveWPF.ViewModel
 
         }
 
-        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService _backupJobService,IBackupService _backupService)
+        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService backupJobService,IBackupService backupService, IStateLogService stateLogService)
         {
-            BackupVM = new BackupViewModel(loggerFactory, _backupJobService, _backupService);
+            BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, stateLogService);
             SettingsVM = new SettingsViewModel();
-            CreateBackupVM = new CreateBackupViewModel();
 
             CurrentView = BackupVM;
 
             BackupViewCommand = new RelayCommand(o =>
             {
+                BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService,stateLogService);
                 CurrentView = BackupVM;
             });
 
@@ -51,6 +51,8 @@ namespace EasySaveWPF.ViewModel
 
             CreateBackupViewCommand = new RelayCommand(o =>
             {
+                CreateBackupVM = new CreateBackupViewModel(backupJobService, stateLogService);
+
                 CurrentView = CreateBackupVM;
             });
         }
