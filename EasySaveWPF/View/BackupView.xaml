@@ -13,8 +13,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Backup List :"
-                   FontSize="20"
+        <TextBlock Text="Backup"
+                   FontSize="30"
                    Foreground="White"
                    Margin="10,10,0,0"
                    HorizontalAlignment="Left"
