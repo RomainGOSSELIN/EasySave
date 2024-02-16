@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="EasySave"
         Icon="Images/logoES_v2.ico"
-        Background="Transparent" Width="920" Height="600">
+        Background="Transparent" Width="950" Height="650">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
