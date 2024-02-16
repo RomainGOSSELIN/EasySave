@@ -11,9 +11,7 @@
         Icon="Images/logoES_v2.ico"
         Background="Transparent" Width="950" Height="650">
 
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
+
 
     <Border Background="#0d0c27">
         <Grid>
@@ -25,7 +23,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
 
 
             <StackPanel Grid.Row="1" Background="#2d2c4d">

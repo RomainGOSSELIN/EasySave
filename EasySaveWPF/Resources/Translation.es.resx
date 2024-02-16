@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="change_at_restart" xml:space="preserve">
+    <value>Los cambios se realizarán en el próximo inicio.</value>
+  </data>
+  <data name="desc_create" xml:space="preserve">
+    <value>Crear un nuevo trabajo de copia de seguridad</value>
+  </data>
+  <data name="desc_delete" xml:space="preserve">
+    <value>Eliminar un trabajo de copia de seguridad</value>
+  </data>
+  <data name="desc_options" xml:space="preserve">
+    <value>Configurar opciones (como el idioma)</value>
+  </data>
+  <data name="desc_run" xml:space="preserve">
+    <value>Iniciar un trabajo de copia de seguridad</value>
+  </data>
+  <data name="desc_show" xml:space="preserve">
+    <value>Visualizar un trabajo de copia de seguridad</value>
+  </data>
+  <data name="option_id" xml:space="preserve">
+    <value>Número de trabajo de copia de seguridad</value>
+  </data>
+  <data name="option_lang" xml:space="preserve">
+    <value>Elección de la lengua</value>
+  </data>
+  <data name="option_name" xml:space="preserve">
+    <value>Nombre del trabajo de copia de seguridad</value>
+  </data>
+  <data name="option_type" xml:space="preserve">
+    <value>Elegir un trabajo de copia de seguridad completo</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Aplicación de copia de seguridad de archivos</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Bienvenido al software de gestión de copias de seguridad EasySave. Escriba 'exit' para salir.</value>
+  </data>
+  <data name="number" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>No se encontraron trabajos</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Nombre del trabajo</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Fuente</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Destino</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Amable</value>
+  </data>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>No se pueden crear más de 5 puestos de trabajo.</value>
+  </data>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>El número de trabajo {0} se eliminó correctamente.</value>
+  </data>
+  <data name="create_job_success" xml:space="preserve">
+    <value>El trabajo {0} se creó en la ubicación {1} de {2} a {3} con tipo {4}</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>El trabajo {0} no existe</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Ejecutando trabajo de copia de seguridad: {0}</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>El directorio de origen no existe.</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>El tipo de copia de seguridad no es válido.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>¡La copia de seguridad se completó con éxito!</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Se produjo un error al guardar: {0}</value>
+  </data>
+  <data name="copy_file" xml:space="preserve">
+    <value>Copia del archivo: {0}</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>El formato de archivo {0} no está permitido para la copia de seguridad.</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>El archivo {0} excede el tamaño máximo permitido.</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Destino del directorio de la tarea de respaldo (entre comillas)</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
+  </data>
+  <data name="id_must_number" xml:space="preserve">
+    <value>El DNI debe ser un número.</value>
+  </data>
+  <data name="path_must_contain_brackets" xml:space="preserve">
+    <value>Las rutas deben estar entre comillas.</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>El directorio de origen y de destino no pueden ser el mismo.</value>
+  </data>
+  <data name="press_key" xml:space="preserve">
+    <value>Presione una tecla para comenzar...</value>
+  </data>
+</root>

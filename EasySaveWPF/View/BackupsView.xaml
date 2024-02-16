@@ -9,8 +9,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" MinHeight="156" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="Backups"
@@ -19,42 +19,57 @@
                    Margin="10,10,0,0"
                    HorizontalAlignment="Left"
                    Grid.Row="0"
-                   FontWeight="Bold"/>
+                   FontWeight="Bold" Width="118"/>
+
+        <TextBox Width="250"
+                     Height="30"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Margin="200 20 0 0"
+                     Grid.Column="1"
+                     Style="{StaticResource SearchBar}"/>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Grid.Row="0"
+                    Margin="0,40,10,0">
+            <Button Content="Run all"
+                    Width="80"
+                    Height="30"
+                    Margin="0,0,10,0"/>
+        </StackPanel>
 
 
-        <!--<Button Content="Run all"
-            Width="80"
-            Height="30"
-            HorizontalAlignment="Right"
-            Style="{StaticResource Button}" 
-            RenderTransformOrigin="0.077,-0.284" 
-            Margin="0,15,23,5"/>-->
-
-        <Button Content="Run all"
-            Style="{StaticResource ButtonThemeCreate}"
-            Height="40" 
-            Width="100" 
-            HorizontalAlignment="Right" 
-            Margin="0,15,10,0"
-            VerticalAlignment="Top"
-        />
-
-        <ListView Background="#252526" 
-                  Foreground="White" 
+        <DataGrid ItemsSource="{Binding BackupJobs}" 
+                  Background="#252526" 
+                  Foreground="black" 
                   BorderBrush="#3F3F46" 
                   BorderThickness="1" 
                   Grid.Row="1"
-                  Margin="10,10,10,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Type" Width="60" DisplayMemberBinding="{Binding Type}" />
-                    <GridViewColumn Header="Job Name" Width="120" DisplayMemberBinding="{Binding JobName}"/>
-                    <GridViewColumn Header="Source" Width="Auto" DisplayMemberBinding="{Binding Source}"/>
-                    <GridViewColumn Header="Destination" Width="Auto" DisplayMemberBinding="{Binding Destination}"/>
-                    <GridViewColumn Header="Actions" Width="Auto" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+                  Margin="10,10,10,29"  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="SourceDir" Binding="{Binding SourceDir}" />
+                <DataGridTextColumn Header="TargetDir" Binding="{Binding TargetDir}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Run" Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                <Button Content="Delete" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                <!-- Add more buttons as needed -->
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <StackPanel VerticalAlignment="Top" 
                     Margin="10,0,10,10" 
@@ -63,19 +78,28 @@
                        Foreground="White" 
                        FontSize="18" 
                        FontWeight="Bold"/>
-            <TextBlock Text="Backup Name" 
+            <TextBlock x:Name="currentBackupName" Text="{Binding CurrentStateBackup.BackupName}" 
                        Foreground="White" 
                        FontSize="14"/>
-            <ProgressBar Value="70" 
+            <TextBlock x:Name="currentFile" Text="{Binding CurrentStateBackup.SourceFilePath}" 
+           Foreground="White" 
+           FontSize="14"/>
+            <ProgressBar x:Name="fileProgress" 
                          Height="20" 
-                         Margin="0,10,0,0"/>
+                         Margin="0,10,0,0"
+                         Minimum="0" 
+                         Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
+                         Value="{Binding FileProgress, Mode=TwoWay}"></ProgressBar>
             <TextBlock Text="File Copied / Total File" 
                        Foreground="White" 
                        FontSize="12" 
                        HorizontalAlignment="Right"/>
-            <ProgressBar Value="40" 
+            <ProgressBar x:Name="fileSizeProgress" 
                          Height="20" 
-                         Margin="0,10,0,0"/>
+                         Margin="0,10,0,0"
+                         Minimum="0" 
+                         Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
+                         Value="{Binding FileSizeProgress, Mode=TwoWay}"/>
             <TextBlock Text="File Size Copied / Total File Size" 
                        Foreground="White" 
                        FontSize="12" 

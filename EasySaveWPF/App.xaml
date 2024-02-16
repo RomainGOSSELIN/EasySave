@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:EasySaveWPF"
              xmlns:viewModel="clr-namespace:EasySaveWPF.ViewModel"
              xmlns:view="clr-namespace:EasySaveWPF.View"
-             StartupUri="MainWindow.xaml">
+             Startup="OnStartup">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

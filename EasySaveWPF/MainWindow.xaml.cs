@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Services.Interfaces;
+using EasySaveWPF.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,9 +17,22 @@ namespace EasySaveWPF
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private IBackupJobService _backupJobService;
+        private IBackupService _backupService;
+        private IStateLogService _stateLogService;
+
+
+        public MainWindow(IBackupJobService backupJobService, IBackupService backupService,IStateLogService stateLogService, LoggerFactory loggerFactory)
         {
+            _backupJobService = backupJobService;
+            _backupService = backupService;
+            _stateLogService = stateLogService;
+
             InitializeComponent();
+
+
+            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_stateLogService);
+
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

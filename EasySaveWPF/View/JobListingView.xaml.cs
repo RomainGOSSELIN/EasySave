@@ -15,14 +15,15 @@ using System.Windows.Shapes;
 
 namespace EasySaveWPF.View
 {
-    public partial class BackupView : UserControl
+    /// <summary>
+    /// Logique d'interaction pour JobListingView.xaml
+    /// </summary>
+    public partial class JobListingView : UserControl
     {
-        public BackupView()
+        public JobListingView()
         {
             InitializeComponent();
-            //this.DataContext = new ViewModel.BackupViewModel();
-
-
         }
+
     }
 }
