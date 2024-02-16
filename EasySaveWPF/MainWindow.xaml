@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="EasySave"
         Icon="Images/logoES_v2.ico"
-        Background="Transparent" Width="920" Height="600">
+        Background="Transparent" Width="950" Height="650">
 
 
 
@@ -37,34 +37,21 @@
                                Foreground="#9a4af1"/>
                 </StackPanel>
 
-                <RadioButton Content="Backup"
-                             Margin="0 100 0 0"
+                <RadioButton Content="🛢 Backups"
+                             Margin="0 60 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" Checked="RadioButton_Checked_1"/>
-                <Image Width="50">
-                    <Image.Source>
-                        <BitmapImage UriSource="Images/logoBackup.png"/>
-                    </Image.Source>
-                </Image>
 
-                <RadioButton Content="Add Backup"
+                <RadioButton Content="➕ Add Backup"
+                             Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding CreateBackupViewCommand}"/>
-                <Image Width="50">
-                    <Image.Source>
-                        <BitmapImage UriSource="Images/ajouter.png"/>
-                    </Image.Source>
-                </Image>
-                
-                <RadioButton Content="Settings"
+
+                <RadioButton Content="⚙️ Settings"
+                             Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>
-                <Image Width="50">
-                    <Image.Source>
-                        <BitmapImage UriSource="Images/logoSetting.png"/>
-                    </Image.Source>
-                </Image>
 
             </StackPanel>
 

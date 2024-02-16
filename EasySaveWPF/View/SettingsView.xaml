@@ -33,23 +33,23 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,55,0,0" Height="45">
             <!-- French -->
-            <RadioButton x:Name="Language_Choice_French" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_French" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0" />
             <Image Source="/Images/france.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- English -->
-            <RadioButton x:Name="Language_Choice_English" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_English" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/uk.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- Spanish -->
-            <RadioButton x:Name="Language_Choice_Spanish" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_Spanish" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/spain.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- Italian -->
-            <RadioButton x:Name="Language_Choice_Italian" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_Italian" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/italy.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
 
             <!-- Deutsch -->
-            <RadioButton x:Name="Language_Choice_Deutsch" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
+            <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_Deutsch" VerticalAlignment="Center" Checked="Language_Choice" ClickMode="Press" Cursor="Hand" Margin="5,0"/>
             <Image Source="/Images/germany.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
         </StackPanel>
 
@@ -101,29 +101,17 @@
             <RadioButton 
                 x:Name="LogsFormatJSON" 
                 GroupName="LogsFormatOptions" 
-                Content="JSON" 
-                VerticalAlignment="Center" 
-                Checked="LogsFormatJSON_Checked" 
-                ClickMode="Press" 
-                Cursor="Hand" 
-                Margin="5,0" 
-                Width="60" 
-                FontSize="16" 
-                Foreground="White" 
-                Height="20"/>
+                Style="{StaticResource RadioButtonTheme}"/>
+            <TextBlock  Text="JSON" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
 
             <!-- XML Format -->
             <RadioButton 
                 x:Name="LogsFormatXML" 
                 GroupName="LogsFormatOptions" 
-                Content="XML" 
-                VerticalAlignment="Center" 
-                Checked="LogsFormatXML_Checked" 
-                ClickMode="Press" Cursor="Hand" 
-                Margin="5,0" Width="60" 
-                FontSize="16" 
-                Foreground="White" 
-                Height="20"/>
+                Style="{StaticResource RadioButtonTheme}"/>
+            <TextBlock  Text="XML" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
         </StackPanel>
 
 
@@ -220,31 +208,17 @@
             <RadioButton 
                 x:Name="radioButtonLightTheme" 
                 GroupName="ThemeOptions" 
-                Content="Light" 
-                VerticalAlignment="Center" 
-                Checked="RadioButtonLightTheme_Checked" 
-                ClickMode="Press" 
-                Cursor="Hand" 
-                Margin="5,0" 
-                Width="60" 
-                FontSize="16" 
-                Foreground="White" 
-                Height="20"/>
+                Style="{StaticResource RadioButtonTheme}"/>
+            <TextBlock  Text="Light" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
             
             <!-- Dark Theme -->
             <RadioButton 
                 x:Name="radioButtonDarkTheme" 
                 GroupName="ThemeOptions" 
-                Content="Dark" 
-                VerticalAlignment="Center" 
-                Checked="RadioButtonLightTheme_Checked" 
-                ClickMode="Press" 
-                Cursor="Hand" 
-                Margin="5,0" 
-                Width="60" 
-                FontSize="16" 
-                Foreground="White" 
-                Height="20"/>
+                Style="{StaticResource RadioButtonTheme}"/>
+            <TextBlock  Text="Dark" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+Foreground="White" FontWeight="Bold"/>
         </StackPanel>
 
     </Grid>

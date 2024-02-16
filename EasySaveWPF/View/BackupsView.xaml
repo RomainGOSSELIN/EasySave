@@ -13,8 +13,8 @@
             <RowDefinition Height="Auto" MinHeight="156" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Backup List :"
-                   FontSize="20"
+        <TextBlock Text="Backups"
+                   FontSize="30"
                    Foreground="White"
                    Margin="10,10,0,0"
                    HorizontalAlignment="Left"
@@ -25,19 +25,19 @@
                      Height="30"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
-                     Margin="200,0,0,0"
+                     VerticalAlignment="Top"
+                     Margin="200 20 0 0"
+                     Grid.Column="1"
                      Style="{StaticResource SearchBar}"/>
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Grid.Row="0"
-                    Margin="0,40,10,0" Height="30" Width="90">
+                    Margin="0,40,10,0">
             <Button Content="Run all"
                     Width="80"
                     Height="30"
-                    Style="{StaticResource Button}" 
                     Margin="0,0,10,0"/>
         </StackPanel>
 
@@ -71,10 +71,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel VerticalAlignment="Center" 
-                    Margin="10,0,10,0" 
-                    Grid.Row="2" Height="134">
-            <TextBlock Text="Running Backup :" 
+        <StackPanel VerticalAlignment="Top" 
+                    Margin="10,0,10,10" 
+                    Grid.Row="2">
+            <TextBlock Text="Running Backup" 
                        Foreground="White" 
                        FontSize="18" 
                        FontWeight="Bold"/>
