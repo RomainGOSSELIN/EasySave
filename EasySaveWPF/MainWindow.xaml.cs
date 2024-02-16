@@ -28,7 +28,7 @@ namespace EasySaveWPF
             InitializeComponent();
 
 
-            DataContext = new JobListingViewModel(loggerFactory, _backupJobService, _backupService);
+            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService);
 
         }
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using EasySaveWPF.Core;
+using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Services.Interfaces;
 
 
 namespace EasySaveWPF.ViewModel
@@ -29,9 +31,9 @@ namespace EasySaveWPF.ViewModel
 
         }
 
-        public MainViewModel()
+        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService _backupJobService,IBackupService _backupService)
         {
-            BackupVM = new BackupViewModel();
+            BackupVM = new BackupViewModel(loggerFactory, _backupJobService, _backupService);
             SettingsVM = new SettingsViewModel();
             CreateBackupVM = new CreateBackupViewModel();
 
