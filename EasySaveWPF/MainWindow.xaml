@@ -40,7 +40,7 @@
                                Foreground="#9a4af1"/>
                 </StackPanel>
 
-                <RadioButton Content="🛢 Backup"
+                <RadioButton Content="🛢 Backups"
                              Margin="0 60 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
