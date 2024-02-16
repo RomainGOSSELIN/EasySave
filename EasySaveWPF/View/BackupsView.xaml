@@ -35,10 +35,11 @@
                     VerticalAlignment="Top"
                     Grid.Row="0"
                     Margin="0,40,10,0">
-            <Button Content="Run all"
-                    Width="80"
+            <Button Content="Run all backups"
+                    Width="120"
                     Height="30"
-                    Margin="0,0,10,0"/>
+                    Margin="10,10,10,10"
+                    Style="{StaticResource ButtonTheme}"/>
         </StackPanel>
 
 

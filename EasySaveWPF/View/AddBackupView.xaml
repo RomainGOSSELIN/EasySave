@@ -20,7 +20,7 @@
             
             <Button 
                 Command="{Binding CreateCommand}"
-                Style="{StaticResource ButtonThemeCreate}"
+                Style="{StaticResource ButtonTheme}"
                 Height="40" 
                 Width="100" 
                 HorizontalAlignment="Left" 
@@ -29,7 +29,7 @@
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
-            <Button  Style="{StaticResource ButtonThemeCreate}"
+            <Button  Style="{StaticResource ButtonTheme}"
                     Height="40" Width="100" HorizontalAlignment="Left" Margin="562,508,0,0" VerticalAlignment="Top">
             <Image Source="/Images/BackArrow.png" />
             </Button>
