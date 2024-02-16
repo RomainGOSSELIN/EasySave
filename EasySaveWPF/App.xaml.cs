@@ -38,6 +38,7 @@ namespace EasySaveWPF
         {
             services.AddSingleton<IConfiguration>(_configuration);
             services.AddSingleton<LoggerFactory>();
+            services.AddSingleton<IDailyLogService, DailyLogService>();
             services.AddSingleton<IBackupJobService, BackupJobService>();
             services.AddSingleton<IBackupService, BackupService>();
             services.AddSingleton<IStateLogService, StateLogService>();

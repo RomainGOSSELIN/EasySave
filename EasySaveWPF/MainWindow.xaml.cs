@@ -20,18 +20,19 @@ namespace EasySaveWPF
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
         private IStateLogService _stateLogService;
+        private IDailyLogService _dailyLogService;
 
 
-        public MainWindow(IBackupJobService backupJobService, IBackupService backupService,IStateLogService stateLogService, LoggerFactory loggerFactory)
+        public MainWindow(IBackupJobService backupJobService, IBackupService backupService,IStateLogService stateLogService, LoggerFactory loggerFactory, IDailyLogService dailyLogService)
         {
             _backupJobService = backupJobService;
             _backupService = backupService;
             _stateLogService = stateLogService;
-
+            _dailyLogService = dailyLogService;
             InitializeComponent();
 
 
-            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_stateLogService);
+            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_stateLogService,_dailyLogService);
 
         }
 

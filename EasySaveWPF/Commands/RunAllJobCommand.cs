@@ -11,16 +11,19 @@ using System.Threading.Tasks;
 
 namespace EasySaveWPF.Commands
 {
-    public class RunJobCommand : CommandBase
+    public class RunAllJobCommand : CommandBase
     {
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
 
-        public RunJobCommand(IBackupService backupService, IDailyLogService dailyLogService)
+        private readonly ObservableCollection<BackupJob> _backupJobs;
+
+
+        public RunAllJobCommand(IBackupService backupService, ObservableCollection<BackupJob> backupJobs, IDailyLogService dailyLogService )
         {
             _backupService = backupService;
+            _backupJobs = backupJobs;
             _dailyLogService = dailyLogService;
-
         }
 
         public override bool CanExecute(object? parameter)
@@ -30,17 +33,22 @@ namespace EasySaveWPF.Commands
 
         public override async void Execute(object parameter)
         {
-            if (parameter is BackupJob job)
+            foreach (BackupJob job in _backupJobs)
             {
-                var stopwatch = new Stopwatch();
-                var FileSize = GetDirectorySize(job.SourceDir);
+                if (job != null)
+                {
+                    var stopwatch = new Stopwatch();
+                    var FileSize = GetDirectorySize(job.SourceDir);
 
-                stopwatch.Start();
-                await Task.Run(() => _backupService.ExecuteBackupJob(job));
-                stopwatch.Stop();
-                _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds);
+                    stopwatch.Start();
+                    await Task.Run(() => _backupService.ExecuteBackupJob(job));
+                    stopwatch.Stop();
+                    _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds);
+
+                }
             }
         }
+
         public long GetDirectorySize(string path)
         {
             return Directory.GetFiles(path, "*", SearchOption.AllDirectories)
