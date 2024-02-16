@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:EasySaveWPF"
         xmlns:viewModel="clr-namespace:EasySaveWPF.ViewModel"
         xmlns:view="clr-namespace:EasySaveWPF.View"
+        xmlns:t = "clr-namespace:EasySaveWPF.Resources"
         mc:Ignorable="d"
         Title="EasySave"
         Icon="Images/logoES_v2.ico"
         Background="Transparent" Width="950" Height="650">
-
-
-
-    <Border Background="#0d0c27">
+    <Border Background="{DynamicResource Background}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width ="200"/>
@@ -25,8 +23,8 @@
             </Grid.RowDefinitions>
 
 
-            <StackPanel Grid.Row="1" Background="#2d2c4d">
-                <StackPanel Background="#2d2c4d">
+            <StackPanel Grid.Row="1" Background="{DynamicResource Menu}">
+                <StackPanel Background="{DynamicResource Menu}">
                     <Image Margin="10,10,10,0">
                         <Image.Source>
                             <BitmapImage UriSource="Images/logoES.png"/>
@@ -43,12 +41,12 @@
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" Checked="RadioButton_Checked_1"/>
 
-                <RadioButton Content="➕ Add Backup"
+                <RadioButton Content="{x:Static t:Translation.add_backup_button}"
                              Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding CreateBackupViewCommand}"/>
 
-                <RadioButton Content="⚙️ Settings"
+                <RadioButton Content="{x:Static t:Translation.settings_button}"
                              Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>

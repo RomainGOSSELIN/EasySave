@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type Button}" x:Key="ButtonTheme">
-        <Setter Property="Background" Value="#2D2C4D"/>
+        <Setter Property="Background" Value="{DynamicResource Button}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="10 5"/>
@@ -25,7 +25,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#46629A"/>
+                <Setter Property="Background" Value="{DynamicResource ButtonHover}"/>
             </Trigger> 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="#151529"/>

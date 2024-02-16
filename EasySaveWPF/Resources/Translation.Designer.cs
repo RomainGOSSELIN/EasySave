@@ -61,6 +61,33 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ➕ Ajouter Sauvegarde.
+        /// </summary>
+        public static string add_backup_button {
+            get {
+                return ResourceManager.GetString("add_backup_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter / Retirer des extensions à encrypter.
+        /// </summary>
+        public static string add_or_remove_encryption {
+            get {
+                return ResourceManager.GetString("add_or_remove_encryption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à L&apos;application va s&apos;éteindre pour appliquer le changement de langue..
+        /// </summary>
+        public static string app_shutdown_language_changed {
+            get {
+                return ResourceManager.GetString("app_shutdown_language_changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Une erreur s&apos;est produite lors de la sauvegarde : {0}.
         /// </summary>
         public static string backup_error {
@@ -75,6 +102,24 @@ namespace EasySaveWPF.Resources {
         public static string backup_success {
             get {
                 return ResourceManager.GetString("backup_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 🛢 Sauvegardes.
+        /// </summary>
+        public static string backups_button {
+            get {
+                return ResourceManager.GetString("backups_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Logiciel Métier.
+        /// </summary>
+        public static string business_software {
+            get {
+                return ResourceManager.GetString("business_software", resourceCulture);
             }
         }
         
@@ -121,6 +166,15 @@ namespace EasySaveWPF.Resources {
         public static string create_job_success {
             get {
                 return ResourceManager.GetString("create_job_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sombre.
+        /// </summary>
+        public static string dark {
+            get {
+                return ResourceManager.GetString("dark", resourceCulture);
             }
         }
         
@@ -233,6 +287,33 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Clair.
+        /// </summary>
+        public static string light {
+            get {
+                return ResourceManager.GetString("light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Liste des extensions à encrypter.
+        /// </summary>
+        public static string list_extension_encryption {
+            get {
+                return ResourceManager.GetString("list_extension_encryption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format des logs.
+        /// </summary>
+        public static string logs_format {
+            get {
+                return ResourceManager.GetString("logs_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Le fichier {0} dépasse la taille maximale autorisée..
         /// </summary>
         public static string maxsize_error {
@@ -332,11 +413,38 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Différentielle.
+        /// </summary>
+        public static string save_differencial {
+            get {
+                return ResourceManager.GetString("save_differencial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Complète.
+        /// </summary>
+        public static string save_full {
+            get {
+                return ResourceManager.GetString("save_full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Le type de sauvegarde n&apos;est pas valide..
         /// </summary>
         public static string save_type_error {
             get {
                 return ResourceManager.GetString("save_type_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ⚙️ Paramètres.
+        /// </summary>
+        public static string settings_button {
+            get {
+                return ResourceManager.GetString("settings_button", resourceCulture);
             }
         }
         
@@ -364,6 +472,15 @@ namespace EasySaveWPF.Resources {
         public static string target_source_must_be_different {
             get {
                 return ResourceManager.GetString("target_source_must_be_different", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Thème.
+        /// </summary>
+        public static string theme {
+            get {
+                return ResourceManager.GetString("theme", resourceCulture);
             }
         }
         
