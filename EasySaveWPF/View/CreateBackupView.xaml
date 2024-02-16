@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid Cursor="">
-        <TextBlock Text="Create Backup"
+        <TextBlock 
+           Name="TitleCreate"
+           Text="Create Backup"
            HorizontalAlignment="Left"
            VerticalAlignment="Top"
            FontSize="30"
@@ -65,26 +67,34 @@
                 Background="White"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
         </Grid>
-        <TextBlock Text="Name"
+        <TextBlock
+            Name="BackupNameCreateTextbox"
+            Text="Name"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
             Foreground="White" FontWeight="Bold" Margin="10,89,0,0" Height="40" Width="200"/>
-        <TextBlock Text="Backup Source"
+        <TextBlock
+            Name="BackupSourceCreateTextbox"
+            Text="Backup Source"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
             Foreground="White" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="200"/>
-        <TextBlock Text="Backup Destination"
+        <TextBlock 
+            Name="BackupDestinationCreateTextbox"
+            Text="Backup Destination"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
             Foreground="White" FontWeight="Bold" Margin="12,266,0,0" Height="40" Width="200"/>
-        <TextBlock Text="Type"
+        <TextBlock 
+            Name="BackupTypeCreateTextbox"
+            Text="Type"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
-            Foreground="White" FontWeight="Bold" Margin="12,351,0,0" Height="40" Width="200"/>
+            Foreground="White" FontWeight="Bold" Margin="12,367,0,0" Height="40" Width="200"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,412,0,0" Height="45">
             <!-- Differential -->
