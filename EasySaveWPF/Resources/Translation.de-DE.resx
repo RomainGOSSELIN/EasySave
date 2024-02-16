@@ -117,115 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="welcome" xml:space="preserve">
-    <value>Benvenuti nel software di gestione dei backup EasySave. Scrivere "exit" per uscire.</value>
+  <data name="settings_button" xml:space="preserve">
+    <value>⚙️ Einstellungen</value>
   </data>
-  <data name="title" xml:space="preserve">
-    <value>Applicazione di backup dei file</value>
-  </data>
-  <data name="option_type" xml:space="preserve">
-    <value>Selezionare un lavoro di backup completo</value>
-  </data>
-  <data name="option_name" xml:space="preserve">
-    <value>Nome del lavoro di backup</value>
-  </data>
-  <data name="option_lang" xml:space="preserve">
-    <value>Selezione della lingua</value>
-  </data>
-  <data name="option_id" xml:space="preserve">
-    <value>Numero del lavoro di backup</value>
-  </data>
-  <data name="desc_show" xml:space="preserve">
-    <value>Visualizzazione di un lavoro di backup</value>
-  </data>
-  <data name="desc_run" xml:space="preserve">
-    <value>Avviare un processo di backup</value>
-  </data>
-  <data name="desc_options" xml:space="preserve">
-    <value>Impostare le opzioni (come la lingua)</value>
-  </data>
-  <data name="desc_delete" xml:space="preserve">
-    <value>Eliminare un lavoro di backup</value>
-  </data>
-  <data name="desc_create" xml:space="preserve">
-    <value>Creare un nuovo lavoro di backup</value>
-  </data>
-  <data name="change_at_restart" xml:space="preserve">
-    <value>Le modifiche verranno apportate al prossimo avvio</value>
-  </data>
-  <data name="number" xml:space="preserve">
-    <value>Numero</value>
-  </data>
-  <data name="no_job_found" xml:space="preserve">
-    <value>Nessun lavoro trovato</value>
-  </data>
-  <data name="job_name" xml:space="preserve">
-    <value>Nome del lavoro</value>
-  </data>
-  <data name="source" xml:space="preserve">
-    <value>Fonte</value>
-  </data>
-  <data name="destination" xml:space="preserve">
-    <value>Destinazione</value>
-  </data>
-  <data name="type" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="cant_create_more_job" xml:space="preserve">
-    <value>Non puoi creare più di 5 lavori.</value>
-  </data>
-  <data name="delete_job_success" xml:space="preserve">
-    <value>Il lavoro numero {0} è stato eliminato con successo.</value>
-  </data>
-  <data name="create_job_success" xml:space="preserve">
-    <value>Il lavoro {0} è stato creato nella posizione {1} da {2} a {3} con tipo {4}</value>
-  </data>
-  <data name="job_doesnt_exist" xml:space="preserve">
-    <value>Il lavoro {0} non esiste</value>
-  </data>
-  <data name="job_execution" xml:space="preserve">
-    <value>Processo di backup in esecuzione: {0}</value>
-  </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>La directory di origine non esiste.</value>
-  </data>
-  <data name="save_type_error" xml:space="preserve">
-    <value>Il tipo di backup non è valido.</value>
+  <data name="add_backup_button" xml:space="preserve">
+    <value>➕ Speichern</value>
   </data>
   <data name="backup_success" xml:space="preserve">
-    <value>Il backup è stato completato con successo!</value>
+    <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>
   </data>
-  <data name="backup_error" xml:space="preserve">
-    <value>Si è verificato un errore durante il salvataggio: {0}</value>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>Sie können nicht mehr als 5 Jobs erstellen.</value>
+  </data>
+  <data name="change_at_restart" xml:space="preserve">
+    <value>Änderungen werden beim nächsten Start vorgenommen</value>
   </data>
   <data name="copy_file" xml:space="preserve">
-    <value>Copia del file: {0}</value>
-  </data>
-  <data name="incorrect_format" xml:space="preserve">
-    <value>Il formato file {0} non è consentito per il backup.</value>
-  </data>
-  <data name="maxsize_error" xml:space="preserve">
-    <value>Il file {0} supera la dimensione massima consentita.</value>
+    <value>Kopie der Datei: {0}</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>La copia è terminata! Numero totale di file copiati: {0}</value>
+    <value>Gesamtzahl der kopierten Dateien: {0}</value>
   </data>
-  <data name="option_dest" xml:space="preserve">
-    <value>Destinazione della directory del processo di backup (tra virgolette)</value>
+  <data name="create_job_success" xml:space="preserve">
+    <value>Job {0} wurde am Standort {1} von {2} bis {3} mit Typ {4} erstellt</value>
   </data>
-  <data name="option_source" xml:space="preserve">
-    <value>Origine della directory del processo di backup (tra virgolette)</value>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>Jobnummer {0} wurde erfolgreich gelöscht.</value>
+  </data>
+  <data name="desc_create" xml:space="preserve">
+    <value>Einen neuen Sicherungsauftrag erstellen</value>
+  </data>
+  <data name="desc_delete" xml:space="preserve">
+    <value>Löschen eines Sicherungsauftrags</value>
+  </data>
+  <data name="desc_options" xml:space="preserve">
+    <value>Optionen einstellen (z. B. Sprache)</value>
+  </data>
+  <data name="desc_run" xml:space="preserve">
+    <value>Starten eines Sicherungsauftrags</value>
+  </data>
+  <data name="desc_show" xml:space="preserve">
+    <value>Einen Sicherungsauftrag anzeigen</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Ziel</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
-    <value>L'ID deve essere un numero.</value>
+    <value>Die ID muss eine Zahl sein.</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>Das Dateiformat {0} ist für die Sicherung nicht zulässig.</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>Job {0} existiert nicht</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Sicherungsjob wird ausgeführt: {0}</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Berufsbezeichnung</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>Datei {0} überschreitet die maximal zulässige Größe.</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>Keine Jobs gefunden</value>
+  </data>
+  <data name="number" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="option_dest" xml:space="preserve">
+    <value>Ziel des Backup-Job-Verzeichnisses (in Anführungszeichen)</value>
+  </data>
+  <data name="option_id" xml:space="preserve">
+    <value>Nummer des Sicherungsauftrags</value>
+  </data>
+  <data name="option_lang" xml:space="preserve">
+    <value>Auswahl der Sprache</value>
+  </data>
+  <data name="option_name" xml:space="preserve">
+    <value>Name des Sicherungsauftrags</value>
+  </data>
+  <data name="option_source" xml:space="preserve">
+    <value>Quelle des Sicherungsauftragsverzeichnisses (in Anführungszeichen)</value>
+  </data>
+  <data name="option_type" xml:space="preserve">
+    <value>Wählen Sie einen vollständigen Sicherungsauftrag</value>
   </data>
   <data name="path_must_contain_brackets" xml:space="preserve">
-    <value>I percorsi devono essere tra virgolette</value>
-  </data>
-  <data name="target_source_must_be_different" xml:space="preserve">
-    <value>La directory di origine e quella di destinazione non possono essere le stesse.</value>
+    <value>Pfade müssen in Anführungszeichen stehen</value>
   </data>
   <data name="press_key" xml:space="preserve">
-    <value>Premere un tasto per iniziare...</value>
+    <value>Zum Starten eine Taste drücken...</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>Der Sicherungstyp ist ungültig.</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Quelle</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>Das Quellverzeichnis existiert nicht.</value>
+  </data>
+  <data name="target_source_must_be_different" xml:space="preserve">
+    <value>Das Quell- und Zielverzeichnis dürfen nicht identisch sein.</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Anwendung zur Dateisicherung</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Art</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Willkommen bei der EasySave-Backup-Verwaltungssoftware. Schreiben Sie 'exit' zum Beenden.</value>
+  </data>
+  <data name="app_shutdown_language_changed" xml:space="preserve">
+    <value>Die App wird heruntergefahren, um die Sprachänderung anzuwenden.</value>
+  </data>
+  <data name="backups_button" xml:space="preserve">
+    <value>🛢 Backups</value>
+  </data>
+  <data name="business_software" xml:space="preserve">
+    <value>Business Software</value>
+  </data>
+  <data name="add_or_remove_encryption" xml:space="preserve">
+    <value>Hinzufügen / Entfernen von zu verschlüsselnden Erweiterungen</value>
+  </data>
+  <data name="dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="light" xml:space="preserve">
+    <value>Klar</value>
+  </data>
+  <data name="list_extension_encryption" xml:space="preserve">
+    <value>Liste der zu verschlüsselnden Erweiterungen</value>
+  </data>
+  <data name="logs_format" xml:space="preserve">
+    <value>Logs Format</value>
+  </data>
+  <data name="save_differencial" xml:space="preserve">
+    <value>Differenzielles</value>
+  </data>
+  <data name="save_full" xml:space="preserve">
+    <value>Vollständige</value>
+  </data>
+  <data name="theme" xml:space="preserve">
+    <value>Thema</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,114 +118,154 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="change_at_restart" xml:space="preserve">
-    <value>Los cambios se realizarán en el próximo inicio.</value>
+    <value>Les changements auront lieu au prochain démarrage</value>
   </data>
   <data name="desc_create" xml:space="preserve">
-    <value>Crear un nuevo trabajo de copia de seguridad</value>
+    <value>Créer un nouveau travail de sauvegarde</value>
   </data>
   <data name="desc_delete" xml:space="preserve">
-    <value>Eliminar un trabajo de copia de seguridad</value>
+    <value>Supprimer un travail de sauvegarde</value>
   </data>
   <data name="desc_options" xml:space="preserve">
-    <value>Configurar opciones (como el idioma)</value>
+    <value>Régler les options (comme la langue)</value>
   </data>
   <data name="desc_run" xml:space="preserve">
-    <value>Iniciar un trabajo de copia de seguridad</value>
+    <value>Lancer un travail de sauvegarde</value>
   </data>
   <data name="desc_show" xml:space="preserve">
-    <value>Visualizar un trabajo de copia de seguridad</value>
-  </data>
-  <data name="option_id" xml:space="preserve">
-    <value>Número de trabajo de copia de seguridad</value>
-  </data>
-  <data name="option_lang" xml:space="preserve">
-    <value>Elección de la lengua</value>
-  </data>
-  <data name="option_name" xml:space="preserve">
-    <value>Nombre del trabajo de copia de seguridad</value>
-  </data>
-  <data name="option_type" xml:space="preserve">
-    <value>Elegir un trabajo de copia de seguridad completo</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>Aplicación de copia de seguridad de archivos</value>
-  </data>
-  <data name="welcome" xml:space="preserve">
-    <value>Bienvenido al software de gestión de copias de seguridad EasySave. Escriba 'exit' para salir.</value>
-  </data>
-  <data name="number" xml:space="preserve">
-    <value>Número</value>
-  </data>
-  <data name="no_job_found" xml:space="preserve">
-    <value>No se encontraron trabajos</value>
-  </data>
-  <data name="job_name" xml:space="preserve">
-    <value>Nombre del trabajo</value>
-  </data>
-  <data name="source" xml:space="preserve">
-    <value>Fuente</value>
-  </data>
-  <data name="destination" xml:space="preserve">
-    <value>Destino</value>
-  </data>
-  <data name="type" xml:space="preserve">
-    <value>Amable</value>
-  </data>
-  <data name="cant_create_more_job" xml:space="preserve">
-    <value>No se pueden crear más de 5 puestos de trabajo.</value>
-  </data>
-  <data name="delete_job_success" xml:space="preserve">
-    <value>El número de trabajo {0} se eliminó correctamente.</value>
-  </data>
-  <data name="create_job_success" xml:space="preserve">
-    <value>El trabajo {0} se creó en la ubicación {1} de {2} a {3} con tipo {4}</value>
-  </data>
-  <data name="job_doesnt_exist" xml:space="preserve">
-    <value>El trabajo {0} no existe</value>
-  </data>
-  <data name="job_execution" xml:space="preserve">
-    <value>Ejecutando trabajo de copia de seguridad: {0}</value>
-  </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>El directorio de origen no existe.</value>
-  </data>
-  <data name="save_type_error" xml:space="preserve">
-    <value>El tipo de copia de seguridad no es válido.</value>
-  </data>
-  <data name="backup_success" xml:space="preserve">
-    <value>¡La copia de seguridad se completó con éxito!</value>
-  </data>
-  <data name="backup_error" xml:space="preserve">
-    <value>Se produjo un error al guardar: {0}</value>
-  </data>
-  <data name="copy_file" xml:space="preserve">
-    <value>Copia del archivo: {0}</value>
-  </data>
-  <data name="incorrect_format" xml:space="preserve">
-    <value>El formato de archivo {0} no está permitido para la copia de seguridad.</value>
-  </data>
-  <data name="maxsize_error" xml:space="preserve">
-    <value>El archivo {0} excede el tamaño máximo permitido.</value>
-  </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
+    <value>Afficher un travail de sauvegarde</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destino del directorio de la tarea de respaldo (entre comillas)</value>
+    <value>Destination du répertoire du travail de sauvegarde (entre guillemets)</value>
+  </data>
+  <data name="option_id" xml:space="preserve">
+    <value>Numéro du travail de sauvegarde</value>
+  </data>
+  <data name="option_lang" xml:space="preserve">
+    <value>Choix de la langue</value>
+  </data>
+  <data name="option_name" xml:space="preserve">
+    <value>Nom du travail de sauvegarde</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
+    <value>Source du répertoire du travail de sauvegarde (entre guillemets)</value>
+  </data>
+  <data name="option_type" xml:space="preserve">
+    <value>Choix d'un travail de sauvegarde complet</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Application de sauvegarde de fichiers</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Bienvenue dans le logiciel de gestion de Sauvegarde EasySave. Écrire 'exit' pour quitter.</value>
+  </data>
+  <data name="number" xml:space="preserve">
+    <value>Numéro</value>
+  </data>
+  <data name="no_job_found" xml:space="preserve">
+    <value>Aucun travail trouvé</value>
+  </data>
+  <data name="job_name" xml:space="preserve">
+    <value>Nom du Travail</value>
+  </data>
+  <data name="source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="cant_create_more_job" xml:space="preserve">
+    <value>Vous ne pouvez pas créer plus de 5 travaux.</value>
+  </data>
+  <data name="delete_job_success" xml:space="preserve">
+    <value>Le travail numéro {0} a été supprimé avec succès.</value>
+  </data>
+  <data name="create_job_success" xml:space="preserve">
+    <value> Le travail {0} a été créé à l'emplacement {1} depuis {2} à {3} avec un type {4}
+</value>
+  </data>
+  <data name="job_doesnt_exist" xml:space="preserve">
+    <value>Le travail {0} n'existe pas</value>
+  </data>
+  <data name="job_execution" xml:space="preserve">
+    <value>Exécution du travail de sauvegarde : {0}</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>Le répertoire source n'existe pas.</value>
+  </data>
+  <data name="save_type_error" xml:space="preserve">
+    <value>Le type de sauvegarde n'est pas valide.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>La sauvegarde a été effectuée avec succès !</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Une erreur s'est produite lors de la sauvegarde : {0}</value>
+  </data>
+  <data name="copy_success" xml:space="preserve">
+    <value>La copie terminée ! Nombre total de fichiers copiés : {0}</value>
+  </data>
+  <data name="copy_file" xml:space="preserve">
+    <value>Copie du fichier : {0}</value>
+  </data>
+  <data name="incorrect_format" xml:space="preserve">
+    <value>Le format du fichier {0} n'est pas autorisé pour la sauvegarde.</value>
+  </data>
+  <data name="maxsize_error" xml:space="preserve">
+    <value>Le fichier {0} dépasse la taille maximale autorisée.</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
-    <value>El DNI debe ser un número.</value>
+    <value>L'ID doit être un nombre.</value>
   </data>
   <data name="path_must_contain_brackets" xml:space="preserve">
-    <value>Las rutas deben estar entre comillas.</value>
+    <value>Les chemins doivent être entre guillemets</value>
   </data>
   <data name="target_source_must_be_different" xml:space="preserve">
-    <value>El directorio de origen y de destino no pueden ser el mismo.</value>
+    <value>Le répertoire source et cible ne peuvent pas être les mêmes.</value>
   </data>
   <data name="press_key" xml:space="preserve">
-    <value>Presione una tecla para comenzar...</value>
+    <value>Appuyez sur une touche pour démarrer...</value>
+  </data>
+  <data name="settings_button" xml:space="preserve">
+    <value>⚙️ Paramètres</value>
+  </data>
+  <data name="add_backup_button" xml:space="preserve">
+    <value>➕ Ajouter Sauvegarde</value>
+  </data>
+  <data name="add_or_remove_encryption" xml:space="preserve">
+    <value>Ajouter / Retirer des extensions à encrypter</value>
+  </data>
+  <data name="app_shutdown_language_changed" xml:space="preserve">
+    <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
+  </data>
+  <data name="backups_button" xml:space="preserve">
+    <value>🛢 Sauvegardes</value>
+  </data>
+  <data name="business_software" xml:space="preserve">
+    <value>Logiciel Métier</value>
+  </data>
+  <data name="dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
+  <data name="light" xml:space="preserve">
+    <value>Clair</value>
+  </data>
+  <data name="list_extension_encryption" xml:space="preserve">
+    <value>Liste des extensions à encrypter</value>
+  </data>
+  <data name="logs_format" xml:space="preserve">
+    <value>Format des logs</value>
+  </data>
+  <data name="save_differencial" xml:space="preserve">
+    <value>Différentielle</value>
+  </data>
+  <data name="save_full" xml:space="preserve">
+    <value>Complète</value>
+  </data>
+  <data name="theme" xml:space="preserve">
+    <value>Thème</value>
   </data>
 </root>

@@ -118,114 +118,153 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="change_at_restart" xml:space="preserve">
-    <value>Changes will take place on next startup</value>
+    <value>Los cambios se realizarán en el próximo inicio.</value>
   </data>
   <data name="desc_create" xml:space="preserve">
-    <value>Create a new backup job</value>
+    <value>Crear un nuevo trabajo de copia de seguridad</value>
   </data>
   <data name="desc_delete" xml:space="preserve">
-    <value>Delete a backup job</value>
+    <value>Eliminar un trabajo de copia de seguridad</value>
   </data>
   <data name="desc_options" xml:space="preserve">
-    <value>Set options (such as language)</value>
+    <value>Configurar opciones (como el idioma)</value>
   </data>
   <data name="desc_run" xml:space="preserve">
-    <value>Start a backup job</value>
+    <value>Iniciar un trabajo de copia de seguridad</value>
   </data>
   <data name="desc_show" xml:space="preserve">
-    <value>Display a backup job</value>
+    <value>Visualizar un trabajo de copia de seguridad</value>
   </data>
   <data name="option_id" xml:space="preserve">
-    <value>Backup job number</value>
+    <value>Número de trabajo de copia de seguridad</value>
   </data>
   <data name="option_lang" xml:space="preserve">
-    <value>Language selection</value>
+    <value>Elección de la lengua</value>
   </data>
   <data name="option_name" xml:space="preserve">
-    <value>Name of the backup job</value>
+    <value>Nombre del trabajo de copia de seguridad</value>
   </data>
   <data name="option_type" xml:space="preserve">
-    <value>Select a complete backup job</value>
+    <value>Elegir un trabajo de copia de seguridad completo</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>File backup application</value>
+    <value>Aplicación de copia de seguridad de archivos</value>
   </data>
   <data name="welcome" xml:space="preserve">
-    <value>Welcome to the EasySave backup management software. Write 'exit' to quit.</value>
+    <value>Bienvenido al software de gestión de copias de seguridad EasySave. Escriba 'exit' para salir.</value>
   </data>
   <data name="number" xml:space="preserve">
-    <value>Number</value>
+    <value>Número</value>
   </data>
   <data name="no_job_found" xml:space="preserve">
-    <value>No jobs found</value>
+    <value>No se encontraron trabajos</value>
   </data>
   <data name="job_name" xml:space="preserve">
-    <value>Job Name</value>
+    <value>Nombre del trabajo</value>
   </data>
   <data name="source" xml:space="preserve">
-    <value>Source</value>
+    <value>Fuente</value>
   </data>
   <data name="destination" xml:space="preserve">
-    <value>Destination</value>
+    <value>Destino</value>
   </data>
   <data name="type" xml:space="preserve">
-    <value>Type</value>
+    <value>Amable</value>
   </data>
   <data name="cant_create_more_job" xml:space="preserve">
-    <value>You cannot create more than 5 jobs.</value>
+    <value>No se pueden crear más de 5 puestos de trabajo.</value>
   </data>
   <data name="delete_job_success" xml:space="preserve">
-    <value>Job number {0} was successfully deleted.</value>
+    <value>El número de trabajo {0} se eliminó correctamente.</value>
   </data>
   <data name="create_job_success" xml:space="preserve">
-    <value>Job {0} was created at location {1} from {2} to {3} with type {4}</value>
+    <value>El trabajo {0} se creó en la ubicación {1} de {2} a {3} con tipo {4}</value>
   </data>
   <data name="job_doesnt_exist" xml:space="preserve">
-    <value>Job {0} does not exist</value>
+    <value>El trabajo {0} no existe</value>
   </data>
   <data name="job_execution" xml:space="preserve">
-    <value>Running backup job: {0}</value>
+    <value>Ejecutando trabajo de copia de seguridad: {0}</value>
   </data>
   <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>The source directory does not exist.</value>
+    <value>El directorio de origen no existe.</value>
   </data>
   <data name="save_type_error" xml:space="preserve">
-    <value>The backup type is invalid.</value>
+    <value>El tipo de copia de seguridad no es válido.</value>
   </data>
   <data name="backup_success" xml:space="preserve">
-    <value>The backup was completed successfully!</value>
+    <value>¡La copia de seguridad se completó con éxito!</value>
   </data>
   <data name="backup_error" xml:space="preserve">
-    <value>An error occurred while saving: {0}</value>
+    <value>Se produjo un error al guardar: {0}</value>
   </data>
   <data name="copy_file" xml:space="preserve">
-    <value>Copy of file: {0}</value>
+    <value>Copia del archivo: {0}</value>
   </data>
   <data name="incorrect_format" xml:space="preserve">
-    <value>File format {0} is not allowed for backup.</value>
+    <value>El formato de archivo {0} no está permitido para la copia de seguridad.</value>
   </data>
   <data name="maxsize_error" xml:space="preserve">
-    <value>File {0} exceeds the maximum allowed size.</value>
+    <value>El archivo {0} excede el tamaño máximo permitido.</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>The copy is finished! Total number of files copied: {0}</value>
+    <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destination of the backup job directory (in quotes)</value>
+    <value>Destino del directorio de la tarea de respaldo (entre comillas)</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Backup job directory source (in quotes)</value>
+    <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
-    <value>The ID must be a number.</value>
+    <value>El DNI debe ser un número.</value>
   </data>
   <data name="path_must_contain_brackets" xml:space="preserve">
-    <value>Paths must be in quotes</value>
+    <value>Las rutas deben estar entre comillas.</value>
   </data>
   <data name="target_source_must_be_different" xml:space="preserve">
-    <value>The source and target directory cannot be the same.</value>
+    <value>El directorio de origen y de destino no pueden ser el mismo.</value>
   </data>
   <data name="press_key" xml:space="preserve">
-    <value>Press a key to start...</value>
+    <value>Presione una tecla para comenzar...</value>
+  </data>
+  <data name="settings_button" xml:space="preserve">
+    <value>⚙️ Configuración</value>
+  </data>
+  <data name="add_backup_button" xml:space="preserve">
+    <value>➕ Añadir Backup</value>
+  </data>
+  <data name="app_shutdown_language_changed" xml:space="preserve">
+    <value>La aplicación se apagará para aplicar el cambio de idioma.</value>
+  </data>
+  <data name="backups_button" xml:space="preserve">
+    <value>🛢 Backups</value>
+  </data>
+  <data name="business_software" xml:space="preserve">
+    <value>Software Empresarial</value>
+  </data>
+  <data name="add_or_remove_encryption" xml:space="preserve">
+    <value>Añadir/Quitar extensiones para cifrar</value>
+  </data>
+  <data name="dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
+  <data name="light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="list_extension_encryption" xml:space="preserve">
+    <value>Lista de extensiones para cifrar</value>
+  </data>
+  <data name="logs_format" xml:space="preserve">
+    <value>Logs Format</value>
+  </data>
+  <data name="save_differencial" xml:space="preserve">
+    <value>Diferencial</value>
+  </data>
+  <data name="save_full" xml:space="preserve">
+    <value>Completa</value>
+  </data>
+  <data name="theme" xml:space="preserve">
+    <value>Tema</value>
   </data>
 </root>
