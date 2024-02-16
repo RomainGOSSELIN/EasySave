@@ -12,9 +12,10 @@
                               Background="{TemplateBinding Background}">
 
                             <TextBlock Text="{TemplateBinding Property=Content}"
-                                       Height="50"
+                                       Height="60"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
+                                       Margin="0,25,0,0"
                                        Foreground="White"
                                        FontSize="25"
                                        />

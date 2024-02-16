@@ -41,18 +41,18 @@
                 </StackPanel>
 
                 <RadioButton Content="🛢 Backup"
-                             Margin="0 50 0 0"
+                             Margin="0 60 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" Checked="RadioButton_Checked_1"/>
 
                 <RadioButton Content="➕ Add Backup"
-                             Margin="0 0 0 0"
+                             Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding CreateBackupViewCommand}"/>
 
                 <RadioButton Content="⚙️ Settings"
-                             Margin="0 00 0 0"
+                             Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>
 

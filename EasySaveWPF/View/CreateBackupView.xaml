@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:EasySaveWPF.View"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    <Grid Cursor="">
+    
+    <Grid Width="Auto">
         <TextBlock 
            Name="TitleCreate"
            Text="Create Backup"
@@ -15,7 +16,8 @@
            FontSize="30"
            Foreground="White" FontWeight="Bold" Margin="10,10,0,0" Height="40" Width="200"/>
 
-        <Grid>
+        <Grid Width="Auto">
+            
             <Button 
                    Style="{StaticResource ButtonThemeCreate}"
                 Height="40" Width="100" HorizontalAlignment="Left" Margin="40,508,0,0" VerticalAlignment="Top">
@@ -23,13 +25,27 @@
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
-
-
             <Button  Style="{StaticResource ButtonThemeCreate}"
                     Height="40" Width="100" HorizontalAlignment="Left" Margin="562,508,0,0" VerticalAlignment="Top">
             <Image Source="/Images/BackArrow.png" />
             </Button>
-
+            <TextBlock
+            Name="BackupNameCreateTextbox"
+            Text="Name"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="10,89,0,0" Height="40" Width="200"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
+            
+            <TextBlock
+            Name="BackupSourceCreateTextbox"
+            Text="Backup Source"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="200"/>
+            
             <TextBox 
                 x:Name="BackupSource_Textbox" 
                 HorizontalAlignment="Left" 
@@ -47,6 +63,16 @@
                 Click="Files_Explorer" 
                 Width="30" 
                 Background="White"/>
+
+
+            <TextBlock 
+            Name="BackupDestinationCreateTextbox"
+            Text="Backup Destination"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Foreground="White" FontWeight="Bold" Margin="12,266,0,0" Height="40" Width="200"/>
+            
             <TextBox 
 
                 x:Name="BackupDestination_Textbox" 
@@ -65,30 +91,9 @@
                 Click="Files_Explorer_2" 
                 Width="30" 
                 Background="White"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
-        </Grid>
-        <TextBlock
-            Name="BackupNameCreateTextbox"
-            Text="Name"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            Foreground="White" FontWeight="Bold" Margin="10,89,0,0" Height="40" Width="200"/>
-        <TextBlock
-            Name="BackupSourceCreateTextbox"
-            Text="Backup Source"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            Foreground="White" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="200"/>
-        <TextBlock 
-            Name="BackupDestinationCreateTextbox"
-            Text="Backup Destination"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            Foreground="White" FontWeight="Bold" Margin="12,266,0,0" Height="40" Width="200"/>
-        <TextBlock 
+
+
+            <TextBlock 
             Name="BackupTypeCreateTextbox"
             Text="Type"
             HorizontalAlignment="Left"
@@ -96,22 +101,26 @@
             FontSize="20"
             Foreground="White" FontWeight="Bold" Margin="12,367,0,0" Height="40" Width="200"/>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,412,0,0" Height="45">
-            <!-- Differential -->
-            <RadioButton 
-        x:Name="radioButtonDifferentiale" 
-        GroupName="ThemeOptions" 
-        Style="{StaticResource RadioButtonTheme}"/>
-            <TextBlock  Text="Differential" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="White" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,412,0,0" Height="45">
+                <!-- Differential -->
+                <RadioButton 
+                x:Name="radioButtonDifferentiale" 
+                GroupName="ThemeOptions" 
+                Style="{StaticResource RadioButtonTheme}"/>
+                <TextBlock  Text="Differential" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+                Foreground="White" FontWeight="Bold"/>
 
-            <!-- Full -->
-            <RadioButton 
-        x:Name="radioButtonTypeFull" 
-        GroupName="ThemeOptions" 
-        Style="{StaticResource RadioButtonTheme}" Cursor=""/>
-            <TextBlock Text="Full" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="White" FontWeight="Bold"/>
-        </StackPanel>
+                <!-- Full -->
+                <RadioButton 
+                x:Name="radioButtonTypeFull" 
+                GroupName="ThemeOptions" 
+                Style="{StaticResource RadioButtonTheme}" Cursor=""/>
+                <TextBlock Text="Full" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
+                Foreground="White" FontWeight="Bold"/>
+            </StackPanel>
+
+        </Grid>
+        
+       
     </Grid>
 </UserControl>
