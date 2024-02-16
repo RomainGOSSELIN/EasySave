@@ -16,7 +16,7 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Foreground="White"
-                                       FontSize="30"
+                                       FontSize="25"
                                        />
                         </Grid>
                     </ControlTemplate>
