@@ -1,5 +1,7 @@
 ﻿using System;
 using EasySaveWPF.Core;
+using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Services.Interfaces;
 
 
 namespace EasySaveWPF.ViewModel
@@ -9,10 +11,12 @@ namespace EasySaveWPF.ViewModel
 
         public RelayCommand BackupViewCommand { get; set; }
         public RelayCommand SettingsViewCommand { get; set; }
+        public RelayCommand CreateBackupViewCommand { get; set; }
 
 
         public BackupViewModel BackupVM { get; set; }
         public SettingsViewModel SettingsVM { get; set; }
+        public CreateBackupViewModel CreateBackupVM { get; set; }
 
         private object _currentview;
 
@@ -27,10 +31,12 @@ namespace EasySaveWPF.ViewModel
 
         }
 
-        public MainViewModel()
+        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService _backupJobService,IBackupService _backupService)
         {
-            BackupVM = new BackupViewModel();
+            BackupVM = new BackupViewModel(loggerFactory, _backupJobService, _backupService);
             SettingsVM = new SettingsViewModel();
+            CreateBackupVM = new CreateBackupViewModel();
+
             CurrentView = BackupVM;
 
             BackupViewCommand = new RelayCommand(o =>
@@ -41,6 +47,11 @@ namespace EasySaveWPF.ViewModel
             SettingsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = SettingsVM;
+            });
+
+            CreateBackupViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = CreateBackupVM;
             });
         }
     }

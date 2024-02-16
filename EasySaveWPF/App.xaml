@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EasySaveWPF"
              xmlns:viewModel="clr-namespace:EasySaveWPF.ViewModel"
-                xmlns:view="clr-namespace:EasySaveWPF.View"
-Startup="OnStartup">
+             xmlns:view="clr-namespace:EasySaveWPF.View"
+             Startup="OnStartup">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/SearchBarTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonThemeCreate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:BackupViewModel}">
@@ -19,6 +20,10 @@ Startup="OnStartup">
 
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:Settings/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateBackupViewModel}">
+                <view:CreateBackupView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

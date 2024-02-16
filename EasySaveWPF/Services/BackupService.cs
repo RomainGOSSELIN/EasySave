@@ -78,8 +78,8 @@ namespace EasySaveWPF.Services
                 FileInfo originalFile = new FileInfo(sourceFile);
                 totalSizeTarget += originalFile.Length;
                 long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
-                Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
                 fileCount++;
+                Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
             }
         }
         private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles)
@@ -126,6 +126,7 @@ namespace EasySaveWPF.Services
             _stateLogService.UpdateStateLog(_currentBackupState);
             OnCurrentBackupStateChanged(_currentBackupState);
             File.Copy(sourceFile, targetFilePath, true);
+
         }
 
 

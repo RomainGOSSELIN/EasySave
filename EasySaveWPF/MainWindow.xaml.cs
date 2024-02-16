@@ -28,7 +28,17 @@ namespace EasySaveWPF
             InitializeComponent();
 
 
-            DataContext = new JobListingViewModel(loggerFactory, _backupJobService, _backupService);
+            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService);
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

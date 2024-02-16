@@ -20,7 +20,8 @@ namespace EasySaveWPF.View
         public BackupView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.BackupViewModel();
+            //this.DataContext = new ViewModel.BackupViewModel();
+
 
         }
     }

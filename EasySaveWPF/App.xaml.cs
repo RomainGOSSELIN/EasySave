@@ -40,8 +40,7 @@ namespace EasySaveWPF
             services.AddSingleton<LoggerFactory>();
             services.AddSingleton<IBackupJobService, BackupJobService>();
             services.AddSingleton<IBackupService, BackupService>();
-            services.AddSingleton<MainWindow>();
-            services.AddSingleton<JobListingViewModel>();
+            services.AddSingleton<BackupViewModel>();
             services.AddSingleton<MainWindow>();
         }
 
