@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:t = "clr-namespace:EasySaveWPF.Resources"
       xmlns:local="clr-namespace:EasySaveWPF.View"
-      mc:Ignorable="d" d:DesignWidth="800" Height="500">
+      mc:Ignorable="d" d:DesignWidth="auto" Height="auto">
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <!-- Settings -->
@@ -23,13 +23,11 @@
         <!-- Language section -->
         <TextBlock
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
             FontSize="22"
-            Margin="10,29,0,0"
+            Margin="10,29,0,452"
             Foreground="{DynamicResource Text}" 
             Text="{x:Static t:Translation.option_lang}"
             FontWeight="Bold" 
-            Height="29" 
             Width="612"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,55,0,0" Height="45">
