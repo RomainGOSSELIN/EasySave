@@ -11,7 +11,7 @@ namespace EasySave.Controller
 {
     public class SettingsService : ISettingsService
     {
-        public void ChangeLanguage(LanguageEnum language)
+        public void ChangeOptions(LanguageEnum language, LogTypeEnum logtype)
         {
             string filePath = ".\\appsettings.json";
 
@@ -20,6 +20,7 @@ namespace EasySave.Controller
             JObject jsonObj = JObject.Parse(json);
 
             jsonObj["AppConfig"]["Language"] = Enum.GetName(language);
+            jsonObj["AppConfig"]["LogType"] = Enum.GetName(logtype);
 
             File.WriteAllText(filePath, jsonObj.ToString());
         }

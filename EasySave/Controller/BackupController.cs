@@ -184,9 +184,9 @@ namespace EasySave.Controller
             return result;
         }
 
-        public void ChangeLanguage(LanguageEnum language)
+        public void ChangeOptions(LanguageEnum language, LogTypeEnum logType)
         {
-            _settingsService.ChangeLanguage(language);
+            _settingsService.ChangeOptions(language, logType);
         }
 
 

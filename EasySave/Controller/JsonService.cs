@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using EasySave.Model.LogFactory;
+using Newtonsoft.Json;
 
 namespace EasySave.Controller
 {
-    internal class JsonService
+    public class JsonService : ILogger
     {
         public List<T> GetLog<T>(string directory)
         {

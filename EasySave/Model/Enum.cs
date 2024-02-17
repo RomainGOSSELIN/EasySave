@@ -22,5 +22,10 @@ namespace EasySave.Model
             full,
             differential
         };
+        public enum LogTypeEnum
+        {
+            json,
+            xaml
+        };  
     }
 }

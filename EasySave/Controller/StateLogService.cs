@@ -1,5 +1,6 @@
 ﻿using EasySave.Controller.Interfaces;
 using EasySave.Model;
+using EasySave.Model.LogFactory;
 using EasySave.Controller;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EasySave.Model.Enum;
 
 namespace EasySave.Controller
 {
@@ -14,13 +16,17 @@ namespace EasySave.Controller
 
     {
         private readonly IConfiguration _configuration;
-        private readonly JsonService _jsonService = new JsonService();
-        private string _stateLogPath;
+        private readonly ILogger _logService;
+        private readonly string _stateLogPath;
+        private readonly LogTypeEnum logType;
+
         public StateLogService(IConfiguration configuration)
         {
             _configuration = configuration;
             _stateLogPath = _configuration["AppConfig:StatusFilePath"];
+            _logService = LoggerFactory.CreateLogger(logType);
         }
+
         public void SaveStateLog(string state, string directory)
         {
             string contenu = state;
@@ -29,30 +35,30 @@ namespace EasySave.Controller
         public void CreateStateLog(BackupJob job)
         {
 
-            List<BackupState> state = _jsonService.GetLog<BackupState>(_stateLogPath);
+            List<BackupState> state = _logService.GetLog<BackupState>(_stateLogPath);
 
             var newstate = new BackupState(job.Id, job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")), "END",0,0,0,0,"","");
 
             state.Add(newstate);
 
-            _jsonService.SaveLog(state, _stateLogPath);
+            _logService.SaveLog(state, _stateLogPath);
 
         }
 
         public void DeleteStateLog(int idToDelete) {
 
-            List<BackupState> state = _jsonService.GetLog<BackupState>(_stateLogPath);
+            List<BackupState> state = _logService.GetLog<BackupState>(_stateLogPath);
 
             state.RemoveAll(x => x.Id == idToDelete);
 
             UpdateIds(state);
 
-            _jsonService.SaveLog(state, _stateLogPath);
+            _logService.SaveLog(state, _stateLogPath);
         }
 
         public void UpdateStateLog(BackupState state)
         {
-            List<BackupState> states = _jsonService.GetLog<BackupState>(_stateLogPath);
+            List<BackupState> states = _logService.GetLog<BackupState>(_stateLogPath);
 
             var stateToUpdate = states.FirstOrDefault(x => x.Id == state.Id);
 
@@ -68,7 +74,7 @@ namespace EasySave.Controller
                 stateToUpdate.TargetFilePath = state.TargetFilePath;
             }
 
-            _jsonService.SaveLog(states, _stateLogPath);
+            _logService.SaveLog(states, _stateLogPath);
         }
 
         private void UpdateIds(List<BackupState> states)

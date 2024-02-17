@@ -126,7 +126,12 @@ class Program
         var lang = new Option<LanguageEnum>(
            aliases: ["--lang", "-l"],
            description: Resources.Translation.option_lang)
-        { IsRequired = true };
+        { IsRequired = false };
+
+        var logtype = new Option<LogTypeEnum>(
+            aliases: ["--logtype", "-lt"],
+            description: "Pour choisir le format des fichiers logs")
+        { IsRequired = false };
 
         #endregion
 
@@ -157,15 +162,16 @@ class Program
         {
                 id,
         };
-        var languageCommand = new Command("options", Resources.Translation.desc_options)
+        var optionsCommand = new Command("options", Resources.Translation.desc_options)
         {
-                lang
+                lang,
+                logtype
         };
 
         rootCommand.AddCommand(runCommand);
         rootCommand.AddCommand(createCommand);
         rootCommand.AddCommand(showCommand);
-        rootCommand.AddCommand(languageCommand);
+        rootCommand.AddCommand(optionsCommand);
         rootCommand.AddCommand(deleteCommand);
 
         #endregion
@@ -187,10 +193,10 @@ class Program
             OnShowJob(idNotRequired, all);
         }, idNotRequired, all);
 
-        languageCommand.SetHandler((lang) =>
+        optionsCommand.SetHandler((lang, logtype) =>
         {
-            OnChangeLanguage(lang);
-        }, lang);
+            OnChangeOptions(lang, logtype);
+        }, lang, logtype);
 
         deleteCommand.SetHandler((id) =>
         {
@@ -266,9 +272,9 @@ class Program
         _backupController.CreateJob(jobName, source, dest, type);
     }
 
-    private static void OnChangeLanguage(LanguageEnum language)
+    private static void OnChangeOptions(LanguageEnum language, LogTypeEnum logType)
     {
-        _backupController.ChangeLanguage(language);
+        _backupController.ChangeOptions(language, logType);
         Console.WriteLine(Resources.Translation.change_at_restart);
     }
 
