@@ -196,10 +196,10 @@
     <value>The copy is finished! Total number of files copied: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destination of the backup job directory (in quotes)</value>
+    <value>Destination of the backup job directory</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Backup job directory source (in quotes)</value>
+    <value>Backup job directory source</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>The ID must be a number.</value>
@@ -266,5 +266,11 @@
   </data>
   <data name="theme" xml:space="preserve">
     <value>Theme</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Run all</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Running backup</value>
   </data>
 </root>

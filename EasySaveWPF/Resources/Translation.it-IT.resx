@@ -211,10 +211,10 @@
     <value>La copia è terminata! Numero totale di file copiati: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destinazione della directory del processo di backup (tra virgolette)</value>
+    <value>Destinazione della directory del processo di backup</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Origine della directory del processo di backup (tra virgolette)</value>
+    <value>Origine della directory del processo di backup</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>L'ID deve essere un numero.</value>
@@ -266,5 +266,11 @@
   </data>
   <data name="theme" xml:space="preserve">
     <value>Tema</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Eseguire tutti</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Esecuzione del backup</value>
   </data>
 </root>

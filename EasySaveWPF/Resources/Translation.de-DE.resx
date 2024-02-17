@@ -187,7 +187,7 @@
     <value>Nummer</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Ziel des Backup-Job-Verzeichnisses (in Anführungszeichen)</value>
+    <value>Ziel des Backup-Job-Verzeichnisses</value>
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Nummer des Sicherungsauftrags</value>
@@ -199,7 +199,7 @@
     <value>Name des Sicherungsauftrags</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Quelle des Sicherungsauftragsverzeichnisses (in Anführungszeichen)</value>
+    <value>Quelle des Sicherungsauftragsverzeichnisses</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Wählen Sie einen vollständigen Sicherungsauftrag</value>
@@ -263,5 +263,14 @@
   </data>
   <data name="theme" xml:space="preserve">
     <value>Thema</value>
+  </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Beim Speichern ist ein Fehler aufgetreten: {0}</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Alle ausführen</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Laufende Sicherung</value>
   </data>
 </root>

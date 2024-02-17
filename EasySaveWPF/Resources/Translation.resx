@@ -136,7 +136,7 @@
     <value>Afficher un travail de sauvegarde</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destination du répertoire du travail de sauvegarde (entre guillemets)</value>
+    <value>Destination du répertoire du travail de sauvegarde</value>
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Numéro du travail de sauvegarde</value>
@@ -148,7 +148,7 @@
     <value>Nom du travail de sauvegarde</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Source du répertoire du travail de sauvegarde (entre guillemets)</value>
+    <value>Source du répertoire du travail de sauvegarde</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Choix d'un travail de sauvegarde complet</value>
@@ -184,8 +184,7 @@
     <value>Le travail numéro {0} a été supprimé avec succès.</value>
   </data>
   <data name="create_job_success" xml:space="preserve">
-    <value> Le travail {0} a été créé à l'emplacement {1} depuis {2} à {3} avec un type {4}
-</value>
+    <value>Le travail {0} a été créé à l'emplacement {1} depuis {2} à {3} avec un type {4}</value>
   </data>
   <data name="job_doesnt_exist" xml:space="preserve">
     <value>Le travail {0} n'existe pas</value>
@@ -267,5 +266,11 @@
   </data>
   <data name="theme" xml:space="preserve">
     <value>Thème</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Tout exécuter</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Sauvegarde en cours d'exécution</value>
   </data>
 </root>

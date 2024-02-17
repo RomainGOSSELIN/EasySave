@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="change_at_restart" xml:space="preserve">
-    <value>Los cambios se realizarán en el próximo inicio.</value>
+    <value>Los cambios se realizarán en el próximo inicio</value>
   </data>
   <data name="desc_create" xml:space="preserve">
     <value>Crear un nuevo trabajo de copia de seguridad</value>
@@ -211,16 +211,16 @@
     <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destino del directorio de la tarea de respaldo (entre comillas)</value>
+    <value>Destino del directorio de la tarea de respaldo</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Fuente del directorio de tareas de respaldo (entre comillas)</value>
+    <value>Origen del directorio del trabajo de copia de seguridad</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>El DNI debe ser un número.</value>
   </data>
   <data name="path_must_contain_brackets" xml:space="preserve">
-    <value>Las rutas deben estar entre comillas.</value>
+    <value>Las rutas deben estar entre comillas</value>
   </data>
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>El directorio de origen y de destino no pueden ser el mismo.</value>
@@ -266,5 +266,11 @@
   </data>
   <data name="theme" xml:space="preserve">
     <value>Tema</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Ejecutar todo</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Copia de seguridad</value>
   </data>
 </root>
