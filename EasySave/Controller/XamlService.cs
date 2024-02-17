@@ -15,7 +15,7 @@ namespace EasySave.Controller
         {
             List<T> logs = new List<T>();
 
-            if (File.Exists(directory))
+            if (File.Exists(directory) && new FileInfo(directory).Length > 0)
             {
                 using (FileStream fs = new FileStream(directory, FileMode.Open))
                 {

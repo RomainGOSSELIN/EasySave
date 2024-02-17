@@ -21,6 +21,7 @@ namespace EasySave.Controller
 
             jsonObj["AppConfig"]["Language"] = Enum.GetName(language);
             jsonObj["AppConfig"]["LogType"] = Enum.GetName(logtype);
+            jsonObj["AppConfig"]["LogFilePath"] = logtype == LogTypeEnum.json ? ".\\Log.json" : ".\\Log.xml";
 
             File.WriteAllText(filePath, jsonObj.ToString());
         }

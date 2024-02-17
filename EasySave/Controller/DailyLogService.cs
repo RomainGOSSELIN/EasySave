@@ -17,13 +17,14 @@ namespace EasySave.Controller
         private readonly IConfiguration _configuration;
         private readonly ILogger _logService;
         private readonly string _dailyLogPath;
-        private readonly LogTypeEnum logType;
+        private readonly string _logType;
 
         public DailyLogService(IConfiguration configuration)
         {
             _configuration = configuration;
             _dailyLogPath = _configuration["AppConfig:LogFilePath"];
-            _logService = LoggerFactory.CreateLogger(logType);
+            _logType = _configuration["AppConfig:LogType"];
+            _logService = LoggerFactory.CreateLogger((LogTypeEnum)System.Enum.Parse(typeof(LogTypeEnum), _logType));
         }
 
         public void AddDailyLog(BackupJob job, long fileSize, int transferTime)

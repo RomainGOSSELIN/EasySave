@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static EasySave.Model.Enum;
+using System.Globalization;
 
 namespace EasySave.Controller
 {
@@ -37,7 +38,7 @@ namespace EasySave.Controller
 
             List<BackupState> state = _logService.GetLog<BackupState>(_stateLogPath);
 
-            var newstate = new BackupState(job.Id, job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")), "END",0,0,0,0,"","");
+            var newstate = new BackupState(job.Id, job.Name, DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), CultureInfo.InvariantCulture), "END",0,0,0,0,"","");
 
             state.Add(newstate);
 
@@ -64,7 +65,7 @@ namespace EasySave.Controller
 
             if (stateToUpdate != null)
             {
-                stateToUpdate.Timestamp = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"));
+                stateToUpdate.Timestamp = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), CultureInfo.InvariantCulture);
                 stateToUpdate.State = state.State;
                 stateToUpdate.NbFilesLeftToDo = state.NbFilesLeftToDo;
                 stateToUpdate.NbFilesSizeLeftToDo = state.NbFilesSizeLeftToDo;
