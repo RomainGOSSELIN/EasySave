@@ -65,20 +65,45 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Resources\Translation.Designer.cs">
-      <DependentUpon>Translation.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DependentUpon>Translation.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\TranslationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TranslationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Theme\Theme.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Theme.settings</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Translation.it.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Translation.resx">
       <LastGenOutput>Translation.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Translation.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Translation.fr-FR.resx">
+      <LastGenOutput>Translation.fr-FR.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\TranslationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>TranslationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Theme\Theme.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Theme.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

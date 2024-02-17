@@ -5,8 +5,10 @@ using EasySaveWPF.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices.JavaScript;
 using System.Windows;
@@ -29,7 +31,6 @@ namespace EasySaveWPF
 
             _configuration = builder.Build();
 
-
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
         }
@@ -48,10 +49,12 @@ namespace EasySaveWPF
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            string langCode = EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
+            EasySaveWPF.Theme.AppTheme.ChangeTheme(new Uri("Theme/"+EasySaveWPF.Theme.Theme.Default.selectedTheme+".xaml", UriKind.Relative));
             var mainWindow = serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
         }
-        
     }
-
 }

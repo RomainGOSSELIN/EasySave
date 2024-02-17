@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
+
 // Pour l'explorateur de fichiers
 using Microsoft.Win32;
 
@@ -19,11 +22,15 @@ namespace EasySaveWPF.View
 {
     public partial class Settings : UserControl
     {
+        private ServiceProvider serviceProvider;
         public Settings()
         {
             InitializeComponent();
 
             this.DataContext = new ViewModel.SettingsViewModel();
+            SetRadioButtonLanguageState();
+            SetRadioButtonThemeState();
+
         }
 
         private void RadioButtonLightTheme_Checked(object sender, RoutedEventArgs e)
@@ -47,7 +54,32 @@ namespace EasySaveWPF.View
 
         private void Language_Choice(object sender, RoutedEventArgs e)
         {
+            string selectedLang = ((RadioButton)sender).Content.ToString();
+            //Check if selected language is different from current language
+            if (selectedLang != EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode)
+            {
+                //Set the default language with the selected
+                EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode = selectedLang;
+                EasySaveWPF.Resources.TranslationSettings.Default.Save();
+                MessageBox.Show(EasySaveWPF.Resources.Translation.app_shutdown_language_changed);
+                //Open an another time the app (Need Build)
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                //Clear this instance
+                Application.Current.Shutdown();
+            }
+        }
 
+        private void SetRadioButtonLanguageState()
+        {
+            //Get the language parameter
+            string laguageSelected = EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode;
+
+            //Check the good radioButton
+            Language_Choice_French.IsChecked = laguageSelected == Language_Choice_French.Content.ToString();
+            Language_Choice_English.IsChecked = laguageSelected == Language_Choice_English.Content.ToString();
+            Language_Choice_Deutsch.IsChecked = laguageSelected == Language_Choice_Deutsch.Content.ToString();
+            Language_Choice_Italian.IsChecked = laguageSelected == Language_Choice_Italian.Content.ToString();
+            Language_Choice_Spanish.IsChecked = laguageSelected == Language_Choice_Spanish.Content.ToString();
         }
 
         private void PathBusinessSoftware_Changed(object sender, TextChangedEventArgs e)
@@ -132,6 +164,24 @@ namespace EasySaveWPF.View
                 string filePath = openFileDialog.FileName;
                 PathBusinessSoftware.Text = filePath; // Affecte le chemin du fichier à la TextBox
             }
+        }
+
+        private void Theme_Choice(object sender, RoutedEventArgs e)
+        {
+            string selectedTheme = ((RadioButton)sender).Content.ToString();
+
+            EasySaveWPF.Theme.Theme.Default.selectedTheme = selectedTheme;
+            EasySaveWPF.Theme.AppTheme.ChangeTheme(new Uri("Theme/" + selectedTheme + ".xaml", UriKind.Relative));
+        }
+
+        private void SetRadioButtonThemeState()
+        {
+            //Get the theme parameter
+            string themeSelected = EasySaveWPF.Theme.Theme.Default.selectedTheme;
+
+            //Check the good radioButton
+            radioButtonDarkTheme.IsChecked = themeSelected == radioButtonDarkTheme.Content.ToString();
+            radioButtonLightTheme.IsChecked = themeSelected == radioButtonLightTheme.Content.ToString();
         }
     }   
 }
