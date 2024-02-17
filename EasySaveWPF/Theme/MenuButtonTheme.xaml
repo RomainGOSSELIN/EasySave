@@ -11,14 +11,27 @@
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
 
-                            <TextBlock Text="{TemplateBinding Property=Content}"
-                                       Height="60"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Margin="0,25,0,0"
-                                       Foreground="{DynamicResource Text}"
-                                       FontSize="25"
-                                       />
+                            <TextBlock 
+                            Text="{TemplateBinding Property=Content}"
+                            Height="60"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="0,25,0,0"
+                            FontSize="25">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{DynamicResource Text}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}" Value="True">
+                                                <Setter Property="Foreground" Value="{DynamicResource TextButtonMenu}" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}" Value="True">
+                                                <Setter Property="Foreground" Value="{DynamicResource TextButtonMenu}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style> 
+                                </TextBlock.Style>
+                            </TextBlock>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -32,11 +45,13 @@
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MenuButton}"/>
-            </Trigger>
+            </Trigger>  
 
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MenuButton}"/>
+
             </Trigger>
+           
 
         </Style.Triggers>
         

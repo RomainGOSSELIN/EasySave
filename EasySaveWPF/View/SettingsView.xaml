@@ -211,8 +211,15 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
                 Content="Light"
                 Checked="Theme_Choice"
                 />
-            <TextBlock  Text="{x:Static t:Translation.light}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White" CornerRadius="5" BorderBrush="#0D0C27" BorderThickness="1">
+                    <TextBlock Text="{x:Static t:Translation.light}" FontSize="13"
+               Foreground="Black" FontWeight="Bold"
+               Width="50" Height="25" VerticalAlignment="Center"
+               HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+                </Border>
+            </StackPanel>
+
 
             <!-- Dark Theme -->
             <RadioButton 
@@ -222,8 +229,15 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
                 Content="Dark"
                 Checked="Theme_Choice"
                 />
-            <TextBlock  Text="{x:Static t:Translation.dark}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="#0D0C27" CornerRadius="5" BorderBrush="White" BorderThickness="1">
+                    <TextBlock Text="{x:Static t:Translation.dark}" FontSize="13"
+   Foreground="White" FontWeight="Bold"
+   Width="50" Height="25" VerticalAlignment="Center"
+   HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+                </Border>
+            </StackPanel>
+       
         </StackPanel>
 
     </Grid>
