@@ -1,6 +1,7 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Diagnostics;
 using System.IO;
 using static EasySaveWPF.Model.Enum;
@@ -120,13 +121,40 @@ namespace EasySaveWPF.Services
         {
             FileInfo fileInfo = new FileInfo(sourceFile);
             string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
-            Directory.CreateDirectory(Path.GetDirectoryName(targetFilePath));
             int nbFilesLeftToDo = totalFilesToCopy - fileCount;
             _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
             _stateLogService.UpdateStateLog(_currentBackupState);
             OnCurrentBackupStateChanged(_currentBackupState);
-            File.Copy(sourceFile, targetFilePath, true);
+            try
+            {
 
+            Process cryptoSoft = new Process();
+            cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
+            cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
+            cryptoSoft.StartInfo.CreateNoWindow = true;
+            cryptoSoft.EnableRaisingEvents = true;
+            cryptoSoft.Exited += ExitEvent;
+            cryptoSoft.Start();
+            cryptoSoft.WaitForExit();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void ExitEvent(object sender, EventArgs e)
+        {
+            Process process = (Process)sender;
+
+            if (process.ExitCode == 0)
+            {
+                Console.WriteLine("Le processus s'est terminé avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Le processus s'est terminé avec un code de sortie différent de zéro.");
+            }
         }
 
 
