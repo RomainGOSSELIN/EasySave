@@ -56,7 +56,7 @@
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
-                            Content="{Binding CurrentView}" Width="700" Height="565"/>
+                            Content="{Binding CurrentView}" Width="auto" Height="auto"/>
 
         </Grid>
     </Border>
