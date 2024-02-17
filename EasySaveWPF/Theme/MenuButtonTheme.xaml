@@ -16,7 +16,7 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Margin="0,25,0,0"
-                                       Foreground="White"
+                                       Foreground="{DynamicResource Text}"
                                        FontSize="25"
                                        />
                         </Grid>
@@ -31,11 +31,11 @@
 
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#141429"/>
+                <Setter Property="Background" Value="{DynamicResource MenuButton}"/>
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#141429"/>
+                <Setter Property="Background" Value="{DynamicResource MenuButton}"/>
             </Trigger>
 
         </Style.Triggers>

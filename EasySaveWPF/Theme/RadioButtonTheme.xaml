@@ -3,21 +3,21 @@
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
        TargetType="{x:Type RadioButton}"
        x:Key="RadioButtonTheme">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource Text}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Grid>
-                        <Ellipse x:Name="OuterCircle" Width="25" Height="25" Stroke="White" Margin="10,0,15,0" StrokeThickness="2" Fill="Transparent"/>
-                        <Ellipse x:Name="InnerCircle" Width="17" Height="17" Fill="White" Margin="10,0,15,0" Visibility="Collapsed"/>
+                        <Ellipse x:Name="OuterCircle" Width="25" Height="25" Stroke="{DynamicResource RadioButton}" Margin="10,0,15,0" StrokeThickness="2" Fill="Transparent"/>
+                        <Ellipse x:Name="InnerCircle" Width="17" Height="17" Fill="{DynamicResource RadioButton}" Margin="10,0,15,0" Visibility="Collapsed"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="InnerCircle" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="OuterCircle" Property="Stroke" Value="Gray"/>
+                            <Setter TargetName="OuterCircle" Property="Stroke" Value="{DynamicResource RadioButtonOuterCircle}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
