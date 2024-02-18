@@ -50,7 +50,7 @@ namespace EasySaveWPF.Commands
             {
                 Process[] processes = Process.GetProcessesByName(_processName);
 
-                if (processes.Length == 0)
+                if (processes.Length == 0 || _processName == "")
                 {
 
                     if (job != null)

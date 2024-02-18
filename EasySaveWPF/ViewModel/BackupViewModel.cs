@@ -8,7 +8,7 @@ using EasySaveWPF.Core;
 using EasySaveWPF.Commands;
 namespace EasySaveWPF.ViewModel
 {
-    class BackupViewModel : ViewModelBase
+    public class BackupViewModel : ViewModelBase
     {
         private LoggerFactory _loggerFactory;
         private IBackupJobService _backupJobService;
@@ -25,6 +25,7 @@ namespace EasySaveWPF.ViewModel
         public ICommand DeleteCommand { get; set; }
         public ICommand RunCommand { get; set; }
         public ICommand RunAllCommand { get; set; }
+        public ICommand RunSomeCommand { get; set; }
 
         private BackupState _currentStateBackup;
         public BackupState CurrentStateBackup
@@ -65,6 +66,48 @@ namespace EasySaveWPF.ViewModel
             }
         }
 
+        private int _toJob;
+        public int ToJob
+        {
+            get
+            {
+                return _toJob;
+            }
+            set
+            {
+                _toJob = value;
+                OnPropertyChanged(nameof(ToJob));
+            }
+        }
+
+        private int _fromJob;
+        public int FromJob
+        {
+            get
+            {
+                return _fromJob;
+            }
+            set
+            {
+                _fromJob = value;
+                OnPropertyChanged(nameof(FromJob));
+            }
+        }
+
+        private string _runOperation;
+        public string RunOperation
+        {
+            get
+            {
+                return _runOperation;
+            }
+            set
+            {
+                _runOperation = value;
+                OnPropertyChanged(nameof(RunOperation));
+            }
+        }
+
         public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
         {
             _loggerFactory = loggerFactory;
@@ -79,7 +122,7 @@ namespace EasySaveWPF.ViewModel
             DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
             RunCommand = new RunJobCommand(_backupService, _dailyLogService);
             RunAllCommand = new RunAllJobCommand(_backupService, _backupJobs, _dailyLogService);
-
+            RunSomeCommand = new RunSomeJobCommand(backupService, _backupJobs, _dailyLogService , this);
         }
 
         private void BackupService_CurrentStateChanged(object? sender, BackupState e)

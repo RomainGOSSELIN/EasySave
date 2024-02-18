@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CryptoSoft\config.json" />
     <None Remove="Images\ajouter.png" />
     <None Remove="Images\BackArrow.png" />
     <None Remove="Images\CheckArrow.png" />
@@ -31,6 +32,9 @@
     <Resource Include="Images\BackArrow.png" />
     <Resource Include="Images\CheckArrow.png" />
     <Resource Include="Images\france.png" />
+    <Content Include="CryptoSoft\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="logoES_v2.ico" />
     <Resource Include="Images\germany.png" />
     <Resource Include="Images\italy.png" />
