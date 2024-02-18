@@ -3,6 +3,7 @@ using EasySaveWPF.Services.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using static EasySaveWPF.Model.Enum;
 
 namespace EasySaveWPF.Services
@@ -33,7 +34,15 @@ namespace EasySaveWPF.Services
             {
                 if (!Directory.Exists(job.SourceDir))
                 {
-                    Console.WriteLine(Resources.Translation.source_directory_doesnt_exist);
+
+                    string messageBoxText = Resources.Translation.source_directory_doesnt_exist;
+                    string caption = "Erreur";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Warning;
+
+                    MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+
+                    Console.WriteLine();
                     return;
                 }
 

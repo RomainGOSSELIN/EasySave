@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EasySaveWPF.Commands
 {
@@ -45,6 +46,9 @@ namespace EasySaveWPF.Commands
         {
             if (parameter is BackupJob job)
             {
+                if (Directory.Exists(job.SourceDir))
+                {
+
                 var stopwatch = new Stopwatch();
                 var FileSize = GetDirectorySize(job.SourceDir);
 
@@ -52,6 +56,16 @@ namespace EasySaveWPF.Commands
                 await Task.Run(() => _backupService.ExecuteBackupJob(job));
                 stopwatch.Stop();
                 _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds);
+                }
+                else
+                {
+                    string message = Resources.Translation.source_directory_doesnt_exist;
+                    string caption = $"Erreur travail {job.Name}";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Warning;
+
+                    MessageBox.Show(message, caption, button, icon);
+                }
             }
         }
         public long GetDirectorySize(string path)
