@@ -11,4 +11,5 @@
     <SolidColorBrush Color="#000" x:Key="Text"></SolidColorBrush>
     <SolidColorBrush Color="#fff" x:Key="ReverseText"></SolidColorBrush>
     <SolidColorBrush Color="#fff" x:Key="TextButtonMenu"></SolidColorBrush>
+    <SolidColorBrush Color="#46629A" x:Key="ButtonXtoY"></SolidColorBrush>
 </ResourceDictionary>

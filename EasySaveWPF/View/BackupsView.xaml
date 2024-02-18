@@ -83,7 +83,7 @@
                    Grid.Row="0"
                    FontWeight="Bold" Width="118"/>
 
-        <TextBox Width="250"
+            <TextBox Width="250"
                      Height="30"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
@@ -91,7 +91,10 @@
                      Margin="250,0,0,0"
                      Style="{StaticResource SearchBar}"/>
 
-        <StackPanel Orientation="Horizontal"
+           
+     
+
+            <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Grid.Row="0"
@@ -101,8 +104,36 @@
                     Width="120"
                     Height="30"
                     Style="{StaticResource ButtonTheme}" />
-        </StackPanel>
 
+            
+            </StackPanel>
+        <Border   Width="150" Background="{DynamicResource ButtonXtoY}" BorderBrush="{DynamicResource ButtonXtoY}" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34" Margin="0,0,10,35">
+            <StackPanel 
+                Background="{DynamicResource ButtonXtoY}" 
+                Margin= "0,0,0,0" 
+                Orientation="Horizontal" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right">
+            <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <Button Width="15"  Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                    <Button.Content>
+                        <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </Border>
+            <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <TextBox Width="25" Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
+            </Border>
+            <ComboBox Width="45" Margin="5" Background="White" BorderBrush="White">
+                <ComboBoxItem Content="&amp;&amp;"/>
+                <ComboBoxItem Content="||"/>
+            </ComboBox>
+            <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
+            </Border>
+            
+            </StackPanel>
+        </Border>
 
         <DataGrid ItemsSource="{Binding BackupJobs}" 
                   Background="#252526" 
