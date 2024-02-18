@@ -121,7 +121,7 @@
     <value>⚙️ Einstellungen</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Speichern</value>
+    <value>➕ Hinzufügen Backup</value>
   </data>
   <data name="backup_success" xml:space="preserve">
     <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>
@@ -187,7 +187,7 @@
     <value>Nummer</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Ziel des Backup-Job-Verzeichnisses (in Anführungszeichen)</value>
+    <value>Ziel des Backup-Job-Verzeichnisses</value>
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Nummer des Sicherungsauftrags</value>
@@ -199,7 +199,7 @@
     <value>Name des Sicherungsauftrags</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Quelle des Sicherungsauftragsverzeichnisses (in Anführungszeichen)</value>
+    <value>Quelle des Sicherungsauftragsverzeichnisses</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Wählen Sie einen vollständigen Sicherungsauftrag</value>
@@ -232,13 +232,13 @@
     <value>Willkommen bei der EasySave-Backup-Verwaltungssoftware. Schreiben Sie 'exit' zum Beenden.</value>
   </data>
   <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>Die App wird heruntergefahren, um die Sprachänderung anzuwenden.</value>
+    <value>Die App wird heruntergefahren, um die Sprachänderung zu übernehmen.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Backups</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="business_software" xml:space="preserve">
-    <value>Business Software</value>
+    <value>Geschäfts-Software</value>
   </data>
   <data name="add_or_remove_encryption" xml:space="preserve">
     <value>Hinzufügen / Entfernen von zu verschlüsselnden Erweiterungen</value>

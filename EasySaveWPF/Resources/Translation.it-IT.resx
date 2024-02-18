@@ -211,10 +211,10 @@
     <value>La copia è terminata! Numero totale di file copiati: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destinazione della directory del processo di backup (tra virgolette)</value>
+    <value>Destinazione della directory del processo di backup</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Origine della directory del processo di backup (tra virgolette)</value>
+    <value>Origine della directory del processo di backup</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>L'ID deve essere un numero.</value>
@@ -235,7 +235,7 @@
     <value>➕ Aggiungere Backup</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Sauvegardes</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="app_shutdown_language_changed" xml:space="preserve">
     <value>L'applicazione si spegnerà per applicare il cambio di lingua.</value>
