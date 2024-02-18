@@ -208,7 +208,7 @@
     <value>El archivo {0} excede el tamaño máximo permitido.</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>¡La copia está terminada! Número total de archivos copiados: {0}</value>
+    <value>¡La copia está terminada!</value>
   </data>
   <data name="option_dest" xml:space="preserve">
     <value>Destino del directorio de la tarea de respaldo</value>
@@ -272,5 +272,23 @@
   </data>
   <data name="running_backup" xml:space="preserve">
     <value>Copia de seguridad</value>
+  </data>
+  <data name="business_software_running" xml:space="preserve">
+    <value>Software empresarial en ejecución.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="creation" xml:space="preserve">
+    <value>Creación</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
+  <data name="name_empty" xml:space="preserve">
+    <value>Por favor ingresa un nombre</value>
+  </data>
+  <data name="target_empty" xml:space="preserve">
+    <value>Por favor ingrese un directorio de destino</value>
   </data>
 </root>

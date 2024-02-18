@@ -102,7 +102,7 @@
                     VerticalAlignment="Top"
                     Grid.Row="0"
                     Margin="0,40,10,0">
-            <Button Content="{x:Static t:Translation.running_backup}"
+            <Button Content="{x:Static t:Translation.run_all}"
                     Command="{Binding RunAllCommand}"
                     Width="120"
                     Height="30"

@@ -42,7 +42,8 @@
                 Margin="12,229,0,0" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
-                Width="309" />
+                Width="309"
+                />
             <Button 
                 x:Name="PathSource_Backup" 
                 Content="..." 

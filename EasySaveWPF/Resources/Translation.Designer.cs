@@ -124,6 +124,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Logiciel Métier en cours d&apos;exécution..
+        /// </summary>
+        public static string business_software_running {
+            get {
+                return ResourceManager.GetString("business_software_running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Vous ne pouvez pas créer plus de 5 travaux..
         /// </summary>
         public static string cant_create_more_job {
@@ -151,7 +160,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à La copie terminée ! Nombre total de fichiers copiés : {0}.
+        ///   Recherche une chaîne localisée semblable à La copie est terminée !.
         /// </summary>
         public static string copy_success {
             get {
@@ -165,6 +174,15 @@ namespace EasySaveWPF.Resources {
         public static string create_job_success {
             get {
                 return ResourceManager.GetString("create_job_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Création.
+        /// </summary>
+        public static string creation {
+            get {
+                return ResourceManager.GetString("creation", resourceCulture);
             }
         }
         
@@ -237,6 +255,15 @@ namespace EasySaveWPF.Resources {
         public static string destination {
             get {
                 return ResourceManager.GetString("destination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Erreur.
+        /// </summary>
+        public static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
             }
         }
         
@@ -318,6 +345,15 @@ namespace EasySaveWPF.Resources {
         public static string maxsize_error {
             get {
                 return ResourceManager.GetString("maxsize_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Veuillez renseigner un nom.
+        /// </summary>
+        public static string name_empty {
+            get {
+                return ResourceManager.GetString("name_empty", resourceCulture);
             }
         }
         
@@ -480,6 +516,24 @@ namespace EasySaveWPF.Resources {
         public static string source_directory_doesnt_exist {
             get {
                 return ResourceManager.GetString("source_directory_doesnt_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Succès.
+        /// </summary>
+        public static string success {
+            get {
+                return ResourceManager.GetString("success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Veuillez renseigner un répertoire de destination.
+        /// </summary>
+        public static string target_empty {
+            get {
+                return ResourceManager.GetString("target_empty", resourceCulture);
             }
         }
         
