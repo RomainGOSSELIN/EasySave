@@ -9,7 +9,6 @@
     <UserControl.Resources>
         <Style x:Key="StyledProgressBar" TargetType="ProgressBar">
             <Setter Property="Foreground" Value="Green"/>
-            <Setter Property="Background" Value="Green"/>
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Template">
@@ -151,7 +150,7 @@
                        Foreground="{DynamicResource Text}" 
                        FontSize="14"/>
             <TextBlock x:Name="currentFile" Text="{Binding CurrentStateBackup.SourceFilePath}" 
-           Foreground="White" 
+           Foreground="{DynamicResource Text}" 
            FontSize="14"/>
 
 
@@ -179,8 +178,8 @@
              Height="10" 
              Margin="0,10,0,0"
              Minimum="0" 
-             Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
-             Value="{Binding FileProgress, Mode=TwoWay}"
+             Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
+             Value="{Binding FileSizeProgress, Mode=TwoWay}"
              Style="{StaticResource StyledProgressBar}"/>
 
 
