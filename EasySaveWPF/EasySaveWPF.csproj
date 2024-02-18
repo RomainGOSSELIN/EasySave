@@ -43,7 +43,9 @@
     <Content Include="CryptoSoft\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="logoES_v2.ico" />
+    <Content Include="logoES_v2.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\germany.png" />
     <Resource Include="Images\italy.png" />
     <Resource Include="Images\logoBackup.png" />
@@ -74,7 +76,7 @@
 
   <ItemGroup>
     <Compile Update="Model\BackupJob.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

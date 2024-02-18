@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
+        "MsmKey" = "8:_35B03933C07546E3BB52E18216DFC73A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DC58F87A2A564477BED006CE2B09D964"
+        "MsmKey" = "8:_E4925E0F29B4454D85F4589025C5ED75"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,10 +122,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_818A1E8AF99A4939B98A4C501D708FE8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35B03933C07546E3BB52E18216DFC73A"
             {
-            "SourcePath" = "8:..\\EasySave\\EasySaveLogo.ico"
-            "TargetName" = "8:EasySaveLogo.ico"
+            "SourcePath" = "8:..\\EasySaveWPF\\logoES_v2.ico"
+            "TargetName" = "8:logoES_v2.ico"
             "Tag" = "8:"
             "Folder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
             "Condition" = "8:"
@@ -209,15 +209,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasySave"
-        "ProductCode" = "8:{6C47DF00-0BD6-4890-9426-13A2FE0160A0}"
-        "PackageCode" = "8:{F53C95A5-6535-4A5C-A011-920F0C606F27}"
+        "ProductCode" = "8:{0788B01C-BB6E-45A0-B0B3-559A66A32871}"
+        "PackageCode" = "8:{DE337782-ECA9-4B91-A4FE-6EFC9AF266C7}"
         "UpgradeCode" = "8:{24EE8E89-F21D-418D-838D-EB6DB85A5947}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:ProSoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -227,7 +227,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
+        "ARPPRODUCTICON" = "8:_35B03933C07546E3BB52E18216DFC73A"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -330,7 +330,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3792DE61EF004BF1A6E7663858C920CD"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6A6E57A52B56485495A107804EA92A00"
             {
             "Name" = "8:EasySave"
             "Arguments" = "8:"
@@ -338,13 +338,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DC58F87A2A564477BED006CE2B09D964"
+            "Target" = "8:_E4925E0F29B4454D85F4589025C5ED75"
             "Folder" = "8:_BCFC431A100045FFB5927751078A3776"
             "WorkingFolder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
-            "Icon" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
+            "Icon" = "8:_35B03933C07546E3BB52E18216DFC73A"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FE57DF9580C04738A6D646A7D4915D4A"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6E34BCAF3AEB4036BFDB531783308EA3"
             {
             "Name" = "8:EasySave"
             "Arguments" = "8:"
@@ -352,10 +352,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DC58F87A2A564477BED006CE2B09D964"
+            "Target" = "8:_E4925E0F29B4454D85F4589025C5ED75"
             "Folder" = "8:_C19DDBA8F5A14514889FC5A08835C6FE"
             "WorkingFolder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
-            "Icon" = "8:_818A1E8AF99A4939B98A4C501D708FE8"
+            "Icon" = "8:_35B03933C07546E3BB52E18216DFC73A"
             "Feature" = "8:"
             }
         }
@@ -757,7 +757,35 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_61789911EC914B5291269B9E5E835210"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_44C85D25F5B44B52A8A5256477D01302"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{27E0BD53-1A02-4637-BC24-7F34A8CD7339}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_89020541850145FDBB9C97CFDBDE136D"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -778,16 +806,16 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
-            "OutputProjectGuid" = "8:{12AB8D96-4AB3-49A6-9338-C39586A18E34}"
+            "OutputGroupCanonicalName" = "8:DebugSymbolsProjectOutputGroupDependencies"
+            "OutputProjectGuid" = "8:{27E0BD53-1A02-4637-BC24-7F34A8CD7339}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DC58F87A2A564477BED006CE2B09D964"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D33EEB67AD61440ABC8E7B911226DAC1"
             {
-            "SourcePath" = "8:..\\EasySave\\obj\\Release\\net8.0\\apphost.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
@@ -806,8 +834,36 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:SatelliteDllsProjectOutputGroupDependencies"
+            "OutputProjectGuid" = "8:{27E0BD53-1A02-4637-BC24-7F34A8CD7339}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E4925E0F29B4454D85F4589025C5ED75"
+            {
+            "SourcePath" = "8:..\\EasySaveWPF\\obj\\Release\\net8.0-windows\\apphost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_972290D1FFB146B5B93BF98D797CEAEB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{12AB8D96-4AB3-49A6-9338-C39586A18E34}"
+            "OutputProjectGuid" = "8:{27E0BD53-1A02-4637-BC24-7F34A8CD7339}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
