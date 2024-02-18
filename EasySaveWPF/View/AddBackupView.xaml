@@ -15,7 +15,7 @@
         <TextBlock 
            Name="AddBackup"
            Text="{x:Static t:Translation.add_backup_button}"
-           HorizontalAlignment="Center"
+           HorizontalAlignment="Left"
            VerticalAlignment="Top"
            FontSize="30"
            Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,10,0,0" Height="40" Width="780"/>
@@ -28,7 +28,7 @@
                 Height="40" 
                 Width="100" 
                 HorizontalAlignment="Left" 
-                Margin="40,508,0,0" 
+                Margin="12,508,0,0" 
                 VerticalAlignment="Top">
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
