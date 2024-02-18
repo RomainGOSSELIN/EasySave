@@ -30,17 +30,21 @@ namespace EasySaveWPF.Services
             encryptTime = 0;
             if (job == null)
             {
-                Console.WriteLine("Le travail de sauvegarde est vide.");
+                string message = Resources.Translation.copy_success;
+                string caption = $"";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+
+                MessageBox.Show(message, caption, button, icon);
                 return;
             }
-            Console.WriteLine(String.Format(Resources.Translation.job_execution, job.Name));
             try
             {
                 if (!Directory.Exists(job.SourceDir))
                 {
 
                     string messageBoxText = Resources.Translation.source_directory_doesnt_exist;
-                    string caption = "Erreur";
+                    string caption = Resources.Translation.error;
                     MessageBoxButton button = MessageBoxButton.OK;
                     MessageBoxImage icon = MessageBoxImage.Warning;
 

@@ -205,7 +205,7 @@
     <value>Une erreur s'est produite lors de la sauvegarde : {0}</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>La copie terminée ! Nombre total de fichiers copiés : {0}</value>
+    <value>La copie est terminée !</value>
   </data>
   <data name="copy_file" xml:space="preserve">
     <value>Copie du fichier : {0}</value>
@@ -272,5 +272,23 @@
   </data>
   <data name="running_backup" xml:space="preserve">
     <value>Sauvegarde en cours d'exécution</value>
+  </data>
+  <data name="business_software_running" xml:space="preserve">
+    <value>Logiciel Métier en cours d'exécution.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="creation" xml:space="preserve">
+    <value>Création</value>
+  </data>
+  <data name="name_empty" xml:space="preserve">
+    <value>Veuillez renseigner un nom</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="target_empty" xml:space="preserve">
+    <value>Veuillez renseigner un répertoire de destination</value>
   </data>
 </root>

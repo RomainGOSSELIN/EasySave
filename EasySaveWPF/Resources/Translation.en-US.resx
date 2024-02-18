@@ -193,7 +193,7 @@
     <value>File {0} exceeds the maximum allowed size.</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>The copy is finished! Total number of files copied: {0}</value>
+    <value>The copy is finished!</value>
   </data>
   <data name="option_dest" xml:space="preserve">
     <value>Destination of the backup job directory</value>
@@ -214,7 +214,8 @@
     <value>⚙️ Settings</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Add Backup</value>
+    <value>➕ Add 
+Backup</value>
   </data>
   <data name="source" xml:space="preserve">
     <value>Source</value>
@@ -272,5 +273,23 @@
   </data>
   <data name="running_backup" xml:space="preserve">
     <value>Running backup</value>
+  </data>
+  <data name="business_software_running" xml:space="preserve">
+    <value>Business software running.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="creation" xml:space="preserve">
+    <value>Creation</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="name_empty" xml:space="preserve">
+    <value>Please enter a name</value>
+  </data>
+  <data name="target_empty" xml:space="preserve">
+    <value>Please enter a destination directory</value>
   </data>
 </root>

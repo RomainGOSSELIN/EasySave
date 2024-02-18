@@ -121,7 +121,8 @@
     <value>⚙️ Einstellungen</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Hinzufügen Backup</value>
+    <value>➕ Hinzufügen 
+Backup</value>
   </data>
   <data name="backup_success" xml:space="preserve">
     <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>
@@ -136,7 +137,7 @@
     <value>Kopie der Datei: {0}</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>Gesamtzahl der kopierten Dateien: {0}</value>
+    <value>Die Kopie ist fertig!</value>
   </data>
   <data name="create_job_success" xml:space="preserve">
     <value>Job {0} wurde am Standort {1} von {2} bis {3} mit Typ {4} erstellt</value>
@@ -187,7 +188,7 @@
     <value>Nummer</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Ziel des Backup-Job-Verzeichnisses</value>
+    <value>Ziel des Sicherungsauftragsverzeichnisses</value>
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Nummer des Sicherungsauftrags</value>
@@ -272,5 +273,23 @@
   </data>
   <data name="running_backup" xml:space="preserve">
     <value>Laufende Sicherung</value>
+  </data>
+  <data name="business_software_running" xml:space="preserve">
+    <value>Unternehmenssoftware läuft.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="creation" xml:space="preserve">
+    <value>Schaffung</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="name_empty" xml:space="preserve">
+    <value>Bitte geben Sie einen Namen ein</value>
+  </data>
+  <data name="target_empty" xml:space="preserve">
+    <value>Bitte geben Sie ein Zielverzeichnis ein</value>
   </data>
 </root>

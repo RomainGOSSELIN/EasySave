@@ -157,7 +157,7 @@ namespace EasySaveWPF.View
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Sélectionnez un fichier";
-            openFileDialog.Filter = "Tous les fichiers (*.*)|*.*"; // Exemple de filtre pour tous les fichiers
+            openFileDialog.Filter = "exe files (*.exe)|*.exe"; 
 
             if (openFileDialog.ShowDialog() == true)
             {

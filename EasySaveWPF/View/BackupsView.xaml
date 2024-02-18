@@ -47,7 +47,7 @@
                             Padding="{TemplateBinding Padding}" 
                             SnapsToDevicePixels="True"
                             CornerRadius="8">
-                            <ScrollViewer Focusable="false" Name="DG_ScrollViewer">
+                            <ScrollViewer Focusable="false" Name="DG_ScrollViewer" HorizontalScrollBarVisibility="Auto">
                                 <ScrollViewer.Template>
                                     <ControlTemplate TargetType="{x:Type ScrollViewer}">
                                         <Grid>
@@ -68,9 +68,9 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
-        <Grid>
-          
+
+    <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -83,7 +83,9 @@
                    Margin="10,10,0,0"
                    HorizontalAlignment="Left"
                    Grid.Row="0"
-                   FontWeight="Bold" Width="118"/>
+                   FontWeight="Bold" Width="300"
+                   TextWrapping ="Wrap"/>
+            
 
         <!--  <TextBox Width="250"
                Height="30"
@@ -92,24 +94,24 @@
                VerticalAlignment="Center"
                Margin="250,0,0,0"
                Style="{StaticResource SearchBar}"/>  -->
-      
 
 
 
 
-            <StackPanel Orientation="Horizontal"
+
+        <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Grid.Row="0"
                     Margin="0,40,10,0">
-            <Button Content="{x:Static t:Translation.running_backup}"
+            <Button Content="{x:Static t:Translation.run_all}"
                     Command="{Binding RunAllCommand}"
                     Width="120"
                     Height="30"
                     Style="{StaticResource ButtonTheme}" />
 
-            
-            </StackPanel>
+
+        </StackPanel>
         <Border   Width="150" Background="{DynamicResource ButtonXtoY}" BorderBrush="{DynamicResource ButtonXtoY}" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34" Margin="0,0,10,35">
             <StackPanel 
                 Background="{DynamicResource ButtonXtoY}" 
@@ -117,25 +119,24 @@
                 Orientation="Horizontal" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Right">
-            <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <Button Width="15"  Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Command="{Binding DataContext.RunSomeCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
-                    <Button.Content>
-                        <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button.Content>
-                </Button>
-            </Border>
-            <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                <TextBox Text="{Binding FromJob}" Width="25" Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
-            </Border>
-                <ComboBox  SelectedValuePath="Content"
-                           SelectedValue="{Binding RunOperation, Mode=TwoWay}" Width="45" Margin="5" Background="White" BorderBrush="White">
-                <ComboBoxItem Content="et"/>
-                <ComboBoxItem Content="à"/>
-            </ComboBox>
-            <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <TextBox Text="{Binding ToJob}" Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
-            </Border>
-            
+                <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                    <Button Width="15"  Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                        <Button.Content>
+                            <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                </Border>
+                <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                    <TextBox Width="25" Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
+                </Border>
+                <ComboBox Width="45" Margin="5" Background="White" BorderBrush="White">
+                    <ComboBoxItem Content="et"/>
+                    <ComboBoxItem Content="à"/>
+                </ComboBox>
+                <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                    <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
+                </Border>
+
             </StackPanel>
         </Border>
 
@@ -150,16 +151,17 @@
                   Margin="10,10,10,29"  
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
+                  CanUserResizeColumns="True"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="SourceDir" Binding="{Binding SourceDir}" />
-                <DataGridTextColumn Header="TargetDir" Binding="{Binding TargetDir}" />
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="SourceDir" Binding="{Binding SourceDir}" Width="*" />
+                <DataGridTextColumn Header="TargetDir" Binding="{Binding TargetDir}" Width="*" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*" />
 
-                <DataGridTemplateColumn Header="Actions">
+                <DataGridTemplateColumn Header="Actions" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -237,8 +239,8 @@
             </TextBlock>
         </StackPanel>
 
-        </Grid>
-    
+    </Grid>
+
 </UserControl>
 
 

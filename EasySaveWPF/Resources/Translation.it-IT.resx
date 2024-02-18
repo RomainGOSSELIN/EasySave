@@ -208,7 +208,7 @@
     <value>Il file {0} supera la dimensione massima consentita.</value>
   </data>
   <data name="copy_success" xml:space="preserve">
-    <value>La copia è terminata! Numero totale di file copiati: {0}</value>
+    <value>La copia è terminata!</value>
   </data>
   <data name="option_dest" xml:space="preserve">
     <value>Destinazione della directory del processo di backup</value>
@@ -232,7 +232,8 @@
     <value>⚙️ Parametri</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Aggiungere Backup</value>
+    <value>➕ Aggiungere 
+Backup</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
@@ -272,5 +273,23 @@
   </data>
   <data name="running_backup" xml:space="preserve">
     <value>Esecuzione del backup</value>
+  </data>
+  <data name="business_software_running" xml:space="preserve">
+    <value>Software aziendale in esecuzione.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="creation" xml:space="preserve">
+    <value>Creazione</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Successo</value>
+  </data>
+  <data name="name_empty" xml:space="preserve">
+    <value>Inserisci un nome</value>
+  </data>
+  <data name="target_empty" xml:space="preserve">
+    <value>Inserisci una directory di destinazione</value>
   </data>
 </root>

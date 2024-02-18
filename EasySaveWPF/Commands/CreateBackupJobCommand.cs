@@ -38,11 +38,7 @@ namespace EasySaveWPF.Commands
             if (_backupJobService.CreateJob(_backupJob))
             {
                 _stateLogService.CreateStateLog(_backupJob);
-                var message = $"Creation job {_backupJob.Name} réussi";
-                var caption = "Creation";
-                var icon = MessageBoxImage.Information;
-                var button = MessageBoxButton.OK;
-                MessageBox.Show(message, caption, button, icon);
+
                 _viewModel.BackupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential);
             };
 
