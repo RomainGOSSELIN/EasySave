@@ -292,4 +292,19 @@ Sauvegarde</value>
   <data name="target_empty" xml:space="preserve">
     <value>Veuillez renseigner un répertoire de destination</value>
   </data>
+  <data name="header_id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="header_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="header_source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="header_target" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="header_type" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

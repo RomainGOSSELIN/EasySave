@@ -155,11 +155,11 @@
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn Header="SourceDir" Binding="{Binding SourceDir}" Width="*" />
-                <DataGridTextColumn Header="TargetDir" Binding="{Binding TargetDir}" Width="*" />
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_id}" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static t:Translation.header_name}" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_source}" Binding="{Binding SourceDir}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_target}" Binding="{Binding TargetDir}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding Type}" Width="*" />
 
                 <DataGridTemplateColumn Header="Actions" Width="*">
                     <DataGridTemplateColumn.CellTemplate>

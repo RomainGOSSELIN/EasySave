@@ -292,4 +292,19 @@ Backup</value>
   <data name="target_empty" xml:space="preserve">
     <value>Inserisci una directory di destinazione</value>
   </data>
+  <data name="header_id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="header_name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="header_source" xml:space="preserve">
+    <value>Fonte</value>
+  </data>
+  <data name="header_target" xml:space="preserve">
+    <value>Destinazione</value>
+  </data>
+  <data name="header_type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
 </root>

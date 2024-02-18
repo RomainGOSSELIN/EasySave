@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace EasySaveWPF.Commands
 {
@@ -20,6 +21,10 @@ namespace EasySaveWPF.Commands
         private string _processName;
         private readonly ObservableCollection<BackupJob> _backupJobs;
         private BackupViewModel _vm;
+        string message;
+        string caption;
+        MessageBoxButton button;
+        MessageBoxImage icon;
 
 
 
@@ -70,25 +75,42 @@ namespace EasySaveWPF.Commands
 
                         if (job != null)
                         {
-                            var stopwatch = new Stopwatch();
-                            var FileSize = GetDirectorySize(job.SourceDir);
 
-                            stopwatch.Start();
-                            await Task.Run(() => _backupService.ExecuteBackupJob(job));
-                            var encryptTime = _backupService.GetEncryptTime();
-                            stopwatch.Stop();
-                            _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+                            if (Directory.Exists(job.SourceDir))
+                            {
+                                var stopwatch = new Stopwatch();
+                                var FileSize = GetDirectorySize(job.SourceDir);
 
+                                stopwatch.Start();
+                                await Task.Run(() => _backupService.ExecuteBackupJob(job));
+                                var encryptTime = _backupService.GetEncryptTime();
+                                stopwatch.Stop();
+                                _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+
+
+                                message = Resources.Translation.backup_success;
+                                caption = Resources.Translation.success;
+                                button = MessageBoxButton.OK;
+                                icon = MessageBoxImage.Information;
+                                MessageBox.Show(message, caption, button, icon);
+                            }
+                            else
+                            {
+                                message = Resources.Translation.source_directory_doesnt_exist;
+                                caption = Resources.Translation.error;
+                                button = MessageBoxButton.OK;
+                                icon = MessageBoxImage.Warning;
+                                MessageBox.Show(message, caption, button, icon);
+                            }
                         }
                     }
                     else
                     {
-                        string messageBoxText = $"Logiciel Métier en cours d'exécution. Impossible de lancer {job.Name}";
-                        string caption = "Erreur";
-                        MessageBoxButton button = MessageBoxButton.OK;
-                        MessageBoxImage icon = MessageBoxImage.Warning;
-
-                        MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+                        message = Resources.Translation.business_software_running;
+                        caption = Resources.Translation.error;
+                        button = MessageBoxButton.OK;
+                        icon = MessageBoxImage.Warning;
+                        MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
                     }
                 }
             }
