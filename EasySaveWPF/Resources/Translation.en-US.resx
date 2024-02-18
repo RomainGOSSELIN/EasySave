@@ -214,7 +214,8 @@
     <value>⚙️ Settings</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Add Backup</value>
+    <value>➕ Add 
+Backup</value>
   </data>
   <data name="source" xml:space="preserve">
     <value>Source</value>
