@@ -91,21 +91,35 @@
                          Margin="0,10,0,0"
                          Minimum="0" 
                          Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
-                         Value="{Binding FileProgress, Mode=TwoWay}"></ProgressBar>
-            <TextBlock Text="File Copied / Total File" 
-                       Foreground="{DynamicResource Text}" 
+                         Value="{Binding FileProgress, Mode=TwoWay}">
+            </ProgressBar>
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
-                       HorizontalAlignment="Right"/>
+                       HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Nombre de fichiers {0} / {1}">
+                        <Binding Path="FileProgress" Mode="TwoWay"/>
+                        <Binding Path="CurrentStateBackup.TotalFilesToCopy"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+
+            </TextBlock>
             <ProgressBar x:Name="fileSizeProgress" 
                          Height="20" 
                          Margin="0,10,0,0"
                          Minimum="0" 
                          Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
                          Value="{Binding FileSizeProgress, Mode=TwoWay}"/>
-            <TextBlock Text="File Size Copied / Total File Size" 
-                       Foreground="{DynamicResource Text}" 
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
-                       HorizontalAlignment="Right"/>
+                       HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Taille des fichiers en octet {0} / {1}">
+                        <Binding Path="FileSizeProgress" Mode="TwoWay"/>
+                        <Binding Path="CurrentStateBackup.TotalFilesSize"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>
