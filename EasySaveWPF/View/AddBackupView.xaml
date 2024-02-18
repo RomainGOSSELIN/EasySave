@@ -89,7 +89,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
-            Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,266,0,0" Height="40" Width="778"/>
+            Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="12,266,0,0" Height="40" Width="778"/>
         <TextBlock Text="{x:Static t:Translation.type}"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
