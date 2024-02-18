@@ -1,11 +1,13 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
+using EasySaveWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EasySaveWPF.Commands
 {
@@ -14,12 +16,14 @@ namespace EasySaveWPF.Commands
         private readonly IBackupJobService _backupJobService;
         private readonly IStateLogService _stateLogService;
 
-        private BackupJob _backupJob;
+        private CreateBackupViewModel _viewModel;
 
-        public CreateBackupJobCommand(BackupJob backupJob, IBackupJobService backupJobService, IStateLogService stateLogService)
+        private BackupJob _backupJob => _viewModel.BackupJob;
+
+        public CreateBackupJobCommand(CreateBackupViewModel viewModel, IBackupJobService backupJobService, IStateLogService stateLogService)
         {
             //_backupJobService = backupJobService;
-            _backupJob = backupJob;
+            _viewModel = viewModel;
             _backupJobService = backupJobService;
             _stateLogService = stateLogService;
         }
@@ -34,7 +38,14 @@ namespace EasySaveWPF.Commands
             if (_backupJobService.CreateJob(_backupJob))
             {
                 _stateLogService.CreateStateLog(_backupJob);
+                var message = $"Creation job {_backupJob.Name} réussi";
+                var caption = "Creation";
+                var icon = MessageBoxImage.Information;
+                var button = MessageBoxButton.OK;
+                MessageBox.Show(message, caption, button, icon);
+                _viewModel.BackupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential);
             };
+
         }
     }
 }

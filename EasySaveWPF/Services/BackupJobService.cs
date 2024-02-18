@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
 using System;
-using Microsoft.Extensions.Configuration;
 using EasySaveWPF.Model.LogFactory;
 
 namespace EasySaveWPF.Services
@@ -16,14 +15,12 @@ namespace EasySaveWPF.Services
 
         public class BackupJobService : IBackupJobService
         {
-            private readonly IConfiguration _configuration;
             private static string _jobsFilePath;
             private static ILogger _logger;
             private static LoggerFactory loggerFactory = new LoggerFactory();
-            public BackupJobService(IConfiguration configuration)
+            public BackupJobService()
             {
-                _configuration = configuration;
-                _jobsFilePath = _configuration["AppConfig:JobsFilePath"];
+                _jobsFilePath = Properties.Settings.Default.JobsFilepath;
                 _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
             }
 

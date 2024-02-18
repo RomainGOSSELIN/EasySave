@@ -235,7 +235,7 @@
     <value>➕ Aggiungere Backup</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Sauvegardes</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="app_shutdown_language_changed" xml:space="preserve">
     <value>L'applicazione si spegnerà per applicare il cambio di lingua.</value>

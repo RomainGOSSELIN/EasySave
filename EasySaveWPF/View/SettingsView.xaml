@@ -6,6 +6,9 @@
       xmlns:t = "clr-namespace:EasySaveWPF.Resources"
       xmlns:local="clr-namespace:EasySaveWPF.View"
       mc:Ignorable="d" d:DesignWidth="auto" Height="auto">
+    <UserControl.Resources>
+        <local:StringToBooleanConverter x:Key="StringToBooleanConverter" />
+    </UserControl.Resources>
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <!-- Settings -->
@@ -67,6 +70,7 @@
             Width="695"/>
 
         <TextBox 
+            Text="{Binding BusinessSoftware}"
             x:Name="PathBusinessSoftware" 
             HorizontalAlignment="Left" 
             Margin="10,161,0,0" 
@@ -99,7 +103,8 @@
             <!-- JSON Format -->
             <RadioButton 
                 x:Name="LogsFormatJSON" 
-                GroupName="LogsFormatOptions" 
+                GroupName="LogsFormatOptions"
+                IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=json}"
                 Style="{StaticResource RadioButtonTheme}"/>
             <TextBlock  Text="JSON" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
@@ -108,6 +113,7 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             <RadioButton 
                 x:Name="LogsFormatXML" 
                 GroupName="LogsFormatOptions" 
+                IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=xml}"
                 Style="{StaticResource RadioButtonTheme}"/>
             <TextBlock  Text="XML" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
@@ -211,8 +217,15 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
                 Content="Light"
                 Checked="Theme_Choice"
                 />
-            <TextBlock  Text="{x:Static t:Translation.light}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White" CornerRadius="5" BorderBrush="#0D0C27" BorderThickness="1">
+                    <TextBlock Text="{x:Static t:Translation.light}" FontSize="13"
+               Foreground="Black" FontWeight="Bold"
+               Width="50" Height="25" VerticalAlignment="Center"
+               HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+                </Border>
+            </StackPanel>
+
 
             <!-- Dark Theme -->
             <RadioButton 
@@ -222,8 +235,15 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
                 Content="Dark"
                 Checked="Theme_Choice"
                 />
-            <TextBlock  Text="{x:Static t:Translation.dark}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="#0D0C27" CornerRadius="5" BorderBrush="White" BorderThickness="1">
+                    <TextBlock Text="{x:Static t:Translation.dark}" FontSize="13"
+   Foreground="White" FontWeight="Bold"
+   Width="50" Height="25" VerticalAlignment="Center"
+   HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+                </Border>
+            </StackPanel>
+       
         </StackPanel>
 
     </Grid>

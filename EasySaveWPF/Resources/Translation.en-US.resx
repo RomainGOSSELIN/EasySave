@@ -238,7 +238,7 @@
     <value>The application will shut down to apply the language change.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Backups</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Business Software</value>

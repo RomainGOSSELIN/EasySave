@@ -214,7 +214,7 @@
     <value>Destino del directorio de la tarea de respaldo</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Origen del directorio del trabajo de copia de seguridad</value>
+    <value>Fuente del directorio de tareas de respaldo</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>El DNI debe ser un número.</value>
@@ -238,7 +238,7 @@
     <value>La aplicación se apagará para aplicar el cambio de idioma.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Backups</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Software Empresarial</value>

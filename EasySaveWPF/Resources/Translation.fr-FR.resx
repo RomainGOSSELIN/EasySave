@@ -241,7 +241,7 @@
     <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Sauvegardes</value>
+    <value>🗃 Sauvegardes</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Logiciel Métier</value>

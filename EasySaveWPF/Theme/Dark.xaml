@@ -10,5 +10,6 @@
     <SolidColorBrush Color="Gray" x:Key="RadioButtonOuterCircle"></SolidColorBrush>
     <SolidColorBrush Color="#fff" x:Key="Text"></SolidColorBrush>
     <SolidColorBrush Color="#000" x:Key="ReverseText"></SolidColorBrush>
-
+    <SolidColorBrush Color="#fff" x:Key="TextButtonMenu"></SolidColorBrush>
+    <SolidColorBrush Color="#2D2C4D" x:Key="ButtonXtoY"></SolidColorBrush>
 </ResourceDictionary>

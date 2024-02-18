@@ -6,12 +6,75 @@
              xmlns:t = "clr-namespace:EasySaveWPF.Resources"
              xmlns:local="clr-namespace:EasySaveWPF.View"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="StyledProgressBar" TargetType="ProgressBar">
+            <Setter Property="Foreground" Value="Green"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="5">
+                            <Grid>
+                                <Rectangle x:Name="PART_Track" Fill="{TemplateBinding Background}"/>
+                                <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left" Fill="{TemplateBinding Foreground}" RadiusX="4" RadiusY="4"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#2d2c4d"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="#CABFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}" 
+                            SnapsToDevicePixels="True"
+                            CornerRadius="8">
+                            <ScrollViewer Focusable="false" Name="DG_ScrollViewer">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <DataGridColumnHeadersPresenter Grid.Row="0" Name="PART_ColumnHeadersPresenter"/>
+                                            <ScrollContentPresenter Grid.Row="1" Name="PART_ScrollContentPresenter"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+        <Grid>
+          
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition />
-            <RowDefinition Height="Auto" MinHeight="156" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="{x:Static t:Translation.backups_button}"
@@ -22,16 +85,18 @@
                    Grid.Row="0"
                    FontWeight="Bold" Width="118"/>
 
-        <TextBox Width="250"
+            <TextBox Width="250"
                      Height="30"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
-                     VerticalAlignment="Top"
-                     Margin="200 20 0 0"
-                     Grid.Column="1"
+                     VerticalAlignment="Center"
+                     Margin="250,0,0,0"
                      Style="{StaticResource SearchBar}"/>
 
-        <StackPanel Orientation="Horizontal"
+           
+     
+
+            <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Grid.Row="0"
@@ -40,18 +105,50 @@
                     Command="{Binding RunAllCommand}"
                     Width="120"
                     Height="30"
-                    Margin="10,10,10,10"
-                    Style="{StaticResource ButtonTheme}"/>
-        </StackPanel>
+                    Style="{StaticResource ButtonTheme}" />
 
+            
+            </StackPanel>
+        <Border   Width="150" Background="{DynamicResource ButtonXtoY}" BorderBrush="{DynamicResource ButtonXtoY}" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34" Margin="0,0,10,35">
+            <StackPanel 
+                Background="{DynamicResource ButtonXtoY}" 
+                Margin= "0,0,0,0" 
+                Orientation="Horizontal" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right">
+            <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <Button Width="15"  Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                    <Button.Content>
+                        <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </Border>
+            <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <TextBox Width="25" Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
+            </Border>
+            <ComboBox Width="45" Margin="5" Background="White" BorderBrush="White">
+                <ComboBoxItem Content="&amp;&amp;"/>
+                <ComboBoxItem Content="||"/>
+            </ComboBox>
+            <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
+                <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
+            </Border>
+            
+            </StackPanel>
+        </Border>
 
         <DataGrid ItemsSource="{Binding BackupJobs}" 
                   Background="#252526" 
                   Foreground="black" 
                   BorderBrush="#3F3F46" 
                   BorderThickness="1" 
+                  RowBackground="#B7B5BE"
                   Grid.Row="1"
-                  Margin="10,10,10,29"  AutoGenerateColumns="False">
+                  ColumnHeaderStyle="{StaticResource {x:Type DataGridColumnHeader}}"                  
+                  Margin="10,10,10,29"  
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
@@ -66,7 +163,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Run" Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
                                 <Button Content="Delete" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
-                                <!-- Add more buttons as needed -->
+
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -85,28 +182,57 @@
                        Foreground="{DynamicResource Text}" 
                        FontSize="14"/>
             <TextBlock x:Name="currentFile" Text="{Binding CurrentStateBackup.SourceFilePath}" 
-           Foreground="White" 
+           Foreground="{DynamicResource Text}" 
            FontSize="14"/>
+
+
             <ProgressBar x:Name="fileProgress" 
-                         Height="20" 
-                         Margin="0,10,0,0"
-                         Minimum="0" 
-                         Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
-                         Value="{Binding FileProgress, Mode=TwoWay}"></ProgressBar>
-            <TextBlock Text="File Copied / Total File" 
-                       Foreground="{DynamicResource Text}" 
+             Height="10" 
+             Margin="0,10,0,0"
+             Minimum="0" 
+             Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
+             Value="{Binding FileProgress, Mode=TwoWay}"
+             Style="{StaticResource StyledProgressBar}"/>
+
+
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
-                       HorizontalAlignment="Right"/>
+                       HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Nombre de fichiers {0} / {1}">
+                        <Binding Path="FileProgress" Mode="TwoWay"/>
+                        <Binding Path="CurrentStateBackup.TotalFilesToCopy"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+
+            </TextBlock>
             <ProgressBar x:Name="fileSizeProgress" 
-                         Height="20" 
-                         Margin="0,10,0,0"
-                         Minimum="0" 
-                         Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
-                         Value="{Binding FileSizeProgress, Mode=TwoWay}"/>
-            <TextBlock Text="File Size Copied / Total File Size" 
-                       Foreground="{DynamicResource Text}" 
+             Height="10" 
+             Margin="0,10,0,0"
+             Minimum="0" 
+             Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
+             Value="{Binding FileSizeProgress, Mode=TwoWay}"
+             Style="{StaticResource StyledProgressBar}"/>
+
+
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
-                       HorizontalAlignment="Right"/>
+                       HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Taille des fichiers en octet {0} / {1}">
+                        <Binding Path="FileSizeProgress" Mode="TwoWay"/>
+                        <Binding Path="CurrentStateBackup.TotalFilesSize"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
         </StackPanel>
-    </Grid>
+
+        </Grid>
+    
 </UserControl>
+
+
+
+
+
+

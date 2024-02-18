@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:EasySaveWPF.View"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:JobTypeToEnumConverter x:Key="JobTypeToEnumConverter" />
+    </UserControl.Resources>
 
     <Grid Width="Auto">
         <TextBlock 
@@ -30,10 +33,6 @@
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
-            <Button  Style="{StaticResource ButtonTheme}"
-                    Height="40" Width="100" HorizontalAlignment="Left" Margin="562,508,0,0" VerticalAlignment="Top">
-                <Image Source="/Images/BackArrow.png" />
-            </Button>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
 
             <TextBox 
@@ -87,7 +86,7 @@
             FontSize="20"
             Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="761"/>
         <TextBlock Text="{x:Static t:Translation.option_dest}"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
             Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,266,0,0" Height="40" Width="778"/>
@@ -102,6 +101,7 @@
             <RadioButton 
                 x:Name="radioButtonDifferentiale" 
                 GroupName="ThemeOptions" 
+                IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=differential}"
                 Style="{StaticResource RadioButtonTheme}"/>
             <TextBlock  Text="{x:Static t:Translation.save_differencial}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
@@ -110,6 +110,8 @@
             <RadioButton 
                 x:Name="radioButtonTypeFull" 
                 GroupName="ThemeOptions" 
+                IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=full}"
+
                 Style="{StaticResource RadioButtonTheme}" Cursor=""/>
             <TextBlock Text="{x:Static t:Translation.save_full}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
