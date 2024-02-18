@@ -50,7 +50,7 @@
                              Command="{Binding CreateBackupViewCommand}" 
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
-                             VerticalAlignment="Top" Checked="RadioButton_Checked_2"/>
+                             VerticalAlignment="Top"/>
                     
 
 

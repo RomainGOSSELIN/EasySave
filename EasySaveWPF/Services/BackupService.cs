@@ -17,6 +17,10 @@ namespace EasySaveWPF.Services
         private int fileCount = 0;
         public long encryptTime = 0;
         private string _filesToEncrypt;
+        string message;
+        string caption;
+        MessageBoxButton button;
+        MessageBoxImage icon;
 
         public BackupService()
         {
@@ -30,11 +34,10 @@ namespace EasySaveWPF.Services
             encryptTime = 0;
             if (job == null)
             {
-                string message = Resources.Translation.copy_success;
-                string caption = $"";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-
+                message = Resources.Translation.copy_success;
+                caption = Resources.Translation.success;
+                button = MessageBoxButton.OK;
+                icon = MessageBoxImage.Information;
                 MessageBox.Show(message, caption, button, icon);
                 return;
             }
@@ -43,14 +46,13 @@ namespace EasySaveWPF.Services
                 if (!Directory.Exists(job.SourceDir))
                 {
 
-                    string messageBoxText = Resources.Translation.source_directory_doesnt_exist;
-                    string caption = Resources.Translation.error;
-                    MessageBoxButton button = MessageBoxButton.OK;
-                    MessageBoxImage icon = MessageBoxImage.Warning;
+                    message = Resources.Translation.source_directory_doesnt_exist;
+                    caption = Resources.Translation.error;
+                    button = MessageBoxButton.OK;
+                    icon = MessageBoxImage.Warning;
 
-                    MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+                    MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
 
-                    Console.WriteLine();
                     return;
                 }
 
@@ -69,10 +71,6 @@ namespace EasySaveWPF.Services
                 {
                     CopyDifferentialBackup(job, sourceFiles);
                 }
-                else
-                {
-                    Console.WriteLine(Resources.Translation.save_type_error);
-                }
                 _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
                 _stateLogService.UpdateStateLog(_currentBackupState);
                 Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
@@ -81,7 +79,11 @@ namespace EasySaveWPF.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(String.Format(Resources.Translation.backup_error, ex.Message));
+                message = String.Format(Resources.Translation.backup_error, ex.Message);
+                caption = Resources.Translation.error;
+                button = MessageBoxButton.OK;
+                icon = MessageBoxImage.Error;
+                MessageBox.Show(message, caption, button, icon);
             }
         }
         private void CopyFullBackup(BackupJob job, string[] sourceFiles)
@@ -151,7 +153,6 @@ namespace EasySaveWPF.Services
                     cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
                     cryptoSoft.StartInfo.CreateNoWindow = true;
                     cryptoSoft.EnableRaisingEvents = true;
-                    cryptoSoft.Exited += ExitEvent;
                     cryptoSoft.StartInfo.WorkingDirectory = ".\\CryptoSoft";
                     cryptoSoft.Start();
                     cryptoSoft.WaitForExit();
@@ -170,19 +171,6 @@ namespace EasySaveWPF.Services
             else
             {
                 File.Copy(sourceFile, targetFilePath, true);
-            }
-        }
-        private void ExitEvent(object sender, EventArgs e)
-        {
-            Process process = (Process)sender;
-
-            if (process.ExitCode == 0)
-            {
-                Console.WriteLine("Le processus s'est terminé avec succès.");
-            }
-            else
-            {
-                Console.WriteLine("Le processus s'est terminé avec un code de sortie différent de zéro.");
             }
         }
 
