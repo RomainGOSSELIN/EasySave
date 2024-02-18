@@ -148,6 +148,7 @@ namespace EasySaveWPF.Services
                     cryptoSoft.StartInfo.CreateNoWindow = true;
                     cryptoSoft.EnableRaisingEvents = true;
                     cryptoSoft.Exited += ExitEvent;
+                    cryptoSoft.StartInfo.WorkingDirectory = ".\\CryptoSoft";
                     cryptoSoft.Start();
                     cryptoSoft.WaitForExit();
 
