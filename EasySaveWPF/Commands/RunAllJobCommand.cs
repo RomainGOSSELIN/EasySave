@@ -15,7 +15,7 @@ namespace EasySaveWPF.Commands
     {
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
-
+        private string _processName;
         private readonly ObservableCollection<BackupJob> _backupJobs;
 
 
@@ -24,18 +24,32 @@ namespace EasySaveWPF.Commands
             _backupService = backupService;
             _backupJobs = backupJobs;
             _dailyLogService = dailyLogService;
+            _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
+
         }
 
         public override bool CanExecute(object? parameter)
         {
-            return base.CanExecute(parameter);
+            
+            Process[] processes = Process.GetProcessesByName(_processName);
+
+            if (processes.Length == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override async void Execute(object parameter)
         {
             foreach (BackupJob job in _backupJobs)
             {
-                if (job != null)
+                Process[] processes = Process.GetProcessesByName(_processName);
+
+                if (job != null && processes.Length == 0)
                 {
                     var stopwatch = new Stopwatch();
                     var FileSize = GetDirectorySize(job.SourceDir);

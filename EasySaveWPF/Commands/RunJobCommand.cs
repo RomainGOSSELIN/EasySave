@@ -15,19 +15,32 @@ namespace EasySaveWPF.Commands
     {
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
+        private string _processName;
+
 
         public RunJobCommand(IBackupService backupService, IDailyLogService dailyLogService)
         {
             _backupService = backupService;
             _dailyLogService = dailyLogService;
+            _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
 
         }
 
         public override bool CanExecute(object? parameter)
         {
-            return base.CanExecute(parameter);
-        }
+            Process[] processes = Process.GetProcessesByName(_processName);
 
+            Process test = new Process();
+            if (processes.Length == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public override async void Execute(object parameter)
         {
             if (parameter is BackupJob job)

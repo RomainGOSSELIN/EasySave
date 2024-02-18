@@ -1,6 +1,5 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -12,15 +11,13 @@ namespace EasySaveWPF.Services
 
     internal class BackupService : IBackupService
     {
-        private static IConfiguration _configuration;
         private IStateLogService _stateLogService;
         private BackupState _currentBackupState;
         private int fileCount = 0;
 
-        public BackupService(IConfiguration configuration)
+        public BackupService()
         {
-            _configuration = configuration;
-            _stateLogService = new StateLogService(_configuration);
+            _stateLogService = new StateLogService();
         }
         public event EventHandler<BackupState> CurrentBackupStateChanged;
 
