@@ -17,7 +17,7 @@
     <Setting Name="BusinessSoftwarePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Paramètre" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="FilesToEncrypt" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
