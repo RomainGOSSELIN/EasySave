@@ -11,9 +11,13 @@
 
   <ItemGroup>
     <None Remove="CryptoSoft\config.json" />
+    <None Remove="Images\AddExt.png" />
     <None Remove="Images\ajouter.png" />
     <None Remove="Images\BackArrow.png" />
     <None Remove="Images\CheckArrow.png" />
+    <None Remove="Images\ClearAll.PNG" />
+    <None Remove="Images\Delete.png" />
+    <None Remove="Images\DeleteExtension.PNG" />
     <None Remove="Images\france.png" />
     <None Remove="Images\germany.png" />
     <None Remove="Images\italy.png" />
@@ -28,9 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\AddExt.png" />
     <Resource Include="Images\ajouter.png" />
     <Resource Include="Images\BackArrow.png" />
     <Resource Include="Images\CheckArrow.png" />
+    <Resource Include="Images\ClearAll.PNG" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\DeleteExtension.PNG" />
     <Resource Include="Images\france.png" />
     <Content Include="CryptoSoft\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

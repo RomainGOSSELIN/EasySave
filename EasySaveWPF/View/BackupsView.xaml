@@ -163,8 +163,16 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Run" Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
-                                <Button Content="Delete" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/Delete.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
 
                             </StackPanel>
                         </DataTemplate>
