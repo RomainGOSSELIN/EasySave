@@ -267,4 +267,10 @@
   <data name="theme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Run all</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Running backup</value>
+  </data>
 </root>

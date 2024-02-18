@@ -160,8 +160,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à  Le travail {0} a été créé à l&apos;emplacement {1} depuis {2} à {3} avec un type {4}
-        ///.
+        ///   Recherche une chaîne localisée semblable à Le travail {0} a été créé à l&apos;emplacement {1} depuis {2} à {3} avec un type {4}.
         /// </summary>
         public static string create_job_success {
             get {
@@ -409,6 +408,24 @@ namespace EasySaveWPF.Resources {
         public static string press_key {
             get {
                 return ResourceManager.GetString("press_key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tout exécuter.
+        /// </summary>
+        public static string run_all {
+            get {
+                return ResourceManager.GetString("run_all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sauvegarde en cours d&apos;exécution.
+        /// </summary>
+        public static string running_backup {
+            get {
+                return ResourceManager.GetString("running_backup", resourceCulture);
             }
         }
         

@@ -264,4 +264,13 @@
   <data name="theme" xml:space="preserve">
     <value>Thema</value>
   </data>
+  <data name="backup_error" xml:space="preserve">
+    <value>Beim Speichern ist ein Fehler aufgetreten: {0}</value>
+  </data>
+  <data name="run_all" xml:space="preserve">
+    <value>Alle ausführen</value>
+  </data>
+  <data name="running_backup" xml:space="preserve">
+    <value>Laufende Sicherung</value>
+  </data>
 </root>
