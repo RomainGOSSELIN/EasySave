@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:EasySaveWPF.View"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:JobTypeToEnumConverter x:Key="JobTypeToEnumConverter" />
+    </UserControl.Resources>
 
     <Grid Width="Auto">
         <TextBlock 
@@ -102,6 +105,7 @@
             <RadioButton 
                 x:Name="radioButtonDifferentiale" 
                 GroupName="ThemeOptions" 
+                IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=differential}"
                 Style="{StaticResource RadioButtonTheme}"/>
             <TextBlock  Text="{x:Static t:Translation.save_differencial}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
@@ -110,6 +114,8 @@
             <RadioButton 
                 x:Name="radioButtonTypeFull" 
                 GroupName="ThemeOptions" 
+                IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=full}"
+
                 Style="{StaticResource RadioButtonTheme}" Cursor=""/>
             <TextBlock Text="{x:Static t:Translation.save_full}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>

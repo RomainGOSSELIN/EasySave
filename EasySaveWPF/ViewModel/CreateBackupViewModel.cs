@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace EasySaveWPF.ViewModel
 {
-    class CreateBackupViewModel : ViewModelBase
+    public class CreateBackupViewModel : ViewModelBase
     {
 
 		public ICommand CreateCommand { get; set; }
@@ -29,25 +29,12 @@ namespace EasySaveWPF.ViewModel
 			}
 		}
 
-		private int _backupJobName;
-		public int BackupJobName
-        {
-			get
-			{
-				return _backupJobName;
-			}
-			set
-			{
-				_backupJobName = value;
-				OnPropertyChanged(nameof(BackupJobName));
-			}
-		}
+	
 
 		public CreateBackupViewModel(IBackupJobService backupJobService, IStateLogService stateLogService)
 		{
-			_backupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.full,0);
-            CreateCommand = new CreateBackupJobCommand(_backupJob, backupJobService, stateLogService);
-
+			_backupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential,0);
+            CreateCommand = new CreateBackupJobCommand(this, backupJobService, stateLogService);
         }
 
       
