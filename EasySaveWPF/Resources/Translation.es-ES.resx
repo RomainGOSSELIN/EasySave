@@ -232,7 +232,8 @@
     <value>⚙️ Configuración</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Añadir Backup</value>
+    <value>➕ Añadir 
+Backup</value>
   </data>
   <data name="app_shutdown_language_changed" xml:space="preserve">
     <value>La aplicación se apagará para aplicar el cambio de idioma.</value>

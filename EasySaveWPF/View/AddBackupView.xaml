@@ -18,7 +18,9 @@
            HorizontalAlignment="Left"
            VerticalAlignment="Top"
            FontSize="30"
-           Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,10,0,0" Height="40" Width="780"/>
+           Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,10,0,0" Height="40"
+             TextWrapping ="Wrap"
+            Width="780"/>
 
         <Grid Width="Auto">
 
@@ -40,7 +42,7 @@
                 Text="{Binding BackupJob.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,229,0,0" 
-                TextWrapping="Wrap" 
+                TextWrapping="NoWrap" 
                 VerticalAlignment="Top" 
                 Width="309"
                 />
@@ -61,7 +63,7 @@
                 Text="{Binding BackupJob.TargetDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,318,0,0" 
-                TextWrapping="Wrap" 
+                TextWrapping="NoWrap" 
                 VerticalAlignment="Top" 
                 Width="309"/>
             <Button 
@@ -74,7 +76,7 @@
                 Click="Files_Explorer_2" 
                 Width="30" 
                 Background="White"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0"  Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
+            <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap"  Height="23" Margin="12,133,0,0"  Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   VerticalAlignment="Top" Width="201"/>
         </Grid>
         <TextBlock Text="{x:Static t:Translation.option_name}"
             HorizontalAlignment="Left"

@@ -21,7 +21,8 @@
             FontWeight="Bold" 
             Margin="10,10,0,0" 
             Height="39" 
-            Width="664"/>
+            Width="664"
+            TextWrapping ="Wrap"/>
 
         <!-- Language section -->
         <TextBlock
@@ -74,9 +75,10 @@
             x:Name="PathBusinessSoftware" 
             HorizontalAlignment="Left" 
             Margin="10,200,0,0" 
-            TextWrapping="Wrap" 
+            TextWrapping="NoWrap" 
             VerticalAlignment="Top" 
-            Width="309" 
+            Width="309"
+            
             TextChanged="PathBusinessSoftware_Changed"/>
 
         <Button 
@@ -134,9 +136,10 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             x:Name="InputExtension"
             HorizontalAlignment="Left" 
             Margin="10,370,0,0" 
-            TextWrapping="Wrap" 
+            TextWrapping="NoWrap" 
             VerticalAlignment="Top" 
-            Width="108"/>
+            Width="108"
+            />
 
         <!-- Add Extension -->
         <Button 
@@ -208,6 +211,7 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             Background="White"
             Height="20" 
             Width="325"
+            TextWrapping="Wrap" 
             Text="{Binding FilesToEncrypt, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
             />
 

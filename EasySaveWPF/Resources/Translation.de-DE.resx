@@ -121,7 +121,8 @@
     <value>⚙️ Einstellungen</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Hinzufügen Backup</value>
+    <value>➕ Hinzufügen 
+Backup</value>
   </data>
   <data name="backup_success" xml:space="preserve">
     <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>

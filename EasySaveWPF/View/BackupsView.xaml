@@ -83,7 +83,9 @@
                    Margin="10,10,0,0"
                    HorizontalAlignment="Left"
                    Grid.Row="0"
-                   FontWeight="Bold" Width="118"/>
+                   FontWeight="Bold" Width="300"
+                   TextWrapping ="Wrap"/>
+            
 
         <!--  <TextBox Width="250"
                Height="30"

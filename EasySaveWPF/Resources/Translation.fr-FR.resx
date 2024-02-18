@@ -232,7 +232,8 @@
     <value>⚙️ Paramètres</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Ajouter Sauvegarde</value>
+    <value>➕ Ajouter 
+Sauvegarde</value>
   </data>
   <data name="add_or_remove_encryption" xml:space="preserve">
     <value>Ajouter / Retirer des extensions à encrypter</value>

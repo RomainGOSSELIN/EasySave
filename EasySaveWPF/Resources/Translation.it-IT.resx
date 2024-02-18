@@ -232,7 +232,8 @@
     <value>⚙️ Parametri</value>
   </data>
   <data name="add_backup_button" xml:space="preserve">
-    <value>➕ Aggiungere Backup</value>
+    <value>➕ Aggiungere 
+Backup</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
