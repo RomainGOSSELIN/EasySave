@@ -4,18 +4,20 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Markup;
+    using System.Xml.Serialization;
 
-    internal class XamlService : ILogger
+    public class XamlService : ILogger
     {
         public List<T> GetLog<T>(string directory)
         {
             List<T> logs = new List<T>();
 
-            if (File.Exists(directory))
+            if (File.Exists(directory) && new FileInfo(directory).Length > 0)
             {
                 using (FileStream fs = new FileStream(directory, FileMode.Open))
                 {
-                    logs = (List<T>)XamlReader.Load(fs);
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+                    logs = (List<T>)serializer.Deserialize(fs);
                 }
             }
 
@@ -26,11 +28,9 @@
         {
             using (FileStream fs = new FileStream(directory, FileMode.Create))
             {
-                XamlWriter.Save(logs, fs);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+                serializer.Serialize(fs, logs);
             }
         }
-
-
-
     }
 }

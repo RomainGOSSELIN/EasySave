@@ -1,7 +1,6 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Model.LogFactory;
 using EasySaveWPF.Services.Interfaces;
-using Microsoft.Extensions.Configuration;
 using System.Globalization;
 
 namespace EasySaveWPF.Services
@@ -9,15 +8,13 @@ namespace EasySaveWPF.Services
     public class StateLogService : IStateLogService
 
     {
-        private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
         private string _stateLogPath;
-        public StateLogService(IConfiguration configuration)
+        public StateLogService()
         {
-            _configuration = configuration;
-            _stateLogPath = _configuration["AppConfig:StatusFilePath"];
+            _stateLogPath = Properties.Settings.Default.StatusFilePath;
             LoggerFactory loggerFactory = new LoggerFactory();  
-            _logger = loggerFactory.CreateLogger((Model.Enum.LogType)int.Parse(_configuration["AppConfig:LogType"]));
+            _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
         }
         public void SaveStateLog(string state, string directory)
         {

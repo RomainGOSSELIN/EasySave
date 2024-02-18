@@ -17,7 +17,7 @@ namespace EasySaveWPF.Model.LogFactory
             {
                 case LogType.Json:
                     return new JsonService();
-                case LogType.Xaml:
+                case LogType.Xml:
                     return new XamlService();
                 default:
                     throw new ArgumentException("Type de log non pris en charge.");

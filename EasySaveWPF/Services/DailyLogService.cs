@@ -2,22 +2,20 @@
 
 using EasySaveWPF.Model;
 using EasySaveWPF.Model.LogFactory;
-using Microsoft.Extensions.Configuration;
 using System.Globalization;
 
 namespace EasySaveWPF.Services.Interfaces
 {
     public class DailyLogService : IDailyLogService
     {
-        private readonly IConfiguration _configuration;
         private string _dailyLogPath;
         private LoggerFactory _loggerFactory = new LoggerFactory();
         private ILogger _logger;
-        public DailyLogService(IConfiguration configuration)
+        public DailyLogService()
         {
-            _configuration = configuration;
-            _dailyLogPath = _configuration["AppConfig:LogFilePath"];
-            _logger = _loggerFactory.CreateLogger(Model.Enum.LogType.Json);
+            _dailyLogPath = Properties.Settings.Default.LogFilePath;
+            var logType = Properties.Settings.Default.LogType;
+            _logger = _loggerFactory.CreateLogger((Model.Enum.LogType)System.Enum.Parse(typeof(Model.Enum.LogType), logType, true)) ;
         }
 
         public void AddDailyLog(BackupJob job, long fileSize, int transferTime)

@@ -17,6 +17,10 @@ namespace EasySaveWPF.Model
         public  long FileSize { get; set; }
         public  int TransferTime { get; set; }
 
+        public BackupLog()
+        {
+
+        }
 
         public BackupLog(string backupName, DateTime timestamp, string sourceFile, string targetFile, long fileSize, int transferTime)
         {

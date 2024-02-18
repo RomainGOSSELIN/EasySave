@@ -26,7 +26,7 @@ namespace EasySaveWPF.Model
         public enum LogType
         {
             Json,
-            Xaml
+            Xml
         };
     }
 }
