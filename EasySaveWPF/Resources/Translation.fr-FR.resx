@@ -136,7 +136,7 @@
     <value>Afficher un travail de sauvegarde</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destination du répertoire du travail de sauvegarde (entre guillemets)</value>
+    <value>Destination du répertoire du travail de sauvegarde</value>
   </data>
   <data name="option_id" xml:space="preserve">
     <value>Numéro du travail de sauvegarde</value>
@@ -148,7 +148,7 @@
     <value>Nom du travail de sauvegarde</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Source du répertoire du travail de sauvegarde (entre guillemets)</value>
+    <value>Source du répertoire du travail de sauvegarde</value>
   </data>
   <data name="option_type" xml:space="preserve">
     <value>Choix d'un travail de sauvegarde complet</value>
@@ -242,7 +242,7 @@
     <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Sauvegardes</value>
+    <value>🗃 Sauvegardes</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Logiciel Métier</value>

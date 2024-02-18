@@ -196,10 +196,10 @@
     <value>The copy is finished! Total number of files copied: {0}</value>
   </data>
   <data name="option_dest" xml:space="preserve">
-    <value>Destination of the backup job directory (in quotes)</value>
+    <value>Destination of the backup job directory</value>
   </data>
   <data name="option_source" xml:space="preserve">
-    <value>Backup job directory source (in quotes)</value>
+    <value>Backup job directory source</value>
   </data>
   <data name="id_must_number" xml:space="preserve">
     <value>The ID must be a number.</value>
@@ -238,7 +238,7 @@
     <value>The application will shut down to apply the language change.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Backups</value>
+    <value>🗃 Backups</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Business Software</value>

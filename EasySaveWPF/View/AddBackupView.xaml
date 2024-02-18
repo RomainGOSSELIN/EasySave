@@ -33,10 +33,6 @@
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
-            <Button  Style="{StaticResource ButtonTheme}"
-                    Height="40" Width="100" HorizontalAlignment="Left" Margin="562,508,0,0" VerticalAlignment="Top">
-                <Image Source="/Images/BackArrow.png" />
-            </Button>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
 
             <TextBox 
@@ -90,7 +86,7 @@
             FontSize="20"
             Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="12,185,0,0" Height="40" Width="761"/>
         <TextBlock Text="{x:Static t:Translation.option_dest}"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="20"
             Foreground="{DynamicResource Text}" FontWeight="Bold" Margin="0,266,0,0" Height="40" Width="778"/>
