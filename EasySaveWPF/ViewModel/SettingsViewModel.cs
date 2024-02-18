@@ -41,11 +41,29 @@ namespace EasySaveWPF.ViewModel
             }
 		}
 
+		private string _filesToEncrypt;
+		public string FilesToEncrypt
+        {
+			get
+			{
+				return _filesToEncrypt;
+			}
+			set
+			{
+				_filesToEncrypt = value;
+				OnPropertyChanged(nameof(FilesToEncrypt));
+                Properties.Settings.Default.FilesToEncrypt = value;
+                Properties.Settings.Default.Save();
+            }
+		}
+
 		public SettingsViewModel()
 		{
 			BusinessSoftware = Properties.Settings.Default.BusinessSoftwarePath;
 			LogType = Properties.Settings.Default.LogType;
-		}
+            FilesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
+
+        }
 
 	}
 }

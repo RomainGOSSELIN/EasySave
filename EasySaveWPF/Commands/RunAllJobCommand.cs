@@ -34,7 +34,7 @@ namespace EasySaveWPF.Commands
 
             Process[] processes = Process.GetProcessesByName(_processName);
 
-            if (processes.Length == 0)
+            if (processes.Length == 0 || _processName == "")
             {
                 return true;
             }
@@ -60,8 +60,9 @@ namespace EasySaveWPF.Commands
 
                         stopwatch.Start();
                         await Task.Run(() => _backupService.ExecuteBackupJob(job));
+                        var encryptTime =  _backupService.GetEncryptTime();
                         stopwatch.Stop();
-                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds);
+                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
 
                     }
                 }

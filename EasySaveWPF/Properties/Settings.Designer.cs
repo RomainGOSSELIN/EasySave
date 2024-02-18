@@ -79,12 +79,13 @@ namespace EasySaveWPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection Paramètre {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FilesToEncrypt {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Paramètre"]));
+                return ((string)(this["FilesToEncrypt"]));
             }
             set {
-                this["Paramètre"] = value;
+                this["FilesToEncrypt"] = value;
             }
         }
     }

@@ -16,13 +16,14 @@ namespace EasySaveWPF.Model
         public  string TargetFile { get; set; }
         public  long FileSize { get; set; }
         public  int TransferTime { get; set; }
+        public long EncryptTime { get; set; }
 
         public BackupLog()
         {
 
         }
 
-        public BackupLog(string backupName, DateTime timestamp, string sourceFile, string targetFile, long fileSize, int transferTime)
+        public BackupLog(string backupName, DateTime timestamp, string sourceFile, string targetFile, long fileSize, int transferTime, long encryptTime)
         {
             this.timestamp = timestamp;
             this.BackupName = backupName;
@@ -30,6 +31,7 @@ namespace EasySaveWPF.Model
             this.TargetFile = targetFile;
             this.FileSize = fileSize;
             this.TransferTime = transferTime;
+            this.EncryptTime = encryptTime;
         }
     }
 }

@@ -10,20 +10,24 @@ namespace EasySaveWPF.Services
 {
 
 
-    internal class BackupService : IBackupService
+    public class BackupService : IBackupService
     {
         private IStateLogService _stateLogService;
         private BackupState _currentBackupState;
         private int fileCount = 0;
+        public long encryptTime = 0;
+        private string _filesToEncrypt;
 
         public BackupService()
         {
             _stateLogService = new StateLogService();
+            _filesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
         }
         public event EventHandler<BackupState> CurrentBackupStateChanged;
 
         public void ExecuteBackupJob(BackupJob job)
         {
+            encryptTime = 0;
             if (job == null)
             {
                 Console.WriteLine("Le travail de sauvegarde est vide.");
@@ -49,6 +53,7 @@ namespace EasySaveWPF.Services
                 if (!Directory.Exists(job.TargetDir))
                 {
                     Directory.CreateDirectory(job.TargetDir);
+
                 }
                 string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                 string[] targetFiles = Directory.GetFiles(job.TargetDir, "*", SearchOption.AllDirectories);
@@ -131,22 +136,35 @@ namespace EasySaveWPF.Services
             _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
             _stateLogService.UpdateStateLog(_currentBackupState);
             OnCurrentBackupStateChanged(_currentBackupState);
-            try
+            if (_filesToEncrypt.Contains(fileInfo.Extension))
             {
 
-            Process cryptoSoft = new Process();
-            cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
-            cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
-            cryptoSoft.StartInfo.CreateNoWindow = true;
-            cryptoSoft.EnableRaisingEvents = true;
-            cryptoSoft.Exited += ExitEvent;
-            cryptoSoft.Start();
-            cryptoSoft.WaitForExit();
+                try
+                {
 
+                    Process cryptoSoft = new Process();
+                    cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
+                    cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
+                    cryptoSoft.StartInfo.CreateNoWindow = true;
+                    cryptoSoft.EnableRaisingEvents = true;
+                    cryptoSoft.Exited += ExitEvent;
+                    cryptoSoft.Start();
+                    cryptoSoft.WaitForExit();
+
+                    if (encryptTime >= 0)
+                    {
+                        encryptTime += cryptoSoft.ExitCode;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                File.Copy(sourceFile, targetFilePath, true);
             }
         }
         private void ExitEvent(object sender, EventArgs e)
@@ -161,6 +179,11 @@ namespace EasySaveWPF.Services
             {
                 Console.WriteLine("Le processus s'est terminé avec un code de sortie différent de zéro.");
             }
+        }
+
+        public long GetEncryptTime()
+        {
+            return encryptTime;
         }
 
 

@@ -196,7 +196,9 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             Foreground="Black" 
             Background="White"
             Height="20" 
-            Width="325"/>
+            Width="325"
+            Text="{Binding FilesToEncrypt, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+            />
 
 
 
