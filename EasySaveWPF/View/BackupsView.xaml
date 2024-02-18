@@ -164,8 +164,7 @@
              Style="{StaticResource StyledProgressBar}"/>
 
 
-            <TextBlock Text="File Copied / Total File" 
-                       Foreground="{DynamicResource Text}" 
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
                        HorizontalAlignment="Right">
                 <TextBlock.Text>
@@ -184,8 +183,8 @@
              Value="{Binding FileProgress, Mode=TwoWay}"
              Style="{StaticResource StyledProgressBar}"/>
 
-            <TextBlock Text="File Size Copied / Total File Size" 
-                       Foreground="{DynamicResource Text}" 
+
+            <TextBlock Foreground="{DynamicResource Text}" 
                        FontSize="12" 
                        HorizontalAlignment="Right">
                 <TextBlock.Text>
