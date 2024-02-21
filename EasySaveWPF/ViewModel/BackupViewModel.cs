@@ -15,18 +15,18 @@ namespace EasySaveWPF.ViewModel
         private IBackupService _backupService;
         private IStateLogService _stateLogService;
         private IDailyLogService _dailyLogService;
-
-
         private ILogger _logger;
-
         private ObservableCollection<BackupJob> _backupJobs;
         public IEnumerable<BackupJob> BackupJobs => _backupJobs;
 
+        #region Commands
         public ICommand DeleteCommand { get; set; }
         public ICommand RunCommand { get; set; }
         public ICommand RunAllCommand { get; set; }
-        public ICommand RunSomeCommand { get; set; }
+        public ICommand RunSomeCommand { get; set; } 
+        #endregion
 
+        #region Propchanges
         private BackupState _currentStateBackup;
         public BackupState CurrentStateBackup
         {
@@ -106,7 +106,8 @@ namespace EasySaveWPF.ViewModel
                 _runOperation = value;
                 OnPropertyChanged(nameof(RunOperation));
             }
-        }
+        } 
+        #endregion
 
         public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
         {
@@ -130,6 +131,11 @@ namespace EasySaveWPF.ViewModel
             CurrentStateBackup = e;
             FileSizeProgress = _currentStateBackup.TotalFilesSize - _currentStateBackup.NbFilesSizeLeftToDo;
             FileProgress = _currentStateBackup.TotalFilesToCopy - _currentStateBackup.NbFilesLeftToDo;
+        }
+
+        public void LoadBackupJobs()
+        {
+            _backupJobs = new ObservableCollection<BackupJob>(_backupJobService.GetAllJobs());
         }
     }
 }
