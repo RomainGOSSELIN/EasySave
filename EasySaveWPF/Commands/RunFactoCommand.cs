@@ -19,10 +19,7 @@ namespace EasySaveWPF.Commands
         private readonly IDailyLogService _dailyLogService;
         private BackupViewModel _backupViewModel;
         private string _processName;
-        string message;
-        string caption;
-        MessageBoxButton button;
-        MessageBoxImage icon;
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         public RunFactoCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
         {
@@ -48,11 +45,15 @@ namespace EasySaveWPF.Commands
 
         public override void Execute(object parameter)
         {
+            List<BackupJob> executedJobs = new List<BackupJob>();
+
             if (parameter is BackupJob)
             {
                 var job = (BackupJob)parameter;
                 Thread thread = new Thread(() => ExecuteJob(job)); // Start ExecuteJob in a new thread
                 thread.Start();
+                executedJobs.Add(job);
+                notifications.BackupSuccess(executedJobs);
             }
             else if (parameter.ToString() == "all")
             {
@@ -60,7 +61,9 @@ namespace EasySaveWPF.Commands
                 {
                     Thread thread = new Thread(() => ExecuteJob(job));
                     thread.Start();
+                    executedJobs.Add(job);
                 }
+                notifications.BackupSuccess(executedJobs);
             }
             else if (parameter.ToString() == "some")
             {
@@ -80,7 +83,9 @@ namespace EasySaveWPF.Commands
                     {
                         Thread thread = new Thread(() => ExecuteJob(job));
                         thread.Start();
+                        executedJobs.Add(job);
                     }
+                    notifications.BackupSuccess(executedJobs);
                 }
             }
         }
@@ -99,20 +104,11 @@ namespace EasySaveWPF.Commands
                     var encryptTime = _backupService.GetEncryptTime();
                     stopwatch.Stop();
                     _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
-
-                    message = Resources.Translation.backup_success;
-                    caption = Resources.Translation.success;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Information;
-                    MessageBox.Show(message, caption, button, icon);
                 }
                 else
                 {
-                    message = Resources.Translation.source_directory_doesnt_exist;
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Warning;
-                    MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
+                    notifications.SourceDirNotExist(job.SourceDir);
+                    return;
                 }
             }
         }

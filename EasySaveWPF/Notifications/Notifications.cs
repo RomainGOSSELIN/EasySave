@@ -71,6 +71,7 @@ namespace EasySaveWPF.Notifications
                 button = MessageBoxButton.OK;
                 icon = MessageBoxImage.Information;
                 MessageBox.Show(message, caption, button, icon);
+
             }
             else
             {              
