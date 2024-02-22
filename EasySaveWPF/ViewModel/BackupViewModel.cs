@@ -130,6 +130,12 @@ namespace EasySaveWPF.ViewModel
             CurrentStateBackup = e;
             FileSizeProgress = _currentStateBackup.TotalFilesSize - _currentStateBackup.NbFilesSizeLeftToDo;
             FileProgress = _currentStateBackup.TotalFilesToCopy - _currentStateBackup.NbFilesLeftToDo;
+            if (_currentStateBackup.NbFilesLeftToDo == 0)
+            {
+                FileSizeProgress = 0;
+                FileProgress = 0;
+                CurrentStateBackup = null;
+            }
         }
     }
 }

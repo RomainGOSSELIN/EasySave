@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model;
+using EasySaveWPF.Notifications;
 using EasySaveWPF.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,7 @@ namespace EasySaveWPF.Commands
         private readonly IDailyLogService _dailyLogService;
         private string _processName;
         private readonly ObservableCollection<BackupJob> _backupJobs;
-        string message;
-        string caption;
-        MessageBoxButton button;
-        MessageBoxImage icon;
-
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         public RunAllJobCommand(IBackupService backupService, ObservableCollection<BackupJob> backupJobs, IDailyLogService dailyLogService)
         {
@@ -50,13 +47,14 @@ namespace EasySaveWPF.Commands
 
         public override async void Execute(object parameter)
         {
+            List<BackupJob> executedJobs = new List<BackupJob>();
+
             foreach (BackupJob job in _backupJobs)
             {
                 Process[] processes = Process.GetProcessesByName(_processName);
 
                 if (processes.Length == 0 || _processName == "")
                 {
-
                     if (job != null)
                     {
                         if (Directory.Exists(job.SourceDir))
@@ -70,32 +68,20 @@ namespace EasySaveWPF.Commands
                             stopwatch.Stop();
                             _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
 
-                            message = Resources.Translation.backup_success;
-                            caption = Resources.Translation.success;
-                            button = MessageBoxButton.OK;
-                            icon = MessageBoxImage.Information;
-                            MessageBox.Show(message, caption, button, icon);
-
+                            executedJobs.Add(job);
                         }
                         else
                         {
-                            message = Resources.Translation.source_directory_doesnt_exist;
-                            caption = Resources.Translation.error;
-                            button = MessageBoxButton.OK;
-                            icon = MessageBoxImage.Warning;
-                            MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
+                            notifications.SourceDirNotExist(job.SourceDir);
                         }
                     }
                 }
                 else
                 {
-                    message = Resources.Translation.business_software_running;
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Warning;
-                    MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
+                    notifications.BusinessSoftwareRunning();
                 }
             }
+            notifications.BackupSuccess(executedJobs);
         }
 
         public long GetDirectorySize(string path)

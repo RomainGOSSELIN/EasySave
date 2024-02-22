@@ -186,14 +186,8 @@
   <data name="job_execution" xml:space="preserve">
     <value>Processo di backup in esecuzione: {0}</value>
   </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>La directory di origine non esiste.</value>
-  </data>
   <data name="save_type_error" xml:space="preserve">
     <value>Il tipo di backup non è valido.</value>
-  </data>
-  <data name="backup_success" xml:space="preserve">
-    <value>Il backup è stato completato con successo!</value>
   </data>
   <data name="backup_error" xml:space="preserve">
     <value>Si è verificato un errore durante il salvataggio: {0}</value>
@@ -306,5 +300,20 @@ Backup</value>
   </data>
   <data name="header_type" xml:space="preserve">
     <value>Tipo</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>La directory di origine {0} non esiste.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>Il backup {0} è stato eseguito correttamente!</value>
+  </data>
+  <data name="invalid_extension" xml:space="preserve">
+    <value>Estensione non valida. L'estensione deve iniziare con un punto (.) E non contenere spazio</value>
+  </data>
+  <data name="backups_success" xml:space="preserve">
+    <value>I backup {0} sono stati eseguiti correttamente!</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>Progresso</value>
   </data>
 </root>

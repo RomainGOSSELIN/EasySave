@@ -22,7 +22,6 @@ namespace EasySaveWPF.Model
             SourceDir = sourceDir;
             TargetDir = targetDir;
             Type = type;
-    }
-
+        }
     }
 }

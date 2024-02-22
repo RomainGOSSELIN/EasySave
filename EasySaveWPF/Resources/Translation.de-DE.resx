@@ -124,9 +124,6 @@
     <value>➕ Hinzufügen 
 Backup</value>
   </data>
-  <data name="backup_success" xml:space="preserve">
-    <value>Die Sicherung wurde erfolgreich abgeschlossen!</value>
-  </data>
   <data name="cant_create_more_job" xml:space="preserve">
     <value>Sie können nicht mehr als 5 Jobs erstellen.</value>
   </data>
@@ -217,9 +214,6 @@ Backup</value>
   <data name="source" xml:space="preserve">
     <value>Quelle</value>
   </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>Das Quellverzeichnis existiert nicht.</value>
-  </data>
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>Das Quell- und Zielverzeichnis dürfen nicht identisch sein.</value>
   </data>
@@ -306,5 +300,20 @@ Backup</value>
   </data>
   <data name="header_type" xml:space="preserve">
     <value>Art</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>Das Quellverzeichnis {0} existiert nicht.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>Das Backup {0} wurde erfolgreich durchgeführt!</value>
+  </data>
+  <data name="invalid_extension" xml:space="preserve">
+    <value>Ungültige Erweiterung. Die Erweiterung muss mit einem Punkt (.) Beginnen und keinen Platz enthalten</value>
+  </data>
+  <data name="backups_success" xml:space="preserve">
+    <value>Die Backups {0} wurden erfolgreich durchgeführt!</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>Fortschritt</value>
   </data>
 </root>
