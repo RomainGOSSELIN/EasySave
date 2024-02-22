@@ -27,7 +27,7 @@ namespace EasySaveWPF.ViewModel
 
 		public CreateBackupViewModel(IBackupJobService backupJobService, IStateLogService stateLogService)
 		{
-			_backupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential,0);
+			_backupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential,0, new BackupState());
             CreateCommand = new CreateBackupJobCommand(this, backupJobService, stateLogService);
         }
 

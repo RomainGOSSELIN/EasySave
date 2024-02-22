@@ -12,14 +12,20 @@ namespace EasySaveWPF.Model
     {
         public int? Id { get; set; } = 0;
         public string BackupName { get; set; }
-        public  DateTime Timestamp { get; set; }
-        public  string State { get; set; } = "END";
-        public  int TotalFilesToCopy { get; set; } = 0;
-        public  long TotalFilesSize { get; set; } = 0;
-        public  int NbFilesLeftToDo { get; set; } = 0;
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public string State { get; set; } = "END";
+        public int TotalFilesToCopy { get; set; } = 0;
+        public long TotalFilesSize { get; set; } = 0;
+        public int NbFilesLeftToDo { get; set; } = 0;
         public long NbFilesSizeLeftToDo { get; set; } = 0;
         public string SourceFilePath { get; set; } = string.Empty;
         public string TargetFilePath { get; set; } = string.Empty;
+        public double Progress => Math.Round((double)(TotalFilesToCopy-NbFilesLeftToDo) / TotalFilesToCopy * 100) >= 0 ? Math.Round((double)(TotalFilesToCopy - NbFilesLeftToDo) / TotalFilesToCopy * 100): 0;
+
+        public BackupState()
+        {
+
+        }
 
         [JsonConstructor]
         public BackupState(int? id, string backupName, DateTime timestamp, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
@@ -35,8 +41,5 @@ namespace EasySaveWPF.Model
             SourceFilePath = sourceFilePath;
             TargetFilePath = targetFilePath;
         }
-  
-
-        
     }
 }
