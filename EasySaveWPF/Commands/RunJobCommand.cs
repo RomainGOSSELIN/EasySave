@@ -17,10 +17,7 @@ namespace EasySaveWPF.Commands
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
         private string _processName;
-        string message;
-        string caption;
-        MessageBoxButton button;
-        MessageBoxImage icon;
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         public RunJobCommand(IBackupService backupService, IDailyLogService dailyLogService)
         {
@@ -43,10 +40,10 @@ namespace EasySaveWPF.Commands
             {
                 return false;
             }
-
         }
         public override async void Execute(object parameter)
         {
+            List<BackupJob> executedJobs = new List<BackupJob>();
             if (parameter is BackupJob job)
             {
                 if (Directory.Exists(job.SourceDir))
@@ -61,21 +58,14 @@ namespace EasySaveWPF.Commands
 
                     stopwatch.Stop();
                     _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
-
-                    message = Resources.Translation.backup_success;
-                    caption = Resources.Translation.success;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Information;
-                    MessageBox.Show(message, caption, button, icon);
+                    executedJobs.Add(job);
+                    notifications.BackupSuccess(executedJobs);
 
                 }
                 else
                 {
-                    message = Resources.Translation.source_directory_doesnt_exist;
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Warning;
-                    MessageBox.Show(message, caption, button, icon);
+                    Notifications.Notifications notifications = new Notifications.Notifications();
+                    notifications.SourceDirNotExist(job.SourceDir);
                 }
             }
         }

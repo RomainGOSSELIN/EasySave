@@ -186,14 +186,8 @@
   <data name="job_execution" xml:space="preserve">
     <value>Ejecutando trabajo de copia de seguridad: {0}</value>
   </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>El directorio de origen no existe.</value>
-  </data>
   <data name="save_type_error" xml:space="preserve">
     <value>El tipo de copia de seguridad no es válido.</value>
-  </data>
-  <data name="backup_success" xml:space="preserve">
-    <value>¡La copia de seguridad se completó con éxito!</value>
   </data>
   <data name="backup_error" xml:space="preserve">
     <value>Se produjo un error al guardar: {0}</value>
@@ -295,9 +289,6 @@ Backup</value>
   <data name="header_id" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="header_name" xml:space="preserve">
-    <value>Nombre </value>
-  </data>
   <data name="header_source" xml:space="preserve">
     <value>Fuente</value>
   </data>
@@ -306,5 +297,23 @@ Backup</value>
   </data>
   <data name="header_type" xml:space="preserve">
     <value>Amable</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>El directorio de origen {0} no existe.</value>
+  </data>
+  <data name="header_name" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="invalid_extension" xml:space="preserve">
+    <value>Extensión no válida. La extensión debe comenzar con un punto (.) Y no contiene espacio</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>¡La copia de seguridad {0} se ha llevado a cabo con éxito!</value>
+  </data>
+  <data name="backups_success" xml:space="preserve">
+    <value>¡Las copias de seguridad {0} se llevaron a cabo con éxito!</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>Progreso</value>
   </data>
 </root>

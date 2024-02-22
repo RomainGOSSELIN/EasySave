@@ -18,11 +18,7 @@ namespace EasySaveWPF.Services
         private int fileCount = 0;
         public long encryptTime = 0;
         private string _filesToEncrypt;
-        string message;
-        string caption;
-        MessageBoxButton button;
-        MessageBoxImage icon;
-        private static Semaphore _statusSemaphore;
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         public BackupService()
         {
@@ -38,25 +34,14 @@ namespace EasySaveWPF.Services
             encryptTime = 0;
             if (job == null)
             {
-                message = Resources.Translation.copy_success;
-                caption = Resources.Translation.success;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Information;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.JobNotExist(job.Id);
                 return;
             }
             try
             {
                 if (!Directory.Exists(job.SourceDir))
                 {
-
-                    message = Resources.Translation.source_directory_doesnt_exist;
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Warning;
-
-                    MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
-
+                    notifications.SourceDirNotExist(job.SourceDir);
                     return;
                 }
 
@@ -87,11 +72,7 @@ namespace EasySaveWPF.Services
             }
             catch (Exception ex)
             {
-                message = String.Format(Resources.Translation.backup_error, ex.Message);
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.BackupError(ex.Message);
             }
         }
         private void CopyFullBackup(BackupJob job, string[] sourceFiles)
@@ -154,10 +135,8 @@ namespace EasySaveWPF.Services
 
             if (_filesToEncrypt.Contains(fileInfo.Extension))
             {
-
                 try
                 {
-
                     Process cryptoSoft = new Process();
                     cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
                     cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";

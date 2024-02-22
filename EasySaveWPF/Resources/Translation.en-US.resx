@@ -177,9 +177,6 @@
   <data name="save_type_error" xml:space="preserve">
     <value>The backup type is invalid.</value>
   </data>
-  <data name="backup_success" xml:space="preserve">
-    <value>The backup was completed successfully!</value>
-  </data>
   <data name="backup_error" xml:space="preserve">
     <value>An error occurred while saving: {0}</value>
   </data>
@@ -219,9 +216,6 @@ Backup</value>
   </data>
   <data name="source" xml:space="preserve">
     <value>Source</value>
-  </data>
-  <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>The source directory does not exist.</value>
   </data>
   <data name="target_source_must_be_different" xml:space="preserve">
     <value>The source and target directory cannot be the same.</value>
@@ -306,5 +300,20 @@ Backup</value>
   </data>
   <data name="header_type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="source_directory_doesnt_exist" xml:space="preserve">
+    <value>The source directory {0} does not exist.</value>
+  </data>
+  <data name="backup_success" xml:space="preserve">
+    <value>The backup {0} has been successfully carried out!</value>
+  </data>
+  <data name="invalid_extension" xml:space="preserve">
+    <value>Invalid extension. The extension must start with a point (.) And do not contain space</value>
+  </data>
+  <data name="backups_success" xml:space="preserve">
+    <value>The backups {0} were successfully carried out!</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>Progress</value>
   </data>
 </root>
