@@ -61,6 +61,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Progression.
+        /// </summary>
+        public static string _ {
+            get {
+                return ResourceManager.GetString("", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à ➕ Ajouter Sauvegarde.
         /// </summary>
         public static string add_backup_button {
@@ -286,7 +295,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Progression.
+        ///   Recherche une chaîne localisée semblable à progression (%).
         /// </summary>
         public static string header_progress {
             get {
@@ -300,6 +309,15 @@ namespace EasySaveWPF.Resources {
         public static string header_source {
             get {
                 return ResourceManager.GetString("header_source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à status.
+        /// </summary>
+        public static string header_status {
+            get {
+                return ResourceManager.GetString("header_status", resourceCulture);
             }
         }
         

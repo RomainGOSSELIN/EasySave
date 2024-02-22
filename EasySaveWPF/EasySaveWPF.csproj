@@ -101,9 +101,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Theme.settings</DependentUpon>
     </Compile>
-    <Compile Update="View\StringToBooleanConverter.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

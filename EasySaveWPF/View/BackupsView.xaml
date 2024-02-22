@@ -168,8 +168,8 @@
                 <DataGridTextColumn Header="{x:Static t:Translation.header_source}" Binding="{Binding SourceDir}" Width="*"/>
                 <DataGridTextColumn Header="{x:Static t:Translation.header_target}" Binding="{Binding TargetDir}" Width="*" />
                 <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding Type}" Width="100" />
-                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding State.State}" Width="50" />
-                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding State.Progress }" Width="50" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_status}" Binding="{Binding State.State}" Width="50" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_progress}" Binding="{Binding State.Progress }" Width="100" />
 
                 <DataGridTemplateColumn Header="Actions" Width="50">
                     <DataGridTemplateColumn.CellTemplate>

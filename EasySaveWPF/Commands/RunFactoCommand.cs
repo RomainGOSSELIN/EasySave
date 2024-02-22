@@ -20,6 +20,8 @@ namespace EasySaveWPF.Commands
         private BackupViewModel _backupViewModel;
         private string _processName;
         Notifications.Notifications notifications = new Notifications.Notifications();
+        private readonly object _logLock = new object();
+
 
         public RunFactoCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
         {
@@ -50,20 +52,31 @@ namespace EasySaveWPF.Commands
             if (parameter is BackupJob)
             {
                 var job = (BackupJob)parameter;
-                Thread thread = new Thread(() => ExecuteJob(job)); // Start ExecuteJob in a new thread
-                thread.Start();
-                executedJobs.Add(job);
-                notifications.BackupSuccess(executedJobs);
+                ThreadPool.QueueUserWorkItem(state =>
+                {
+                    ExecuteJob(job);
+                    lock (executedJobs)
+                    {
+                        executedJobs.Add(job);
+                    }
+                    notifications.BackupSuccess(executedJobs);
+                });
             }
+
             else if (parameter.ToString() == "all")
             {
                 foreach (BackupJob job in _backupViewModel.BackupJobs)
                 {
-                    Thread thread = new Thread(() => ExecuteJob(job));
-                    thread.Start();
-                    executedJobs.Add(job);
+                    ThreadPool.QueueUserWorkItem(state =>
+                    {
+                        ExecuteJob(job);
+                        lock (executedJobs)
+                        {
+                            executedJobs.Add(job);
+                        }
+                        notifications.BackupSuccess(executedJobs);
+                    });
                 }
-                notifications.BackupSuccess(executedJobs);
             }
             else if (parameter.ToString() == "some")
             {
@@ -103,7 +116,11 @@ namespace EasySaveWPF.Commands
                     _backupService.ExecuteBackupJob(job);
                     var encryptTime = _backupService.GetEncryptTime();
                     stopwatch.Stop();
-                    _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+
+                    lock (_logLock)
+                    {
+                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+                    }
                 }
                 else
                 {

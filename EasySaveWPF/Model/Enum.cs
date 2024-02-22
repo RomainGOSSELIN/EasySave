@@ -28,5 +28,13 @@ namespace EasySaveWPF.Model
             Json,
             Xml
         };
+
+        public enum StateEnum
+        {
+            ACTIVE,
+            END,
+            PAUSED,
+            STOPPED
+        }
     }
 }

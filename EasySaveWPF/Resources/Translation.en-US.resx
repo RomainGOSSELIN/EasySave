@@ -313,7 +313,13 @@ Backup</value>
   <data name="backups_success" xml:space="preserve">
     <value>The backups {0} were successfully carried out!</value>
   </data>
-  <data name="header_progress" xml:space="preserve">
+  <data name="" xml:space="preserve">
     <value>Progress</value>
+  </data>
+  <data name="header_status" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>increase (%)</value>
   </data>
 </root>

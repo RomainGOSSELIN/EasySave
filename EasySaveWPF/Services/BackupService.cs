@@ -12,21 +12,18 @@ namespace EasySaveWPF.Services
 
     public class BackupService : IBackupService
     {
-        private IStateLogService _stateLogService;
         private BackupJobService _backupJobService;
         private BackupState _currentBackupState;
         private int fileCount = 0;
         public long encryptTime = 0;
         private string _filesToEncrypt;
         Notifications.Notifications notifications = new Notifications.Notifications();
-        private static Semaphore _statusSemaphore;
+        private readonly object _statusLock = new object();
 
         public BackupService()
         {
-            _stateLogService = new StateLogService();
             _backupJobService = new BackupJobService();
             _filesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
-            _statusSemaphore = new Semaphore(1, 1);
         }
         public event EventHandler<BackupState> CurrentBackupStateChanged;
 
@@ -61,10 +58,15 @@ namespace EasySaveWPF.Services
                 {
                     CopyDifferentialBackup(job, sourceFiles);
                 }
-                _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
-                _stateLogService.UpdateStateLog(_currentBackupState);
-                job.State = _currentBackupState;
-                _backupJobService.UpdateJob(job);
+                _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "");
+
+                lock (_statusLock)
+                {
+                    job.State = _currentBackupState;
+                    _backupJobService.UpdateJob(job);
+                }
+
+
                 OnCurrentBackupStateChanged(_currentBackupState);
 
                 fileCount = 0;
@@ -164,20 +166,20 @@ namespace EasySaveWPF.Services
             }
             int nbFilesLeftToDo = job.State.NbFilesLeftToDo - 1;
 
-            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", job.State.TotalFilesToCopy, job.State.TotalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
-            _statusSemaphore.WaitOne();
-            _stateLogService.UpdateStateLog(_currentBackupState);
-            _statusSemaphore.Release();
+            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
 
-            job.State = _currentBackupState;
-            _backupJobService.UpdateJob(job);
-            OnCurrentBackupStateChanged(_currentBackupState);
-        }
+            lock (_statusLock)
+            {
+                job.State = _currentBackupState;
+                _backupJobService.UpdateJob(job);
+            }
+                OnCurrentBackupStateChanged(_currentBackupState);
+            }
 
-        public long GetEncryptTime()
-        {
-            return encryptTime;
-        }
+            public long GetEncryptTime()
+            {
+                return encryptTime;
+            }
 
 
         protected virtual void OnCurrentBackupStateChanged(BackupState backupState)
