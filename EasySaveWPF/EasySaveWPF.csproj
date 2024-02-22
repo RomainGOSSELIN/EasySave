@@ -27,6 +27,7 @@
     <None Remove="Images\logoES.png" />
     <None Remove="Images\logoES_v2.ico" />
     <None Remove="Images\logoSetting.png" />
+    <None Remove="Images\pause.png" />
     <None Remove="Images\runall.png" />
     <None Remove="Images\spain.png" />
     <None Remove="Images\uk.png" />
@@ -54,6 +55,7 @@
     <Resource Include="Images\logoES.ico" />
     <Resource Include="Images\logoES_v2.ico" />
     <Resource Include="Images\logoSetting.png" />
+    <Resource Include="Images\pause.png" />
     <Resource Include="Images\runall.png" />
     <Resource Include="Images\spain.png" />
     <Resource Include="Images\uk.png" />

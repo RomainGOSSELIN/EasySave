@@ -20,7 +20,12 @@ namespace EasySaveWPF.Model
         public long NbFilesSizeLeftToDo { get; set; } = 0;
         public string SourceFilePath { get; set; } = string.Empty;
         public string TargetFilePath { get; set; } = string.Empty;
+        
+        public int FileProgress => TotalFilesToCopy- NbFilesLeftToDo;
+        public long FileSizeProgress => TotalFilesSize - NbFilesSizeLeftToDo;
+
         public double Progress => Math.Round((double)(TotalFilesToCopy-NbFilesLeftToDo) / TotalFilesToCopy * 100) >= 0 ? Math.Round((double)(TotalFilesToCopy - NbFilesLeftToDo) / TotalFilesToCopy * 100): 0;
+
 
         public BackupState()
         {
