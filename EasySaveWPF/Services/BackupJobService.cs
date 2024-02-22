@@ -112,6 +112,20 @@ namespace EasySaveWPF.Services
             }
         }
 
+        public void UpdateJob(BackupJob job)
+        {
+            List<BackupJob> jobs = GetAllJobs();
+           foreach (BackupJob backupJob in jobs)
+            {
+                if (backupJob.Id == job.Id) 
+                {
+                    backupJob.State = job.State;
+                };
+            }
+            _logger.SaveLog(jobs, _jobsFilePath);
+
+        }
+
         private void UpdateIds(List<BackupJob> jobs)
         {
             for (int i = 0; i < jobs.Count; i++)
@@ -119,5 +133,8 @@ namespace EasySaveWPF.Services
                 jobs[i].Id = i + 1;
             }
         }
+
+
+
     }
 }

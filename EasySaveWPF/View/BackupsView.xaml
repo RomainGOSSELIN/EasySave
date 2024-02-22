@@ -105,7 +105,8 @@
                     Grid.Row="0"
                     Margin="0,40,10,0">
             <Button Content="{x:Static t:Translation.run_all}"
-                    Command="{Binding RunAllCommand}"
+                    Command="{Binding RunFactoCommand}"
+                    CommandParameter="all"
                     Width="120"
                     Height="30"
                     Style="{StaticResource ButtonTheme}" />
@@ -120,7 +121,7 @@
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Right">
                 <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <Button Width="15"  Height="22" Command="{Binding RunSomeCommand}" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                    <Button Width="15"  Height="22" Command="{Binding RunFactoCommand}" CommandParameter="some" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
                         <Button.Content>
                             <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button.Content>
@@ -153,21 +154,23 @@
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
                   CanUserResizeColumns="True"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="{x:Static t:Translation.header_id}" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static t:Translation.header_id}" Binding="{Binding Id}" Width="10"/>
                 <DataGridTextColumn Header="{x:Static t:Translation.header_name}" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn Header="{x:Static t:Translation.header_source}" Binding="{Binding SourceDir}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_source}" Binding="{Binding SourceDir}" Width="*"/>
                 <DataGridTextColumn Header="{x:Static t:Translation.header_target}" Binding="{Binding TargetDir}" Width="*" />
-                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding Type}" Width="*" />
-                <DataGridTextColumn Header="{x:Static t:Translation.header_progress}" Binding="{Binding Progress}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding Type}" Width="100" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding State.State}" Width="50" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding State.Progress }" Width="50" />
 
-                <DataGridTemplateColumn Header="Actions" Width="*">
+                <DataGridTemplateColumn Header="Actions" Width="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunFactoCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image   Width="15" Height="15" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Button.Content>

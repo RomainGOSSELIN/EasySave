@@ -39,7 +39,7 @@ namespace EasySaveWPF.Commands
             {
                 _stateLogService.CreateStateLog(_backupJob);
 
-                _viewModel.BackupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential);
+                _viewModel.BackupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential,0, new BackupState());
             };
 
         }
