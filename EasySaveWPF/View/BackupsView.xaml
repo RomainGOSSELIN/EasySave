@@ -134,10 +134,9 @@
                 <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
                     <TextBox Width="25" Height="22" Text="{Binding FromJob}"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
-                <ComboBox  SelectedValuePath="Content"
-           SelectedValue="{Binding RunOperation, Mode=TwoWay}" Width="45" Margin="5" Background="White" BorderBrush="White">
-                    <ComboBoxItem Content="et"/>
-                    <ComboBoxItem Content="à"/>
+                <ComboBox Width="48" Margin="5" Background="White" BorderBrush="White" VerticalAlignment="Center">
+                    <ComboBoxItem Content="{x:Static t:Translation.to_menu}" VerticalAlignment="Center"/>
+                    <ComboBoxItem Content="{x:Static t:Translation.and_menu}" VerticalAlignment="Center"/>
                 </ComboBox>
                 <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
                     <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Text="{Binding ToJob}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />

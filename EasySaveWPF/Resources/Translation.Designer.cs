@@ -63,9 +63,9 @@ namespace EasySaveWPF.Resources {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Progression.
         /// </summary>
-        public static string _ {
+        public static string _Empty_1_ {
             get {
-                return ResourceManager.GetString("", resourceCulture);
+                return ResourceManager.GetString("_Empty[1]", resourceCulture);
             }
         }
         
@@ -88,7 +88,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à et.
         /// </summary>
         public static string and_menu {
             get {
@@ -183,6 +183,15 @@ namespace EasySaveWPF.Resources {
         public static string copy_file {
             get {
                 return ResourceManager.GetString("copy_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La sauvegarde est terminée ! .
+        /// </summary>
+        public static string copy_success {
+            get {
+                return ResourceManager.GetString("copy_success", resourceCulture);
             }
         }
         
@@ -439,6 +448,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une autre instance de l&apos;application est en cours..
+        /// </summary>
+        public static string mono_instance_app {
+            get {
+                return ResourceManager.GetString("mono_instance_app", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Veuillez renseigner un nom.
         /// </summary>
         public static string name_empty {
@@ -655,7 +673,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à à .
         /// </summary>
         public static string to_menu {
             get {

@@ -313,7 +313,7 @@ Sauvegarde</value>
   <data name="backups_success" xml:space="preserve">
     <value>Les sauvegardes {0} ont été effectuées avec succès !</value>
   </data>
-  <data name="" xml:space="preserve">
+  <data name="_Empty[1]" xml:space="preserve">
     <value>Progression</value>
   </data>
   <data name="header_status" xml:space="preserve">
@@ -321,5 +321,14 @@ Sauvegarde</value>
   </data>
   <data name="header_progress" xml:space="preserve">
     <value>progression (%)</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>et</value>
+  </data>
+  <data name="mono_instance_app" xml:space="preserve">
+    <value>Une autre instance de l'application est en cours.</value>
   </data>
 </root>
