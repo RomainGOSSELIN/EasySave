@@ -8,6 +8,7 @@ namespace EasySaveWPF.Model
 {
     public class Enum
     {
+
         public enum LanguageEnum
         {
             fr,
