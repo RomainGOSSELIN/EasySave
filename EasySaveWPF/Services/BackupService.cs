@@ -3,6 +3,7 @@ using EasySaveWPF.Services.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using static EasySaveWPF.Model.Enum;
 
@@ -18,7 +19,9 @@ namespace EasySaveWPF.Services
         public long encryptTime = 0;
         private string _filesToEncrypt;
         Notifications.Notifications notifications = new Notifications.Notifications();
-        private readonly object _statusLock = new object();
+        private static readonly object _statusLock = new object();
+        private static Barrier priorityFilesBarrier = new Barrier(0);
+        private static List<string> _priorityExtensions = [".JPG", ".DNG"];
 
         public BackupService()
         {
@@ -69,7 +72,6 @@ namespace EasySaveWPF.Services
 
                 OnCurrentBackupStateChanged(_currentBackupState);
 
-                fileCount = 0;
             }
             catch (Exception ex)
             {
@@ -82,18 +84,30 @@ namespace EasySaveWPF.Services
             long totalFilesSize = sourceFiles.Select(file => new FileInfo(file).Length).Sum();
             long totalSizeTarget = 0;
             job.State.NbFilesLeftToDo = totalFilesToCopy;
+            priorityFilesBarrier.AddParticipant();
 
             foreach (string sourceFile in sourceFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
                 totalSizeTarget += originalFile.Length;
-                fileCount++;
                 long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
                 job.State.TotalFilesToCopy = totalFilesToCopy;
                 job.State.TotalFilesSize = totalFilesSize;
 
-                Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
+                if (_priorityExtensions.Contains(originalFile.Extension))
+                {
+                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
+                }
+                else
+                {
+                    priorityFilesBarrier.SignalAndWait();
+
+                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
+
+                }
+
             }
+            priorityFilesBarrier.RemoveParticipant();
         }
         private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles)
         {
@@ -123,7 +137,6 @@ namespace EasySaveWPF.Services
                     totalSizeTarget += originalFile.Length;
                     long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
                     Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
-                    fileCount++;
                 }
             }
 
@@ -173,13 +186,13 @@ namespace EasySaveWPF.Services
                 job.State = _currentBackupState;
                 _backupJobService.UpdateJob(job);
             }
-                OnCurrentBackupStateChanged(_currentBackupState);
-            }
+            OnCurrentBackupStateChanged(_currentBackupState);
+        }
 
-            public long GetEncryptTime()
-            {
-                return encryptTime;
-            }
+        public long GetEncryptTime()
+        {
+            return encryptTime;
+        }
 
 
         protected virtual void OnCurrentBackupStateChanged(BackupState backupState)

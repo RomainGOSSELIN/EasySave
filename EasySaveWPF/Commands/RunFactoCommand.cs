@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model;
+using EasySaveWPF.Services;
 using EasySaveWPF.Services.Interfaces;
 using EasySaveWPF.ViewModel;
 using System;
@@ -18,17 +19,20 @@ namespace EasySaveWPF.Commands
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
         private BackupViewModel _backupViewModel;
+        private static List<BackupJob> _backupJobs;
         private string _processName;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private readonly object _logLock = new object();
-
-
         public RunFactoCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
         {
+            _backupViewModel = vm;
+
+            _backupJobs = _backupViewModel.BackupJobs;
+
             _backupService = backupService;
+
             _dailyLogService = dailyLogService;
             _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
-            _backupViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)
@@ -54,6 +58,7 @@ namespace EasySaveWPF.Commands
                 var job = (BackupJob)parameter;
                 ThreadPool.QueueUserWorkItem(state =>
                 {
+                    
                     ExecuteJob(job);
                     lock (executedJobs)
                     {
@@ -67,6 +72,7 @@ namespace EasySaveWPF.Commands
             {
                 foreach (BackupJob job in _backupViewModel.BackupJobs)
                 {
+
                     ThreadPool.QueueUserWorkItem(state =>
                     {
                         ExecuteJob(job);
@@ -75,6 +81,7 @@ namespace EasySaveWPF.Commands
                             executedJobs.Add(job);
                         }
                         notifications.BackupSuccess(executedJobs);
+
                     });
                 }
             }
@@ -136,5 +143,7 @@ namespace EasySaveWPF.Commands
                 .Select(file => new FileInfo(file).Length)
                 .Sum();
         }
+
+        
     }
 }
