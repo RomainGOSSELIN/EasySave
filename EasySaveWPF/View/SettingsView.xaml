@@ -1,40 +1,46 @@
 ﻿<UserControl x:Class="EasySaveWPF.View.Settings"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:t = "clr-namespace:EasySaveWPF.Resources"
-      xmlns:local="clr-namespace:EasySaveWPF.View"
-      mc:Ignorable="d" d:DesignWidth="auto" Height="auto">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:t="clr-namespace:EasySaveWPF.Resources"
+             xmlns:local="clr-namespace:EasySaveWPF.View"
+             mc:Ignorable="d" 
+             d:DesignWidth="auto" 
+             Height="auto">
+
     <UserControl.Resources>
         <local:StringToBooleanConverter x:Key="StringToBooleanConverter" />
     </UserControl.Resources>
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-        <!-- Settings -->
-        <TextBlock 
-            Text="{x:Static t:Translation.settings_button}"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="30"
-            Foreground="{DynamicResource Text}" 
-            FontWeight="Bold" 
-            Margin="10,10,0,0" 
-            Height="39" 
-            Width="664"
-            TextWrapping ="Wrap"/>
 
-        <!-- Language section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            FontSize="22"
-            Margin="10,70,0,452"
-            Foreground="{DynamicResource Text}" 
-            Text="{x:Static t:Translation.option_lang}"
-            FontWeight="Bold" 
-            Width="612"/>
+        <!-- Settings Header -->
+        <TextBlock Text="{x:Static t:Translation.settings_button}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="30"
+                   Foreground="{DynamicResource Text}" 
+                   FontWeight="Bold" 
+                   Margin="10,10,0,0" 
+                   Height="39" 
+                   Width="664"
+                   TextWrapping="Wrap" />
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,110,0,0" Height="45">
+        <!-- Language Section -->
+        <TextBlock HorizontalAlignment="Left"
+                   FontSize="22"
+                   Margin="10,70,0,0"
+                   Foreground="{DynamicResource Text}" 
+                   Text="{x:Static t:Translation.option_lang}"
+                   FontWeight="Bold" 
+                   Width="612" />
+
+        <!-- Language Options (French, English, Spanish, Italian, Deutsch) with Flags -->
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Top" 
+                    Margin="10,110,0,0" 
+                    Height="45">
             <!-- French -->
             <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_French" Content="fr-FR" VerticalAlignment="Center" Checked="Language_Choice"  ClickMode="Press" Cursor="Hand" Margin="5,0" />
             <Image Source="/Images/france.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
@@ -56,110 +62,124 @@
             <Image Source="/Images/germany.png" Width="65" Height="45" Stretch="Uniform" Margin="5,0,5,0"/>
         </StackPanel>
 
+        <!-- Business Software Section -->
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   Margin="10,160,0,0"
+                   Foreground="{DynamicResource Text}" 
+                   Text="{x:Static t:Translation.business_software}" 
+                   FontWeight="Bold" 
+                   Height="29" 
+                   Width="695" />
 
+        <TextBox Text="{Binding BusinessSoftware}"
+                 x:Name="PathBusinessSoftware" 
+                 HorizontalAlignment="Left" 
+                 Margin="10,200,0,0" 
+                 TextWrapping="NoWrap" 
+                 VerticalAlignment="Top" 
+                 Width="309"
+                 TextChanged="PathBusinessSoftware_Changed" 
+                 BorderBrush="#FF707070" />
 
-        <!-- Business Software section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="22"
-            Margin="10,160,0,0"
-            Foreground="{DynamicResource Text}" 
-            Text="{x:Static t:Translation.business_software}" 
-            FontWeight="Bold" 
-            Height="29" 
-            Width="695"/>
+        <Button Content="..." 
+                HorizontalAlignment="Left" 
+                Margin="328,200,0,0" 
+                VerticalAlignment="Top" 
+                Height="18" 
+                Click="Files_Explorer" 
+                Width="30" 
+                Background="White" />
 
-        <TextBox 
-            Text="{Binding BusinessSoftware}"
-            x:Name="PathBusinessSoftware" 
-            HorizontalAlignment="Left" 
-            Margin="10,200,0,0" 
-            TextWrapping="NoWrap" 
-            VerticalAlignment="Top" 
-            Width="309"
-            
-            TextChanged="PathBusinessSoftware_Changed" BorderBrush="#FF707070"/>
+        <!-- Logs Format Section -->
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   Margin="10,240,0,0"
+                   Foreground="{DynamicResource Text}" 
+                   Text="{x:Static t:Translation.logs_format}" 
+                   FontWeight="Bold" 
+                   Height="29" 
+                   Width="695" />
 
-        <Button 
-            Content="..." 
-            HorizontalAlignment="Left" 
-            Margin="328,200,0,0" 
-            VerticalAlignment="Top" 
-            Height="18" 
-            Click="Files_Explorer" 
-            Width="30" 
-            Background="White"/>
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Top" 
+                    Margin="10,280,0,0" 
+                    Height="45">
 
+            <!-- Log Format Options (JSON, XML) -->
 
-
-        <!-- Logs Format section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="22"
-            Margin="10,240,0,0"
-            Foreground="{DynamicResource Text}" Text="{x:Static t:Translation.logs_format}" FontWeight="Bold" Height="29" Width="695"/>
-
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,280,0,0" Height="45">
             <!-- JSON Format -->
-            <RadioButton 
-                x:Name="LogsFormatJSON" 
-                GroupName="LogsFormatOptions"
-                IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=json}"
-                Style="{StaticResource RadioButtonTheme}"/>
-            <TextBlock  Text="JSON" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <RadioButton x:Name="LogsFormatJSON" 
+                         GroupName="LogsFormatOptions"
+                         IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=json}"
+                         Style="{StaticResource RadioButtonTheme}"/>
+
+            <TextBlock Text="JSON" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       FontSize="13"
+                       Foreground="{DynamicResource Text}" 
+                       FontWeight="Bold"/>
 
             <!-- XML Format -->
-            <RadioButton 
-                x:Name="LogsFormatXML" 
-                GroupName="LogsFormatOptions" 
-                IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=xml}"
-                Style="{StaticResource RadioButtonTheme}"/>
-            <TextBlock  Text="XML" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
-Foreground="{DynamicResource Text}" FontWeight="Bold"/>
+            <RadioButton x:Name="LogsFormatXML" 
+                         GroupName="LogsFormatOptions" 
+                         IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=xml}"
+                         Style="{StaticResource RadioButtonTheme}"/>
+
+            <TextBlock Text="XML" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       FontSize="13"
+                       Foreground="{DynamicResource Text}" 
+                       FontWeight="Bold"/>
+
         </StackPanel>
 
+        <!-- Extension for Encryption Section -->
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   Margin="10,330,0,0"
+                   Foreground="{DynamicResource Text}" 
+                   FontWeight="Bold" 
+                   Height="29" 
+                   Width="766"
+                   Text="{x:Static t:Translation.add_or_remove_encryption}" />
 
-
-        <!-- Extension for encryption section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="22"
-            Margin="10,330,0,0"
-            Foreground="{DynamicResource Text}" FontWeight="Bold" Height="29" Width="766"><Run Language="fr-fr" Text="{x:Static t:Translation.add_or_remove_encryption}"/></TextBlock>
-
+        <!-- Add, Remove, Clear Extension Buttons -->
         <!-- Input Extension -->
-        <TextBox
-            x:Name="InputExtension"
-            HorizontalAlignment="Left" 
-            Margin="10,370,0,0" 
-            TextWrapping="NoWrap" 
-            VerticalAlignment="Top" 
-            Width="108" BorderBrush="#FF707070"
-            />
+        <TextBox x:Name="InputExtension"
+                HorizontalAlignment="Left" 
+                Margin="10,370,0,0" 
+                TextWrapping="NoWrap" 
+                VerticalAlignment="Top" 
+                Width="108" 
+                BorderBrush="#FF707070" />
 
         <!-- Add Extension -->
-        <Button 
-           
-            HorizontalAlignment="Left" 
-            Margin="134,370,0,0" 
-            VerticalAlignment="Top" 
-            Height="18" 
-            Click="AddExtension_Click" 
-            Width="30" 
-            Background="White" 
-            RenderTransformOrigin="1.177,0.528">
+        <Button HorizontalAlignment="Left" 
+                Margin="134,370,0,0" 
+                VerticalAlignment="Top" 
+                Height="18" 
+                Click="AddExtension_Click" 
+                Width="30" 
+                Background="White" 
+                RenderTransformOrigin="1.177,0.528">
             <Button.Content>
-            <Image   Width="28" Height="19" Source="/Images/AddExt.png" Stretch="Uniform" VerticalAlignment="Center" Margin="-1,0,0,0"/>
-        </Button.Content>
+                <Image Width="28" 
+                       Height="19" 
+                       Source="/Images/AddExt.png" 
+                       Stretch="Uniform" 
+                       VerticalAlignment="Center" 
+                       Margin="-1,0,0,0" />
+            </Button.Content>
         </Button>
 
         <!-- Remove Extension -->
         <Button 
-         
             HorizontalAlignment="Left" 
             Margin="180,370,0,0" 
             VerticalAlignment="Top"
@@ -168,7 +188,12 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             Width="30" 
             Background="White">
             <Button.Content>
-                <Image   Width="28" Height="16" Source="/Images/DeleteExtension.png" Stretch="Uniform" VerticalAlignment="Center" Margin="-1,0,0,0"/>
+                <Image Width="28" 
+                       Height="16" 
+                       Source="/Images/DeleteExtension.png" 
+                       Stretch="Uniform"
+                       VerticalAlignment="Center" 
+                       Margin="-1,0,0,0" />
             </Button.Content>
         </Button>
 
@@ -181,81 +206,108 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
             Click="ClearListExtension_Click" 
             Width="30" 
             Background="White">
-        <Button.Content>
-            <Image   Width="28" Height="16" Source="/Images/ClearAll.png" Stretch="Uniform" VerticalAlignment="Center" Margin="-1,0,0,0"/>
-        </Button.Content>
+            <Button.Content>
+                <Image Width="28" 
+                       Height="16" 
+                       Source="/Images/ClearAll.png" 
+                       Stretch="Uniform" 
+                       VerticalAlignment="Center" 
+                       Margin="-1,0,0,0" />
+            </Button.Content>
         </Button>
 
+        <!-- List of Extensions for Encryption -->
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="16"
+                   Margin="10,420,0,0"
+                   Foreground="{DynamicResource Text}"
+                   FontWeight="Bold" 
+                   Height="20" 
+                   Width="766"
+                   Text="{x:Static t:Translation.list_extension_encryption}" />
 
-
-        <!-- List of extension for encryption section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Margin="10,420,0,0"
-            Foreground="{DynamicResource Text}"
-            FontWeight="Bold" 
-            Height="20" 
-            Width="766"
-            Text="{x:Static t:Translation.list_extension_encryption}"/>
-
-        <!-- List of extension -->
-        <ScrollViewer  CanContentScroll="True" HorizontalScrollBarVisibility="Disabled"  Height="30" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,460,0,0" BorderBrush="Gray" Background="#FF707070" Padding="0.75,0.75,0.75,0.75" Foreground="Gray">
+        <ScrollViewer CanContentScroll="True" 
+                      HorizontalScrollBarVisibility="Disabled"  
+                      Height="30" 
+                      Width="330" 
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Top" 
+                      Margin="10,460,0,0" 
+                      BorderBrush="Gray" 
+                      Background="#FF707070" 
+                      Padding="0.75,0.75,0.75,0.75" 
+                      Foreground="Gray">
             <TextBlock x:Name="ListExtension" 
-               FontSize="12" 
-               Foreground="Black" 
-               Background="White"
-               TextWrapping="Wrap"
-               Text="{Binding FilesToEncrypt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                       FontSize="12" 
+                       Foreground="Black" 
+                       Background="White"
+                       TextWrapping="Wrap"
+                       Text="{Binding FilesToEncrypt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </ScrollViewer>
 
+        <!-- Theme Section -->
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   Margin="10,510,0,0"
+                   Foreground="{DynamicResource Text}" 
+                   FontWeight="Bold" 
+                   Height="29" 
+                   Width="766"
+                   Text="{x:Static t:Translation.theme}" />
 
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Top" 
+                    Margin="10,550,0,0" 
+                    Height="45">
 
-        <!-- Theme section -->
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="22"
-            Margin="10,510,0,0"
-            Foreground="{DynamicResource Text}" FontWeight="Bold" Height="29" Width="766"><Run Language="fr-fr" Text="{x:Static t:Translation.theme}"/></TextBlock>
+            <!-- Theme Options (Light, Dark) -->
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,550,0,0" Height="45">
             <!-- Light Theme -->
-            <RadioButton 
-                x:Name="radioButtonLightTheme" 
-                GroupName="ThemeOptions" 
-                Style="{StaticResource RadioButtonTheme}"
-                Content="Light"
-                Checked="Theme_Choice"
-                />
+            <RadioButton x:Name="radioButtonLightTheme" 
+             GroupName="ThemeOptions" 
+             Style="{StaticResource RadioButtonTheme}"
+             Content="Light"
+             Checked="Theme_Choice" />
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Background="White" CornerRadius="5" BorderBrush="#0D0C27" BorderThickness="1">
-                    <TextBlock Text="{x:Static t:Translation.light}" FontSize="13"
-               Foreground="Black" FontWeight="Bold"
-               Width="50" Height="25" VerticalAlignment="Center"
-               HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+                    <TextBlock Text="{x:Static t:Translation.light}" 
+                   FontSize="13"
+                   Foreground="Black" FontWeight="Bold"
+                   Width="50" 
+                   Height="25" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   TextAlignment="Center" 
+                   Margin="0,5,0,0" />
                 </Border>
             </StackPanel>
-
 
             <!-- Dark Theme -->
-            <RadioButton 
-                x:Name="radioButtonDarkTheme" 
-                GroupName="ThemeOptions" 
-                Style="{StaticResource RadioButtonTheme}"
-                Content="Dark"
-                Checked="Theme_Choice"
-                />
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Border Background="#0D0C27" CornerRadius="5" BorderBrush="White" BorderThickness="1">
-                    <TextBlock Text="{x:Static t:Translation.dark}" FontSize="13"
-   Foreground="White" FontWeight="Bold"
-   Width="50" Height="25" VerticalAlignment="Center"
-   HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" />
+            <RadioButton x:Name="radioButtonDarkTheme" 
+             GroupName="ThemeOptions" 
+             Style="{StaticResource RadioButtonTheme}"
+             Content="Dark"
+             Checked="Theme_Choice" />
+            <StackPanel HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+                <Border Background="#0D0C27" 
+            CornerRadius="5" 
+            BorderBrush="White" 
+            BorderThickness="1">
+                    <TextBlock Text="{x:Static t:Translation.dark}" 
+                   FontSize="13"
+                   Foreground="White" 
+                   FontWeight="Bold"
+                   Width="50" 
+                   Height="25" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   TextAlignment="Center" 
+                   Margin="0,5,0,0" />
                 </Border>
             </StackPanel>
-       
         </StackPanel>
 
     </Grid>
