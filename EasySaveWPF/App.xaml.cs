@@ -18,6 +18,7 @@ namespace EasySaveWPF
     /// </summary>
     public partial class App : Application
     {
+        private static Mutex _mutex = null;
         private ServiceProvider serviceProvider;
         public App()
         {
@@ -41,6 +42,19 @@ namespace EasySaveWPF
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            const string appName = "EasySaveWPF"; 
+            bool createdNew;
+
+            _mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                
+                Application.Current.Shutdown();
+                MessageBox.Show("Une autre instance de l'application est en cours");
+                return;
+            }
+
             string langCode = EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);

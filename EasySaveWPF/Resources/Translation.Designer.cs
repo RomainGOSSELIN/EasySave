@@ -79,6 +79,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string and_menu {
+            get {
+                return ResourceManager.GetString("and_menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à L&apos;application va s&apos;éteindre pour appliquer le changement de langue..
         /// </summary>
         public static string app_shutdown_language_changed {
@@ -561,6 +570,15 @@ namespace EasySaveWPF.Resources {
         public static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string to_menu {
+            get {
+                return ResourceManager.GetString("to_menu", resourceCulture);
             }
         }
         

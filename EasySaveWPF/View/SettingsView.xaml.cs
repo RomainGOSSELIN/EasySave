@@ -114,6 +114,7 @@ namespace EasySaveWPF.View
                     MessageBox.Show("Invalid extension. Extension should start with a dot (.) and not contain spaces.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+            InputExtension.Text = "";
         }
 
         private void RemoveExtension_Click(object sender, RoutedEventArgs e)
@@ -133,12 +134,14 @@ namespace EasySaveWPF.View
                     MessageBox.Show("Invalid extension. Extension should start with a dot (.)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+            InputExtension.Text = "";
         }
 
 
         private void ClearListExtension_Click(object sender, RoutedEventArgs e)
         {
             ListExtension.Text = "";
+            InputExtension.Text = "";
         }
 
         private List<string> GetExtensionsList()

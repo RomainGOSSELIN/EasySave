@@ -292,4 +292,10 @@ Backup</value>
   <data name="target_empty" xml:space="preserve">
     <value>Inserisci una directory di destinazione</value>
   </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>a</value>
+  </data>
 </root>

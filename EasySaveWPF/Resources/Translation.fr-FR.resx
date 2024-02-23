@@ -292,4 +292,10 @@ Sauvegarde</value>
   <data name="target_empty" xml:space="preserve">
     <value>Veuillez renseigner un répertoire de destination</value>
   </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>et</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>à</value>
+  </data>
 </root>
