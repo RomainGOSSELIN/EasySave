@@ -313,7 +313,7 @@ Backup</value>
   <data name="backups_success" xml:space="preserve">
     <value>¡Las copias de seguridad {0} se llevaron a cabo con éxito!</value>
   </data>
-  <data name="" xml:space="preserve">
+  <data name="_Empty[1]" xml:space="preserve">
     <value>Progreso</value>
   </data>
   <data name="header_status" xml:space="preserve">
@@ -321,5 +321,14 @@ Backup</value>
   </data>
   <data name="header_progress" xml:space="preserve">
     <value>aumentar (%)</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>y</value>
+  </data>
+  <data name="mono_instance_app" xml:space="preserve">
+    <value>Otra instancia de la aplicación está en marcha.</value>
   </data>
 </root>

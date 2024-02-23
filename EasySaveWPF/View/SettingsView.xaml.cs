@@ -114,6 +114,7 @@ namespace EasySaveWPF.View
                     notifications.InvalidExtension();
                 }
             }
+            InputExtension.Text = "";
         }
 
         private void RemoveExtension_Click(object sender, RoutedEventArgs e)
@@ -132,12 +133,14 @@ namespace EasySaveWPF.View
                     notifications.InvalidExtension();
                 }
             }
+            InputExtension.Text = "";
         }
 
 
         private void ClearListExtension_Click(object sender, RoutedEventArgs e)
         {
             ListExtension.Text = "";
+            InputExtension.Text = "";
         }
 
         private List<string> GetExtensionsList()

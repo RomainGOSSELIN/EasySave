@@ -118,5 +118,14 @@ namespace EasySaveWPF.Notifications
             icon = MessageBoxImage.Error;
             MessageBox.Show(message, caption, button, icon);
         }
+
+        public void MultipleInstance()
+        {
+            message = Resources.Translation.mono_instance_app;
+            caption = Resources.Translation.error;
+            button = MessageBoxButton.OK;
+            icon = MessageBoxImage.Error;
+            MessageBox.Show(message, caption, button, icon);
+        }
     }
 }

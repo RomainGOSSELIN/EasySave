@@ -89,7 +89,7 @@
                    Grid.Row="0"
                    FontWeight="Bold" Width="300"
                    TextWrapping ="Wrap"/>
-            
+
 
         <!--  <TextBox Width="250"
                Height="30"
@@ -117,7 +117,7 @@
 
 
         </StackPanel>
-        <Border   Width="150" Background="{DynamicResource ButtonXtoY}" BorderBrush="{DynamicResource ButtonXtoY}" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34" Margin="0,0,10,35">
+        <Border   Width="150" Background="{DynamicResource ButtonXtoY}" BorderBrush="{DynamicResource ButtonXtoY}" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Margin="380,33,0,0">
             <StackPanel 
                 Background="{DynamicResource ButtonXtoY}" 
                 Margin= "0,0,0,0" 
@@ -134,10 +134,9 @@
                 <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
                     <TextBox Width="25" Height="22" Text="{Binding FromJob}"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
-                <ComboBox  SelectedValuePath="Content"
-           SelectedValue="{Binding RunOperation, Mode=TwoWay}" Width="45" Margin="5" Background="White" BorderBrush="White">
-                    <ComboBoxItem Content="et"/>
-                    <ComboBoxItem Content="à"/>
+                <ComboBox Width="48" Margin="5" Background="White" BorderBrush="White" VerticalAlignment="Center">
+                    <ComboBoxItem Content="{x:Static t:Translation.to_menu}" VerticalAlignment="Center"/>
+                    <ComboBoxItem Content="{x:Static t:Translation.and_menu}" VerticalAlignment="Center"/>
                 </ComboBox>
                 <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
                     <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Text="{Binding ToJob}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
