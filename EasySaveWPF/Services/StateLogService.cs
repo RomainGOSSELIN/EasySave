@@ -2,6 +2,7 @@
 using EasySaveWPF.Model.LogFactory;
 using EasySaveWPF.Services.Interfaces;
 using System.Globalization;
+using static EasySaveWPF.Model.Enum;
 
 namespace EasySaveWPF.Services
 {
@@ -29,7 +30,7 @@ namespace EasySaveWPF.Services
 
             DateTime today = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), CultureInfo.InvariantCulture);
 
-            var newstate = new BackupState(job.Id, job.Name, today, "END",0,0,0,0,"","");
+            var newstate = new BackupState(job.Id, job.Name, today, StateEnum.END, 0,0,0,0,"","");
 
             state.Add(newstate);
 

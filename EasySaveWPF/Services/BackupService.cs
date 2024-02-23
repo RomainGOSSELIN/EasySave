@@ -12,19 +12,17 @@ namespace EasySaveWPF.Services
 
     public class BackupService : IBackupService
     {
-        private IStateLogService _stateLogService;
+        private BackupJobService _backupJobService;
         private BackupState _currentBackupState;
         private int fileCount = 0;
         public long encryptTime = 0;
         private string _filesToEncrypt;
-        string message;
-        string caption;
-        MessageBoxButton button;
-        MessageBoxImage icon;
+        Notifications.Notifications notifications = new Notifications.Notifications();
+        private readonly object _statusLock = new object();
 
         public BackupService()
         {
-            _stateLogService = new StateLogService();
+            _backupJobService = new BackupJobService();
             _filesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
         }
         public event EventHandler<BackupState> CurrentBackupStateChanged;
@@ -34,25 +32,14 @@ namespace EasySaveWPF.Services
             encryptTime = 0;
             if (job == null)
             {
-                message = Resources.Translation.copy_success;
-                caption = Resources.Translation.success;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Information;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.JobNotExist(job.Id);
                 return;
             }
             try
             {
                 if (!Directory.Exists(job.SourceDir))
                 {
-
-                    message = Resources.Translation.source_directory_doesnt_exist;
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Warning;
-
-                    MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
-
+                    notifications.SourceDirNotExist(job.SourceDir);
                     return;
                 }
 
@@ -71,19 +58,22 @@ namespace EasySaveWPF.Services
                 {
                     CopyDifferentialBackup(job, sourceFiles);
                 }
-                _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "END", 0, 0, 0, 0, "", "");
-                _stateLogService.UpdateStateLog(_currentBackupState);
-                Console.WriteLine(String.Format(Resources.Translation.copy_success, fileCount));
-                Console.WriteLine(Resources.Translation.backup_success);
+                _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "");
+
+                lock (_statusLock)
+                {
+                    job.State = _currentBackupState;
+                    _backupJobService.UpdateJob(job);
+                }
+
+
+                OnCurrentBackupStateChanged(_currentBackupState);
+
                 fileCount = 0;
             }
             catch (Exception ex)
             {
-                message = String.Format(Resources.Translation.backup_error, ex.Message);
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.BackupError(ex.Message);
             }
         }
         private void CopyFullBackup(BackupJob job, string[] sourceFiles)
@@ -91,12 +81,17 @@ namespace EasySaveWPF.Services
             int totalFilesToCopy = sourceFiles.Length;
             long totalFilesSize = sourceFiles.Select(file => new FileInfo(file).Length).Sum();
             long totalSizeTarget = 0;
+            job.State.NbFilesLeftToDo = totalFilesToCopy;
+
             foreach (string sourceFile in sourceFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
                 totalSizeTarget += originalFile.Length;
-                long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
                 fileCount++;
+                long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
+                job.State.TotalFilesToCopy = totalFilesToCopy;
+                job.State.TotalFilesSize = totalFilesSize;
+
                 Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
             }
         }
@@ -138,10 +133,7 @@ namespace EasySaveWPF.Services
         {
             FileInfo fileInfo = new FileInfo(sourceFile);
             string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
-            int nbFilesLeftToDo = totalFilesToCopy - fileCount;
-            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, "ACTIVE", totalFilesToCopy, totalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
-            _stateLogService.UpdateStateLog(_currentBackupState);
-            OnCurrentBackupStateChanged(_currentBackupState);
+
             if (_filesToEncrypt.Contains(fileInfo.Extension))
             {
 
@@ -172,12 +164,22 @@ namespace EasySaveWPF.Services
             {
                 File.Copy(sourceFile, targetFilePath, true);
             }
-        }
+            int nbFilesLeftToDo = job.State.NbFilesLeftToDo - 1;
 
-        public long GetEncryptTime()
-        {
-            return encryptTime;
-        }
+            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, nbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
+
+            lock (_statusLock)
+            {
+                job.State = _currentBackupState;
+                _backupJobService.UpdateJob(job);
+            }
+                OnCurrentBackupStateChanged(_currentBackupState);
+            }
+
+            public long GetEncryptTime()
+            {
+                return encryptTime;
+            }
 
 
         protected virtual void OnCurrentBackupStateChanged(BackupState backupState)

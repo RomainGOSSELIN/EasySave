@@ -61,6 +61,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Progression.
+        /// </summary>
+        public static string _ {
+            get {
+                return ResourceManager.GetString("", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à ➕ Ajouter Sauvegarde.
         /// </summary>
         public static string add_backup_button {
@@ -106,7 +115,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à La sauvegarde a été effectuée avec succès !.
+        ///   Recherche une chaîne localisée semblable à La sauvegarde {0} a été effectuée avec succès !.
         /// </summary>
         public static string backup_success {
             get {
@@ -115,11 +124,20 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à 🛢 Sauvegardes.
+        ///   Recherche une chaîne localisée semblable à 🗃 Sauvegardes.
         /// </summary>
         public static string backups_button {
             get {
                 return ResourceManager.GetString("backups_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les sauvegardes {0} ont été effectuées avec succès !.
+        /// </summary>
+        public static string backups_success {
+            get {
+                return ResourceManager.GetString("backups_success", resourceCulture);
             }
         }
         
@@ -165,15 +183,6 @@ namespace EasySaveWPF.Resources {
         public static string copy_file {
             get {
                 return ResourceManager.GetString("copy_file", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à La copie est terminée !.
-        /// </summary>
-        public static string copy_success {
-            get {
-                return ResourceManager.GetString("copy_success", resourceCulture);
             }
         }
         
@@ -277,6 +286,69 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ID.
+        /// </summary>
+        public static string header_id {
+            get {
+                return ResourceManager.GetString("header_id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nom.
+        /// </summary>
+        public static string header_name {
+            get {
+                return ResourceManager.GetString("header_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à progression (%).
+        /// </summary>
+        public static string header_progress {
+            get {
+                return ResourceManager.GetString("header_progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Source.
+        /// </summary>
+        public static string header_source {
+            get {
+                return ResourceManager.GetString("header_source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à status.
+        /// </summary>
+        public static string header_status {
+            get {
+                return ResourceManager.GetString("header_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Destination.
+        /// </summary>
+        public static string header_target {
+            get {
+                return ResourceManager.GetString("header_target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type.
+        /// </summary>
+        public static string header_type {
+            get {
+                return ResourceManager.GetString("header_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à L&apos;ID doit être un nombre..
         /// </summary>
         public static string id_must_number {
@@ -291,6 +363,15 @@ namespace EasySaveWPF.Resources {
         public static string incorrect_format {
             get {
                 return ResourceManager.GetString("incorrect_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Extension invalide. L&apos;extension doit commencer par un point (.) et ne pas contenir d&apos;espace.
+        /// </summary>
+        public static string invalid_extension {
+            get {
+                return ResourceManager.GetString("invalid_extension", resourceCulture);
             }
         }
         
@@ -520,7 +601,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Le répertoire source n&apos;existe pas..
+        ///   Recherche une chaîne localisée semblable à Le répertoire source {0} n&apos;existe pas..
         /// </summary>
         public static string source_directory_doesnt_exist {
             get {

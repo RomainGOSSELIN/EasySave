@@ -14,9 +14,9 @@ namespace EasySaveWPF.Commands
         private readonly IBackupJobService _backupJobService;
         private readonly IStateLogService _stateLogService;
 
-        private readonly ObservableCollection<BackupJob> _backupJobs;
+        private readonly List<BackupJob> _backupJobs;
 
-        public DeleteJobCommand(IBackupJobService backupJobService, ObservableCollection<BackupJob> backupJobs, IStateLogService stateLogService)
+        public DeleteJobCommand(IBackupJobService backupJobService, List<BackupJob> backupJobs, IStateLogService stateLogService)
         {
             _backupJobService = backupJobService;
             _backupJobs = backupJobs;

@@ -8,9 +8,10 @@ namespace EasySaveWPF.ViewModel
 {
     class SettingsViewModel : ViewModelBase
     {
+		#region Propchanges
 		private string _businessSoftware;
 		public string BusinessSoftware
-        {
+		{
 			get
 			{
 				return _businessSoftware;
@@ -18,10 +19,10 @@ namespace EasySaveWPF.ViewModel
 			set
 			{
 				_businessSoftware = value;
-				OnPropertyChanged(nameof(BusinessSoftware)); 
-				Properties.Settings.Default.BusinessSoftwarePath = value; 
-                Properties.Settings.Default.Save();
-            }
+				OnPropertyChanged(nameof(BusinessSoftware));
+				Properties.Settings.Default.BusinessSoftwarePath = value;
+				Properties.Settings.Default.Save();
+			}
 		}
 
 		private string _logType;
@@ -35,15 +36,15 @@ namespace EasySaveWPF.ViewModel
 			{
 				_logType = value;
 				OnPropertyChanged(nameof(LogType));
-                Properties.Settings.Default.LogType = value;
+				Properties.Settings.Default.LogType = value;
 				Properties.Settings.Default.LogFilePath = $".\\Log.{LogType}";
-                Properties.Settings.Default.Save();
-            }
+				Properties.Settings.Default.Save();
+			}
 		}
 
 		private string _filesToEncrypt;
 		public string FilesToEncrypt
-        {
+		{
 			get
 			{
 				return _filesToEncrypt;
@@ -52,10 +53,11 @@ namespace EasySaveWPF.ViewModel
 			{
 				_filesToEncrypt = value;
 				OnPropertyChanged(nameof(FilesToEncrypt));
-                Properties.Settings.Default.FilesToEncrypt = value;
-                Properties.Settings.Default.Save();
-            }
-		}
+				Properties.Settings.Default.FilesToEncrypt = value;
+				Properties.Settings.Default.Save();
+			}
+		} 
+		#endregion
 
 		public SettingsViewModel()
 		{

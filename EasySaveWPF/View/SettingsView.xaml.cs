@@ -22,6 +22,7 @@ namespace EasySaveWPF.View
 {
     public partial class Settings : UserControl
     {
+        Notifications.Notifications notifications = new Notifications.Notifications();
         private ServiceProvider serviceProvider;
         public Settings()
         {
@@ -110,8 +111,7 @@ namespace EasySaveWPF.View
                 }
                 else
                 {
-                    // Afficher un message d'erreur indiquant que l'extension est invalide
-                    MessageBox.Show("Invalid extension. Extension should start with a dot (.) and not contain spaces.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    notifications.InvalidExtension();
                 }
             }
             InputExtension.Text = "";
@@ -122,7 +122,7 @@ namespace EasySaveWPF.View
             if (!string.IsNullOrWhiteSpace(InputExtension.Text))
             {
                 var extension = InputExtension.Text.Trim();
-                if (extension.StartsWith("."))
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
                 {
                     var extensions = GetExtensionsList();
                     extensions.Remove(extension);
@@ -130,8 +130,7 @@ namespace EasySaveWPF.View
                 }
                 else
                 {
-                    // Afficher un message d'erreur indiquant que l'extension est invalide
-                    MessageBox.Show("Invalid extension. Extension should start with a dot (.)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    notifications.InvalidExtension();
                 }
             }
             InputExtension.Text = "";

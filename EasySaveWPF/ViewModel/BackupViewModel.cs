@@ -15,18 +15,29 @@ namespace EasySaveWPF.ViewModel
         private IBackupService _backupService;
         private IStateLogService _stateLogService;
         private IDailyLogService _dailyLogService;
-
-
         private ILogger _logger;
+        private List<BackupJob> _backupJobs;
+        private BackupJob _selectedJobBeforeUpdate;
+        public List<BackupJob> BackupJobs
+        {
+            get
+            {
+                return _backupJobs;
+            }
+            set
+            {
+                _backupJobs = (List<BackupJob>)value;
+                OnPropertyChanged(nameof(BackupJobs));
+            }
+        }
 
-        private ObservableCollection<BackupJob> _backupJobs;
-        public IEnumerable<BackupJob> BackupJobs => _backupJobs;
-
+        #region Commands
         public ICommand DeleteCommand { get; set; }
-        public ICommand RunCommand { get; set; }
-        public ICommand RunAllCommand { get; set; }
-        public ICommand RunSomeCommand { get; set; }
+  
+        public ICommand RunFactoCommand {  get; set; }
+        #endregion
 
+        #region Propchanges
         private BackupState _currentStateBackup;
         public BackupState CurrentStateBackup
         {
@@ -108,6 +119,21 @@ namespace EasySaveWPF.ViewModel
             }
         }
 
+        private BackupJob _selectedJob;
+        public BackupJob  SelectedJob
+        {
+            get
+            {
+                return _selectedJob;
+            }
+            set
+            {
+                _selectedJob = value == null ? BackupJobs.Find(x => x.Id == _selectedJobBeforeUpdate.Id) : value;
+                OnPropertyChanged(nameof(SelectedJob));
+            }
+        }
+        #endregion
+
         public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
         {
             _loggerFactory = loggerFactory;
@@ -118,11 +144,10 @@ namespace EasySaveWPF.ViewModel
             _stateLogService = stateLogService;
             _dailyLogService = dailyLogService;
 
-            _backupJobs = new ObservableCollection<BackupJob>(backupJobService.GetAllJobs());
+            _backupJobs = new List<BackupJob>(backupJobService.GetAllJobs());
             DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
-            RunCommand = new RunJobCommand(_backupService, _dailyLogService);
-            RunAllCommand = new RunAllJobCommand(_backupService, _backupJobs, _dailyLogService);
-            RunSomeCommand = new RunSomeJobCommand(backupService, _backupJobs, _dailyLogService , this);
+         
+            RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
         }
 
         private void BackupService_CurrentStateChanged(object? sender, BackupState e)
@@ -130,6 +155,19 @@ namespace EasySaveWPF.ViewModel
             CurrentStateBackup = e;
             FileSizeProgress = _currentStateBackup.TotalFilesSize - _currentStateBackup.NbFilesSizeLeftToDo;
             FileProgress = _currentStateBackup.TotalFilesToCopy - _currentStateBackup.NbFilesLeftToDo;
+            if (_currentStateBackup.NbFilesLeftToDo == 0)
+            {
+                FileSizeProgress = 0;
+                FileProgress = 0;
+                CurrentStateBackup = null;
+            }
+            LoadBackupJobs();
+        }
+
+        public void LoadBackupJobs()
+        {
+             _selectedJobBeforeUpdate = SelectedJob;
+            BackupJobs = new List<BackupJob>(_backupJobService.GetAllJobs());
         }
     }
 }

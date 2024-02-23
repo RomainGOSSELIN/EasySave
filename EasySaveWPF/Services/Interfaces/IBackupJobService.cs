@@ -9,5 +9,7 @@ namespace EasySaveWPF.Services.Interfaces
         List<BackupJob> GetAllJobs();
         BackupJob? GetJob(int id);
         List<BackupJob> GetJobs(List<int> ids);
+        void UpdateJob(BackupJob job);
+
     }
 }

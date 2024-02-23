@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
 using System;
@@ -12,163 +11,130 @@ using System.Windows;
 
 namespace EasySaveWPF.Services
 {
-
-
-        public class BackupJobService : IBackupJobService
-        {
-            private static string _jobsFilePath;
-            private static ILogger _logger;
-            private static LoggerFactory loggerFactory = new LoggerFactory();
-            string message;
-            string caption;
-            MessageBoxButton button;
-            MessageBoxImage icon;
+    public class BackupJobService : IBackupJobService
+    {
+        private static string _jobsFilePath;
+        private static ILogger _logger;
+        private static LoggerFactory loggerFactory = new LoggerFactory();
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         public BackupJobService()
+        {
+            _jobsFilePath = Properties.Settings.Default.JobsFilepath;
+            _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
+        }
+
+        public bool CreateJob(BackupJob backupJob)
+        {
+            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
+
+            if (backupJob.SourceDir == backupJob.TargetDir)
             {
-                _jobsFilePath = Properties.Settings.Default.JobsFilepath;
-                _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
-            }
-
-            public bool CreateJob(BackupJob backupJob)
-            {
-                
-                List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
-
-
-                
-                    if (backupJob.SourceDir == backupJob.TargetDir)
-                    {
-                message = Resources.Translation.target_source_must_be_different;
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
-
-                return false;
-                    }
-                    backupJob.Id = jobs.Count + 1;
-                    if (!System.IO.Directory.Exists(backupJob.SourceDir))
-                    {
-                
-                message = Resources.Translation.source_directory_doesnt_exist;
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
-                return false;
-                    }
-
-                    if (backupJob.Name == "" || backupJob.Name == null)
-            {
-                message = Resources.Translation.name_empty;
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.TargetSourceDifferent();
                 return false;
             }
-                    if (backupJob.TargetDir == "" || backupJob.TargetDir == null) 
+            if (!System.IO.Directory.Exists(backupJob.SourceDir))
             {
-                message = Resources.Translation.target_empty;
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
+                notifications.SourceDirNotExist(backupJob.SourceDir);
                 return false;
             }
 
-                    jobs.Add(backupJob);
-                    _logger.SaveLog(jobs, _jobsFilePath);
-            message = String.Format(Resources.Translation.create_job_success, backupJob.Name, backupJob.Id, backupJob.SourceDir, backupJob.TargetDir, backupJob.Type);
-            caption = Resources.Translation.creation;
-            button = MessageBoxButton.OK;
-            icon = MessageBoxImage.Information;
-            MessageBox.Show(message, caption, button, icon);
-
-
+            if (backupJob.Name == "" || backupJob.Name == null)
+            {
+                notifications.NameEmpty();
+                return false;
+            }
+            if (backupJob.TargetDir == "" || backupJob.TargetDir == null)
+            {
+                notifications.TargetEmpty();
+                return false;
+            }
+            backupJob.Id = jobs.Count + 1;
+            jobs.Add(backupJob);
+            _logger.SaveLog(jobs, _jobsFilePath);
+            notifications.CreateBackupjob(backupJob.Name, backupJob.Id, backupJob.SourceDir, backupJob.TargetDir, backupJob.Type);
             return true;
-                
-     
-            }
-            public BackupJob? GetJob(int id)
-            {
-                List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
-                BackupJob? backupJob;
+        }
 
-                if (jobs == null)
-                {
-                message = String.Format(Resources.Translation.job_doesnt_exist, id);
-                caption = Resources.Translation.error;
-                button = MessageBoxButton.OK;
-                icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, button, icon);
+        public BackupJob? GetJob(int id)
+        {
+            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
+            BackupJob? backupJob;
+
+            if (jobs == null)
+            {
+                notifications.JobNotExist(id);
                 return null;
-                }
+            }
 
-                else
+            else
+            {
+                backupJob = jobs.Find(j => j.Id == id);
+                if (backupJob == null)
                 {
-                    backupJob = jobs.Find(j => j.Id == id);
-                    if (backupJob == null)
-                    {
-                    message = String.Format(Resources.Translation.job_doesnt_exist, id);
-                    caption = Resources.Translation.error;
-                    button = MessageBoxButton.OK;
-                    icon = MessageBoxImage.Error;
-                    MessageBox.Show(message, caption, button, icon);
+                    notifications.JobNotExist(id);
                     return null;
-                    }
                 }
-
-
-                return backupJob;
-
-
             }
-            public List<BackupJob> GetJobs(List<int> ids)
+            return backupJob;
+        }
+        public List<BackupJob> GetJobs(List<int> ids)
+        {
+            List<BackupJob> jobs = new List<BackupJob>();
+            foreach (int id in ids)
             {
-                List<BackupJob> jobs = new List<BackupJob>();
-                foreach (int id in ids)
-                {
-                    jobs.Add(GetJob(id));
-                }
-
-                return jobs;
+                jobs.Add(GetJob(id));
             }
 
-            public List<BackupJob> GetAllJobs()
+            return jobs;
+        }
+
+        public List<BackupJob> GetAllJobs()
+        {
+            return _logger.GetLog<BackupJob>(_jobsFilePath);
+        }
+
+        public bool DeleteJob(BackupJob job)
+        {
+
+            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
+
+            if (job != null)
             {
-                return _logger.GetLog<BackupJob>(_jobsFilePath);
+                jobs.RemoveAll(x => x.Id == job.Id);
+                UpdateIds(jobs);
+                _logger.SaveLog(jobs, _jobsFilePath);
+                return true;
             }
-
-            public bool DeleteJob(BackupJob job)
+            else
             {
-
-                List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
-
-                if (job != null)
-                {
-                    jobs.RemoveAll(x => x.Id == job.Id);
-                    UpdateIds(jobs);
-                    _logger.SaveLog(jobs, _jobsFilePath);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
+        }
 
-            private void UpdateIds(List<BackupJob> jobs)
+        public void UpdateJob(BackupJob job)
+        {
+            List<BackupJob> jobs = GetAllJobs();
+           foreach (BackupJob backupJob in jobs)
             {
-                for (int i = 0; i < jobs.Count; i++)
+                if (backupJob.Id == job.Id) 
                 {
-                    jobs[i].Id = i + 1;
-                }
+                    backupJob.State = job.State;
+                };
             }
+            _logger.SaveLog(jobs, _jobsFilePath);
+
+        }
+
+        private void UpdateIds(List<BackupJob> jobs)
+        {
+            for (int i = 0; i < jobs.Count; i++)
+            {
+                jobs[i].Id = i + 1;
+            }
+        }
 
 
 
     }
-
 }

@@ -193,19 +193,16 @@
     <value>Exécution du travail de sauvegarde : {0}</value>
   </data>
   <data name="source_directory_doesnt_exist" xml:space="preserve">
-    <value>Le répertoire source n'existe pas.</value>
+    <value>Le répertoire source {0} n'existe pas.</value>
   </data>
   <data name="save_type_error" xml:space="preserve">
     <value>Le type de sauvegarde n'est pas valide.</value>
   </data>
   <data name="backup_success" xml:space="preserve">
-    <value>La sauvegarde a été effectuée avec succès !</value>
+    <value>La sauvegarde {0} a été effectuée avec succès !</value>
   </data>
   <data name="backup_error" xml:space="preserve">
     <value>Une erreur s'est produite lors de la sauvegarde : {0}</value>
-  </data>
-  <data name="copy_success" xml:space="preserve">
-    <value>La copie est terminée !</value>
   </data>
   <data name="copy_file" xml:space="preserve">
     <value>Copie du fichier : {0}</value>
@@ -238,7 +235,7 @@
     <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
-    <value>🛢 Sauvegardes</value>
+    <value>🗃 Sauvegardes</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Logiciel Métier</value>
@@ -291,10 +288,34 @@
   <data name="target_empty" xml:space="preserve">
     <value>Veuillez renseigner un répertoire de destination</value>
   </data>
-  <data name="and_menu" xml:space="preserve">
-    <value />
+  <data name="header_id" xml:space="preserve">
+    <value>ID</value>
   </data>
-  <data name="to_menu" xml:space="preserve">
-    <value />
+  <data name="header_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="header_source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="header_target" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="header_type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="invalid_extension" xml:space="preserve">
+    <value>Extension invalide. L'extension doit commencer par un point (.) et ne pas contenir d'espace</value>
+  </data>
+  <data name="backups_success" xml:space="preserve">
+    <value>Les sauvegardes {0} ont été effectuées avec succès !</value>
+  </data>
+  <data name="" xml:space="preserve">
+    <value>Progression</value>
+  </data>
+  <data name="header_status" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="header_progress" xml:space="preserve">
+    <value>progression (%)</value>
   </data>
 </root>

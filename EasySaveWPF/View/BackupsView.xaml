@@ -67,7 +67,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <local:TypeToVisibilityConverter x:Key="TypeToVisibilityConverter"/>
+
     </UserControl.Resources>
+
+
 
     <Grid>
 
@@ -105,7 +109,8 @@
                     Grid.Row="0"
                     Margin="0,40,10,0">
             <Button Content="{x:Static t:Translation.run_all}"
-                    Command="{Binding RunAllCommand}"
+                    Command="{Binding RunFactoCommand}"
+                    CommandParameter="all"
                     Width="120"
                     Height="30"
                     Style="{StaticResource ButtonTheme}" />
@@ -120,21 +125,22 @@
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Right">
                 <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <Button Width="15"  Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                    <Button Width="15"  Height="22" Command="{Binding RunFactoCommand}" CommandParameter="some" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
                         <Button.Content>
                             <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button.Content>
                     </Button>
                 </Border>
                 <Border CornerRadius="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <TextBox Width="25" Height="22"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
+                    <TextBox Width="25" Height="22" Text="{Binding FromJob}"  Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_1" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
-                <ComboBox Width="48" Margin="5" Background="White" BorderBrush="White" VerticalAlignment="Center">
-                    <ComboBoxItem Content="{x:Static t:Translation.to_menu}" VerticalAlignment="Center"/>
-                    <ComboBoxItem Content="{x:Static t:Translation.and_menu}" VerticalAlignment="Center"/>
+                <ComboBox  SelectedValuePath="Content"
+           SelectedValue="{Binding RunOperation, Mode=TwoWay}" Width="45" Margin="5" Background="White" BorderBrush="White">
+                    <ComboBoxItem Content="et"/>
+                    <ComboBoxItem Content="à"/>
                 </ComboBox>
                 <Border CornerRadius="5" Height="22" Margin="0,0,5,0" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
+                    <TextBox Width="25" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" Text="{Binding ToJob}" Name="NumberTextBox_2" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
 
             </StackPanel>
@@ -147,27 +153,37 @@
                   BorderThickness="1" 
                   RowBackground="#B7B5BE"
                   Grid.Row="1"
-                  ColumnHeaderStyle="{StaticResource {x:Type DataGridColumnHeader}}"                  
+                  ColumnHeaderStyle="{StaticResource {x:Type DataGridColumnHeader}}"   
+                  SelectedItem="{Binding SelectedJob, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Margin="10,10,10,29"  
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
                   CanUserResizeColumns="True"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn Header="SourceDir" Binding="{Binding SourceDir}" Width="*" />
-                <DataGridTextColumn Header="TargetDir" Binding="{Binding TargetDir}" Width="*" />
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_id}" Binding="{Binding Id}" Width="10"/>
+                <DataGridTextColumn Header="{x:Static t:Translation.header_name}" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_source}" Binding="{Binding SourceDir}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static t:Translation.header_target}" Binding="{Binding TargetDir}" Width="*" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_type}" Binding="{Binding Type}" Width="100" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_status}" Binding="{Binding State.State}" Width="50" />
+                <DataGridTextColumn Header="{x:Static t:Translation.header_progress}" Binding="{Binding State.Progress }" Width="100" />
 
-                <DataGridTemplateColumn Header="Actions" Width="*">
+                <DataGridTemplateColumn Header="Actions" Width="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                <Button Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=play}" Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunFactoCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image   Width="15" Height="15" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE" Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=pause}" >
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/pause.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Button.Content>
                                 </Button>
                                 <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
@@ -190,10 +206,10 @@
                        Foreground="{DynamicResource Text}" 
                        FontSize="18" 
                        FontWeight="Bold"/>
-            <TextBlock x:Name="currentBackupName" Text="{Binding CurrentStateBackup.BackupName}" 
+            <TextBlock x:Name="currentBackupName" Text="{Binding SelectedJob.Name}" 
                        Foreground="{DynamicResource Text}" 
                        FontSize="14"/>
-            <TextBlock x:Name="currentFile" Text="{Binding CurrentStateBackup.SourceFilePath}" 
+            <TextBlock x:Name="currentFile" Text="{Binding SelectedJob.State.SourceFilePath}" 
            Foreground="{DynamicResource Text}" 
            FontSize="14"/>
 
@@ -202,8 +218,8 @@
              Height="10" 
              Margin="0,10,0,0"
              Minimum="0" 
-             Maximum="{Binding CurrentStateBackup.TotalFilesToCopy}" 
-             Value="{Binding FileProgress, Mode=TwoWay}"
+             Maximum="{Binding SelectedJob.State.TotalFilesToCopy}" 
+             Value="{Binding SelectedJob.State.FileProgress, Mode=OneWay}"
              Style="{StaticResource StyledProgressBar}"/>
 
 
@@ -212,8 +228,8 @@
                        HorizontalAlignment="Right">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Nombre de fichiers {0} / {1}">
-                        <Binding Path="FileProgress" Mode="TwoWay"/>
-                        <Binding Path="CurrentStateBackup.TotalFilesToCopy"/>
+                        <Binding Path="SelectedJob.State.FileProgress" Mode="TwoWay"/>
+                        <Binding Path="SelectedJob.State.TotalFilesToCopy"/>
                     </MultiBinding>
                 </TextBlock.Text>
 
@@ -222,8 +238,8 @@
              Height="10" 
              Margin="0,10,0,0"
              Minimum="0" 
-             Maximum="{Binding CurrentStateBackup.TotalFilesSize}" 
-             Value="{Binding FileSizeProgress, Mode=TwoWay}"
+             Maximum="{Binding SelectedJob.State.TotalFilesSize}" 
+             Value="{Binding SelectedJob.State.FileSizeProgress, Mode=OneWay}"
              Style="{StaticResource StyledProgressBar}"/>
 
 
@@ -232,8 +248,8 @@
                        HorizontalAlignment="Right">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Taille des fichiers en octet {0} / {1}">
-                        <Binding Path="FileSizeProgress" Mode="TwoWay"/>
-                        <Binding Path="CurrentStateBackup.TotalFilesSize"/>
+                        <Binding Path="SelectedJob.State.FileSizeProgress" Mode="TwoWay"/>
+                        <Binding Path="SelectedJob.State.TotalFilesSize"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>

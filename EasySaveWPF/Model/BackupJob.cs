@@ -9,19 +9,26 @@ namespace EasySaveWPF.Model
 {
     public class BackupJob
     {
-        public  int? Id { get; set; }
-        public  string Name { get; set; }
-        public  string SourceDir { get; set; }
-        public  string TargetDir { get; set; }
-        public  JobTypeEnum Type { get; set; }
+        public int? Id { get; set; } = 0;
+        public  string Name { get; set; } = string.Empty;
+        public string SourceDir { get; set; } = string.Empty;
+        public string TargetDir { get; set; } = string.Empty;
+        public JobTypeEnum Type { get; set; } = JobTypeEnum.differential;
 
-        public BackupJob(string name, string sourceDir, string targetDir, JobTypeEnum type, int? id = 0) {
+        public BackupState State { get; set; } = new BackupState();
+
+        public BackupJob() 
+        {
+
+        }
+        public BackupJob(string name, string sourceDir, string targetDir, JobTypeEnum type, int id, BackupState state) {
 
             Id = id;
             Name = name;
             SourceDir = sourceDir;
             TargetDir = targetDir;
             Type = type;
+            State = state;
     }
 
     }
