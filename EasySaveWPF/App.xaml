@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Theme/SearchBarTheme.xaml"/>
                 <ResourceDictionary Source="Theme/RadioButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ModifiedMenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/PlaceHolderTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:BackupViewModel}">

@@ -62,7 +62,7 @@ namespace EasySaveWPF.View
                 //Set the default language with the selected
                 EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode = selectedLang;
                 EasySaveWPF.Resources.TranslationSettings.Default.Save();
-                MessageBox.Show(EasySaveWPF.Resources.Translation.app_shutdown_language_changed);
+                notifications.LanguageChanged();
                 //Open an another time the app (Need Build)
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 //Clear this instance
@@ -163,8 +163,8 @@ namespace EasySaveWPF.View
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string filePath = openFileDialog.FileName;
-                PathBusinessSoftware.Text = filePath; // Affecte le chemin du fichier à la TextBox
+                string selectedFile = System.IO.Path.GetFileName(openFileDialog.FileName);
+                PathBusinessSoftware.Text = selectedFile;
             }
         }
 

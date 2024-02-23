@@ -72,6 +72,8 @@
 
         <TextBox 
             Text="{Binding BusinessSoftware}"
+            Style="{StaticResource PlaceHolderTheme}"
+            Tag="{x:Static t:Translation.business_software_holder}"
             x:Name="PathBusinessSoftware" 
             HorizontalAlignment="Left" 
             Margin="10,200,0,0" 
@@ -134,6 +136,8 @@ Foreground="{DynamicResource Text}" FontWeight="Bold"/>
         <!-- Input Extension -->
         <TextBox
             x:Name="InputExtension"
+            Style="{StaticResource PlaceHolderTheme}"
+            Tag="{x:Static t:Translation.add_or_remove_encryption_holder}"
             HorizontalAlignment="Left" 
             Margin="10,370,0,0" 
             TextWrapping="NoWrap" 

@@ -127,5 +127,14 @@ namespace EasySaveWPF.Notifications
             icon = MessageBoxImage.Error;
             MessageBox.Show(message, caption, button, icon);
         }
+
+        public void LanguageChanged()
+        {
+            message = Resources.Translation.app_shutdown_language_changed;
+            caption = "";
+            button = MessageBoxButton.OK;
+            icon = MessageBoxImage.Information;
+            MessageBox.Show(message, caption, button, icon);
+        }
     }
 }
