@@ -64,18 +64,17 @@ namespace EasySaveWPF.Commands
                 }
                 else
                 {
-                Thread thread = new Thread(() => ExecuteJob(job));
-                    thread.Start();
-                //ThreadPool.QueueUserWorkItem(state =>
-                //{
-                    
-                //    ExecuteJob(job);
-                //    lock (executedJobs)
-                //    {
-                //        executedJobs.Add(job);
-                //    }
-                //    notifications.BackupSuccess(executedJobs);
-                //});
+
+                    ThreadPool.QueueUserWorkItem(state =>
+                    {
+
+                        ExecuteJob(job);
+                        lock (executedJobs)
+                        {
+                            executedJobs.Add(job);
+                        }
+                        notifications.BackupSuccess(executedJobs);
+                    });
                 }
             }
 
@@ -112,9 +111,16 @@ namespace EasySaveWPF.Commands
 
                     foreach (BackupJob job in selectedJobs)
                     {
-                        Thread thread = new Thread(() => ExecuteJob(job));
-                        thread.Start();
-                        executedJobs.Add(job);
+                        ThreadPool.QueueUserWorkItem(state =>
+                        {
+                            ExecuteJob(job);
+                            lock (executedJobs)
+                            {
+                                executedJobs.Add(job);
+                            }
+                            notifications.BackupSuccess(executedJobs);
+
+                        });
                     }
                     //notifications.BackupSuccess(executedJobs);
                 }

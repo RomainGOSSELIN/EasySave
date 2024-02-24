@@ -20,6 +20,8 @@ namespace EasySaveWPF.Services
         Notifications.Notifications notifications = new Notifications.Notifications();
         private static readonly object _statusLock = new object();
         private static Barrier priorityFilesBarrier = new Barrier(0);
+        private static Barrier preAnalyzeBarrier = new Barrier(0);
+
         private static List<string> _priorityExtensions = [".JPG", ".DNG"];
 
         public BackupService()
@@ -31,6 +33,7 @@ namespace EasySaveWPF.Services
 
         public void ExecuteBackupJob(BackupJob job)
         {
+            preAnalyzeBarrier.AddParticipant();
             encryptTime = 0;
             if (job == null)
             {
@@ -52,13 +55,47 @@ namespace EasySaveWPF.Services
                 }
                 string[] sourceFiles = Directory.GetFiles(job.SourceDir, "*", SearchOption.AllDirectories);
                 string[] targetFiles = Directory.GetFiles(job.TargetDir, "*", SearchOption.AllDirectories);
+
+                List<string> priorityFiles = new List<string> { };
+                List<string> nonPriorityFiles = new List<string> { };
+
+                foreach (string file in sourceFiles)
+                {
+                    FileInfo originalFile = new FileInfo(file);
+                    if (_priorityExtensions.Contains(originalFile.Extension))
+                    {
+                        priorityFiles.Add(file);
+                    }
+                    else
+                    {
+                        nonPriorityFiles.Add(file);
+                    }
+                }
+
+                job.State.TotalFilesToCopy = sourceFiles.Length;
+                job.State.TotalFilesSize = sourceFiles.Select(file => new FileInfo(file).Length).Sum();
+                job.State.State = StateEnum.ACTIVE;
+                job.State.Timestamp = DateTime.Now;
+                job.State.NbFilesLeftToDo = job.State.TotalFilesToCopy;
+                job.State.NbFilesSizeLeftToDo = job.State.TotalFilesSize;
+
+
+                lock (_statusLock)
+                {
+                 
+                    _backupJobService.UpdateJob(job);
+                    OnCurrentBackupStateChanged(job);
+
+                }
+
+
                 if (job.Type == JobTypeEnum.full)
                 {
-                    CopyFullBackup(job, sourceFiles);
+                    CopyFullBackup(job, priorityFiles, nonPriorityFiles);
                 }
                 else if (job.Type == JobTypeEnum.differential)
                 {
-                    CopyDifferentialBackup(job, sourceFiles);
+                    CopyDifferentialBackup(job, priorityFiles, nonPriorityFiles);
                 }
 
                 lock (_statusLock)
@@ -69,56 +106,42 @@ namespace EasySaveWPF.Services
                     OnCurrentBackupStateChanged(job);
 
                 }
-
-
-
             }
             catch (Exception ex)
             {
                 notifications.BackupError(ex.Message);
             }
+            preAnalyzeBarrier.RemoveParticipant();
+
         }
-        private void CopyFullBackup(BackupJob job, string[] sourceFiles)
+        private void CopyFullBackup(BackupJob job, List<string> sourceFiles, List<string> nonPriorityFiles)
         {
 
-            int totalFilesToCopy = sourceFiles.Length;
-            long totalFilesSize = sourceFiles.Select(file => new FileInfo(file).Length).Sum();
-            long totalSizeTarget = 0;
+            priorityFilesBarrier.AddParticipant();
 
-            //priorityFilesBarrier.AddParticipant();
+            preAnalyzeBarrier.SignalAndWait();
 
-            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, totalFilesToCopy, totalFilesSize, totalFilesToCopy, totalFilesSize, "", "");
 
-            lock (_statusLock)
-            {
-                job.State = _currentBackupState;
-                _backupJobService.UpdateJob(job);
-            }
+          
 
             foreach (string sourceFile in sourceFiles)
             {
-                FileInfo originalFile = new FileInfo(sourceFile);
-                totalSizeTarget += originalFile.Length;
-                long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
-                job.State.TotalFilesToCopy = totalFilesToCopy;
-                job.State.TotalFilesSize = totalFilesSize;
-
-                if (_priorityExtensions.Contains(originalFile.Extension))
-                {
-                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
-                }
-                else
-                {
-                    //priorityFilesBarrier.SignalAndWait();
-
-                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
-
-                }
+                Save(sourceFile, job);
 
             }
-            //priorityFilesBarrier.RemoveParticipant();
+
+            priorityFilesBarrier.SignalAndWait();
+
+            foreach (string sourceFile in nonPriorityFiles)
+            {
+
+                Save(sourceFile, job);
+            }
+
+            priorityFilesBarrier.RemoveParticipant();
+
         }
-        private void CopyDifferentialBackup(BackupJob job, string[] sourceFiles)
+        private void CopyDifferentialBackup(BackupJob job, List<string> sourceFiles, List<string> nonPriorityFiles)
         {
             int totalFilesToCopy = 0;
             long totalFilesSize = 0;
@@ -145,60 +168,60 @@ namespace EasySaveWPF.Services
                 {
                     totalSizeTarget += originalFile.Length;
                     long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
-                    Save(sourceFile, job, totalFilesToCopy, totalFilesSize, nbFilesSizeLeftToDo);
+                    Save(sourceFile, job);
                 }
             }
 
         }
 
-        private void Save(string sourceFile, BackupJob job, int totalFilesToCopy, long totalFilesSize, long nbFilesSizeLeftToDo)
+        private void Save(string sourceFile, BackupJob job)
         {
-           
-                FileInfo fileInfo = new FileInfo(sourceFile);
-                string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
 
-                job.ResetEvent.WaitOne();
+            FileInfo fileInfo = new FileInfo(sourceFile);
+            string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
 
-                if (_filesToEncrypt.Contains(fileInfo.Extension))
+            job.ResetEvent.WaitOne();
+
+            if (_filesToEncrypt.Contains(fileInfo.Extension))
+            {
+
+                try
                 {
 
-                    try
+                    Process cryptoSoft = new Process();
+                    cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
+                    cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
+                    cryptoSoft.StartInfo.CreateNoWindow = true;
+                    cryptoSoft.EnableRaisingEvents = true;
+                    cryptoSoft.StartInfo.WorkingDirectory = ".\\CryptoSoft";
+                    cryptoSoft.Start();
+                    cryptoSoft.WaitForExit();
+
+                    if (encryptTime >= 0)
                     {
-
-                        Process cryptoSoft = new Process();
-                        cryptoSoft.StartInfo.FileName = ".\\CryptoSoft\\CryptoSoft.exe";
-                        cryptoSoft.StartInfo.Arguments = $"\"{sourceFile}\" \"{targetFilePath}\"";
-                        cryptoSoft.StartInfo.CreateNoWindow = true;
-                        cryptoSoft.EnableRaisingEvents = true;
-                        cryptoSoft.StartInfo.WorkingDirectory = ".\\CryptoSoft";
-                        cryptoSoft.Start();
-                        cryptoSoft.WaitForExit();
-
-                        if (encryptTime >= 0)
-                        {
-                            encryptTime += cryptoSoft.ExitCode;
-                        }
-
+                        encryptTime += cryptoSoft.ExitCode;
                     }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    File.Copy(sourceFile, targetFilePath, true);
+                    throw ex;
                 }
+            }
+            else
+            {
+                File.Copy(sourceFile, targetFilePath, true);
+            }
 
-                _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo, nbFilesSizeLeftToDo, sourceFile, targetFilePath);
+            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo, job.State.NbFilesSizeLeftToDo, sourceFile, targetFilePath);
 
 
-                job.State.TotalFilesToCopy = _currentBackupState.TotalFilesToCopy;
-                job.State.TotalFilesSize = _currentBackupState.TotalFilesSize;
-                job.State.NbFilesLeftToDo = _currentBackupState.NbFilesLeftToDo - 1;
-                job.State.NbFilesSizeLeftToDo = _currentBackupState.NbFilesSizeLeftToDo;
-                job.State.SourceFilePath = _currentBackupState.SourceFilePath;
-                job.State.TargetFilePath = _currentBackupState.TargetFilePath;
+            job.State.TotalFilesToCopy = _currentBackupState.TotalFilesToCopy;
+            job.State.TotalFilesSize = _currentBackupState.TotalFilesSize;
+            job.State.NbFilesLeftToDo = _currentBackupState.NbFilesLeftToDo - 1;
+            job.State.NbFilesSizeLeftToDo = _currentBackupState.NbFilesSizeLeftToDo;
+            job.State.SourceFilePath = _currentBackupState.SourceFilePath;
+            job.State.TargetFilePath = _currentBackupState.TargetFilePath;
 
             lock (_statusLock)
             {

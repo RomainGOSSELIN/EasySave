@@ -157,8 +157,10 @@ namespace EasySaveWPF.ViewModel
 
         private void BackupService_CurrentStateChanged(object? sender, BackupJob e)
         {
-            var job = e;
 
+            var job = e;
+            lock (_lock)
+            {
                 // Recherchez l'index du job dans la liste
                 int index = BackupJobs.FindIndex(j => j.Id == e.Id);
                 if (index != -1)
@@ -171,7 +173,7 @@ namespace EasySaveWPF.ViewModel
                     // Affectez la liste mise à jour à la propriété BackupJobs
                     BackupJobs = new List<BackupJob>(BackupJobs);
                 }
-            
+            }
 
         }
 
