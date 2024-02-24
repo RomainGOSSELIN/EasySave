@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace EasySaveWPF.Core
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;

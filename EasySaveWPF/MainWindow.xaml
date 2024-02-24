@@ -41,7 +41,7 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" 
-                             Checked="RadioButton_Checked_1"/>
+                            />
                
                 <RadioButton 
                              Content= "{x:Static t:Translation.add_backup_button}"

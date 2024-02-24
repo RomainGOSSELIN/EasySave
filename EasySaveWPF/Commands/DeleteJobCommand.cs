@@ -15,6 +15,7 @@ namespace EasySaveWPF.Commands
         private readonly IBackupJobService _backupJobService;
         private readonly IStateLogService _stateLogService;
         private BackupViewModel _backupViewModel;
+        private static Notifications.Notifications notifications = new Notifications.Notifications();
 
         public DeleteJobCommand(IBackupJobService backupJobService, BackupViewModel vm)
         {
@@ -24,11 +25,19 @@ namespace EasySaveWPF.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return base.CanExecute(parameter);
+            if (_backupViewModel.BackupJobs.Find(j => j.State.State == Model.Enum.StateEnum.ACTIVE) != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public override void Execute(object parameter)
         {
+
             if (parameter is BackupJob job)
             {
                 if (_backupJobService.DeleteJob(job))
@@ -37,6 +46,7 @@ namespace EasySaveWPF.Commands
                     _backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs);
                 }
             }
+
         }
 
     }

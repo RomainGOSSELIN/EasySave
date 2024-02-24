@@ -6,7 +6,7 @@ using EasySaveWPF.Services.Interfaces;
 
 namespace EasySaveWPF.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
 
         public RelayCommand BackupViewCommand { get; set; }
@@ -35,7 +35,7 @@ namespace EasySaveWPF.ViewModel
         {
             BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, dailyLogService);
             SettingsVM = new SettingsViewModel();
-            CreateBackupVM = new CreateBackupViewModel(backupJobService);
+            CreateBackupVM = new CreateBackupViewModel(backupJobService, this);
 
             CurrentView = BackupVM;
 

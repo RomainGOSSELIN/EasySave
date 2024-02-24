@@ -346,4 +346,7 @@ Sauvegarde</value>
   <data name="business_software_holder" xml:space="preserve">
     <value>ex: notepad.exe</value>
   </data>
+  <data name="cant_delete" xml:space="preserve">
+    <value>Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !</value>
+  </data>
 </root>

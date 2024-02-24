@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static EasySaveWPF.Model.Enum;
 
@@ -34,7 +34,6 @@ namespace EasySaveWPF.Model
 
         }
 
-        [JsonConstructor]
         public BackupState(DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
         {
             Timestamp = timestamp;

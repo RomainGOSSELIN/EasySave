@@ -346,4 +346,7 @@ Backup</value>
   <data name="business_software_holder" xml:space="preserve">
     <value>Ej: notepad.exe</value>
   </data>
+  <data name="cant_delete" xml:space="preserve">
+    <value>Como medida de seguridad: ¡imposible de eliminar mientras el trabajo esté en marcha! ¡Deja de trabajar antes de la eliminación!</value>
+  </data>
 </root>

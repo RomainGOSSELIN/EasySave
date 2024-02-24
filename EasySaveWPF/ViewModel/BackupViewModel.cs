@@ -97,7 +97,7 @@ namespace EasySaveWPF.ViewModel
             }
             set
             {
-                _selectedJob = value == null ? BackupJobs.Find(x => x.Id == _selectedJobBeforeUpdate.Id) : value;
+                _selectedJob = value == null ? BackupJobs.FirstOrDefault()  : value;
                 _selectedJobBeforeUpdate = _selectedJob;
 
                 OnPropertyChanged(nameof(SelectedJob));

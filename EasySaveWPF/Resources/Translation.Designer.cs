@@ -187,6 +187,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !.
+        /// </summary>
+        public static string cant_delete {
+            get {
+                return ResourceManager.GetString("cant_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Les changements auront lieu au prochain démarrage.
         /// </summary>
         public static string change_at_restart {

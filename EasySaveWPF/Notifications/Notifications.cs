@@ -136,5 +136,14 @@ namespace EasySaveWPF.Notifications
             icon = MessageBoxImage.Information;
             MessageBox.Show(message, caption, button, icon);
         }
+
+        public void CantDelete()
+        {
+            message = String.Format(Resources.Translation.cant_delete);
+            caption = Resources.Translation.error;
+            button = MessageBoxButton.OK;
+            icon = MessageBoxImage.Error;
+            MessageBox.Show(message, caption, button, icon);
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasySaveWPF.ViewModel
 {
-    class SettingsViewModel : ViewModelBase
+    public class SettingsViewModel : ViewModelBase
     {
 		#region Propchanges
 		private string _businessSoftware;
