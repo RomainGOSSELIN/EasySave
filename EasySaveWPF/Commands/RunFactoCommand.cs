@@ -100,11 +100,11 @@ namespace EasySaveWPF.Commands
                 if (_backupViewModel.FromJob != 0 && _backupViewModel.ToJob != 0)
                 {
                     List<BackupJob> selectedJobs = new List<BackupJob>();
-                    if (_backupViewModel.RunOperation == "et")
+                    if (_backupViewModel.RunOperation == "and")
                     {
                         selectedJobs = _backupViewModel.BackupJobs.Where(job => job.Id == _backupViewModel.FromJob || job.Id == _backupViewModel.ToJob).ToList();
                     }
-                    else if (_backupViewModel.RunOperation == "à")
+                    else if (_backupViewModel.RunOperation == "to")
                     {
                         selectedJobs = _backupViewModel.BackupJobs.Where(job => job.Id >= _backupViewModel.FromJob && job.Id <= _backupViewModel.ToJob).ToList();
                     }

@@ -107,7 +107,7 @@ namespace EasySaveWPF.ViewModel
             }
             set
             {
-                _fromJob = value;
+                _fromJob = (int)value;
                 OnPropertyChanged(nameof(FromJob));
             }
         }
@@ -151,6 +151,7 @@ namespace EasySaveWPF.ViewModel
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
             _stateLogService = stateLogService;
             _dailyLogService = dailyLogService;
+            RunOperation = "to";
 
             DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
