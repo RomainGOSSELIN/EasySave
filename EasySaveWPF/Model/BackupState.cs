@@ -26,6 +26,8 @@ namespace EasySaveWPF.Model
 
         public double Progress => Math.Round((double)(TotalFilesToCopy-NbFilesLeftToDo) / TotalFilesToCopy * 100) >= 0 ? Math.Round((double)(TotalFilesToCopy - NbFilesLeftToDo) / TotalFilesToCopy * 100): 0;
 
+        [JsonIgnore]
+        public int EncryptionTime { get; set; } = 0;
 
         public BackupState()
         {
@@ -43,6 +45,20 @@ namespace EasySaveWPF.Model
             NbFilesSizeLeftToDo = nbFilesSizeLeftToDo;
             SourceFilePath = sourceFilePath;
             TargetFilePath = targetFilePath;
+        }
+
+        [JsonConstructor]
+        public BackupState(DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath, int encryptionTime)
+        {
+            Timestamp = timestamp;
+            State = state;
+            TotalFilesToCopy = totalFilesToCopy;
+            TotalFilesSize = totalFilesSize;
+            NbFilesLeftToDo = nbFilesLeftToDo;
+            NbFilesSizeLeftToDo = nbFilesSizeLeftToDo;
+            SourceFilePath = sourceFilePath;
+            TargetFilePath = targetFilePath;
+            EncryptionTime = encryptionTime;
         }
     }
 }

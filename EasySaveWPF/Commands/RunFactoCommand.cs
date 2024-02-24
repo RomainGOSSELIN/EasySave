@@ -146,7 +146,7 @@ namespace EasySaveWPF.Commands
 
                     lock (_logLock)
                     {
-                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, job.State.EncryptionTime);
                     }
                 }
                 else

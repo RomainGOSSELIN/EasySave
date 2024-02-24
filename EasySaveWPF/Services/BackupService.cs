@@ -79,6 +79,7 @@ namespace EasySaveWPF.Services
                 job.State.Timestamp = DateTime.Now;
                 job.State.NbFilesLeftToDo = job.State.TotalFilesToCopy;
                 job.State.NbFilesSizeLeftToDo = job.State.TotalFilesSize;
+                job.State.EncryptionTime = 0;
 
 
                 lock (_statusLock)
@@ -101,7 +102,7 @@ namespace EasySaveWPF.Services
 
                 lock (_statusLock)
                 {
-                    _currentBackupState = new BackupState(DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "");
+                    _currentBackupState = new BackupState(DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "",job.State.EncryptionTime);
                     job.State = _currentBackupState;
                     _backupJobService.UpdateJob(job);
                     OnCurrentBackupStateChanged(job);
@@ -158,34 +159,50 @@ namespace EasySaveWPF.Services
         }
         private void CopyDifferentialBackup(BackupJob job, List<string> sourceFiles, List<string> nonPriorityFiles)
         {
-            int totalFilesToCopy = 0;
-            long totalFilesSize = 0;
-            long totalSizeTarget = 0;
+
+            priorityFilesBarrier.AddParticipant();
+
+            preAnalyzeBarrier.SignalAndWait();
+
+            preAnalyzeBarrier.RemoveParticipant();
+
 
             foreach (string sourceFile in sourceFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
                 FileInfo destFile = new FileInfo(sourceFile.Replace(job.SourceDir, job.TargetDir));
 
-                if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                if (job.CancellationTokenSource.IsCancellationRequested)
                 {
-                    totalFilesToCopy++;
-                    totalFilesSize += originalFile.Length;
+                    priorityFilesBarrier.RemoveParticipant();
+                    return;
                 }
-            }
+                else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                {
+                    Save(sourceFile, job);
+                }
 
-            foreach (string sourceFile in sourceFiles)
+
+            }
+            priorityFilesBarrier.SignalAndWait();
+
+            foreach (string sourceFile in nonPriorityFiles)
             {
                 FileInfo originalFile = new FileInfo(sourceFile);
                 FileInfo destFile = new FileInfo(sourceFile.Replace(job.SourceDir, job.TargetDir));
-
-                if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                if (job.CancellationTokenSource.IsCancellationRequested)
                 {
-                    totalSizeTarget += originalFile.Length;
-                    long nbFilesSizeLeftToDo = totalFilesSize - totalSizeTarget;
+                    priorityFilesBarrier.RemoveParticipant();
+
+                    return;
+                }
+                else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
+                {
                     Save(sourceFile, job);
                 }
             }
+            priorityFilesBarrier.RemoveParticipant();
+
 
         }
 
@@ -212,9 +229,9 @@ namespace EasySaveWPF.Services
                     cryptoSoft.Start();
                     cryptoSoft.WaitForExit();
 
-                    if (encryptTime >= 0)
+                    if (job.State.EncryptionTime >= 0)
                     {
-                        encryptTime += cryptoSoft.ExitCode;
+                        job.State.EncryptionTime += cryptoSoft.ExitCode;
                     }
 
                 }
