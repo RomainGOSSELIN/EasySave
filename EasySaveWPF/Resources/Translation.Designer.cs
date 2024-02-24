@@ -88,6 +88,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: .txt.
+        /// </summary>
+        public static string add_or_remove_encryption_holder {
+            get {
+                return ResourceManager.GetString("add_or_remove_encryption_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à et.
         /// </summary>
         public static string and_menu {
@@ -147,6 +156,15 @@ namespace EasySaveWPF.Resources {
         public static string business_software {
             get {
                 return ResourceManager.GetString("business_software", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: notepad.exe.
+        /// </summary>
+        public static string business_software_holder {
+            get {
+                return ResourceManager.GetString("business_software_holder", resourceCulture);
             }
         }
         
@@ -313,7 +331,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à progression (%).
+        ///   Recherche une chaîne localisée semblable à Progression (%).
         /// </summary>
         public static string header_progress {
             get {
@@ -331,7 +349,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à status.
+        ///   Recherche une chaîne localisée semblable à Status.
         /// </summary>
         public static string header_status {
             get {
@@ -493,6 +511,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: C:\Users\User\Destination.
+        /// </summary>
+        public static string option_dest_holder {
+            get {
+                return ResourceManager.GetString("option_dest_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Numéro du travail de sauvegarde.
         /// </summary>
         public static string option_id {
@@ -520,11 +547,29 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: Sauvegarde1.
+        /// </summary>
+        public static string option_name_holder {
+            get {
+                return ResourceManager.GetString("option_name_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde.
         /// </summary>
         public static string option_source {
             get {
                 return ResourceManager.GetString("option_source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: C:\Users\User\Source.
+        /// </summary>
+        public static string option_source_holder {
+            get {
+                return ResourceManager.GetString("option_source_holder", resourceCulture);
             }
         }
         

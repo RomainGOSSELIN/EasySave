@@ -317,10 +317,10 @@ Backup</value>
     <value>Progreso</value>
   </data>
   <data name="header_status" xml:space="preserve">
-    <value>estado</value>
+    <value>Estado</value>
   </data>
   <data name="header_progress" xml:space="preserve">
-    <value>aumentar (%)</value>
+    <value>Progresión (%)</value>
   </data>
   <data name="to_menu" xml:space="preserve">
     <value>a</value>
@@ -330,5 +330,20 @@ Backup</value>
   </data>
   <data name="mono_instance_app" xml:space="preserve">
     <value>Otra instancia de la aplicación está en marcha.</value>
+  </data>
+  <data name="option_dest_holder" xml:space="preserve">
+    <value>Ej: C:\Users\User\Destino</value>
+  </data>
+  <data name="option_name_holder" xml:space="preserve">
+    <value>Ej: Copia de seguridad1</value>
+  </data>
+  <data name="option_source_holder" xml:space="preserve">
+    <value>Ej: C:\Users\User\Source</value>
+  </data>
+  <data name="add_or_remove_encryption_holder" xml:space="preserve">
+    <value>Ej: .txt</value>
+  </data>
+  <data name="business_software_holder" xml:space="preserve">
+    <value>Ej: notepad.exe</value>
   </data>
 </root>

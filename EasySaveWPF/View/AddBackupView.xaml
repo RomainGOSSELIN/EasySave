@@ -36,7 +36,9 @@
             </Button>
 
             <TextBox 
-                x:Name="BackupSource_Textbox" 
+                x:Name="BackupSource_Textbox"
+                Style="{StaticResource PlaceHolderTheme}"
+                Tag="{x:Static t:Translation.option_source_holder}"
                 Text="{Binding BackupJob.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,229,0,0" 
@@ -56,8 +58,9 @@
                 Background="White"/>
 
             <TextBox 
-
-                x:Name="BackupDestination_Textbox" 
+                x:Name="BackupDestination_Textbox"
+                Style="{StaticResource PlaceHolderTheme}"
+                Tag="{x:Static t:Translation.option_dest_holder}"
                 Text="{Binding BackupJob.TargetDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,318,0,0" 
@@ -74,7 +77,17 @@
                 Click="Files_Explorer_2" 
                 Width="30" 
                 Background="White"/>
-            <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap"  Height="20" Margin="12,133,0,0"  Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   VerticalAlignment="Top" Width="201" BorderBrush="#FF707070"/>
+            <TextBox Style="{StaticResource PlaceHolderTheme}"
+         Tag="{x:Static t:Translation.option_name_holder}"
+         HorizontalAlignment="Left"
+         TextWrapping="NoWrap"
+         Height="20"
+         Margin="12,133,0,0"
+         Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+         VerticalAlignment="Top"
+         Width="201"
+         BorderBrush="#FF707070"/>
+
         </Grid>
         <TextBlock Text="{x:Static t:Translation.option_name}"
             HorizontalAlignment="Left"
