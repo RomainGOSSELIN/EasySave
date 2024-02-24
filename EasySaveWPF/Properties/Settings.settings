@@ -3,9 +3,6 @@
   <Profiles />
   <Settings>
     <Setting Name="JobsFilepath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">.\Jobs.json</Value>
-    </Setting>
-    <Setting Name="StatusFilePath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">.\Status.json</Value>
     </Setting>
     <Setting Name="LogFilePath" Type="System.String" Scope="User">

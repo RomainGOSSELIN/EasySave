@@ -101,7 +101,7 @@ namespace EasySaveWPF.Services
 
                 lock (_statusLock)
                 {
-                    _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "");
+                    _currentBackupState = new BackupState(DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "");
                     job.State = _currentBackupState;
                     _backupJobService.UpdateJob(job);
                     OnCurrentBackupStateChanged(job);
@@ -228,7 +228,7 @@ namespace EasySaveWPF.Services
                 File.Copy(sourceFile, targetFilePath, true);
             }
 
-            _currentBackupState = new BackupState(job.Id, job.Name, DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo, job.State.NbFilesSizeLeftToDo, sourceFile, targetFilePath);
+            _currentBackupState = new BackupState(DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo, job.State.NbFilesSizeLeftToDo, sourceFile, targetFilePath);
 
 
             job.State.TotalFilesToCopy = _currentBackupState.TotalFilesToCopy;

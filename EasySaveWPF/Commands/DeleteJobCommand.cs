@@ -1,5 +1,6 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
+using EasySaveWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,14 +14,12 @@ namespace EasySaveWPF.Commands
     {
         private readonly IBackupJobService _backupJobService;
         private readonly IStateLogService _stateLogService;
+        private BackupViewModel _backupViewModel;
 
-        private readonly List<BackupJob> _backupJobs;
-
-        public DeleteJobCommand(IBackupJobService backupJobService, List<BackupJob> backupJobs, IStateLogService stateLogService)
+        public DeleteJobCommand(IBackupJobService backupJobService, BackupViewModel vm)
         {
             _backupJobService = backupJobService;
-            _backupJobs = backupJobs;
-            _stateLogService = stateLogService;
+            _backupViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)
@@ -34,8 +33,8 @@ namespace EasySaveWPF.Commands
             {
                 if (_backupJobService.DeleteJob(job))
                 {
-                    _backupJobs.Remove(job);
-                    _stateLogService.DeleteStateLog(job);
+                    _backupViewModel.BackupJobs.Remove(job);
+                    _backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs);
                 }
             }
         }

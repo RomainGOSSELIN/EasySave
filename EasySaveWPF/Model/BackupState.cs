@@ -11,8 +11,7 @@ namespace EasySaveWPF.Model
 {
     public class BackupState
     {
-        public int? Id { get; set; } = 0;
-        public string BackupName { get; set; }
+       
         public DateTime Timestamp { get; set; } = DateTime.Now;
         public StateEnum State { get; set; } = StateEnum.END;
         public int TotalFilesToCopy { get; set; } = 0;
@@ -34,10 +33,8 @@ namespace EasySaveWPF.Model
         }
 
         [JsonConstructor]
-        public BackupState(int? id, string backupName, DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
+        public BackupState(DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
         {
-            Id = id;
-            BackupName = backupName;
             Timestamp = timestamp;
             State = state;
             TotalFilesToCopy = totalFilesToCopy;

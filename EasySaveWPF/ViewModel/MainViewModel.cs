@@ -31,11 +31,11 @@ namespace EasySaveWPF.ViewModel
 
         }
 
-        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService backupJobService,IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
+        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService backupJobService,IBackupService backupService,  IDailyLogService dailyLogService)
         {
-            BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, stateLogService, dailyLogService);
+            BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, dailyLogService);
             SettingsVM = new SettingsViewModel();
-            CreateBackupVM = new CreateBackupViewModel(backupJobService, stateLogService);
+            CreateBackupVM = new CreateBackupViewModel(backupJobService);
 
             CurrentView = BackupVM;
 
