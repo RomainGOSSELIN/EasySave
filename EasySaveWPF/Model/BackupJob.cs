@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static EasySaveWPF.Model.Enum;
 
@@ -17,9 +17,9 @@ namespace EasySaveWPF.Model
         public JobTypeEnum Type { get; set; } = JobTypeEnum.differential;
         public BackupState State { get; set; } = new BackupState();
 
-        //[JsonIgnore]
-        //public ManualResetEvent ResetEvent = new ManualResetEvent(true);
-      
+        [JsonIgnore]
+        public ManualResetEvent ResetEvent = new ManualResetEvent(true);
+
         public BackupJob() 
         {
 

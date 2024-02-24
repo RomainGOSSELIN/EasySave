@@ -56,16 +56,27 @@ namespace EasySaveWPF.Commands
             if (parameter is BackupJob)
             {
                 var job = (BackupJob)parameter;
-                ThreadPool.QueueUserWorkItem(state =>
+
+                if (job.State.State == Model.Enum.StateEnum.PAUSED)
                 {
+                    job.State.State = Model.Enum.StateEnum.ACTIVE;
+                    job.ResetEvent.Set();
+                }
+                else
+                {
+                Thread thread = new Thread(() => ExecuteJob(job));
+                    thread.Start();
+                //ThreadPool.QueueUserWorkItem(state =>
+                //{
                     
-                    ExecuteJob(job);
-                    lock (executedJobs)
-                    {
-                        executedJobs.Add(job);
-                    }
-                    notifications.BackupSuccess(executedJobs);
-                });
+                //    ExecuteJob(job);
+                //    lock (executedJobs)
+                //    {
+                //        executedJobs.Add(job);
+                //    }
+                //    notifications.BackupSuccess(executedJobs);
+                //});
+                }
             }
 
             else if (parameter.ToString() == "all")
@@ -105,7 +116,7 @@ namespace EasySaveWPF.Commands
                         thread.Start();
                         executedJobs.Add(job);
                     }
-                    notifications.BackupSuccess(executedJobs);
+                    //notifications.BackupSuccess(executedJobs);
                 }
             }
         }
@@ -118,6 +129,7 @@ namespace EasySaveWPF.Commands
                 {
                     var stopwatch = new Stopwatch();
                     var FileSize = GetDirectorySize(job.SourceDir);
+                    job.ResetEvent = new System.Threading.ManualResetEvent(true);
 
                     stopwatch.Start();
                     _backupService.ExecuteBackupJob(job);

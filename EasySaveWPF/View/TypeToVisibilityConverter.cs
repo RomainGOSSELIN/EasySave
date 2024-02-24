@@ -22,6 +22,10 @@ namespace EasySaveWPF.View
             {
                 return Visibility.Collapsed;
             }
+            else if (value != null && value.ToString() == "PAUSED" && parameter.ToString() == "pause")
+            {
+                return Visibility.Collapsed;
+            }
             else
             {
                 return Visibility.Visible;

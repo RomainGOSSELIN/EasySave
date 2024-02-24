@@ -5,7 +5,7 @@ namespace EasySaveWPF.Services.Interfaces
     public interface IBackupService
     {
         void ExecuteBackupJob(BackupJob job);
-        event EventHandler<BackupState> CurrentBackupStateChanged;
+        event EventHandler<BackupJob> CurrentBackupStateChanged;
         long GetEncryptTime();
 
     }

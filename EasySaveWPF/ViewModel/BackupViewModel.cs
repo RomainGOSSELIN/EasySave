@@ -18,6 +18,9 @@ namespace EasySaveWPF.ViewModel
         private ILogger _logger;
         private List<BackupJob> _backupJobs;
         private BackupJob _selectedJobBeforeUpdate;
+        private static readonly object _lock = new object();
+
+
         public List<BackupJob> BackupJobs
         {
             get
@@ -35,6 +38,7 @@ namespace EasySaveWPF.ViewModel
         public ICommand DeleteCommand { get; set; }
   
         public ICommand RunFactoCommand {  get; set; }
+        public ICommand PauseCommand { get; set; }
         #endregion
 
         #region Propchanges
@@ -148,26 +152,34 @@ namespace EasySaveWPF.ViewModel
             DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
          
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
+            PauseCommand = new PauseCommand();
         }
 
-        private void BackupService_CurrentStateChanged(object? sender, BackupState e)
+        private void BackupService_CurrentStateChanged(object? sender, BackupJob e)
         {
-            CurrentStateBackup = e;
-            FileSizeProgress = _currentStateBackup.TotalFilesSize - _currentStateBackup.NbFilesSizeLeftToDo;
-            FileProgress = _currentStateBackup.TotalFilesToCopy - _currentStateBackup.NbFilesLeftToDo;
-            if (_currentStateBackup.NbFilesLeftToDo == 0)
-            {
-                FileSizeProgress = 0;
-                FileProgress = 0;
-                CurrentStateBackup = null;
-            }
-            LoadBackupJobs();
+            var job = e;
+
+                // Recherchez l'index du job dans la liste
+                int index = BackupJobs.FindIndex(j => j.Id == e.Id);
+                if (index != -1)
+                {
+                    // Créez une copie du job pour éviter de modifier l'objet d'origine
+                    BackupJob updatedJob = new BackupJob();
+                    updatedJob = e;
+                    // Mettez à jour l'état du job dans la copie
+                    BackupJobs[index].State = updatedJob.State;
+                    // Affectez la liste mise à jour à la propriété BackupJobs
+                    BackupJobs = new List<BackupJob>(BackupJobs);
+                }
+            
+
         }
 
         public void LoadBackupJobs()
         {
-             _selectedJobBeforeUpdate = SelectedJob;
+            _selectedJobBeforeUpdate = SelectedJob;
             BackupJobs = new List<BackupJob>(_backupJobService.GetAllJobs());
+
         }
     }
 }
