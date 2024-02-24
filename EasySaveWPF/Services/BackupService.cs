@@ -112,7 +112,7 @@ namespace EasySaveWPF.Services
             {
                 notifications.BackupError(ex.Message);
             }
-            preAnalyzeBarrier.RemoveParticipant();
+            //preAnalyzeBarrier.RemoveParticipant();
 
         }
         private void CopyFullBackup(BackupJob job, List<string> sourceFiles, List<string> nonPriorityFiles)
@@ -122,8 +122,10 @@ namespace EasySaveWPF.Services
 
             preAnalyzeBarrier.SignalAndWait();
 
+            preAnalyzeBarrier.RemoveParticipant();
 
-          
+
+
 
             foreach (string sourceFile in sourceFiles)
             {
@@ -141,6 +143,7 @@ namespace EasySaveWPF.Services
 
             foreach (string sourceFile in nonPriorityFiles)
             {
+
                 if (job.CancellationTokenSource.IsCancellationRequested)
                 {
                     priorityFilesBarrier.RemoveParticipant();
@@ -231,7 +234,7 @@ namespace EasySaveWPF.Services
             job.State.TotalFilesToCopy = _currentBackupState.TotalFilesToCopy;
             job.State.TotalFilesSize = _currentBackupState.TotalFilesSize;
             job.State.NbFilesLeftToDo = _currentBackupState.NbFilesLeftToDo - 1;
-            job.State.NbFilesSizeLeftToDo = _currentBackupState.NbFilesSizeLeftToDo;
+            job.State.NbFilesSizeLeftToDo = _currentBackupState.NbFilesSizeLeftToDo - fileInfo.Length;
             job.State.SourceFilePath = _currentBackupState.SourceFilePath;
             job.State.TargetFilePath = _currentBackupState.TargetFilePath;
 
