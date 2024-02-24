@@ -30,6 +30,7 @@
     <None Remove="Images\pause.png" />
     <None Remove="Images\runall.png" />
     <None Remove="Images\spain.png" />
+    <None Remove="Images\stop.png" />
     <None Remove="Images\uk.png" />
   </ItemGroup>
 
@@ -58,6 +59,7 @@
     <Resource Include="Images\pause.png" />
     <Resource Include="Images\runall.png" />
     <Resource Include="Images\spain.png" />
+    <Resource Include="Images\stop.png" />
     <Resource Include="Images\uk.png" />
   </ItemGroup>
 

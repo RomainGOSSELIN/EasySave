@@ -39,6 +39,7 @@ namespace EasySaveWPF.ViewModel
   
         public ICommand RunFactoCommand {  get; set; }
         public ICommand PauseCommand { get; set; }
+        public ICommand StopCommand { get; set; }
         #endregion
 
         #region Propchanges
@@ -149,10 +150,11 @@ namespace EasySaveWPF.ViewModel
             _dailyLogService = dailyLogService;
 
             _backupJobs = new List<BackupJob>(backupJobService.GetAllJobs());
+
             DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
-         
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
             PauseCommand = new PauseCommand();
+            StopCommand = new StopCommand();
         }
 
         private void BackupService_CurrentStateChanged(object? sender, BackupJob e)

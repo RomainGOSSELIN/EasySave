@@ -170,7 +170,7 @@
                 <DataGridTextColumn Header="{x:Static t:Translation.header_status}" Binding="{Binding State.State}" Width="50" />
                 <DataGridTextColumn Header="{x:Static t:Translation.header_progress}" Binding="{Binding State.Progress }" Width="100" />
 
-                <DataGridTemplateColumn Header="Actions" Width="50">
+                <DataGridTemplateColumn Header="Actions" Width="70">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -185,6 +185,13 @@
                                         <Image   Width="15" Height="15" Source="/Images/pause.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Button.Content>
                                 </Button>
+
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE" Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=pause}" Command="{Binding DataContext.StopCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" >
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/stop.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
                                 <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image   Width="15" Height="15" Source="/Images/Delete.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>

@@ -136,6 +136,8 @@ namespace EasySaveWPF.Commands
                     var stopwatch = new Stopwatch();
                     var FileSize = GetDirectorySize(job.SourceDir);
                     job.ResetEvent = new System.Threading.ManualResetEvent(true);
+                    job.CancellationTokenSource = new CancellationTokenSource();
+
 
                     stopwatch.Start();
                     _backupService.ExecuteBackupJob(job);

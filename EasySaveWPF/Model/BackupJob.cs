@@ -19,6 +19,9 @@ namespace EasySaveWPF.Model
 
         [JsonIgnore]
         public ManualResetEvent ResetEvent = new ManualResetEvent(true);
+        
+        [JsonIgnore]
+        public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
 
         public BackupJob() 
         {
