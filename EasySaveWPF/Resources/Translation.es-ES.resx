@@ -229,9 +229,6 @@
     <value>➕ Añadir 
 Backup</value>
   </data>
-  <data name="app_shutdown" xml:space="preserve">
-    <value>La aplicación se cerrará y se aplicarán los cambios.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
@@ -360,5 +357,8 @@ Backup</value>
   </data>
   <data name="no_changes_made" xml:space="preserve">
     <value>No se han detectado cambios que requieran el cierre de la aplicación</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Cambios grabados. Para aplicarlos, reinicie.</value>
   </data>
 </root>

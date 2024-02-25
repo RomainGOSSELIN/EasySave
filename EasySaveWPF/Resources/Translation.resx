@@ -232,7 +232,7 @@
     <value>➕ Ajouter Sauvegarde</value>
   </data>
   <data name="app_shutdown" xml:space="preserve">
-    <value>L'application va maintenant s'arrêter pour appliquer les modifications.</value>
+    <value>Modifications enregistrées. Pour les appliquer, veuillez redémarrer.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Sauvegardes</value>

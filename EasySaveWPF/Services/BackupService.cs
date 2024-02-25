@@ -19,10 +19,11 @@ namespace EasySaveWPF.Services
         Notifications.Notifications notifications = new Notifications.Notifications();
         private static readonly object _statusLock = new object();
         private static readonly object _lock = new object();
+        private static readonly object _maxSizeLock = new object();
         private static Barrier priorityFilesBarrier = new Barrier(0);
         private static Barrier preAnalyzeBarrier = new Barrier(0);
 
-        private static List<string> _priorityExtensions = [".JPG", ".DNG"];
+        private static string _priorityExtensions = Properties.Settings.Default.PriorityFiles;
 
         public BackupService()
         {
@@ -110,7 +111,6 @@ namespace EasySaveWPF.Services
             {
                 notifications.BackupError(ex.Message);
             }
-            //preAnalyzeBarrier.RemoveParticipant();
 
         }
         private void CopyFullBackup(BackupJob job, List<string> sourceFiles, List<string> nonPriorityFiles)
@@ -134,7 +134,18 @@ namespace EasySaveWPF.Services
                     return;
                 }
 
-                Save(sourceFile, job);
+                else if (new FileInfo(sourceFile).Length > 500)
+                {
+                    lock (_maxSizeLock)
+                    {
+                        Save(sourceFile, job);
+                    }
+
+                }
+                else
+                {
+                    Save(sourceFile, job);
+                }
 
             }
 
@@ -149,7 +160,18 @@ namespace EasySaveWPF.Services
 
                     return;
                 }
-                Save(sourceFile, job);
+                else if (new FileInfo(sourceFile).Length > 500)
+                {
+                    lock (_maxSizeLock)
+                    {
+                        Save(sourceFile, job);
+                    }
+
+                }
+                else
+                {
+                    Save(sourceFile, job);
+                }
             }
 
             priorityFilesBarrier.RemoveParticipant();
@@ -177,7 +199,18 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    Save(sourceFile, job);
+                    if (originalFile.Length > 500)
+                    {
+                        lock (_maxSizeLock)
+                        {
+                            Save(sourceFile, job);
+                        }
+
+                    }
+                    else
+                    {
+                        Save(sourceFile, job);
+                    }
                 }
 
 
@@ -195,7 +228,18 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    Save(sourceFile, job);
+                    if (originalFile.Length > 500)
+                    {
+                        lock (_maxSizeLock)
+                        {
+                            Save(sourceFile, job);
+                        }
+
+                    }
+                    else
+                    {
+                        Save(sourceFile, job);
+                    }
                 }
             }
             priorityFilesBarrier.RemoveParticipant();
@@ -210,6 +254,8 @@ namespace EasySaveWPF.Services
             string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
 
             job.ResetEvent.WaitOne();
+
+          
 
             if (_filesToEncrypt.Contains(fileInfo.Extension))
             {

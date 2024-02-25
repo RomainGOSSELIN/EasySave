@@ -232,9 +232,6 @@ Backup</value>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
-  <data name="app_shutdown" xml:space="preserve">
-    <value>L'applicazione verrà chiusa per applicare le modifiche.</value>
-  </data>
   <data name="business_software" xml:space="preserve">
     <value>Software Aziendale</value>
   </data>
@@ -360,5 +357,8 @@ Backup</value>
   </data>
   <data name="stop_before_closing" xml:space="preserve">
     <value>Sei sicuro di voler chiudere? Questa azione fermerà tutto il lavoro in corso.</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Modifiche registrate. Per applicarli, per favore riavvia.</value>
   </data>
 </root>

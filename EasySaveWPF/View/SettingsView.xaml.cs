@@ -255,10 +255,7 @@ namespace EasySaveWPF.View
                 EasySaveWPF.Resources.TranslationSettings.Default.Save();
 
                 notifications.ChangesMade();
-                // Open an another time the app (Need Build)
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                // Clear this instance
-                Application.Current.Shutdown();
+                
             }
             else
             {

@@ -226,9 +226,6 @@ Backup</value>
   <data name="welcome" xml:space="preserve">
     <value>Willkommen bei der EasySave-Backup-Verwaltungssoftware. Schreiben Sie 'exit' zum Beenden.</value>
   </data>
-  <data name="app_shutdown" xml:space="preserve">
-    <value>Die Applikation wird nun geschlossen, um die Änderungen zu übernehmen.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
@@ -360,5 +357,8 @@ Backup</value>
   </data>
   <data name="stop_before_closing" xml:space="preserve">
     <value>Bist du sicher, dass du schließen willst? Diese Aktion wird alle laufenden Arbeiten stoppen.</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Aufgezeichnete Änderungen. Um sie zu beantragen, starten Sie bitte neu.</value>
   </data>
 </root>

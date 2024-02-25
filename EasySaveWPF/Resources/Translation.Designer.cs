@@ -115,7 +115,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à L&apos;application va maintenant s&apos;arrêter pour appliquer les modifications..
+        ///   Recherche une chaîne localisée semblable à Modifications enregistrées. Pour les appliquer, veuillez redémarrer..
         /// </summary>
         public static string app_shutdown {
             get {

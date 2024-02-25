@@ -235,9 +235,6 @@ Sauvegarde</value>
   <data name="add_or_remove_encryption" xml:space="preserve">
     <value>Ajouter / Retirer des extensions à encrypter</value>
   </data>
-  <data name="app_shutdown" xml:space="preserve">
-    <value>L'application va maintenant s'arrêter pour appliquer les modifications.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Sauvegardes</value>
   </data>
@@ -360,5 +357,8 @@ Sauvegarde</value>
   </data>
   <data name="no_changes_made" xml:space="preserve">
     <value>Aucune modification nécessitant l'arrêt de l'application n'a été détectée</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Modifications enregistrées. Pour les appliquer, veuillez redémarrer.</value>
   </data>
 </root>
