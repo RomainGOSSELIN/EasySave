@@ -62,7 +62,6 @@ namespace EasySaveWPF.View
             {
                 //Set the default language with the selected
                 EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode = selectedLang;
-                EasySaveWPF.Resources.TranslationSettings.Default.Save();
                 changesMade = true;
             }
         }
@@ -251,6 +250,10 @@ namespace EasySaveWPF.View
         {
             if (changesMade)
             {
+                Properties.Settings.Default.Save();
+                EasySaveWPF.Theme.Theme.Default.Save();
+                EasySaveWPF.Resources.TranslationSettings.Default.Save();
+
                 notifications.ChangesMade();
                 // Open an another time the app (Need Build)
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);

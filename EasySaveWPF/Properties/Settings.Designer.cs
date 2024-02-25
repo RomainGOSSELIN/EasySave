@@ -79,5 +79,17 @@ namespace EasySaveWPF.Properties {
                 this["FilesToEncrypt"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PriorityFiles {
+            get {
+                return ((string)(this["PriorityFiles"]));
+            }
+            set {
+                this["PriorityFiles"] = value;
+            }
+        }
     }
 }

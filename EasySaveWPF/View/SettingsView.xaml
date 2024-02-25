@@ -352,7 +352,7 @@
                        Foreground="Black" 
                        Background="White"
                        TextWrapping="Wrap"
-                       Text="{Binding PriorityFilesToEncrypt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                       Text="{Binding PriorityFiles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </ScrollViewer>
 
 

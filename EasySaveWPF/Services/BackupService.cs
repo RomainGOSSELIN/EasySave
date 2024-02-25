@@ -15,11 +15,10 @@ namespace EasySaveWPF.Services
     public class BackupService : IBackupService
     {
         private BackupJobService _backupJobService;
-        private BackupState _currentBackupState;
-        public long encryptTime = 0;
         private string _filesToEncrypt;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private static readonly object _statusLock = new object();
+        private static readonly object _lock = new object();
         private static Barrier priorityFilesBarrier = new Barrier(0);
         private static Barrier preAnalyzeBarrier = new Barrier(0);
 
@@ -35,7 +34,6 @@ namespace EasySaveWPF.Services
         public void ExecuteBackupJob(BackupJob job)
         {
             preAnalyzeBarrier.AddParticipant();
-            encryptTime = 0;
             if (job == null)
             {
                 notifications.JobNotExist(job.Id);
@@ -102,8 +100,7 @@ namespace EasySaveWPF.Services
 
                 lock (_statusLock)
                 {
-                    _currentBackupState = new BackupState(DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "",job.State.EncryptionTime);
-                    job.State = _currentBackupState;
+                    job.State = new BackupState(DateTime.Now, StateEnum.END, 0, 0, 0, 0, "", "", job.State.EncryptionTime);
                     _backupJobService.UpdateJob(job);
                     OnCurrentBackupStateChanged(job);
 
@@ -245,15 +242,8 @@ namespace EasySaveWPF.Services
                 File.Copy(sourceFile, targetFilePath, true);
             }
 
-            _currentBackupState = new BackupState(DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo, job.State.NbFilesSizeLeftToDo, sourceFile, targetFilePath);
+            job.State = new BackupState(DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo - 1, job.State.NbFilesSizeLeftToDo - fileInfo.Length, sourceFile, targetFilePath);
 
-
-            job.State.TotalFilesToCopy = _currentBackupState.TotalFilesToCopy;
-            job.State.TotalFilesSize = _currentBackupState.TotalFilesSize;
-            job.State.NbFilesLeftToDo = _currentBackupState.NbFilesLeftToDo - 1;
-            job.State.NbFilesSizeLeftToDo = _currentBackupState.NbFilesSizeLeftToDo - fileInfo.Length;
-            job.State.SourceFilePath = _currentBackupState.SourceFilePath;
-            job.State.TargetFilePath = _currentBackupState.TargetFilePath;
 
             lock (_statusLock)
             {

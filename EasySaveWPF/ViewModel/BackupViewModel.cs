@@ -173,6 +173,10 @@ namespace EasySaveWPF.ViewModel
                 job.State = new BackupState();
                 _backupJobService.UpdateJob(job);
             }
+        }
+
+        public void StopBusinessSoftwareStateCheck()
+        {
             _businessCancellationToken.Cancel();
         }
         public void CheckBusinessSoftwareState()
