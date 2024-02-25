@@ -229,8 +229,8 @@
     <value>➕ Añadir 
 Backup</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>La aplicación se apagará para aplicar el cambio de idioma.</value>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>La aplicación se cerrará y se aplicarán los cambios.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
@@ -351,5 +351,14 @@ Backup</value>
   </data>
   <data name="stop_before_closing" xml:space="preserve">
     <value>¿Estás seguro de que quieres cerrar? Esta acción detendrá todo el trabajo en progreso.</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Añadir / Eliminar extensiones prioritarias</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Lista de extensiones prioritarias</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>No se han detectado cambios que requieran el cierre de la aplicación</value>
   </data>
 </root>

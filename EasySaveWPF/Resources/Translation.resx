@@ -231,8 +231,8 @@
   <data name="add_backup_button" xml:space="preserve">
     <value>➕ Ajouter Sauvegarde</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>L'application va maintenant s'arrêter pour appliquer les modifications.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Sauvegardes</value>
@@ -347,6 +347,15 @@
   </data>
   <data name="cant_delete" xml:space="preserve">
     <value>Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Ajouter / Retirer des extensions prioritaires</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Liste des extensions prioritaires</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>Aucune modification nécessitant l'arrêt de l'application n'a été détectée</value>
   </data>
   <data name="stop_before_closing" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir procéder à la fermeture ? Cette action entraînera l'arrêt de tous les travaux en cours.</value>

@@ -22,6 +22,7 @@ namespace EasySaveWPF.View
 {
     public partial class Settings : UserControl
     {
+        private bool changesMade = false;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private ServiceProvider serviceProvider;
         public Settings()
@@ -45,12 +46,12 @@ namespace EasySaveWPF.View
 
         private void LogsFormatXML_Checked(object sender, RoutedEventArgs e)
         {
-
+            changesMade = true;
         }
 
         private void LogsFormatJSON_Checked(object sender, RoutedEventArgs e)
         {
-
+            changesMade = true;
         }
 
         private void Language_Choice(object sender, RoutedEventArgs e)
@@ -62,11 +63,7 @@ namespace EasySaveWPF.View
                 //Set the default language with the selected
                 EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode = selectedLang;
                 EasySaveWPF.Resources.TranslationSettings.Default.Save();
-                notifications.LanguageChanged();
-                //Open an another time the app (Need Build)
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                //Clear this instance
-                Application.Current.Shutdown();
+                changesMade = true;
             }
         }
 
@@ -85,7 +82,7 @@ namespace EasySaveWPF.View
 
         private void PathBusinessSoftware_Changed(object sender, TextChangedEventArgs e)
         {
-
+            changesMade = true;
         }
 
         private void Files_Explorer(object sender, RoutedEventArgs e)
@@ -107,6 +104,7 @@ namespace EasySaveWPF.View
                     {
                         extensions.Add(extension);
                         UpdateListExtensions(extensions);
+                        changesMade = true;
                     }
                 }
                 else
@@ -127,6 +125,7 @@ namespace EasySaveWPF.View
                     var extensions = GetExtensionsList();
                     extensions.Remove(extension);
                     UpdateListExtensions(extensions);
+                    changesMade = true;
                 }
                 else
                 {
@@ -134,6 +133,7 @@ namespace EasySaveWPF.View
                 }
             }
             InputExtension.Text = "";
+
         }
 
 
@@ -141,6 +141,7 @@ namespace EasySaveWPF.View
         {
             ListExtension.Text = "";
             InputExtension.Text = "";
+            changesMade = true;
         }
 
         private List<string> GetExtensionsList()
@@ -185,5 +186,81 @@ namespace EasySaveWPF.View
             radioButtonDarkTheme.IsChecked = themeSelected == radioButtonDarkTheme.Content.ToString();
             radioButtonLightTheme.IsChecked = themeSelected == radioButtonLightTheme.Content.ToString();
         }
-    }   
+
+        private void AddPriorityExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(InputPriorityExtension.Text))
+            {
+                var extension = InputPriorityExtension.Text.Trim();
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
+                {
+                    var extensions = GetPriorityExtensionsList();
+                    if (!extensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                    {
+                        extensions.Add(extension);
+                        UpdatePriorityListExtensions(extensions);
+                        changesMade = true;
+                    }
+                }
+                else
+                {
+                    notifications.InvalidExtension();
+                }
+            }
+            InputPriorityExtension.Text = "";
+        }
+
+        private void RemovePriorityExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(InputPriorityExtension.Text))
+            {
+                var extension = InputPriorityExtension.Text.Trim();
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
+                {
+                    var extensions = GetPriorityExtensionsList();
+                    extensions.Remove(extension);
+                    UpdatePriorityListExtensions(extensions);
+                    changesMade = true;
+                }
+                else
+                {
+                    notifications.InvalidExtension();
+                }
+            }
+            InputPriorityExtension.Text = "";
+        }
+
+        private void ClearPriorityListExtension_Click(object sender, RoutedEventArgs e)
+        {
+            ListPriorityExtension.Text = "";
+            InputPriorityExtension.Text = "";
+            changesMade = true;
+        }
+
+        private List<string> GetPriorityExtensionsList()
+        {
+            return ListPriorityExtension.Text.Split(new[] { ExtensionSeparator }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private void UpdatePriorityListExtensions(List<string> extensions)
+        {
+            ListPriorityExtension.Text = string.Join(ExtensionSeparator, extensions);
+        }
+
+        private void ApplyChangesAndRestart_Click(object sender, RoutedEventArgs e)
+        {
+            if (changesMade)
+            {
+                notifications.ChangesMade();
+                // Open an another time the app (Need Build)
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                // Clear this instance
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                notifications.NoChangesMade();
+            }
+        }
+    }
 }

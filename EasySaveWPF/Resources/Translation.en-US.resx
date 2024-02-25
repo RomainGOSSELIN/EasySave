@@ -229,8 +229,8 @@ Backup</value>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to the EasySave backup management software. Write 'exit' to quit.</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>The application will shut down to apply the language change.</value>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>The application will now shutdown to apply the changes.</value>
   </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
@@ -351,5 +351,14 @@ Backup</value>
   </data>
   <data name="stop_before_closing" xml:space="preserve">
     <value>Are you sure you want to close? This action will stop all the work in progress.</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Add / Remove priority extensions</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>List of priority extensions</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>No changes requiring application shutdown have been detected</value>
   </data>
 </root>
