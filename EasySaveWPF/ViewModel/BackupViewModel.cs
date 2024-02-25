@@ -22,7 +22,8 @@ namespace EasySaveWPF.ViewModel
         private BackupJob _selectedJobBeforeUpdate;
         private static readonly object _lock = new object();
         private static string _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
-
+        private Thread checkBusinessSoftwareThread;
+        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource() ;
         public List<BackupJob> BackupJobs
         {
             get
@@ -126,7 +127,7 @@ namespace EasySaveWPF.ViewModel
 
             //Lancement thread de vérif de l'état du logiciel métier :
 
-            Thread checkBusinessSoftwareThread = new Thread(new ThreadStart(CheckBusinessSoftwareState));
+            checkBusinessSoftwareThread = new Thread(new ThreadStart(CheckBusinessSoftwareState));
             checkBusinessSoftwareThread.Start();
 
 
@@ -159,12 +160,27 @@ namespace EasySaveWPF.ViewModel
 
         }
 
+        public void StopBackupJobs()
+        {
+            foreach (BackupJob job in BackupJobs)
+            {
+                if (job.State.State == Model.Enum.StateEnum.ACTIVE)
+                {
+                    job.State.State = Model.Enum.StateEnum.END;
+                    job.CancellationTokenSource.Cancel();
+
+                }
+                job.State = new BackupState();
+                _backupJobService.UpdateJob(job);
+            }
+            _businessCancellationToken.Cancel();
+        }
         public void CheckBusinessSoftwareState()
         {
-
+            
             bool isProcessRunning = false;
 
-            while (true)
+            while (!_businessCancellationToken.IsCancellationRequested)
             {
                 Process[] processes = Process.GetProcessesByName(_processName);
 

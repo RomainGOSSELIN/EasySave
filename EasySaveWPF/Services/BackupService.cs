@@ -133,6 +133,7 @@ namespace EasySaveWPF.Services
                 if (job.CancellationTokenSource.IsCancellationRequested)
                 {
                     priorityFilesBarrier.RemoveParticipant();
+
                     return;
                 }
 
@@ -193,7 +194,6 @@ namespace EasySaveWPF.Services
                 if (job.CancellationTokenSource.IsCancellationRequested)
                 {
                     priorityFilesBarrier.RemoveParticipant();
-
                     return;
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
@@ -263,10 +263,6 @@ namespace EasySaveWPF.Services
             }
         }
 
-        public long GetEncryptTime()
-        {
-            return encryptTime;
-        }
 
 
         protected virtual void OnCurrentBackupStateChanged(BackupJob job)

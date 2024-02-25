@@ -682,6 +682,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Êtes-vous sûr de vouloir procéder à la fermeture ? Cette action entraînera l&apos;arrêt de tous les travaux en cours..
+        /// </summary>
+        public static string stop_before_closing {
+            get {
+                return ResourceManager.GetString("stop_before_closing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Succès.
         /// </summary>
         public static string success {

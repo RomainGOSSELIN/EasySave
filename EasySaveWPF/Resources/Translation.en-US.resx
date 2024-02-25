@@ -349,4 +349,7 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>As a security measure: Impossible to delete as long as work is underway! Please stop work before deletion!</value>
   </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>Are you sure you want to close? This action will stop all the work in progress.</value>
+  </data>
 </root>

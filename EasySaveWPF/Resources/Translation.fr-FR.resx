@@ -349,4 +349,7 @@ Sauvegarde</value>
   <data name="cant_delete" xml:space="preserve">
     <value>Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !</value>
   </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir procéder à la fermeture ? Cette action entraînera l'arrêt de tous les travaux en cours.</value>
+  </data>
 </root>

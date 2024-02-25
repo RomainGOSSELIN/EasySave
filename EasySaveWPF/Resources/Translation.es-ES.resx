@@ -349,4 +349,7 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>Como medida de seguridad: ¡imposible de eliminar mientras el trabajo esté en marcha! ¡Deja de trabajar antes de la eliminación!</value>
   </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>¿Estás seguro de que quieres cerrar? Esta acción detendrá todo el trabajo en progreso.</value>
+  </data>
 </root>

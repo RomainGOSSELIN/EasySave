@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Windows;
 using EasySaveWPF.Core;
 using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Resources;
 using EasySaveWPF.Services.Interfaces;
 
 
@@ -23,16 +26,19 @@ namespace EasySaveWPF.ViewModel
         public object CurrentView
         {
             get { return _currentview; }
-            set 
-            { 
+            set
+            {
                 _currentview = value;
                 OnPropertyChanged();
             }
 
         }
 
-        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService backupJobService,IBackupService backupService,  IDailyLogService dailyLogService)
+        public MainViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService)
         {
+            App.Current.MainWindow.Closing += new CancelEventHandler(OnWindowClosing);
+
+
             BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, dailyLogService);
             SettingsVM = new SettingsViewModel();
             CreateBackupVM = new CreateBackupViewModel(backupJobService, this);
@@ -43,7 +49,7 @@ namespace EasySaveWPF.ViewModel
             {
                 BackupVM.LoadBackupJobs();
                 CurrentView = BackupVM;
-                
+
             });
 
             SettingsViewCommand = new RelayCommand(o =>
@@ -57,5 +63,29 @@ namespace EasySaveWPF.ViewModel
                 CurrentView = CreateBackupVM;
             });
         }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+
+
+            string msg = Translation.stop_before_closing;
+            MessageBoxResult result =
+              MessageBox.Show(
+                msg,
+                "Data App",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+            if (result == MessageBoxResult.No)
+            {
+                // If user doesn't want to close, cancel closure
+
+                e.Cancel = true;
+            }
+            else{
+                BackupVM.StopBackupJobs();
+
+            }
+        }
+
     }
 }

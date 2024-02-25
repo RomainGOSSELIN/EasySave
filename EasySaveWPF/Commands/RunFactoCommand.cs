@@ -141,7 +141,6 @@ namespace EasySaveWPF.Commands
 
                     stopwatch.Start();
                     _backupService.ExecuteBackupJob(job);
-                    var encryptTime = _backupService.GetEncryptTime();
                     stopwatch.Stop();
 
                     lock (_logLock)

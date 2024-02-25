@@ -10,7 +10,8 @@
         mc:Ignorable="d"
         Title="EasySave"
         Icon="Images/logoES_v2.ico"
-        Background="Transparent" Width="950" Height="650" MinHeight="650" MinWidth="900">
+        Background="Transparent" Width="950" Height="650" MinHeight="650" MinWidth="900"
+        >
     <Border Background="{DynamicResource Background}">
         <Grid>
             <Grid.ColumnDefinitions>

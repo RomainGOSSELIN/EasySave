@@ -349,4 +349,7 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>Als Sicherheitsmaßnahme: Es ist unmöglich zu löschen, solange die Arbeit im Gange ist! Bitte beenden Sie die Arbeit vor dem Löschen!</value>
   </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>Bist du sicher, dass du schließen willst? Diese Aktion wird alle laufenden Arbeiten stoppen.</value>
+  </data>
 </root>
