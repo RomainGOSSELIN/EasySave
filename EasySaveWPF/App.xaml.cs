@@ -10,6 +10,8 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices.JavaScript;
 using System.Windows;
+using System.Text.Json; 
+using System.Threading;
 
 namespace EasySaveWPF
 {
@@ -19,12 +21,16 @@ namespace EasySaveWPF
     public partial class App : Application
     {
         private ServiceProvider serviceProvider;
+        public ServerConsole server;
+        
         public App()
         {
             ServiceCollection services = new ServiceCollection();
 
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
+            StateLogService stateLogService = new StateLogService();
+            server = new ServerConsole(stateLogService);
 
         }
 
@@ -41,13 +47,20 @@ namespace EasySaveWPF
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            
             string langCode = EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
             EasySaveWPF.Theme.AppTheme.ChangeTheme(new Uri("Theme/"+EasySaveWPF.Theme.Theme.Default.selectedTheme+".xaml", UriKind.Relative));
             var mainWindow = serviceProvider.GetService<MainWindow>();
+            
+            server.Start();
             mainWindow.Show();
 
         }
+        
+
     }
+
 }
+

@@ -77,6 +77,11 @@ namespace EasySaveWPF.Services
                 states[i].Id = i + 1;
             }
         }
+        public string GetStateLogPath()
+        {
+            return _stateLogPath;
+        }
+
 
     }
 }
