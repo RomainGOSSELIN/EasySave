@@ -97,6 +97,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter / Retirer des extensions prioritaires.
+        /// </summary>
+        public static string add_or_remove_priority {
+            get {
+                return ResourceManager.GetString("add_or_remove_priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à et.
         /// </summary>
         public static string and_menu {
@@ -453,6 +462,15 @@ namespace EasySaveWPF.Resources {
         public static string list_extension_encryption {
             get {
                 return ResourceManager.GetString("list_extension_encryption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Liste des extensions prioritaires.
+        /// </summary>
+        public static string list_extension_priority {
+            get {
+                return ResourceManager.GetString("list_extension_priority", resourceCulture);
             }
         }
         

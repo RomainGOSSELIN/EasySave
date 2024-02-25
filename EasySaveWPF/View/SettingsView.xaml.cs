@@ -185,5 +185,63 @@ namespace EasySaveWPF.View
             radioButtonDarkTheme.IsChecked = themeSelected == radioButtonDarkTheme.Content.ToString();
             radioButtonLightTheme.IsChecked = themeSelected == radioButtonLightTheme.Content.ToString();
         }
-    }   
+
+        private void AddPriorityExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(InputPriorityExtension.Text))
+            {
+                var extension = InputPriorityExtension.Text.Trim();
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
+                {
+                    var extensions = GetPriorityExtensionsList();
+                    if (!extensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                    {
+                        extensions.Add(extension);
+                        UpdatePriorityListExtensions(extensions);
+                    }
+                }
+                else
+                {
+                    notifications.InvalidExtension();
+                }
+            }
+            InputPriorityExtension.Text = "";
+        }
+
+        private void RemovePriorityExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(InputPriorityExtension.Text))
+            {
+                var extension = InputPriorityExtension.Text.Trim();
+                if (extension.StartsWith(".") && !extension.Equals(".") && !extension.Contains(" "))
+                {
+                    var extensions = GetPriorityExtensionsList();
+                    extensions.Remove(extension);
+                    UpdatePriorityListExtensions(extensions);
+                }
+                else
+                {
+                    notifications.InvalidExtension();
+                }
+            }
+            InputPriorityExtension.Text = "";
+        }
+
+        private void ClearPriorityListExtension_Click(object sender, RoutedEventArgs e)
+        {
+            ListPriorityExtension.Text = "";
+            InputPriorityExtension.Text = "";
+        }
+
+        private List<string> GetPriorityExtensionsList()
+        {
+            return ListPriorityExtension.Text.Split(new[] { ExtensionSeparator }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private void UpdatePriorityListExtensions(List<string> extensions)
+        {
+            ListPriorityExtension.Text = string.Join(ExtensionSeparator, extensions);
+        }
+
+    }
 }

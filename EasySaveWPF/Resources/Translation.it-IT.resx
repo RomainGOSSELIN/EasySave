@@ -349,4 +349,10 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>Come misura di sicurezza: impossibile eliminare fintanto che è in corso il lavoro! Si prega di smettere di lavorare prima della cancellazione!</value>
   </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Aggiungere/rimuovere le estensioni prioritarie</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Elenco delle estensioni prioritarie</value>
+  </data>
 </root>

@@ -349,4 +349,10 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>As a security measure: Impossible to delete as long as work is underway! Please stop work before deletion!</value>
   </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Add / Remove priority extensions</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>List of priority extensions</value>
+  </data>
 </root>

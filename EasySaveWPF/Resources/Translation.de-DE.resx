@@ -349,4 +349,10 @@ Backup</value>
   <data name="cant_delete" xml:space="preserve">
     <value>Als Sicherheitsmaßnahme: Es ist unmöglich zu löschen, solange die Arbeit im Gange ist! Bitte beenden Sie die Arbeit vor dem Löschen!</value>
   </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Hinzufügen / Entfernen von priorisierten Erweiterungen</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Liste der vorrangigen Erweiterungen</value>
+  </data>
 </root>

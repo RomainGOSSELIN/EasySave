@@ -348,4 +348,10 @@
   <data name="cant_delete" xml:space="preserve">
     <value>Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !</value>
   </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Ajouter / Retirer des extensions prioritaires</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Liste des extensions prioritaires</value>
+  </data>
 </root>
