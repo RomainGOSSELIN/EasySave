@@ -115,11 +115,11 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à L&apos;application va s&apos;éteindre pour appliquer le changement de langue..
+        ///   Recherche une chaîne localisée semblable à L&apos;application va maintenant s&apos;arrêter pour appliquer les modifications..
         /// </summary>
-        public static string app_shutdown_language_changed {
+        public static string app_shutdown {
             get {
-                return ResourceManager.GetString("app_shutdown_language_changed", resourceCulture);
+                return ResourceManager.GetString("app_shutdown", resourceCulture);
             }
         }
         
@@ -507,6 +507,15 @@ namespace EasySaveWPF.Resources {
         public static string name_empty {
             get {
                 return ResourceManager.GetString("name_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aucune modification nécessitant l&apos;arrêt de l&apos;application n&apos;a été détectée.
+        /// </summary>
+        public static string no_changes_made {
+            get {
+                return ResourceManager.GetString("no_changes_made", resourceCulture);
             }
         }
         

@@ -116,7 +116,8 @@
             <RadioButton x:Name="LogsFormatJSON" 
                          GroupName="LogsFormatOptions"
                          IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=json}"
-                         Style="{StaticResource RadioButtonTheme}"/>
+                         Style="{StaticResource RadioButtonTheme}"
+                         Click="LogsFormatJSON_Checked" />
 
             <TextBlock Text="JSON" 
                        VerticalAlignment="Center" 
@@ -129,7 +130,8 @@
             <RadioButton x:Name="LogsFormatXML" 
                          GroupName="LogsFormatOptions" 
                          IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=xml}"
-                         Style="{StaticResource RadioButtonTheme}"/>
+                         Style="{StaticResource RadioButtonTheme}"
+                         Click="LogsFormatXML_Checked" />
 
             <TextBlock Text="XML" 
                        VerticalAlignment="Center" 
@@ -249,8 +251,8 @@
                        Text="{Binding FilesToEncrypt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </ScrollViewer>
 
-        
-        
+
+
         <!-- Priority Extension Section -->
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
@@ -260,7 +262,7 @@
                    FontWeight="Bold" 
                    Height="29" 
                    Width="766"
-                   Text="{x:Static t:Translation.add_or_remove_priority}" /> 
+                   Text="{x:Static t:Translation.add_or_remove_priority}" />
 
         <!-- Add, Remove, Clear Priority Extension Buttons -->
         <!-- Input Priority Extension -->
@@ -428,6 +430,17 @@
                 </Border>
             </StackPanel>
         </StackPanel>
+
+        <!-- Apply changes button -->
+        <Button Style="{StaticResource ButtonTheme}"
+                Height="39" 
+                Width="100" 
+                HorizontalAlignment="Left" 
+                Margin="574,516,0,0" 
+                VerticalAlignment="Top"
+                Click="ApplyChangesAndRestart_Click">
+                <Image Source="/Images/CheckArrow.png" />
+        </Button>
 
     </Grid>
 </UserControl>

@@ -232,8 +232,8 @@ Backup</value>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>L'applicazione si spegnerà per applicare il cambio di lingua.</value>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>L'applicazione verrà chiusa per applicare le modifiche.</value>
   </data>
   <data name="business_software" xml:space="preserve">
     <value>Software Aziendale</value>
@@ -354,5 +354,8 @@ Backup</value>
   </data>
   <data name="list_extension_priority" xml:space="preserve">
     <value>Elenco delle estensioni prioritarie</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>Non sono state rilevate modifiche che richiedono la chiusura dell'applicazione</value>
   </data>
 </root>
