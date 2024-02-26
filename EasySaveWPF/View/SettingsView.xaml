@@ -30,7 +30,7 @@
         <!-- Language Section -->
         <TextBlock HorizontalAlignment="Left"
                    FontSize="22"
-                   Margin="10,70,0,0"
+                   Margin="10,60,0,0"
                    Foreground="{DynamicResource Text}" 
                    Text="{x:Static t:Translation.option_lang}"
                    FontWeight="Bold" 
@@ -39,7 +39,7 @@
         <!-- Language Options (French, English, Spanish, Italian, Deutsch) with Flags -->
         <StackPanel Orientation="Horizontal" 
                     VerticalAlignment="Top" 
-                    Margin="10,110,0,0" 
+                    Margin="10,100,0,0" 
                     Height="45">
             <!-- French -->
             <RadioButton Style="{StaticResource RadioButtonTheme}" x:Name="Language_Choice_French" Content="fr-FR" VerticalAlignment="Center" Checked="Language_Choice"  ClickMode="Press" Cursor="Hand" Margin="5,0" />
@@ -66,7 +66,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="22"
-                   Margin="10,166,0,0"
+                   Margin="10,155,0,0"
                    Foreground="{DynamicResource Text}" 
                    Text="{x:Static t:Translation.business_software}" 
                    FontWeight="Bold" 
@@ -78,16 +78,16 @@
                  Tag="{x:Static t:Translation.business_software_holder}"
                  x:Name="PathBusinessSoftware" 
                  HorizontalAlignment="Left" 
-                 Margin="195,172,0,0" 
+                 Margin="264,163,0,0" 
                  TextWrapping="NoWrap" 
                  VerticalAlignment="Top" 
-                 Width="309"
+                 Width="210"
                  TextChanged="PathBusinessSoftware_Changed" 
                  BorderBrush="#FF707070"/>
 
         <Button Content="..." 
                 HorizontalAlignment="Left" 
-                Margin="520,172,0,0" 
+                Margin="483,162,0,0" 
                 VerticalAlignment="Top" 
                 Height="18" 
                 Click="Files_Explorer" 
@@ -98,7 +98,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="22"
-                   Margin="10,209,0,0"
+                   Margin="10,195,0,0"
                    Foreground="{DynamicResource Text}" 
                    Text="{x:Static t:Translation.logs_format}" 
                    FontWeight="Bold" 
@@ -107,7 +107,7 @@
 
         <StackPanel Orientation="Horizontal" 
                     VerticalAlignment="Top" 
-                    Margin="195,205,-185,0" 
+                    Margin="185,190,-175,0" 
                     Height="45">
 
             <!-- Log Format Options (JSON, XML) -->
@@ -146,7 +146,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="22"
-                   Margin="10,250,0,0"
+                   Margin="10,235,0,0"
                    Foreground="{DynamicResource Text}" 
                    FontWeight="Bold" 
                    Height="29" 
@@ -159,7 +159,7 @@
                  Style="{StaticResource PlaceHolderTheme}"
                  Tag="{x:Static t:Translation.add_or_remove_encryption_holder}"
                  HorizontalAlignment="Left" 
-                 Margin="10,293,0,0" 
+                 Margin="10,275,0,0" 
                  TextWrapping="NoWrap" 
                  VerticalAlignment="Top" 
                  Width="108" 
@@ -168,7 +168,7 @@
 
         <!-- Add Extension for Encryption -->
         <Button HorizontalAlignment="Left" 
-                Margin="135,293,0,0" 
+                Margin="135,275,0,0" 
                 VerticalAlignment="Top" 
                 Height="18" 
                 Click="AddExtension_Click" 
@@ -187,7 +187,7 @@
 
         <!-- Remove Extension for Encryption -->
         <Button HorizontalAlignment="Left" 
-                Margin="185,293,0,0" 
+                Margin="185,275,0,0" 
                 VerticalAlignment="Top"
                 Height="18" 
                 Click="RemoveExtension_Click" 
@@ -205,7 +205,7 @@
 
         <!-- Clear Extension for Encryption -->
         <Button HorizontalAlignment="Left" 
-                Margin="234,293,0,0" 
+                Margin="234,275,0,0" 
                 VerticalAlignment="Top"
                 Height="18" 
                 Click="ClearListExtension_Click" 
@@ -224,7 +224,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="16"
-                   Margin="10,322,0,0"
+                   Margin="10,305,0,0"
                    Foreground="{DynamicResource Text}"
                    FontWeight="Bold" 
                    Height="20" 
@@ -237,7 +237,7 @@
                       Width="330" 
                       HorizontalAlignment="Left" 
                       VerticalAlignment="Top" 
-                      Margin="10,348,0,0" 
+                      Margin="10,335,0,0" 
                       BorderBrush="Gray" 
                       Background="#FF707070" 
                       Padding="0.75,0.75,0.75,0.75" 
@@ -257,7 +257,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="22"
-                   Margin="10,387,0,0"
+                   Margin="10,375,0,0"
                    Foreground="{DynamicResource Text}" 
                    FontWeight="Bold" 
                    Height="29" 
@@ -270,7 +270,7 @@
                  Style="{StaticResource PlaceHolderTheme}"
                  Tag="{x:Static t:Translation.add_or_remove_encryption_holder}"
                  HorizontalAlignment="Left" 
-                 Margin="10,425,0,0" 
+                 Margin="10,410,0,0" 
                  TextWrapping="NoWrap" 
                  VerticalAlignment="Top" 
                  Width="108" 
@@ -279,7 +279,7 @@
 
         <!-- Add Priority Extension -->
         <Button HorizontalAlignment="Left" 
-                Margin="135,425,0,0" 
+                Margin="135,410,0,0" 
                 VerticalAlignment="Top" 
                 Height="18" 
                 Click="AddPriorityExtension_Click" 
@@ -296,7 +296,7 @@
 
         <!-- Remove Priority Extension -->
         <Button HorizontalAlignment="Left" 
-                Margin="185,425,0,0" 
+                Margin="185,410,0,0" 
                 VerticalAlignment="Top"
                 Height="18" 
                 Click="RemovePriorityExtension_Click" 
@@ -312,7 +312,7 @@
 
         <!-- Clear Priority Extension -->
         <Button HorizontalAlignment="Left" 
-                Margin="234,425,0,0" 
+                Margin="234,410,0,0" 
                 VerticalAlignment="Top"
                 Height="18" 
                 Click="ClearPriorityListExtension_Click" 
@@ -329,7 +329,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="16"
-                   Margin="10,456,0,0"
+                   Margin="10,435,0,0"
                    Foreground="{DynamicResource Text}"
                    FontWeight="Bold" 
                    Height="20" 
@@ -341,7 +341,7 @@
                       Width="330" 
                       HorizontalAlignment="Left" 
                       VerticalAlignment="Top" 
-                      Margin="10,480,0,0" 
+                      Margin="10,460,0,0" 
                       BorderBrush="Gray" 
                       Background="#FF707070" 
                       Padding="0.75,0.75,0.75,0.75" 
@@ -361,7 +361,7 @@
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="22"
-                   Margin="10,526,0,0"
+                   Margin="10,500,0,0"
                    Foreground="{DynamicResource Text}" 
                    FontWeight="Bold" 
                    Height="29" 
@@ -370,7 +370,7 @@
 
         <StackPanel Orientation="Horizontal" 
                     VerticalAlignment="Top" 
-                    Margin="83,518,-73,0" 
+                    Margin="83,496,-73,0" 
                     Height="45">
 
             <!-- Theme Options (Light, Dark) -->
@@ -433,14 +433,29 @@
 
         <!-- Apply changes button -->
         <Button Style="{StaticResource ButtonTheme}"
-                Height="39" 
+                Height="40" 
                 Width="100" 
                 HorizontalAlignment="Left" 
-                Margin="574,516,0,0" 
+                Margin="574,515,0,0" 
                 VerticalAlignment="Top"
                 Click="ApplyChangesAndRestart_Click">
-                <Image Source="/Images/CheckArrow.png" />
+            <Image Source="/Images/CheckArrow.png" />
         </Button>
+
+        <TextBox x:Name="numberTextBox" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" PreviewTextInput="NumberValidationTextBox" Margin="200,555,0,0" BorderBrush="#FF707070" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="240,555,0,0" Height="25" Width="15">
+            <Button Content="⮝" Click="IncreaseButtonClick" Width="15" Height="12.5" FontSize="7" Background="White" Foreground="#FFD7D5D5" BorderBrush="#FFEBEAEA"/>
+            <Button Content="⮟" Click="DecreaseButtonClick" Width="15" Height="12.5" FontSize="7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" BorderThickness="1,1,1,1" Padding="1,1,1,1" Foreground="#FFD7D5D5" BorderBrush="#FFEBEAEA"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Margin="10,555,0,0"
+            Foreground="{DynamicResource Text}"
+            FontWeight="Bold" 
+            Height="20" 
+            Width="185"
+            Text="{x:Static t:Translation.size_file_ko}" />
 
     </Grid>
 </UserControl>

@@ -361,4 +361,7 @@ Backup</value>
   <data name="app_shutdown" xml:space="preserve">
     <value>Recorded changes. To apply them, please restart.</value>
   </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>File size(Ko)</value>
+  </data>
 </root>

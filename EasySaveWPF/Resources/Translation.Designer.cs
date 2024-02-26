@@ -691,6 +691,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Taille des fichiers(Ko).
+        /// </summary>
+        public static string size_file_ko {
+            get {
+                return ResourceManager.GetString("size_file_ko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Source.
         /// </summary>
         public static string source {

@@ -361,4 +361,7 @@ Backup</value>
   <data name="app_shutdown" xml:space="preserve">
     <value>Aufgezeichnete Änderungen. Um sie zu beantragen, starten Sie bitte neu.</value>
   </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>Dateigröße(Ko)</value>
+  </data>
 </root>

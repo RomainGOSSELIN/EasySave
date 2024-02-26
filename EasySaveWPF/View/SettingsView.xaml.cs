@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 
 // Pour l'explorateur de fichiers
@@ -25,6 +27,8 @@ namespace EasySaveWPF.View
         private bool changesMade = false;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private ServiceProvider serviceProvider;
+
+
         public Settings()
         {
             InitializeComponent();
@@ -32,6 +36,7 @@ namespace EasySaveWPF.View
             this.DataContext = new ViewModel.SettingsViewModel();
             SetRadioButtonLanguageState();
             SetRadioButtonThemeState();
+            numberTextBox.Text = "0";
 
         }
 
@@ -262,5 +267,37 @@ namespace EasySaveWPF.View
                 notifications.NoChangesMade();
             }
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            // Utiliser une expression régulière pour n'accepter que les chiffres
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void IncreaseButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Incrémenter le nombre dans la TextBox
+            if (int.TryParse(numberTextBox.Text, out int number))
+            {
+                number++;
+                numberTextBox.Text = number.ToString();
+            }
+        }
+
+        private void DecreaseButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Décrémenter le nombre dans la TextBox
+            if (int.TryParse(numberTextBox.Text, out int number))
+            {
+                // Vérifier si le nombre est supérieur à 0 avant de le décrémenter
+                if (number > 0)
+                {
+                    number--;
+                    numberTextBox.Text = number.ToString();
+                }
+            }
+        }
     }
+
 }

@@ -361,4 +361,7 @@ Sauvegarde</value>
   <data name="app_shutdown" xml:space="preserve">
     <value>Modifications enregistrées. Pour les appliquer, veuillez redémarrer.</value>
   </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>Taille des fichiers(Ko)</value>
+  </data>
 </root>
