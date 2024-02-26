@@ -37,7 +37,7 @@ namespace EasySaveWPF.Services
             preAnalyzeBarrier.AddParticipant();
             if (job == null)
             {
-                notifications.JobNotExist(job.Id);
+                notifications.NoJob();
                 return;
             }
             try

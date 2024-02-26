@@ -80,6 +80,11 @@ namespace EasySaveWPF.Commands
 
             else if (parameter.ToString() == "all")
             {
+                if (_backupViewModel.BackupJobs.Count == 0)
+                {
+                    notifications.NoJob();
+                    return;
+                }
                 foreach (BackupJob job in _backupViewModel.BackupJobs)
                 {
 
@@ -99,6 +104,16 @@ namespace EasySaveWPF.Commands
             {
                 if (_backupViewModel.FromJob != 0 && _backupViewModel.ToJob != 0)
                 {
+                    if (_backupViewModel.BackupJobs.Count == 0)
+                    {
+                        notifications.NoJob();
+                        return;
+                    }
+                    if (_backupViewModel.FromJob > _backupViewModel.ToJob || _backupViewModel.FromJob == _backupViewModel.ToJob || _backupViewModel.FromJob > _backupViewModel.BackupJobs.Count || _backupViewModel.ToJob > _backupViewModel.BackupJobs.Count)
+                    {
+                        notifications.RangeNotValid();
+                        return;
+                    }
                     List<BackupJob> selectedJobs = new List<BackupJob>();
                     if (_backupViewModel.RunOperation == "and")
                     {
@@ -123,6 +138,10 @@ namespace EasySaveWPF.Commands
                         });
                     }
                     //notifications.BackupSuccess(executedJobs);
+                }
+                else
+                {
+                    notifications.RangeNotValid();
                 }
             }
         }

@@ -63,7 +63,7 @@ namespace EasySaveWPF.Services
 
             if (jobs == null)
             {
-                notifications.JobNotExist(id);
+                notifications.NoJob();
                 return null;
             }
 
@@ -72,7 +72,7 @@ namespace EasySaveWPF.Services
                 backupJob = jobs.Find(j => j.Id == id);
                 if (backupJob == null)
                 {
-                    notifications.JobNotExist(id);
+                    notifications.NoJob();
                     return null;
                 }
             }

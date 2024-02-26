@@ -364,4 +364,7 @@ Backup</value>
   <data name="size_file_ko" xml:space="preserve">
     <value>File size(Ko)</value>
   </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>The backup job range is not valid</value>
+  </data>
 </root>

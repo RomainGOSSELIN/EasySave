@@ -637,6 +637,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à La plage de travail de sauvegarde n&apos;est pas valide.
+        /// </summary>
+        public static string range_not_valid {
+            get {
+                return ResourceManager.GetString("range_not_valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Tout exécuter.
         /// </summary>
         public static string run_all {

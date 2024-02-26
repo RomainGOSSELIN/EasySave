@@ -364,4 +364,7 @@ Sauvegarde</value>
   <data name="size_file_ko" xml:space="preserve">
     <value>Taille des fichiers(Ko)</value>
   </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>La plage de travail de sauvegarde n'est pas valide</value>
+  </data>
 </root>

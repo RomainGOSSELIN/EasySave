@@ -364,4 +364,7 @@ Backup</value>
   <data name="size_file_ko" xml:space="preserve">
     <value>Tamaño del fichero (Ko)</value>
   </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>El rango de trabajo de salvaguardia no es válido</value>
+  </data>
 </root>

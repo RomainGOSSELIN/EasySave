@@ -364,4 +364,7 @@ Backup</value>
   <data name="size_file_ko" xml:space="preserve">
     <value>Dateigröße(Ko)</value>
   </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>Der Schutzbereich für den Schutz ist nicht gültig</value>
+  </data>
 </root>

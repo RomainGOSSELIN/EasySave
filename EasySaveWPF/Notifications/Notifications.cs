@@ -101,9 +101,9 @@ namespace EasySaveWPF.Notifications
             MessageBox.Show(message, caption, button, icon, MessageBoxResult.Yes);
         }
 
-        public void JobNotExist(int? id)
+        public void NoJob()
         {
-            message = String.Format(Resources.Translation.job_doesnt_exist, id);
+            message = Resources.Translation.no_job_found;
             caption = Resources.Translation.error;
             button = MessageBoxButton.OK;
             icon = MessageBoxImage.Error;
@@ -149,6 +149,15 @@ namespace EasySaveWPF.Notifications
         public void CantDelete()
         {
             message = String.Format(Resources.Translation.cant_delete);
+            caption = Resources.Translation.error;
+            button = MessageBoxButton.OK;
+            icon = MessageBoxImage.Error;
+            MessageBox.Show(message, caption, button, icon);
+        }
+
+        public void RangeNotValid()
+        {
+            message = Resources.Translation.range_not_valid;
             caption = Resources.Translation.error;
             button = MessageBoxButton.OK;
             icon = MessageBoxImage.Error;
