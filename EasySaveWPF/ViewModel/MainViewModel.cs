@@ -1,41 +1,45 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Windows;
 using EasySaveWPF.Core;
 using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Resources;
 using EasySaveWPF.Services.Interfaces;
+using static EasySaveWPF.Model.Enum;
 
 
 namespace EasySaveWPF.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
 
         public RelayCommand BackupViewCommand { get; set; }
         public RelayCommand SettingsViewCommand { get; set; }
         public RelayCommand CreateBackupViewCommand { get; set; }
-
-
         public BackupViewModel BackupVM { get; set; }
         public SettingsViewModel SettingsVM { get; set; }
         public CreateBackupViewModel CreateBackupVM { get; set; }
 
         private object _currentview;
-
         public object CurrentView
         {
             get { return _currentview; }
-            set 
-            { 
+            set
+            {
                 _currentview = value;
                 OnPropertyChanged();
             }
 
         }
 
-        public MainViewModel(LoggerFactory loggerFactory,IBackupJobService backupJobService,IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
+        public MainViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService)
         {
-            BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, stateLogService, dailyLogService);
+            App.Current.MainWindow.Closing += new CancelEventHandler(OnWindowClosing);
+
+
+            BackupVM = new BackupViewModel(loggerFactory, backupJobService, backupService, dailyLogService);
             SettingsVM = new SettingsViewModel();
-            CreateBackupVM = new CreateBackupViewModel(backupJobService, stateLogService);
+            CreateBackupVM = new CreateBackupViewModel(backupJobService, this);
 
             CurrentView = BackupVM;
 
@@ -43,7 +47,7 @@ namespace EasySaveWPF.ViewModel
             {
                 BackupVM.LoadBackupJobs();
                 CurrentView = BackupVM;
-                
+
             });
 
             SettingsViewCommand = new RelayCommand(o =>
@@ -57,5 +61,32 @@ namespace EasySaveWPF.ViewModel
                 CurrentView = CreateBackupVM;
             });
         }
+
+        // A la fermeture on stop les jobs actifs et le thread du check du logiciel métier
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            if (BackupVM.BackupJobs.Any(job => job.State.State == StateEnum.ACTIVE))
+            {
+                string msg = Translation.stop_before_closing;
+                MessageBoxResult result =
+                  MessageBox.Show(
+                    msg,
+                    "Data App",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    BackupVM.StopBackupJobs();
+                }
+            }
+            
+            BackupVM.StopBusinessSoftwareStateCheck();
+
+        }
+
     }
 }

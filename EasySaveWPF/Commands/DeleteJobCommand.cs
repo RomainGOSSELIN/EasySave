@@ -1,11 +1,7 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EasySaveWPF.ViewModel;
+
 
 namespace EasySaveWPF.Commands
 {
@@ -13,31 +9,39 @@ namespace EasySaveWPF.Commands
     {
         private readonly IBackupJobService _backupJobService;
         private readonly IStateLogService _stateLogService;
+        private BackupViewModel _backupViewModel;
+        private static Notifications.Notifications notifications = new Notifications.Notifications();
 
-        private readonly List<BackupJob> _backupJobs;
-
-        public DeleteJobCommand(IBackupJobService backupJobService, List<BackupJob> backupJobs, IStateLogService stateLogService)
+        public DeleteJobCommand(IBackupJobService backupJobService, BackupViewModel vm)
         {
             _backupJobService = backupJobService;
-            _backupJobs = backupJobs;
-            _stateLogService = stateLogService;
+            _backupViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)
         {
-            return base.CanExecute(parameter);
+            if (_backupViewModel.BackupJobs.Find(j => j.State.State == Model.Enum.StateEnum.ACTIVE) != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public override void Execute(object parameter)
         {
+
             if (parameter is BackupJob job)
             {
                 if (_backupJobService.DeleteJob(job))
                 {
-                    _backupJobs.Remove(job);
-                    _stateLogService.DeleteStateLog(job);
+                    _backupViewModel.BackupJobs.Remove(job);
+                    _backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs);
                 }
             }
+
         }
 
     }

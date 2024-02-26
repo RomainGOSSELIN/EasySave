@@ -35,16 +35,16 @@
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="12,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201"/>
-
             <TextBox 
-                x:Name="BackupSource_Textbox" 
+                x:Name="BackupSource_Textbox"
+                Style="{StaticResource PlaceHolderTheme}"
+                Tag="{x:Static t:Translation.option_source_holder}"
                 Text="{Binding BackupJob.SourceDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,229,0,0" 
                 TextWrapping="NoWrap" 
                 VerticalAlignment="Top" 
-                Width="309"
+                Width="309" BorderBrush="#FF707070" Height="20"
                 />
             <Button 
                 x:Name="PathSource_Backup" 
@@ -52,31 +52,42 @@
                 HorizontalAlignment="Left" 
                 Margin="330,229,0,0" 
                 VerticalAlignment="Top" 
-                Height="18" 
+                Height="20" 
                 Click="Files_Explorer" 
                 Width="30" 
                 Background="White"/>
 
             <TextBox 
-
-                x:Name="BackupDestination_Textbox" 
+                x:Name="BackupDestination_Textbox"
+                Style="{StaticResource PlaceHolderTheme}"
+                Tag="{x:Static t:Translation.option_dest_holder}"
                 Text="{Binding BackupJob.TargetDir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" 
                 Margin="12,318,0,0" 
                 TextWrapping="NoWrap" 
                 VerticalAlignment="Top" 
-                Width="309"/>
+                Width="309" BorderBrush="#FF707070" Height="20"/>
             <Button 
                 x:Name="PathDestination_Backup" 
                 Content="..." 
                 HorizontalAlignment="Left" 
                 Margin="330,318,0,0" 
                 VerticalAlignment="Top" 
-                Height="18" 
+                Height="20" 
                 Click="Files_Explorer_2" 
                 Width="30" 
                 Background="White"/>
-            <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap"  Height="23" Margin="12,133,0,0"  Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   VerticalAlignment="Top" Width="201"/>
+            <TextBox Style="{StaticResource PlaceHolderTheme}"
+         Tag="{x:Static t:Translation.option_name_holder}"
+         HorizontalAlignment="Left"
+         TextWrapping="NoWrap"
+         Height="20"
+         Margin="12,133,0,0"
+         Text="{Binding BackupJob.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+         VerticalAlignment="Top"
+         Width="201"
+         BorderBrush="#FF707070"/>
+
         </Grid>
         <TextBlock Text="{x:Static t:Translation.option_name}"
             HorizontalAlignment="Left"

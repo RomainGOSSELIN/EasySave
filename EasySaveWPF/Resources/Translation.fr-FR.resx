@@ -235,9 +235,6 @@ Sauvegarde</value>
   <data name="add_or_remove_encryption" xml:space="preserve">
     <value>Ajouter / Retirer des extensions à encrypter</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>L'application va s'éteindre pour appliquer le changement de langue.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Sauvegardes</value>
   </data>
@@ -313,13 +310,61 @@ Sauvegarde</value>
   <data name="backups_success" xml:space="preserve">
     <value>Les sauvegardes {0} ont été effectuées avec succès !</value>
   </data>
-  <data name="" xml:space="preserve">
+  <data name="_Empty[1]" xml:space="preserve">
     <value>Progression</value>
   </data>
   <data name="header_status" xml:space="preserve">
-    <value>status</value>
+    <value>Status</value>
   </data>
   <data name="header_progress" xml:space="preserve">
-    <value>progression (%)</value>
+    <value>Progression (%)</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>et</value>
+  </data>
+  <data name="mono_instance_app" xml:space="preserve">
+    <value>Une autre instance de l'application est en cours.</value>
+  </data>
+  <data name="option_dest_holder" xml:space="preserve">
+    <value>ex: C:\Users\User\Destination</value>
+  </data>
+  <data name="option_name_holder" xml:space="preserve">
+    <value>ex: Sauvegarde1</value>
+  </data>
+  <data name="option_source_holder" xml:space="preserve">
+    <value>ex: C:\Users\User\Source</value>
+  </data>
+  <data name="add_or_remove_encryption_holder" xml:space="preserve">
+    <value>ex: .txt</value>
+  </data>
+  <data name="business_software_holder" xml:space="preserve">
+    <value>ex: notepad.exe</value>
+  </data>
+  <data name="cant_delete" xml:space="preserve">
+    <value>Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !</value>
+  </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir procéder à la fermeture ? Cette action entraînera l'arrêt de tous les travaux en cours.</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Ajouter / Retirer des extensions prioritaires</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Liste des extensions prioritaires</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>Aucune modification nécessitant l'arrêt de l'application n'a été détectée</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Modifications enregistrées. Pour les appliquer, veuillez redémarrer.</value>
+  </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>Taille des fichiers(Ko)</value>
+  </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>La plage de travail de sauvegarde n'est pas valide</value>
   </data>
 </root>

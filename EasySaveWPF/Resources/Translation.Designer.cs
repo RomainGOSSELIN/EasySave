@@ -63,9 +63,9 @@ namespace EasySaveWPF.Resources {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Progression.
         /// </summary>
-        public static string _ {
+        public static string _Empty_1_ {
             get {
-                return ResourceManager.GetString("", resourceCulture);
+                return ResourceManager.GetString("_Empty[1]", resourceCulture);
             }
         }
         
@@ -88,11 +88,38 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à L&apos;application va s&apos;éteindre pour appliquer le changement de langue..
+        ///   Recherche une chaîne localisée semblable à ex: .txt.
         /// </summary>
-        public static string app_shutdown_language_changed {
+        public static string add_or_remove_encryption_holder {
             get {
-                return ResourceManager.GetString("app_shutdown_language_changed", resourceCulture);
+                return ResourceManager.GetString("add_or_remove_encryption_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter / Retirer des extensions prioritaires.
+        /// </summary>
+        public static string add_or_remove_priority {
+            get {
+                return ResourceManager.GetString("add_or_remove_priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à et.
+        /// </summary>
+        public static string and_menu {
+            get {
+                return ResourceManager.GetString("and_menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Modifications enregistrées. Pour les appliquer, veuillez redémarrer..
+        /// </summary>
+        public static string app_shutdown {
+            get {
+                return ResourceManager.GetString("app_shutdown", resourceCulture);
             }
         }
         
@@ -142,6 +169,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: notepad.exe.
+        /// </summary>
+        public static string business_software_holder {
+            get {
+                return ResourceManager.GetString("business_software_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Logiciel Métier en cours d&apos;exécution..
         /// </summary>
         public static string business_software_running {
@@ -160,6 +196,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Par mesure de sécurité : impossible de supprimer tant que des travaux sont en cours ! Veuillez arrêter les travaux avant suppression !.
+        /// </summary>
+        public static string cant_delete {
+            get {
+                return ResourceManager.GetString("cant_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Les changements auront lieu au prochain démarrage.
         /// </summary>
         public static string change_at_restart {
@@ -174,6 +219,15 @@ namespace EasySaveWPF.Resources {
         public static string copy_file {
             get {
                 return ResourceManager.GetString("copy_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La sauvegarde est terminée ! .
+        /// </summary>
+        public static string copy_success {
+            get {
+                return ResourceManager.GetString("copy_success", resourceCulture);
             }
         }
         
@@ -295,7 +349,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à progression (%).
+        ///   Recherche une chaîne localisée semblable à Progression (%).
         /// </summary>
         public static string header_progress {
             get {
@@ -313,7 +367,7 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à status.
+        ///   Recherche une chaîne localisée semblable à Status.
         /// </summary>
         public static string header_status {
             get {
@@ -412,6 +466,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Liste des extensions prioritaires.
+        /// </summary>
+        public static string list_extension_priority {
+            get {
+                return ResourceManager.GetString("list_extension_priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Format des logs.
         /// </summary>
         public static string logs_format {
@@ -430,11 +493,29 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une autre instance de l&apos;application est en cours..
+        /// </summary>
+        public static string mono_instance_app {
+            get {
+                return ResourceManager.GetString("mono_instance_app", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Veuillez renseigner un nom.
         /// </summary>
         public static string name_empty {
             get {
                 return ResourceManager.GetString("name_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aucune modification nécessitant l&apos;arrêt de l&apos;application n&apos;a été détectée.
+        /// </summary>
+        public static string no_changes_made {
+            get {
+                return ResourceManager.GetString("no_changes_made", resourceCulture);
             }
         }
         
@@ -466,6 +547,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: C:\Users\User\Destination.
+        /// </summary>
+        public static string option_dest_holder {
+            get {
+                return ResourceManager.GetString("option_dest_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Numéro du travail de sauvegarde.
         /// </summary>
         public static string option_id {
@@ -493,11 +583,29 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: Sauvegarde1.
+        /// </summary>
+        public static string option_name_holder {
+            get {
+                return ResourceManager.GetString("option_name_holder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Source du répertoire du travail de sauvegarde.
         /// </summary>
         public static string option_source {
             get {
                 return ResourceManager.GetString("option_source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ex: C:\Users\User\Source.
+        /// </summary>
+        public static string option_source_holder {
+            get {
+                return ResourceManager.GetString("option_source_holder", resourceCulture);
             }
         }
         
@@ -525,6 +633,15 @@ namespace EasySaveWPF.Resources {
         public static string press_key {
             get {
                 return ResourceManager.GetString("press_key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La plage de travail de sauvegarde n&apos;est pas valide.
+        /// </summary>
+        public static string range_not_valid {
+            get {
+                return ResourceManager.GetString("range_not_valid", resourceCulture);
             }
         }
         
@@ -583,6 +700,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Taille des fichiers(Ko).
+        /// </summary>
+        public static string size_file_ko {
+            get {
+                return ResourceManager.GetString("size_file_ko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Source.
         /// </summary>
         public static string source {
@@ -597,6 +723,15 @@ namespace EasySaveWPF.Resources {
         public static string source_directory_doesnt_exist {
             get {
                 return ResourceManager.GetString("source_directory_doesnt_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Êtes-vous sûr de vouloir procéder à la fermeture ? Cette action entraînera l&apos;arrêt de tous les travaux en cours..
+        /// </summary>
+        public static string stop_before_closing {
+            get {
+                return ResourceManager.GetString("stop_before_closing", resourceCulture);
             }
         }
         
@@ -642,6 +777,15 @@ namespace EasySaveWPF.Resources {
         public static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à à .
+        /// </summary>
+        public static string to_menu {
+            get {
+                return ResourceManager.GetString("to_menu", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model;
+using EasySaveWPF.Services;
 using EasySaveWPF.Services.Interfaces;
 using EasySaveWPF.ViewModel;
 using System;
@@ -18,17 +19,20 @@ namespace EasySaveWPF.Commands
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
         private BackupViewModel _backupViewModel;
+        private static List<BackupJob> _backupJobs;
         private string _processName;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private readonly object _logLock = new object();
-
-
         public RunFactoCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
         {
+            _backupViewModel = vm;
+
+            _backupJobs = _backupViewModel.BackupJobs;
+
             _backupService = backupService;
+
             _dailyLogService = dailyLogService;
             _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
-            _backupViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)
@@ -52,23 +56,18 @@ namespace EasySaveWPF.Commands
             if (parameter is BackupJob)
             {
                 var job = (BackupJob)parameter;
-                ThreadPool.QueueUserWorkItem(state =>
-                {
-                    ExecuteJob(job);
-                    lock (executedJobs)
-                    {
-                        executedJobs.Add(job);
-                    }
-                    notifications.BackupSuccess(executedJobs);
-                });
-            }
 
-            else if (parameter.ToString() == "all")
-            {
-                foreach (BackupJob job in _backupViewModel.BackupJobs)
+                if (job.State.State == Model.Enum.StateEnum.PAUSED)
                 {
+                    job.State.State = Model.Enum.StateEnum.ACTIVE;
+                    job.ResetEvent.Set();
+                }
+                else
+                {
+
                     ThreadPool.QueueUserWorkItem(state =>
                     {
+
                         ExecuteJob(job);
                         lock (executedJobs)
                         {
@@ -78,27 +77,71 @@ namespace EasySaveWPF.Commands
                     });
                 }
             }
+
+            else if (parameter.ToString() == "all")
+            {
+                if (_backupViewModel.BackupJobs.Count == 0)
+                {
+                    notifications.NoJob();
+                    return;
+                }
+                foreach (BackupJob job in _backupViewModel.BackupJobs)
+                {
+
+                    ThreadPool.QueueUserWorkItem(state =>
+                    {
+                        ExecuteJob(job);
+                        lock (executedJobs)
+                        {
+                            executedJobs.Add(job);
+                        }
+                        notifications.BackupSuccess(executedJobs);
+
+                    });
+                }
+            }
             else if (parameter.ToString() == "some")
             {
                 if (_backupViewModel.FromJob != 0 && _backupViewModel.ToJob != 0)
                 {
+                    if (_backupViewModel.BackupJobs.Count == 0)
+                    {
+                        notifications.NoJob();
+                        return;
+                    }
+                    if (_backupViewModel.FromJob > _backupViewModel.ToJob || _backupViewModel.FromJob == _backupViewModel.ToJob || _backupViewModel.FromJob > _backupViewModel.BackupJobs.Count || _backupViewModel.ToJob > _backupViewModel.BackupJobs.Count)
+                    {
+                        notifications.RangeNotValid();
+                        return;
+                    }
                     List<BackupJob> selectedJobs = new List<BackupJob>();
-                    if (_backupViewModel.RunOperation == "et")
+                    if (_backupViewModel.RunOperation == "and")
                     {
                         selectedJobs = _backupViewModel.BackupJobs.Where(job => job.Id == _backupViewModel.FromJob || job.Id == _backupViewModel.ToJob).ToList();
                     }
-                    else if (_backupViewModel.RunOperation == "à")
+                    else if (_backupViewModel.RunOperation == "to")
                     {
                         selectedJobs = _backupViewModel.BackupJobs.Where(job => job.Id >= _backupViewModel.FromJob && job.Id <= _backupViewModel.ToJob).ToList();
                     }
 
                     foreach (BackupJob job in selectedJobs)
                     {
-                        Thread thread = new Thread(() => ExecuteJob(job));
-                        thread.Start();
-                        executedJobs.Add(job);
+                        ThreadPool.QueueUserWorkItem(state =>
+                        {
+                            ExecuteJob(job);
+                            lock (executedJobs)
+                            {
+                                executedJobs.Add(job);
+                            }
+                            notifications.BackupSuccess(executedJobs);
+
+                        });
                     }
-                    notifications.BackupSuccess(executedJobs);
+                    //notifications.BackupSuccess(executedJobs);
+                }
+                else
+                {
+                    notifications.RangeNotValid();
                 }
             }
         }
@@ -111,15 +154,17 @@ namespace EasySaveWPF.Commands
                 {
                     var stopwatch = new Stopwatch();
                     var FileSize = GetDirectorySize(job.SourceDir);
+                    job.ResetEvent = new System.Threading.ManualResetEvent(true);
+                    job.CancellationTokenSource = new CancellationTokenSource();
+
 
                     stopwatch.Start();
                     _backupService.ExecuteBackupJob(job);
-                    var encryptTime = _backupService.GetEncryptTime();
                     stopwatch.Stop();
 
                     lock (_logLock)
                     {
-                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, encryptTime);
+                        _dailyLogService.AddDailyLog(job, FileSize, (int)stopwatch.ElapsedMilliseconds, job.State.EncryptionTime);
                     }
                 }
                 else
@@ -136,5 +181,7 @@ namespace EasySaveWPF.Commands
                 .Select(file => new FileInfo(file).Length)
                 .Sum();
         }
+
+        
     }
 }

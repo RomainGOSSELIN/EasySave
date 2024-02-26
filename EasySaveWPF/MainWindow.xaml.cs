@@ -23,16 +23,15 @@ namespace EasySaveWPF
         private IDailyLogService _dailyLogService;
 
 
-        public MainWindow(IBackupJobService backupJobService, IBackupService backupService,IStateLogService stateLogService, LoggerFactory loggerFactory, IDailyLogService dailyLogService)
+        public MainWindow(IBackupJobService backupJobService, IBackupService backupService, LoggerFactory loggerFactory, IDailyLogService dailyLogService)
         {
             _backupJobService = backupJobService;
             _backupService = backupService;
-            _stateLogService = stateLogService;
             _dailyLogService = dailyLogService;
             InitializeComponent();
 
 
-            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_stateLogService,_dailyLogService);
+            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_dailyLogService);
 
         }
 
@@ -41,9 +40,6 @@ namespace EasySaveWPF
 
         }
 
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+   
     }
 }

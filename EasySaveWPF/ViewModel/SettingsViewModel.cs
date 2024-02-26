@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasySaveWPF.ViewModel
 {
-    class SettingsViewModel : ViewModelBase
+    public class SettingsViewModel : ViewModelBase
     {
 		#region Propchanges
 		private string _businessSoftware;
@@ -21,7 +21,6 @@ namespace EasySaveWPF.ViewModel
 				_businessSoftware = value;
 				OnPropertyChanged(nameof(BusinessSoftware));
 				Properties.Settings.Default.BusinessSoftwarePath = value;
-				Properties.Settings.Default.Save();
 			}
 		}
 
@@ -38,7 +37,6 @@ namespace EasySaveWPF.ViewModel
 				OnPropertyChanged(nameof(LogType));
 				Properties.Settings.Default.LogType = value;
 				Properties.Settings.Default.LogFilePath = $".\\Log.{LogType}";
-				Properties.Settings.Default.Save();
 			}
 		}
 
@@ -54,9 +52,23 @@ namespace EasySaveWPF.ViewModel
 				_filesToEncrypt = value;
 				OnPropertyChanged(nameof(FilesToEncrypt));
 				Properties.Settings.Default.FilesToEncrypt = value;
-				Properties.Settings.Default.Save();
 			}
 		} 
+
+		private string _priorityFiles;
+		public string PriorityFiles
+        {
+            get
+			{
+                return _priorityFiles;
+            }
+            set
+			{
+                _priorityFiles = value;
+                OnPropertyChanged(nameof(PriorityFiles));
+                Properties.Settings.Default.PriorityFiles = value;
+            }
+        }
 		#endregion
 
 		public SettingsViewModel()
@@ -64,7 +76,7 @@ namespace EasySaveWPF.ViewModel
 			BusinessSoftware = Properties.Settings.Default.BusinessSoftwarePath;
 			LogType = Properties.Settings.Default.LogType;
             FilesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
-
+            PriorityFiles = Properties.Settings.Default.PriorityFiles;
         }
 
 	}

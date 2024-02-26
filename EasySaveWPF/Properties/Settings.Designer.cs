@@ -25,19 +25,10 @@ namespace EasySaveWPF.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".\\Jobs.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Status.json")]
         public string JobsFilepath {
             get {
                 return ((string)(this["JobsFilepath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".\\Status.json")]
-        public string StatusFilePath {
-            get {
-                return ((string)(this["StatusFilePath"]));
             }
         }
         
@@ -86,6 +77,18 @@ namespace EasySaveWPF.Properties {
             }
             set {
                 this["FilesToEncrypt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PriorityFiles {
+            get {
+                return ((string)(this["PriorityFiles"]));
+            }
+            set {
+                this["PriorityFiles"] = value;
             }
         }
     }

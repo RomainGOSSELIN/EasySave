@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static EasySaveWPF.Model.Enum;
 
@@ -11,8 +11,7 @@ namespace EasySaveWPF.Model
 {
     public class BackupState
     {
-        public int? Id { get; set; } = 0;
-        public string BackupName { get; set; }
+       
         public DateTime Timestamp { get; set; } = DateTime.Now;
         public StateEnum State { get; set; } = StateEnum.END;
         public int TotalFilesToCopy { get; set; } = 0;
@@ -27,17 +26,16 @@ namespace EasySaveWPF.Model
 
         public double Progress => Math.Round((double)(TotalFilesToCopy-NbFilesLeftToDo) / TotalFilesToCopy * 100) >= 0 ? Math.Round((double)(TotalFilesToCopy - NbFilesLeftToDo) / TotalFilesToCopy * 100): 0;
 
+        [JsonIgnore]
+        public int EncryptionTime { get; set; } = 0;
 
         public BackupState()
         {
 
         }
 
-        [JsonConstructor]
-        public BackupState(int? id, string backupName, DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
+        public BackupState(DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath)
         {
-            Id = id;
-            BackupName = backupName;
             Timestamp = timestamp;
             State = state;
             TotalFilesToCopy = totalFilesToCopy;
@@ -46,6 +44,20 @@ namespace EasySaveWPF.Model
             NbFilesSizeLeftToDo = nbFilesSizeLeftToDo;
             SourceFilePath = sourceFilePath;
             TargetFilePath = targetFilePath;
+        }
+
+        [JsonConstructor]
+        public BackupState(DateTime timestamp, StateEnum state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, long nbFilesSizeLeftToDo, string sourceFilePath, string targetFilePath, int encryptionTime)
+        {
+            Timestamp = timestamp;
+            State = state;
+            TotalFilesToCopy = totalFilesToCopy;
+            TotalFilesSize = totalFilesSize;
+            NbFilesLeftToDo = nbFilesLeftToDo;
+            NbFilesSizeLeftToDo = nbFilesSizeLeftToDo;
+            SourceFilePath = sourceFilePath;
+            TargetFilePath = targetFilePath;
+            EncryptionTime = encryptionTime;
         }
     }
 }

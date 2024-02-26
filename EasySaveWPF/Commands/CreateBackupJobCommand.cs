@@ -14,18 +14,18 @@ namespace EasySaveWPF.Commands
     public class CreateBackupJobCommand : CommandBase
     {
         private readonly IBackupJobService _backupJobService;
-        private readonly IStateLogService _stateLogService;
 
         private CreateBackupViewModel _viewModel;
 
         private BackupJob _backupJob => _viewModel.BackupJob;
+        private MainViewModel _mainViewModel;
 
-        public CreateBackupJobCommand(CreateBackupViewModel viewModel, IBackupJobService backupJobService, IStateLogService stateLogService)
+        public CreateBackupJobCommand(CreateBackupViewModel viewModel, MainViewModel vm , IBackupJobService backupJobService)
         {
             //_backupJobService = backupJobService;
             _viewModel = viewModel;
             _backupJobService = backupJobService;
-            _stateLogService = stateLogService;
+            _mainViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)
@@ -37,9 +37,9 @@ namespace EasySaveWPF.Commands
         {
             if (_backupJobService.CreateJob(_backupJob))
             {
-                _stateLogService.CreateStateLog(_backupJob);
 
                 _viewModel.BackupJob = new BackupJob("","","",Model.Enum.JobTypeEnum.differential,0, new BackupState());
+                _mainViewModel.BackupViewCommand.Execute(null);
             };
 
         }

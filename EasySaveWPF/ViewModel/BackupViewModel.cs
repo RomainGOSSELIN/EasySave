@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EasySaveWPF.Core;
 using EasySaveWPF.Commands;
+using System.Diagnostics;
+using System.IO;
 namespace EasySaveWPF.ViewModel
 {
     public class BackupViewModel : ViewModelBase
@@ -18,6 +20,10 @@ namespace EasySaveWPF.ViewModel
         private ILogger _logger;
         private List<BackupJob> _backupJobs;
         private BackupJob _selectedJobBeforeUpdate;
+        private static readonly object _lock = new object();
+        private static string _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
+        private Thread checkBusinessSoftwareThread;
+        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource() ;
         public List<BackupJob> BackupJobs
         {
             get
@@ -33,49 +39,13 @@ namespace EasySaveWPF.ViewModel
 
         #region Commands
         public ICommand DeleteCommand { get; set; }
-  
-        public ICommand RunFactoCommand {  get; set; }
+
+        public ICommand RunFactoCommand { get; set; }
+        public ICommand PauseCommand { get; set; }
+        public ICommand StopCommand { get; set; }
         #endregion
 
         #region Propchanges
-        private BackupState _currentStateBackup;
-        public BackupState CurrentStateBackup
-        {
-            get { return _currentStateBackup; }
-            set
-            {
-                _currentStateBackup = value;
-                OnPropertyChanged(nameof(CurrentStateBackup));
-            }
-        }
-
-        private long _fileSizeProgress;
-        public long FileSizeProgress
-        {
-            get
-            {
-                return _fileSizeProgress;
-            }
-            set
-            {
-                _fileSizeProgress = value;
-                OnPropertyChanged(nameof(FileSizeProgress));
-            }
-        }
-
-        private long _fileProgress;
-        public long FileProgress
-        {
-            get
-            {
-                return _fileProgress;
-            }
-            set
-            {
-                _fileProgress = value;
-                OnPropertyChanged(nameof(FileProgress));
-            }
-        }
 
         private int _toJob;
         public int ToJob
@@ -100,7 +70,7 @@ namespace EasySaveWPF.ViewModel
             }
             set
             {
-                _fromJob = value;
+                _fromJob = (int)value;
                 OnPropertyChanged(nameof(FromJob));
             }
         }
@@ -120,7 +90,7 @@ namespace EasySaveWPF.ViewModel
         }
 
         private BackupJob _selectedJob;
-        public BackupJob  SelectedJob
+        public BackupJob SelectedJob
         {
             get
             {
@@ -128,46 +98,132 @@ namespace EasySaveWPF.ViewModel
             }
             set
             {
-                _selectedJob = value == null ? BackupJobs.Find(x => x.Id == _selectedJobBeforeUpdate.Id) : value;
+                _selectedJob = value == null ? BackupJobs.FirstOrDefault()  : value;
+                _selectedJobBeforeUpdate = _selectedJob;
+
                 OnPropertyChanged(nameof(SelectedJob));
             }
         }
         #endregion
 
-        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IStateLogService stateLogService, IDailyLogService dailyLogService)
+        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService)
         {
+            #region Init
             _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
             _backupJobService = backupJobService;
             _backupService = backupService;
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
-            _stateLogService = stateLogService;
             _dailyLogService = dailyLogService;
-
-            _backupJobs = new List<BackupJob>(backupJobService.GetAllJobs());
-            DeleteCommand = new DeleteJobCommand(_backupJobService, _backupJobs, _stateLogService);
-         
+            RunOperation = "to";
+            
+            DeleteCommand = new DeleteJobCommand(_backupJobService, this);
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
+            PauseCommand = new PauseCommand();
+            StopCommand = new StopCommand();
+            #endregion
+
+            LoadBackupJobs();
+
+            //Lancement thread de vérif de l'état du logiciel métier :
+
+            checkBusinessSoftwareThread = new Thread(new ThreadStart(CheckBusinessSoftwareState));
+            checkBusinessSoftwareThread.Start();
+
+
+
         }
 
-        private void BackupService_CurrentStateChanged(object? sender, BackupState e)
+        private void BackupService_CurrentStateChanged(object? sender, BackupJob e)
         {
-            CurrentStateBackup = e;
-            FileSizeProgress = _currentStateBackup.TotalFilesSize - _currentStateBackup.NbFilesSizeLeftToDo;
-            FileProgress = _currentStateBackup.TotalFilesToCopy - _currentStateBackup.NbFilesLeftToDo;
-            if (_currentStateBackup.NbFilesLeftToDo == 0)
+
+            var job = e;
+            lock (_lock)
             {
-                FileSizeProgress = 0;
-                FileProgress = 0;
-                CurrentStateBackup = null;
+                int index = BackupJobs.FindIndex(j => j.Id == e.Id);
+                if (index != -1)
+                {
+                    BackupJob updatedJob = new BackupJob();
+                    updatedJob = e;
+                    BackupJobs[index].State = updatedJob.State;
+                    BackupJobs = new List<BackupJob>(BackupJobs);
+                }
             }
-            LoadBackupJobs();
+            SelectedJob = _selectedJobBeforeUpdate;
+
         }
 
         public void LoadBackupJobs()
         {
-             _selectedJobBeforeUpdate = SelectedJob;
             BackupJobs = new List<BackupJob>(_backupJobService.GetAllJobs());
+            _selectedJobBeforeUpdate = BackupJobs.FirstOrDefault();
+
+        }
+
+        public void StopBackupJobs()
+        {
+            foreach (BackupJob job in BackupJobs)
+            {
+                if (job.State.State == Model.Enum.StateEnum.ACTIVE)
+                {
+                    job.State.State = Model.Enum.StateEnum.END;
+                    job.CancellationTokenSource.Cancel();
+
+                }
+                job.State = new BackupState();
+                _backupJobService.UpdateJob(job);
+            }
+        }
+
+        public void StopBusinessSoftwareStateCheck()
+        {
+            _businessCancellationToken.Cancel();
+        }
+        public void CheckBusinessSoftwareState()
+        {
+            
+            bool isProcessRunning = false;
+
+            while (!_businessCancellationToken.IsCancellationRequested)
+            {
+                Process[] processes = Process.GetProcessesByName(_processName);
+
+                if (processes.Length > 0)
+                {
+                    if (!isProcessRunning)
+                    {
+
+                        isProcessRunning = true;
+                        foreach (BackupJob job in BackupJobs)
+                        {
+                            if (job.State.State == Model.Enum.StateEnum.ACTIVE)
+                            {
+                                job.ResetEvent.Reset();
+                                job.State.State = Model.Enum.StateEnum.PAUSED;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (isProcessRunning)
+                    {
+
+                        isProcessRunning = false;
+                        foreach (BackupJob job in BackupJobs)
+                        {
+                            if (job.State.State == Model.Enum.StateEnum.PAUSED)
+                            {
+                                job.ResetEvent.Set();
+                                job.State.State = Model.Enum.StateEnum.ACTIVE;
+                            }
+                        }
+                    }
+                }
+
+                Thread.Sleep(1000);
+            }
+
         }
     }
 }

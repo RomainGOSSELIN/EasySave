@@ -14,12 +14,10 @@ namespace EasySaveWPF.Services
     {
         private TcpListener _listener;
         private bool _isRunning;
-        private readonly StateLogService _stateLogService;
 
-        public ServerConsole(StateLogService stateLogService)
+        public ServerConsole()
         {
             _listener = new TcpListener(System.Net.IPAddress.Any, 8888); // IP et port
-            _stateLogService = stateLogService;
         }
 
         public void Start()
@@ -50,7 +48,7 @@ namespace EasySaveWPF.Services
             try
             {
                 // Lit l'état des sauvegardes depuis le fichier JSON
-                string backupStatesJson = File.ReadAllText(_stateLogService.GetStateLogPath());
+                string backupStatesJson = File.ReadAllText(Properties.Settings.Default.JobsFilepath);
 
                 byte[] data = Encoding.UTF8.GetBytes(backupStatesJson);
 

@@ -229,9 +229,6 @@ Backup</value>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to the EasySave backup management software. Write 'exit' to quit.</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>The application will shut down to apply the language change.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
@@ -313,13 +310,61 @@ Backup</value>
   <data name="backups_success" xml:space="preserve">
     <value>The backups {0} were successfully carried out!</value>
   </data>
-  <data name="" xml:space="preserve">
+  <data name="_Empty[1]" xml:space="preserve">
     <value>Progress</value>
   </data>
   <data name="header_status" xml:space="preserve">
     <value>status</value>
   </data>
   <data name="header_progress" xml:space="preserve">
-    <value>increase (%)</value>
+    <value>Progress (%)</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="mono_instance_app" xml:space="preserve">
+    <value>Another instance of the application is underway.</value>
+  </data>
+  <data name="option_dest_holder" xml:space="preserve">
+    <value>Ex: C:\Users\User\Destination</value>
+  </data>
+  <data name="option_name_holder" xml:space="preserve">
+    <value>Ex: Backup1</value>
+  </data>
+  <data name="option_source_holder" xml:space="preserve">
+    <value>Ex: C:\Users\User\Source</value>
+  </data>
+  <data name="add_or_remove_encryption_holder" xml:space="preserve">
+    <value>Ex :.txt</value>
+  </data>
+  <data name="business_software_holder" xml:space="preserve">
+    <value>Ex: notepad.exe</value>
+  </data>
+  <data name="cant_delete" xml:space="preserve">
+    <value>As a security measure: Impossible to delete as long as work is underway! Please stop work before deletion!</value>
+  </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>Are you sure you want to close? This action will stop all the work in progress.</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Add / Remove priority extensions</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>List of priority extensions</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>No changes requiring application shutdown have been detected</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Recorded changes. To apply them, please restart.</value>
+  </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>File size(Ko)</value>
+  </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>The backup job range is not valid</value>
   </data>
 </root>

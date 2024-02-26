@@ -229,9 +229,6 @@
     <value>➕ Añadir 
 Backup</value>
   </data>
-  <data name="app_shutdown_language_changed" xml:space="preserve">
-    <value>La aplicación se apagará para aplicar el cambio de idioma.</value>
-  </data>
   <data name="backups_button" xml:space="preserve">
     <value>🗃 Backups</value>
   </data>
@@ -313,13 +310,61 @@ Backup</value>
   <data name="backups_success" xml:space="preserve">
     <value>¡Las copias de seguridad {0} se llevaron a cabo con éxito!</value>
   </data>
-  <data name="" xml:space="preserve">
+  <data name="_Empty[1]" xml:space="preserve">
     <value>Progreso</value>
   </data>
   <data name="header_status" xml:space="preserve">
-    <value>estado</value>
+    <value>Estado</value>
   </data>
   <data name="header_progress" xml:space="preserve">
-    <value>aumentar (%)</value>
+    <value>Progresión (%)</value>
+  </data>
+  <data name="to_menu" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="and_menu" xml:space="preserve">
+    <value>y</value>
+  </data>
+  <data name="mono_instance_app" xml:space="preserve">
+    <value>Otra instancia de la aplicación está en marcha.</value>
+  </data>
+  <data name="option_dest_holder" xml:space="preserve">
+    <value>Ej: C:\Users\User\Destino</value>
+  </data>
+  <data name="option_name_holder" xml:space="preserve">
+    <value>Ej: Copia de seguridad1</value>
+  </data>
+  <data name="option_source_holder" xml:space="preserve">
+    <value>Ej: C:\Users\User\Source</value>
+  </data>
+  <data name="add_or_remove_encryption_holder" xml:space="preserve">
+    <value>Ej: .txt</value>
+  </data>
+  <data name="business_software_holder" xml:space="preserve">
+    <value>Ej: notepad.exe</value>
+  </data>
+  <data name="cant_delete" xml:space="preserve">
+    <value>Como medida de seguridad: ¡imposible de eliminar mientras el trabajo esté en marcha! ¡Deja de trabajar antes de la eliminación!</value>
+  </data>
+  <data name="stop_before_closing" xml:space="preserve">
+    <value>¿Estás seguro de que quieres cerrar? Esta acción detendrá todo el trabajo en progreso.</value>
+  </data>
+  <data name="add_or_remove_priority" xml:space="preserve">
+    <value>Añadir / Eliminar extensiones prioritarias</value>
+  </data>
+  <data name="list_extension_priority" xml:space="preserve">
+    <value>Lista de extensiones prioritarias</value>
+  </data>
+  <data name="no_changes_made" xml:space="preserve">
+    <value>No se han detectado cambios que requieran el cierre de la aplicación</value>
+  </data>
+  <data name="app_shutdown" xml:space="preserve">
+    <value>Cambios grabados. Para aplicarlos, reinicie.</value>
+  </data>
+  <data name="size_file_ko" xml:space="preserve">
+    <value>Tamaño del fichero (Ko)</value>
+  </data>
+  <data name="range_not_valid" xml:space="preserve">
+    <value>El rango de trabajo de salvaguardia no es válido</value>
   </data>
 </root>

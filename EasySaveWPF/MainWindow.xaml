@@ -10,7 +10,8 @@
         mc:Ignorable="d"
         Title="EasySave"
         Icon="Images/logoES_v2.ico"
-        Background="Transparent" Width="950" Height="650" MinHeight="650" MinWidth="900">
+        Background="Transparent" Width="950" Height="650" MinHeight="650" MinWidth="900"
+        >
     <Border Background="{DynamicResource Background}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -41,23 +42,18 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" 
-                             Checked="RadioButton_Checked_1"/>
+                            />
                
                 <RadioButton 
                              Content= "{x:Static t:Translation.add_backup_button}"
-                             Margin="0 5 0 0"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Margin="0,5,0,0"
+                             Style="{StaticResource ModifiedMenuButtonTheme}"
                              Command="{Binding CreateBackupViewCommand}" 
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
-                             VerticalAlignment="Top"/>
-                    
-
-
-
-
-
-
+                             VerticalAlignment="Center" UseLayoutRounding="False" >
+                   
+                </RadioButton>
 
                 <RadioButton Content="{x:Static t:Translation.settings_button}"
                              Margin="0 5 0 0"

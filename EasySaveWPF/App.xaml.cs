@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Notifications;
 using EasySaveWPF.Services;
 using EasySaveWPF.Services.Interfaces;
 using EasySaveWPF.ViewModel;
@@ -20,6 +21,8 @@ namespace EasySaveWPF
     /// </summary>
     public partial class App : Application
     {
+        Notifications.Notifications notifications = new Notifications.Notifications();
+        private static Mutex _mutex = null;
         private ServiceProvider serviceProvider;
         public ServerConsole server;
         
@@ -29,8 +32,7 @@ namespace EasySaveWPF
 
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
-            StateLogService stateLogService = new StateLogService();
-            server = new ServerConsole(stateLogService);
+            server = new ServerConsole();
 
         }
 
@@ -40,18 +42,27 @@ namespace EasySaveWPF
             services.AddSingleton<IDailyLogService, DailyLogService>();
             services.AddSingleton<IBackupJobService, BackupJobService>();
             services.AddSingleton<IBackupService, BackupService>();
-            services.AddSingleton<IStateLogService, StateLogService>();
+            //services.AddSingleton<IStateLogService, StateLogService>();
             services.AddSingleton<BackupViewModel>();
             services.AddSingleton<MainWindow>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            
+            const string appName = "EasySaveWPF"; 
             string langCode = EasySaveWPF.Resources.TranslationSettings.Default.LanguageCode;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
             EasySaveWPF.Theme.AppTheme.ChangeTheme(new Uri("Theme/"+EasySaveWPF.Theme.Theme.Default.selectedTheme+".xaml", UriKind.Relative));
+            bool createdNew;
+            _mutex = new Mutex(true, appName, out createdNew);
+            if (!createdNew)
+            {
+                
+                notifications.MultipleInstance();
+                Application.Current.Shutdown();
+                return;
+            }
             var mainWindow = serviceProvider.GetService<MainWindow>();
             
             server.Start();
