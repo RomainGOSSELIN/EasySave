@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using static EasySaveWPF.Model.Enum;
 
-namespace EasySaveWPF
+namespace ClientWPFConsole
 {
     public partial class MainWindow : Window
     {
