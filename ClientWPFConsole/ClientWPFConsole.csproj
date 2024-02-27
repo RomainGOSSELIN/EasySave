@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Delete.png" />
+    <None Remove="Images\pause.png" />
+    <None Remove="Images\runall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EasySaveWPF\EasySaveWPF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\pause.png" />
+    <Resource Include="Images\runall.png" />
   </ItemGroup>
 
 </Project>

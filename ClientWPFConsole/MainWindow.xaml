@@ -9,7 +9,15 @@
     </Window.Resources>
 
     <Grid>
-        <DataGrid x:Name="DataGridBackupJobs" AutoGenerateColumns="False" VerticalAlignment="Top" HorizontalAlignment="Center" Height="263" Margin="0,61,0,0" Width="505">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="DataGridBackupJobs" Grid.Row="1" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="10,0,10,10" CanUserAddRows="False">
             <DataGrid.Resources>
                 <Style TargetType="DataGrid">
                     <Setter Property="Background" Value="#EEEEEE"/>
@@ -27,10 +35,36 @@
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding State.State}" Width="*"/>
                 <DataGridTextColumn Header="Progression (%)" Binding="{Binding State.Progress}" Width="*"/>
+                <DataGridTemplateColumn Header="Actions" Width="70">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=play}" Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.RunFactoCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE" Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=pause}" Command="{Binding DataContext.PauseCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" >
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/pause.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/Delete.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="serverState" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="91"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
-        <TextBlock x:Name="serverStateValue" HorizontalAlignment="Left" Margin="101,36,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="serverState"   Grid.Row="0" Margin="10,34,424,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="91"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
+        <TextBlock x:Name="serverStateValue" Grid.Row="0" HorizontalAlignment="Left" Margin="150,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 
 </Window>
