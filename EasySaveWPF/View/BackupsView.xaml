@@ -113,7 +113,8 @@
                     CommandParameter="all"
                     Width="120"
                     Height="30"
-                    Style="{StaticResource ButtonTheme}" />
+                    Style="{StaticResource ButtonTheme}"
+                    Cursor="Hand"/>
 
 
         </StackPanel>
@@ -125,7 +126,7 @@
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Right">
                 <Border CornerRadius="5" Margin="5" Height="22" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}" BorderThickness="2">
-                    <Button Width="15"  Height="22" Command="{Binding RunFactoCommand}" CommandParameter="some" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
+                    <Button Cursor="Hand" Width="15"  Height="22" Command="{Binding RunFactoCommand}" CommandParameter="some" Background="{DynamicResource TextButtonMenu}" BorderBrush="{DynamicResource TextButtonMenu}">
                         <Button.Content>
                             <Image Margin="0,0,0,5" Width="12" Height="12" Source="/Images/runall.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button.Content>
