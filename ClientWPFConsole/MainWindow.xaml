@@ -51,6 +51,13 @@
                                     </Button.Content>
                                 </Button>
 
+                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE" Visibility="{Binding State.State, Converter={StaticResource TypeToVisibilityConverter}, ConverterParameter=pause}" Command="{Binding DataContext.StopCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" >
+                                    <Button.Content>
+                                        <Image   Width="15" Height="15" Source="/Images/stop.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+
+
                                 <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image   Width="15" Height="15" Source="/Images/Delete.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -64,7 +71,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="serverState"   Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="108"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
-        <TextBlock x:Name="serverStateValue" Grid.Row="0" HorizontalAlignment="Left" Margin="150,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="serverStateValue" Grid.Row="0" HorizontalAlignment="Left" Margin="104,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 
 </Window>
