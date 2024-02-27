@@ -38,7 +38,8 @@ namespace EasySaveWPF.Commands
                 if (_backupJobService.DeleteJob(job))
                 {
                     _backupViewModel.BackupJobs.Remove(job);
-                    _backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs);
+                    _backupViewModel.LoadBackupJobs();
+                    //_backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs);
                 }
             }
 

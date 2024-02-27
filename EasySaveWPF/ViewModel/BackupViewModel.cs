@@ -8,6 +8,8 @@ using EasySaveWPF.Core;
 using EasySaveWPF.Commands;
 using System.Diagnostics;
 using System.IO;
+using EasySaveWPF.Services;
+using System.Windows;
 namespace EasySaveWPF.ViewModel
 {
     public class BackupViewModel : ViewModelBase
@@ -15,7 +17,7 @@ namespace EasySaveWPF.ViewModel
         private LoggerFactory _loggerFactory;
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
-        private IStateLogService _stateLogService;
+        private IServerService _serverService;
         private IDailyLogService _dailyLogService;
         private ILogger _logger;
         private List<BackupJob> _backupJobs;
@@ -24,6 +26,7 @@ namespace EasySaveWPF.ViewModel
         private static string _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
         private Thread checkBusinessSoftwareThread;
         private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource() ;
+
         public List<BackupJob> BackupJobs
         {
             get
@@ -106,7 +109,7 @@ namespace EasySaveWPF.ViewModel
         }
         #endregion
 
-        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService)
+        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService, IServerService serverService)
         {
             #region Init
             _loggerFactory = loggerFactory;
@@ -115,14 +118,16 @@ namespace EasySaveWPF.ViewModel
             _backupService = backupService;
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
             _dailyLogService = dailyLogService;
-            RunOperation = "to";
+            _serverService = serverService;
             
+            RunOperation = "to";
             DeleteCommand = new DeleteJobCommand(_backupJobService, this);
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
             PauseCommand = new PauseCommand();
             StopCommand = new StopCommand();
             #endregion
-
+            
+            _serverService.Start();
             LoadBackupJobs();
 
             //Lancement thread de vérif de l'état du logiciel métier :
@@ -148,6 +153,8 @@ namespace EasySaveWPF.ViewModel
                     BackupJobs[index].State = updatedJob.State;
                     BackupJobs = new List<BackupJob>(BackupJobs);
                 }
+                _serverService.SendDataToClients(BackupJobs);
+                
             }
             SelectedJob = _selectedJobBeforeUpdate;
 
@@ -157,6 +164,7 @@ namespace EasySaveWPF.ViewModel
         {
             BackupJobs = new List<BackupJob>(_backupJobService.GetAllJobs());
             _selectedJobBeforeUpdate = BackupJobs.FirstOrDefault();
+            _serverService.SendDataToClients(BackupJobs);
 
         }
 

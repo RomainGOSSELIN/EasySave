@@ -24,7 +24,6 @@ namespace EasySaveWPF
         Notifications.Notifications notifications = new Notifications.Notifications();
         private static Mutex _mutex = null;
         private ServiceProvider serviceProvider;
-        public ServerConsole server;
         
         public App()
         {
@@ -32,7 +31,6 @@ namespace EasySaveWPF
 
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
-            server = new ServerConsole();
 
         }
 
@@ -42,7 +40,7 @@ namespace EasySaveWPF
             services.AddSingleton<IDailyLogService, DailyLogService>();
             services.AddSingleton<IBackupJobService, BackupJobService>();
             services.AddSingleton<IBackupService, BackupService>();
-            //services.AddSingleton<IStateLogService, StateLogService>();
+            services.AddSingleton<IServerService,ServerService>();
             services.AddSingleton<BackupViewModel>();
             services.AddSingleton<MainWindow>();
         }
@@ -64,8 +62,8 @@ namespace EasySaveWPF
                 return;
             }
             var mainWindow = serviceProvider.GetService<MainWindow>();
-            
-            server.Start();
+            var server = serviceProvider.GetRequiredService<IServerService>();
+
             mainWindow.Show();
 
         }

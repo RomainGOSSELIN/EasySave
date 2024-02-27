@@ -14,12 +14,12 @@
         </DataGrid.Resources>
         <DataGrid.Columns>
             <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
-            <DataGridTextColumn Header="Nom" Binding="{Binding BackupName}" Width="*"/>
-            <DataGridTextColumn Header="Source" Binding="{Binding SourceFilePath}" Width="*"/>
-            <DataGridTextColumn Header="Destination" Binding="{Binding TargetFilePath}" Width="*"/>
+            <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="*"/>
+            <DataGridTextColumn Header="Source" Binding="{Binding SourceDir}" Width="*"/>
+            <DataGridTextColumn Header="Destination" Binding="{Binding TargetDir}" Width="*"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
-            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
-            <DataGridTextColumn Header="Progression (%)" Binding="{Binding Progress}" Width="*"/>
+            <DataGridTextColumn Header="Status" Binding="{Binding State.State}" Width="*"/>
+            <DataGridTextColumn Header="Progression (%)" Binding="{Binding State.Progress}" Width="*"/>
         </DataGrid.Columns>
     </DataGrid>
 
