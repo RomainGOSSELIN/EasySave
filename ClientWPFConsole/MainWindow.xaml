@@ -63,7 +63,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="serverState"   Grid.Row="0" Margin="10,34,424,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="91"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
+        <TextBlock x:Name="serverState"   Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="108"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
         <TextBlock x:Name="serverStateValue" Grid.Row="0" HorizontalAlignment="Left" Margin="150,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 
