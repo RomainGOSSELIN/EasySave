@@ -136,6 +136,8 @@ namespace EasySaveWPF.Services
 
                 else if (new FileInfo(sourceFile).Length > 500)
                 {
+                    job.ResetEvent.WaitOne();
+
                     lock (_maxSizeLock)
                     {
                         Save(sourceFile, job);
@@ -144,6 +146,8 @@ namespace EasySaveWPF.Services
                 }
                 else
                 {
+                    job.ResetEvent.WaitOne();
+
                     Save(sourceFile, job);
                 }
 
@@ -162,6 +166,8 @@ namespace EasySaveWPF.Services
                 }
                 else if (new FileInfo(sourceFile).Length > 500)
                 {
+                    job.ResetEvent.WaitOne();
+
                     lock (_maxSizeLock)
                     {
                         Save(sourceFile, job);
@@ -170,6 +176,8 @@ namespace EasySaveWPF.Services
                 }
                 else
                 {
+                    job.ResetEvent.WaitOne();
+
                     Save(sourceFile, job);
                 }
             }
@@ -201,6 +209,8 @@ namespace EasySaveWPF.Services
                 {
                     if (originalFile.Length > 500)
                     {
+                        job.ResetEvent.WaitOne();
+
                         lock (_maxSizeLock)
                         {
                             Save(sourceFile, job);
@@ -209,6 +219,8 @@ namespace EasySaveWPF.Services
                     }
                     else
                     {
+                        job.ResetEvent.WaitOne();
+
                         Save(sourceFile, job);
                     }
                 }
@@ -230,6 +242,8 @@ namespace EasySaveWPF.Services
                 {
                     if (originalFile.Length > 500)
                     {
+                        job.ResetEvent.WaitOne();
+
                         lock (_maxSizeLock)
                         {
                             Save(sourceFile, job);
@@ -238,6 +252,8 @@ namespace EasySaveWPF.Services
                     }
                     else
                     {
+                        job.ResetEvent.WaitOne();
+
                         Save(sourceFile, job);
                     }
                 }
@@ -253,7 +269,6 @@ namespace EasySaveWPF.Services
             FileInfo fileInfo = new FileInfo(sourceFile);
             string targetFilePath = sourceFile.Replace(job.SourceDir, job.TargetDir);
 
-            job.ResetEvent.WaitOne();
 
           
 
@@ -288,9 +303,13 @@ namespace EasySaveWPF.Services
                 File.Copy(sourceFile, targetFilePath, true);
             }
 
-            job.State = new BackupState(DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo - 1, job.State.NbFilesSizeLeftToDo - fileInfo.Length, sourceFile, targetFilePath);
+            //job.State = new BackupState(DateTime.Now, StateEnum.ACTIVE, job.State.TotalFilesToCopy, job.State.TotalFilesSize, job.State.NbFilesLeftToDo - 1, );
 
-
+            job.State.Timestamp = DateTime.Now;
+            job.State.NbFilesLeftToDo = job.State.NbFilesLeftToDo - 1;
+            job.State.NbFilesSizeLeftToDo = job.State.NbFilesSizeLeftToDo - fileInfo.Length;
+            job.State.SourceFilePath =sourceFile;
+            job.State.TargetFilePath = targetFilePath;
             lock (_statusLock)
             {
                 _backupJobService.UpdateJob(job);

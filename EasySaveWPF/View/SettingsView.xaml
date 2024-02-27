@@ -87,7 +87,7 @@
 
         <Button Content="..." 
                 HorizontalAlignment="Left" 
-                Margin="483,162,0,0" 
+                Margin="483,163,0,0" 
                 VerticalAlignment="Top" 
                 Height="18" 
                 Click="Files_Explorer" 
