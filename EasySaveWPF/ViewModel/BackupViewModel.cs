@@ -170,7 +170,7 @@ namespace EasySaveWPF.ViewModel
                     StopCommand.Execute(e.Parameter);
                     break;
                 case "run":
-                    RunFactoCommand.Execute(e.Parameter);
+                    RunFactoCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
                     break;
                 case "pause":
 
