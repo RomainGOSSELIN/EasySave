@@ -33,12 +33,13 @@ namespace EasySaveWPF
                 Thread receiveDataThread = new Thread(ReceiveData);
                 receiveDataThread.IsBackground = true;
                 receiveDataThread.Start();
-
-                Console.WriteLine("Connected to server.");
+                serverStateValue.Text = "Connected";
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Failed to connect to server: {ex.Message}");
+                serverStateValue.Text = "Error";
+
             }
         }
 
@@ -47,21 +48,22 @@ namespace EasySaveWPF
             NetworkStream stream = _client.GetStream();
             byte[] bytes = new byte[2048];
 
-            while (_isConnected)
+            while (_client.Connected)
             {
-               
+
                 StringBuilder data = new StringBuilder();
                 int bytesRead;
-
-                while ((bytesRead = stream.Read(bytes, 0, bytes.Length)) != 0)
+                try
                 {
-                    data.Append(Encoding.ASCII.GetString(bytes, 0, bytesRead));
 
-                    string receivedData = data.ToString();
-                    if (receivedData.IndexOf("<EOF>") > -1)
+                    while ((bytesRead = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
-                        try
+                        data.Append(Encoding.ASCII.GetString(bytes, 0, bytesRead));
+
+                        string receivedData = data.ToString();
+                        if (receivedData.IndexOf("<EOF>") > -1)
                         {
+
                             string pattern = @"<BOF>(.*?)<EOF>";
                             Match match = Regex.Match(receivedData, pattern);
                             if (match.Success)
@@ -76,19 +78,23 @@ namespace EasySaveWPF
                             data.Clear();
 
 
-
-
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Failed to deserialize JSON: {ex.Message}");
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to receive data: {ex.Message}");
                 }
 
             }
 
+            _isConnected = false;
+            Dispatcher.Invoke(() =>
+            {
+                serverStateValue.Text = "Disconnected";
+            });
         }
+
 
         public void Disconnect()
         {
@@ -96,48 +102,48 @@ namespace EasySaveWPF
             {
                 _client.Close();
                 _isConnected = false;
-                Console.WriteLine("Disconnected from server.");
+
             }
             else
             {
                 Console.WriteLine("Not connected to server.");
             }
         }
-    
 
 
-    //    private async void ConnectToServer()
-    //    {
+
+        //    private async void ConnectToServer()
+        //    {
 
 
-    //        try
-    //        {
-    //            using var client = new TcpClient();
-    //            await client.ConnectAsync(serverIp, serverPort);
+        //        try
+        //        {
+        //            using var client = new TcpClient();
+        //            await client.ConnectAsync(serverIp, serverPort);
 
-    //            using var stream = client.GetStream();
-    //            using var memoryStream = new MemoryStream();
-    //            await stream.CopyToAsync(memoryStream); // Copie le contenu du flux dans memoryStream.
-    //            memoryStream.Position = 0; // Réinitialise la position de memoryStream pour la lecture.
+        //            using var stream = client.GetStream();
+        //            using var memoryStream = new MemoryStream();
+        //            await stream.CopyToAsync(memoryStream); // Copie le contenu du flux dans memoryStream.
+        //            memoryStream.Position = 0; // Réinitialise la position de memoryStream pour la lecture.
 
 
-    //            var response = Encoding.UTF8.GetString(memoryStream.ToArray());//Convert Memory
-    //            var backupJobs = JsonSerializer.Deserialize<List<BackupJob>>(response);//Désérialisation JSON
-    //            Dispatcher.Invoke(() =>
-    //            {
-    //                DataGridBackupJobs.ItemsSource = backupJobs;
-    //            });
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Dispatcher.Invoke(() =>
-    //            {
-    //                DataGridBackupJobs.ItemsSource = $"Une erreur est survenue: {ex.Message}";
-    //            });
-    //        }
-    //    }
-    //}
-    public class BackupJob
+        //            var response = Encoding.UTF8.GetString(memoryStream.ToArray());//Convert Memory
+        //            var backupJobs = JsonSerializer.Deserialize<List<BackupJob>>(response);//Désérialisation JSON
+        //            Dispatcher.Invoke(() =>
+        //            {
+        //                DataGridBackupJobs.ItemsSource = backupJobs;
+        //            });
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Dispatcher.Invoke(() =>
+        //            {
+        //                DataGridBackupJobs.ItemsSource = $"Une erreur est survenue: {ex.Message}";
+        //            });
+        //        }
+        //    }
+        //}
+        public class BackupJob
         {
             public int Id { get; set; } = 0;
             public string Name { get; set; } = string.Empty;
