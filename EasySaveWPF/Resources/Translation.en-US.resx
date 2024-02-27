@@ -367,4 +367,7 @@ Backup</value>
   <data name="range_not_valid" xml:space="preserve">
     <value>The backup job range is not valid</value>
   </data>
+  <data name="confirmation_all" xml:space="preserve">
+    <value>Are you sure you want to perform all the backup job?</value>
+  </data>
 </root>

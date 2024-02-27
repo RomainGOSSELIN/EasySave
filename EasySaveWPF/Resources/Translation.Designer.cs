@@ -214,6 +214,15 @@ namespace EasySaveWPF.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Êtes-vous sur de vouloir exécuter tous les travaux de sauvegardes ?.
+        /// </summary>
+        public static string confirmation_all {
+            get {
+                return ResourceManager.GetString("confirmation_all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Copie du fichier : {0}.
         /// </summary>
         public static string copy_file {

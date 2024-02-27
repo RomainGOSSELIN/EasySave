@@ -12,6 +12,8 @@ namespace EasySaveWPF.Notifications
         string? caption;
         MessageBoxButton button;
         MessageBoxImage icon;
+        MessageBoxResult result;
+
         public void SourceDirNotExist(string SourceDir)
         {
             message = String.Format(Resources.Translation.source_directory_doesnt_exist, SourceDir);
@@ -162,6 +164,26 @@ namespace EasySaveWPF.Notifications
             button = MessageBoxButton.OK;
             icon = MessageBoxImage.Error;
             MessageBox.Show(message, caption, button, icon);
+        }
+
+        public MessageBoxResult Confirmation()
+        {
+            message = Resources.Translation.confirmation_all;
+            caption = "";
+            button = MessageBoxButton.YesNo;
+            icon = MessageBoxImage.Warning;
+            result = MessageBox.Show(message, caption, button, icon);
+            return result;
+        }
+
+        public MessageBoxResult StopBeforeClosing()
+        {
+            message = Resources.Translation.stop_before_closing;
+            caption = "Data App";
+            button = MessageBoxButton.YesNo;
+            icon = MessageBoxImage.Warning;
+            result = MessageBox.Show(message, caption, button, icon);
+            return result;
         }
     }
 }

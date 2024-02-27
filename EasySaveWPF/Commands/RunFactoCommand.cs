@@ -80,6 +80,12 @@ namespace EasySaveWPF.Commands
 
             else if (parameter.ToString() == "all")
             {
+                var result = notifications.Confirmation();
+                if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+
                 if (_backupViewModel.BackupJobs.Count == 0)
                 {
                     notifications.NoJob();
