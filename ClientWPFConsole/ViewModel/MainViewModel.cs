@@ -19,7 +19,7 @@ namespace ClientWPFConsole.ViewModel
 
         public ICommand RunJobCommand { get; set; }
         public ICommand PauseJobCommand { get; set; }
-
+        public ICommand ConnectToServer { get; set; }
         public ICommand StopJobCommand { get; set; }
 
         public ClientService  ClientService;
@@ -34,18 +34,32 @@ namespace ClientWPFConsole.ViewModel
                 OnPropertyChanged(nameof(BackupJobs));
             }
         }
+        
+        private bool _isConnected;
+        public bool IsConnected
+        {
+            get { return _isConnected; }
+            set
+            {
+                _isConnected = value;
+                OnPropertyChanged(nameof(IsConnected));
+            }
+        }
+     
+
+
 
         public MainViewModel()
         {
             RunJobCommand = new RunJobCommand(this);
             StopJobCommand = new StopJobCommand(this);
             PauseJobCommand = new PauseJobCommand(this);
+            ConnectToServer = new ConnectToServerCommand(this);
 
             ClientService = new ClientService();
             BackupJobs = new ObservableCollection<BackupJob>();
             ClientService.DataReceived += ClientService_DataReceived;
-            ClientService.Connect();
-
+            ClientService.StatusChanged += ClientService_StatusChanged;
         }
 
         private void ClientService_DataReceived(object sender, List<BackupJob> backupJobs)
@@ -59,6 +73,11 @@ namespace ClientWPFConsole.ViewModel
                     BackupJobs.Add(job);
                 }
             });
+        }
+
+        private void ClientService_StatusChanged(object sender, bool isConnected)
+        {
+            IsConnected = isConnected;
         }
 
 

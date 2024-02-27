@@ -9,6 +9,7 @@
 
     <Window.Resources>
         <converters:TypeToVisibilityConverter x:Key="TypeToVisibilityConverter"/>
+        <converters:ServerStateConverter x:Key="ServerStateConverter"/>
         <SolidColorBrush x:Key="ButtonBackground" Color="White"/>
         <SolidColorBrush x:Key="ButtonBorder" Color="Black"/>
         <SolidColorBrush x:Key="GridHeaderBackground" Color="#2d2c4d"/>
@@ -80,8 +81,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="serverState" Foreground="White"  Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="108"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
-        <TextBlock x:Name="serverStateValue" Foreground="white" Grid.Row="0" HorizontalAlignment="Left" Margin="104,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="serverState" Foreground="White"  Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="116" Text="Etat de la connexion : "/>
+        <TextBlock x:Name="serverStateValue" Text="{Binding IsConnected, Mode=OneWay, Converter={StaticResource ServerStateConverter}, ConverterParameter=value}" Foreground="white" Grid.Row="0" HorizontalAlignment="Left" Margin="130,34,0,0"  Width="auto"  TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="connect_button" Width="auto" Content="{Binding IsConnected, Mode=OneWay, Converter={StaticResource ServerStateConverter}, ConverterParameter=button}" Command="{Binding ConnectToServer}"  Margin="0,29,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" >
+            
+        </Button>
     </Grid>
 
 </Window>

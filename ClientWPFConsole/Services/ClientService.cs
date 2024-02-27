@@ -1,5 +1,6 @@
 ﻿
 using ClientWPFConsole.Model;
+using System.ComponentModel;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
@@ -8,14 +9,28 @@ using System.Windows.Threading;
 
 namespace ClientWPFConsole.Services
 {
-    public class ClientService 
+    public class ClientService
     {
 
 
-        private static TcpClient _client = new TcpClient();
-        private static bool _isConnected;
+        private static TcpClient _client ;
+        private bool _isConnected;
+        public bool IsConnected
+        {
+            get { return _isConnected; }
+            set
+            {
+                if (_isConnected != value)
+                {
+                    _isConnected = value;
+                    StatusChanged?.Invoke(this, value);
+                }
+            }
+        }
 
         public event EventHandler<List<BackupJob>> DataReceived;
+        public event EventHandler<bool> StatusChanged;
+
         string serverIp = "127.0.0.1";
         int serverPort = 8888;
 
@@ -23,14 +38,16 @@ namespace ClientWPFConsole.Services
         {
             try
             {
+                _client = new TcpClient();
                 _client.Connect(serverIp, serverPort);
-                _isConnected = true;
+                IsConnected = true;
                 Thread receiveDataThread = new Thread(ReceiveData);
                 receiveDataThread.IsBackground = true;
                 receiveDataThread.Start();
             }
             catch (Exception ex)
             {
+                IsConnected = false;
                 Console.WriteLine($"Failed to connect to server: {ex.Message}");
             }
         }
@@ -77,12 +94,13 @@ namespace ClientWPFConsole.Services
                 }
                 catch (Exception ex)
                 {
+                    IsConnected = false;
                     Console.WriteLine($"Failed to receive data: {ex.Message}");
                 }
 
             }
 
-            _isConnected = false;
+            IsConnected = false;
         }
 
 
@@ -105,10 +123,10 @@ namespace ClientWPFConsole.Services
 
         public void Disconnect()
         {
-            if (_isConnected)
+            if (IsConnected)
             {
                 _client.Close();
-                _isConnected = false;
+                IsConnected = false;
 
             }
             else
@@ -116,5 +134,9 @@ namespace ClientWPFConsole.Services
                 Console.WriteLine("Not connected to server.");
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
     }
 }

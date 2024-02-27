@@ -55,16 +55,27 @@ namespace EasySaveWPF.Services
 
         public void SendDataToClients(List<BackupJob> jobs)
         {
-            if (_client != null && _client.Connected)
+            try
             {
-                NetworkStream network_stream = _client.GetStream();
-                string jsonData = JsonConvert.SerializeObject(jobs);
-                jsonData = "<BOF>" + jsonData + "<EOF>";
-                // Envoi des données JSON au client
-                byte[] jsonDataBytes = Encoding.ASCII.GetBytes(jsonData);
+                if (_client != null && _client.Connected)
+                {
+                    NetworkStream networkStream = _client.GetStream();
+                    string jsonData = JsonConvert.SerializeObject(jobs);
+                    jsonData = "<BOF>" + jsonData + "<EOF>";
+                    // Envoi des données JSON au client
+                    byte[] jsonDataBytes = Encoding.ASCII.GetBytes(jsonData);
 
-                network_stream.Write(jsonDataBytes, 0, jsonDataBytes.Length);
-
+                    networkStream.Write(jsonDataBytes, 0, jsonDataBytes.Length);
+                }
+                else
+                {
+                }
+            }
+            catch (IOException ex)
+            {
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -110,7 +121,6 @@ namespace EasySaveWPF.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while handling the client: {ex.Message}");
                 _client.Close();
             }
         }

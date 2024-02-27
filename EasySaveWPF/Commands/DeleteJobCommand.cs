@@ -20,7 +20,7 @@ namespace EasySaveWPF.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            if (_backupViewModel.BackupJobs.Where(j => j.State.State == Model.Enum.StateEnum.ACTIVE) != null)
+            if (_backupViewModel.BackupJobs.Find(j => j.State.State == Model.Enum.StateEnum.ACTIVE) != null)
             {
                 return false;
             }

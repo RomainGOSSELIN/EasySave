@@ -29,6 +29,7 @@ namespace EasySaveWPF.Commands
 
         public override void Execute(object parameter)
         {
+
             var job = (BackupJob)parameter;
             job.CancellationTokenSource.Cancel();
 
