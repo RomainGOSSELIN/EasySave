@@ -6,9 +6,20 @@
 
     <Window.Resources>
         <converters:TypeToVisibilityConverter x:Key="TypeToVisibilityConverter"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="White"/>
+        <SolidColorBrush x:Key="ButtonBorder" Color="Black"/>
+        <SolidColorBrush x:Key="GridHeaderBackground" Color="#2d2c4d"/>
+        <SolidColorBrush x:Key="GridBackground" Color="#0A042C"/>
+        <SolidColorBrush x:Key="GridRowBackground" Color="#39393E"/>
+        <SolidColorBrush x:Key="GridAlternatingRowBackground" Color="#2E2E2E"/>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid Background="{StaticResource GridBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -17,14 +28,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="DataGridBackupJobs" Grid.Row="1" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="10,0,10,10" CanUserAddRows="False">
+        <DataGrid x:Name="DataGridBackupJobs" Grid.Row="1" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="10,0,10,10" CanUserAddRows="False" Background="{StaticResource GridBackground}" RowBackground="{StaticResource GridRowBackground}" AlternatingRowBackground="{StaticResource GridAlternatingRowBackground}" GridLinesVisibility="None" HeadersVisibility="Column" ColumnHeaderHeight="32">
             <DataGrid.Resources>
-                <Style TargetType="DataGrid">
-                    <Setter Property="Background" Value="#EEEEEE"/>
-                    <Setter Property="RowBackground" Value="White"/>
-                    <Setter Property="AlternatingRowBackground" Value="#FAFAFA"/>
-                    <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-                    <Setter Property="HeadersVisibility" Value="Column"/>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="{StaticResource GridHeaderBackground}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Height" Value="32"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -57,8 +71,7 @@
                                     </Button.Content>
                                 </Button>
 
-
-                                <Button Background="#B7B5BE" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                <Button Background="Black" BorderBrush="#B7B5BE"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image   Width="15" Height="15" Source="/Images/Delete.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Button.Content>
@@ -70,8 +83,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="serverState"   Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="108"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
-        <TextBlock x:Name="serverStateValue" Grid.Row="0" HorizontalAlignment="Left" Margin="104,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="serverState" Foreground="White"  Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="108"><Run Language="fr-fr" Text="Etat du serveur : "/></TextBlock>
+        <TextBlock x:Name="serverStateValue" Foreground="white" Grid.Row="0" HorizontalAlignment="Left" Margin="104,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 
 </Window>
