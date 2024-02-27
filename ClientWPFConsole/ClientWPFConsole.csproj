@@ -12,6 +12,7 @@
     <None Remove="Images\Delete.png" />
     <None Remove="Images\pause.png" />
     <None Remove="Images\runall.png" />
+    <None Remove="Images\stop.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <Resource Include="Images\Delete.png" />
     <Resource Include="Images\pause.png" />
     <Resource Include="Images\runall.png" />
+    <Resource Include="Images\stop.png" />
   </ItemGroup>
 
 </Project>

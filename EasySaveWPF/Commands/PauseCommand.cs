@@ -16,10 +16,11 @@ namespace EasySaveWPF.Commands
 {
     public class PauseCommand : CommandBase
     {
-        
-        public PauseCommand()
+        private BackupViewModel _backupViewModel;
+
+        public PauseCommand(BackupViewModel vm)
         {
-            
+            _backupViewModel = vm;
         }
 
         public override bool CanExecute(object? parameter)

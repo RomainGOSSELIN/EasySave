@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using EasySaveWPF.Services;
 using System.Windows;
+using static EasySaveWPF.Services.ServerService;
 namespace EasySaveWPF.ViewModel
 {
     public class BackupViewModel : ViewModelBase
@@ -25,7 +26,7 @@ namespace EasySaveWPF.ViewModel
         private static readonly object _lock = new object();
         private static string _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
         private Thread checkBusinessSoftwareThread;
-        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource() ;
+        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource();
 
         public List<BackupJob> BackupJobs
         {
@@ -119,15 +120,16 @@ namespace EasySaveWPF.ViewModel
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
             _dailyLogService = dailyLogService;
             _serverService = serverService;
-            
+
             RunOperation = "to";
             DeleteCommand = new DeleteJobCommand(_backupJobService, this);
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
-            PauseCommand = new PauseCommand();
+            PauseCommand = new PauseCommand(this);
             StopCommand = new StopCommand();
             #endregion
-            
+
             _serverService.Start();
+            _serverService.DataReceived += HandleDataReceived;
             LoadBackupJobs();
 
             //Lancement thread de vérif de l'état du logiciel métier :
@@ -154,9 +156,30 @@ namespace EasySaveWPF.ViewModel
                     BackupJobs = new List<BackupJob>(BackupJobs);
                 }
                 _serverService.SendDataToClients(BackupJobs);
-                
+
             }
             SelectedJob = _selectedJobBeforeUpdate;
+
+        }
+
+        private void HandleDataReceived(object sender, CommandWithParameter e)
+        {
+            switch (e.Command)
+            {
+                case "stop":
+                    StopCommand.Execute(e.Parameter);
+                    break;
+                case "run":
+                    RunFactoCommand.Execute(e.Parameter);
+                    break;
+                case "pause":
+
+                    PauseCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    break;
+                default:
+                    break;
+            }
+
 
         }
 
@@ -189,7 +212,7 @@ namespace EasySaveWPF.ViewModel
         }
         public void CheckBusinessSoftwareState()
         {
-            
+
             bool isProcessRunning = false;
 
             while (!_businessCancellationToken.IsCancellationRequested)
