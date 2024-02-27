@@ -1,4 +1,6 @@
 ﻿using EasySaveWPF.Model;
+using System.Collections.ObjectModel;
+using static EasySaveWPF.Services.ServerService;
 
 namespace EasySaveWPF.Services.Interfaces
 {
@@ -7,6 +9,7 @@ namespace EasySaveWPF.Services.Interfaces
         void Start();
         void Stop();
          void SendDataToClients(List<BackupJob> jobs);
+        event EventHandler<CommandWithParameter> DataReceived;
 
     }
 }

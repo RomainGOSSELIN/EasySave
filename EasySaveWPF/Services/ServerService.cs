@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -18,6 +19,7 @@ namespace EasySaveWPF.Services
         private static bool _isRunning;
         private static TcpClient _client;
         private static NetworkStream _stream; // Ajout d'un champ pour le flux réseau
+        public event EventHandler<CommandWithParameter> DataReceived;
 
         public ServerService()
         {
@@ -88,9 +90,15 @@ namespace EasySaveWPF.Services
                     {
                         if (_stream.DataAvailable)
                         {
-                            byte[] data = new byte[256];
+                            byte[] data = new byte[2048];
                             int bytes = _stream.Read(data, 0, data.Length);
                             string message = Encoding.UTF8.GetString(data, 0, bytes);
+                            var deserializedMessage = System.Text.Json.JsonSerializer.Deserialize<CommandWithParameter>(message);
+                            BackupJob job = deserializedMessage.Parameter;
+                            DataReceived.Invoke(this, deserializedMessage);
+
+
+
                             Console.WriteLine(message);
                         }
                         else
@@ -105,6 +113,12 @@ namespace EasySaveWPF.Services
                 Console.WriteLine($"An error occurred while handling the client: {ex.Message}");
                 _client.Close();
             }
+        }
+
+        public class CommandWithParameter
+        {
+            public string Command { get; set; }
+            public BackupJob Parameter { get; set; }
         }
 
         public void Stop()
