@@ -166,14 +166,14 @@ namespace EasySaveWPF.ViewModel
             switch (e.Command)
             {
                 case "stop":
-                    StopCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    StopCommand.Execute(BackupJobs.Single(x => x.Id == (e.Parameter)));
                     break;
                 case "run":
-                    RunFactoCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    RunFactoCommand.Execute(BackupJobs.Single(x => x.Id == (e.Parameter)));
                     break;
                 case "pause":
 
-                    PauseCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    PauseCommand.Execute(BackupJobs.Single(x => x.Id == ((e.Parameter))));
                     break;
                 default:
                     break;

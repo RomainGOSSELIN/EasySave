@@ -107,10 +107,12 @@ namespace ClientWPFConsole.Services
 
         public void SendDataToServer(string command, BackupJob parameter)
         {
+            var job = parameter as BackupJob;
+
             if (_client != null && _client.Connected)
             {
                 NetworkStream network_stream = _client.GetStream();
-                var commandWithParams = new { Command = command, Parameter = parameter };
+                var commandWithParams = new { Command = command, Parameter = job.Id };
 
                 var data = JsonSerializer.Serialize(commandWithParams);
 

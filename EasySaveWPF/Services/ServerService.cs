@@ -105,7 +105,7 @@ namespace EasySaveWPF.Services
                             int bytes = _stream.Read(data, 0, data.Length);
                             string message = Encoding.UTF8.GetString(data, 0, bytes);
                             var deserializedMessage = System.Text.Json.JsonSerializer.Deserialize<CommandWithParameter>(message);
-                            BackupJob job = deserializedMessage.Parameter;
+                            int jobId= deserializedMessage.Parameter;
                             DataReceived.Invoke(this, deserializedMessage);
 
 
@@ -128,7 +128,7 @@ namespace EasySaveWPF.Services
         public class CommandWithParameter
         {
             public string Command { get; set; }
-            public BackupJob Parameter { get; set; }
+            public int Parameter { get; set; }
         }
 
         public void Stop()
