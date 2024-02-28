@@ -22,6 +22,7 @@ namespace EasySaveWPF.Services
         private static readonly object _maxSizeLock = new object();
         private static Barrier priorityFilesBarrier = new Barrier(0);
         private static Barrier preAnalyzeBarrier = new Barrier(0);
+        private int _maxFileSize = Properties.Settings.Default.MaxFileSize;
 
         private static string _priorityExtensions = Properties.Settings.Default.PriorityFiles;
 
@@ -134,7 +135,7 @@ namespace EasySaveWPF.Services
                     return;
                 }
 
-                else if (new FileInfo(sourceFile).Length > 500)
+                else if (new FileInfo(sourceFile).Length > _maxFileSize)
                 {
                     job.ResetEvent.WaitOne();
 
@@ -164,7 +165,7 @@ namespace EasySaveWPF.Services
 
                     return;
                 }
-                else if (new FileInfo(sourceFile).Length > 500)
+                else if (new FileInfo(sourceFile).Length > _maxFileSize)
                 {
                     job.ResetEvent.WaitOne();
 
@@ -207,7 +208,7 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    if (originalFile.Length > 500)
+                    if (originalFile.Length > _maxFileSize)
                     {
                         job.ResetEvent.WaitOne();
 
@@ -240,7 +241,7 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    if (originalFile.Length > 500)
+                    if (originalFile.Length > _maxFileSize)
                     {
                         job.ResetEvent.WaitOne();
 

@@ -69,6 +69,22 @@ namespace EasySaveWPF.ViewModel
                 Properties.Settings.Default.PriorityFiles = value;
             }
         }
+
+		private int _maxFileSize;
+		public int MaxFileSize
+        {
+			get
+			{
+				return _maxFileSize;
+			}
+			set
+			{
+				_maxFileSize = value;
+				OnPropertyChanged(nameof(MaxFileSize));
+                Properties.Settings.Default.MaxFileSize = value;
+
+            }
+        }
 		#endregion
 
 		public SettingsViewModel()
@@ -77,6 +93,7 @@ namespace EasySaveWPF.ViewModel
 			LogType = Properties.Settings.Default.LogType;
             FilesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
             PriorityFiles = Properties.Settings.Default.PriorityFiles;
+			MaxFileSize = Properties.Settings.Default.MaxFileSize;
         }
 
 	}
