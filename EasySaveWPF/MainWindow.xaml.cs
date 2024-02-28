@@ -3,6 +3,7 @@ using EasySaveWPF.Services;
 using EasySaveWPF.Services.Interfaces;
 using EasySaveWPF.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,6 +43,10 @@ namespace EasySaveWPF
 
         }
 
-   
+        private void OpenLinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://github.com/RomainGOSSELIN/EasySave/wiki/Accueil";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+        }
     }
 }

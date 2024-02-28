@@ -19,6 +19,7 @@ namespace EasySaveWPF.ViewModel
         public BackupViewModel BackupVM { get; set; }
         public SettingsViewModel SettingsVM { get; set; }
         public CreateBackupViewModel CreateBackupVM { get; set; }
+        Notifications.Notifications notifications = new Notifications.Notifications();
 
         private object _currentview;
         public object CurrentView
@@ -67,13 +68,7 @@ namespace EasySaveWPF.ViewModel
         {
             if (BackupVM.BackupJobs.Any(job => job.State.State == StateEnum.ACTIVE))
             {
-                string msg = Translation.stop_before_closing;
-                MessageBoxResult result =
-                  MessageBox.Show(
-                    msg,
-                    "Data App",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
+                var result = notifications.StopBeforeClosing();
                 if (result == MessageBoxResult.No)
                 {
                     e.Cancel = true;

@@ -366,4 +366,7 @@
   <data name="range_not_valid" xml:space="preserve">
     <value>La plage de travail de sauvegarde n'est pas valide</value>
   </data>
+  <data name="confirmation_all" xml:space="preserve">
+    <value>Êtes-vous sur de vouloir exécuter tous les travaux de sauvegardes ?</value>
+  </data>
 </root>

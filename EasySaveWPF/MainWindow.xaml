@@ -42,8 +42,8 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding BackupViewCommand}" Width="201" 
-                            />
-               
+                            Cursor="Hand"/>
+
                 <RadioButton 
                              Content= "{x:Static t:Translation.add_backup_button}"
                              Margin="0,5,0,0"
@@ -51,17 +51,30 @@
                              Command="{Binding CreateBackupViewCommand}" 
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
-                             VerticalAlignment="Center" UseLayoutRounding="False" >
-                   
+                             VerticalAlignment="Center" UseLayoutRounding="False"
+                    Cursor="Hand">
+
                 </RadioButton>
 
                 <RadioButton Content="{x:Static t:Translation.settings_button}"
                              Margin="0 5 0 0"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"/>
+                             Command="{Binding SettingsViewCommand}" Checked="RadioButton_Checked"
+                             Cursor="Hand"/>
 
             </StackPanel>
 
+            <Button Content="?" 
+                    Style="{StaticResource RoundButtonTheme}"
+                    Click="OpenLinkButton_Click"
+                    Width="30"
+                    Height="30"
+                    FontWeight="Bold"
+                    FontSize="20"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left"
+                    Margin="20"
+                    Cursor="Hand"/>
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"

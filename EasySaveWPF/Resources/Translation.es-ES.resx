@@ -367,4 +367,7 @@ Backup</value>
   <data name="range_not_valid" xml:space="preserve">
     <value>El rango de trabajo de salvaguardia no es válido</value>
   </data>
+  <data name="confirmation_all" xml:space="preserve">
+    <value>¿Estás seguro de que quieres realizar todo el trabajo de copia de seguridad?</value>
+  </data>
 </root>

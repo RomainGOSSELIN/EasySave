@@ -31,7 +31,8 @@
                 Width="100" 
                 HorizontalAlignment="Left" 
                 Margin="12,508,0,0" 
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Cursor="Hand">
                 <Image Source="/Images/CheckArrow.png" />
             </Button>
 
@@ -55,7 +56,8 @@
                 Height="20" 
                 Click="Files_Explorer" 
                 Width="30" 
-                Background="White"/>
+                Background="White"
+                Cursor="Hand"/>
 
             <TextBox 
                 x:Name="BackupDestination_Textbox"
@@ -76,7 +78,8 @@
                 Height="20" 
                 Click="Files_Explorer_2" 
                 Width="30" 
-                Background="White"/>
+                Background="White"
+                Cursor="Hand"/>
             <TextBox Style="{StaticResource PlaceHolderTheme}"
          Tag="{x:Static t:Translation.option_name_holder}"
          HorizontalAlignment="Left"
@@ -116,7 +119,8 @@
                 x:Name="radioButtonDifferentiale" 
                 GroupName="ThemeOptions" 
                 IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=differential}"
-                Style="{StaticResource RadioButtonTheme}"/>
+                Style="{StaticResource RadioButtonTheme}"
+                Cursor="Hand"/>
             <TextBlock  Text="{x:Static t:Translation.save_differencial}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
 
@@ -126,7 +130,8 @@
                 GroupName="ThemeOptions" 
                 IsChecked="{Binding BackupJob.Type, Mode=TwoWay, Converter={StaticResource JobTypeToEnumConverter}, ConverterParameter=full}"
 
-                Style="{StaticResource RadioButtonTheme}" Cursor=""/>
+                Style="{StaticResource RadioButtonTheme}"
+                Cursor="Hand"/>
             <TextBlock Text="{x:Static t:Translation.save_full}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"
                 Foreground="{DynamicResource Text}" FontWeight="Bold"/>
         </StackPanel>

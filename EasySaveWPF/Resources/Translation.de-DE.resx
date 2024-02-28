@@ -367,4 +367,7 @@ Backup</value>
   <data name="range_not_valid" xml:space="preserve">
     <value>Der Schutzbereich für den Schutz ist nicht gültig</value>
   </data>
+  <data name="confirmation_all" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie alle Backup -Arbeiten ausführen möchten?</value>
+  </data>
 </root>

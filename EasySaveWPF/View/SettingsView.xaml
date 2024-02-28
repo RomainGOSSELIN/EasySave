@@ -87,12 +87,13 @@
 
         <Button Content="..." 
                 HorizontalAlignment="Left" 
-                Margin="483,162,0,0" 
+                Margin="483,163,0,0" 
                 VerticalAlignment="Top" 
                 Height="18" 
                 Click="Files_Explorer" 
                 Width="30" 
-                Background="White"/>
+                Background="White"
+                Cursor="Hand"/>
 
         <!-- Logs Format Section -->
         <TextBlock HorizontalAlignment="Left"
@@ -117,14 +118,16 @@
                          GroupName="LogsFormatOptions"
                          IsChecked="{Binding LogType, Mode=TwoWay, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=json}"
                          Style="{StaticResource RadioButtonTheme}"
-                         Click="LogsFormatJSON_Checked" />
+                         Click="LogsFormatJSON_Checked"
+                         Cursor="Hand"/>
 
             <TextBlock Text="JSON" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        FontSize="13"
                        Foreground="{DynamicResource Text}" 
-                       FontWeight="Bold"/>
+                       FontWeight="Bold"
+                       Cursor="Hand"/>
 
             <!-- XML Format -->
             <RadioButton x:Name="LogsFormatXML" 
@@ -174,14 +177,15 @@
                 Click="AddExtension_Click" 
                 Width="30" 
                 Background="White" 
-                RenderTransformOrigin="1.177,0.528">
+                RenderTransformOrigin="1.177,0.528"
+                Cursor="Hand">
             <Button.Content>
                 <Image Width="28" 
                        Height="19" 
                        Source="/Images/AddExt.png" 
                        Stretch="Uniform" 
                        VerticalAlignment="Center" 
-                       Margin="-1,0,0,0" />
+                       Margin="-1,0,0,0"/>
             </Button.Content>
         </Button>
 
@@ -192,7 +196,8 @@
                 Height="18" 
                 Click="RemoveExtension_Click" 
                 Width="30" 
-                Background="White">
+                Background="White"
+                Cursor="Hand">
             <Button.Content>
                 <Image Width="28" 
                        Height="16" 
@@ -210,7 +215,8 @@
                 Height="18" 
                 Click="ClearListExtension_Click" 
                 Width="30" 
-                Background="White">
+                Background="White"
+                Cursor="Hand">
             <Button.Content>
                 <Image Width="28" 
                        Height="16" 
@@ -285,7 +291,8 @@
                 Click="AddPriorityExtension_Click" 
                 Width="30" 
                 Background="White" 
-                RenderTransformOrigin="1.177,0.528">
+                RenderTransformOrigin="1.177,0.528"
+                Cursor="Hand">
             <Image Width="28" 
                    Height="19" 
                    Source="/Images/AddExt.png" 
@@ -301,7 +308,8 @@
                 Height="18" 
                 Click="RemovePriorityExtension_Click" 
                 Width="30" 
-                Background="White">
+                Background="White"
+                Cursor="Hand">
             <Image Width="28" 
                    Height="16" 
                    Source="/Images/DeleteExtension.PNG" 
@@ -317,7 +325,8 @@
                 Height="18" 
                 Click="ClearPriorityListExtension_Click" 
                 Width="30" 
-                Background="White">
+                Background="White"
+                Cursor="Hand">
             <Image Width="28" 
                   Height="16" 
                   Source="/Images/ClearAll.PNG" 
@@ -380,7 +389,8 @@
                          GroupName="ThemeOptions" 
                          Style="{StaticResource RadioButtonTheme}"
                          Content="Light"
-                         Checked="Theme_Choice" />
+                         Checked="Theme_Choice"
+                         Cursor="Hand"/>
 
             <StackPanel 
                 HorizontalAlignment="Center" 
@@ -407,7 +417,8 @@
                          GroupName="ThemeOptions" 
                          Style="{StaticResource RadioButtonTheme}"
                          Content="Dark"
-                         Checked="Theme_Choice" />
+                         Checked="Theme_Choice"
+                         Cursor="Hand"/>
 
             <StackPanel HorizontalAlignment="Center" 
                         VerticalAlignment="Center">
@@ -438,8 +449,9 @@
                 HorizontalAlignment="Left" 
                 Margin="574,515,0,0" 
                 VerticalAlignment="Top"
-                Click="ApplyChangesAndRestart_Click">
-            <Image Source="/Images/CheckArrow.png" />
+                Click="ApplyChangesAndRestart_Click"
+                Cursor="Hand">
+            <Image Source="/Images/CheckArrow.png"/>
         </Button>
 
         <TextBox x:Name="numberTextBox" Text="{Binding MaxFileSize}"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" PreviewTextInput="NumberValidationTextBox" Margin="200,555,0,0" BorderBrush="#FF707070" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
