@@ -14,19 +14,20 @@ namespace EasySaveWPF.Services
     public class BackupJobService : IBackupJobService
     {
         private static string _jobsFilePath;
-        private static ILogger _logger;
-        private static LoggerFactory loggerFactory = new LoggerFactory();
+        private static LoggerContext _logger;
         Notifications.Notifications notifications = new Notifications.Notifications();
 
-        public BackupJobService()
+        public BackupJobService(LoggerContext logger)
         {
+            _logger = logger;
             _jobsFilePath = Properties.Settings.Default.JobsFilepath;
-            _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
         }
 
         public bool CreateJob(BackupJob backupJob)
         {
-            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
+            _logger.SetStrategy(new JsonService());
+
+            List<BackupJob> jobs = _logger.Get<BackupJob>(_jobsFilePath) ?? new List<BackupJob>(); ;
 
             if (backupJob.SourceDir == backupJob.TargetDir)
             {
@@ -51,14 +52,16 @@ namespace EasySaveWPF.Services
             }
             backupJob.Id = jobs.Count + 1;
             jobs.Add(backupJob);
-            _logger.SaveLog(jobs, _jobsFilePath);
+            _logger.Save(jobs, _jobsFilePath);
             notifications.CreateBackupjob(backupJob.Name, backupJob.Id, backupJob.SourceDir, backupJob.TargetDir, backupJob.Type);
             return true;
         }
 
         public BackupJob? GetJob(int id)
         {
-            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
+            _logger.SetStrategy(new JsonService());
+
+            List<BackupJob> jobs = _logger.Get<BackupJob>(_jobsFilePath);
             BackupJob? backupJob;
 
             if (jobs == null)
@@ -80,6 +83,8 @@ namespace EasySaveWPF.Services
         }
         public List<BackupJob> GetJobs(List<int> ids)
         {
+            _logger.SetStrategy(new JsonService());
+
             List<BackupJob> jobs = new List<BackupJob>();
             foreach (int id in ids)
             {
@@ -91,19 +96,22 @@ namespace EasySaveWPF.Services
 
         public List<BackupJob> GetAllJobs()
         {
-            return _logger.GetLog<BackupJob>(_jobsFilePath);
+            _logger.SetStrategy(new JsonService());
+
+            return _logger.Get<BackupJob>(_jobsFilePath);
         }
 
         public bool DeleteJob(BackupJob job)
         {
+            _logger.SetStrategy(new JsonService());
 
-            List<BackupJob> jobs = _logger.GetLog<BackupJob>(_jobsFilePath);
+            List<BackupJob> jobs = _logger.Get<BackupJob>(_jobsFilePath);
 
             if (job != null)
             {
                 jobs.RemoveAll(x => x.Id == job.Id);
                 UpdateIds(jobs);
-                _logger.SaveLog(jobs, _jobsFilePath);
+                _logger.Save(jobs, _jobsFilePath);
                 return true;
             }
             else
@@ -114,6 +122,8 @@ namespace EasySaveWPF.Services
 
         public void UpdateJob(BackupJob job)
         {
+            _logger.SetStrategy(new JsonService());
+
             List<BackupJob> jobs = GetAllJobs();
            foreach (BackupJob backupJob in jobs)
             {
@@ -122,7 +132,7 @@ namespace EasySaveWPF.Services
                     backupJob.State = job.State;
                 };
             }
-            _logger.SaveLog(jobs, _jobsFilePath);
+            _logger.Save(jobs, _jobsFilePath);
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model;
+using EasySaveWPF.Model.LogFactory;
 using EasySaveWPF.Services.Interfaces;
 using System;
 using System.Diagnostics;
@@ -26,9 +27,9 @@ namespace EasySaveWPF.Services
 
         private static string _priorityExtensions = Properties.Settings.Default.PriorityFiles;
 
-        public BackupService()
+        public BackupService(LoggerContext logger)
         {
-            _backupJobService = new BackupJobService();
+            _backupJobService = new BackupJobService(logger);
             _filesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
         }
         public event EventHandler<BackupJob> CurrentBackupStateChanged;

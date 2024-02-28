@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EasySaveWPF.Services
 {
-    public class JsonService : ILogger
+    public class JsonService : ILoggerStrategy
     {
         public List<T> GetLog<T>(string directory)
         {

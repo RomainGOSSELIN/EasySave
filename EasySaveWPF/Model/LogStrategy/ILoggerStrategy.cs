@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EasySaveWPF.Model.LogFactory
 {
-    public interface ILogger
+    public interface ILoggerStrategy
     {
         List<T> GetLog<T>(string directory);
         void SaveLog<T>(List<T> logs, string directory);

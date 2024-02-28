@@ -15,12 +15,11 @@ namespace EasySaveWPF.ViewModel
 {
     public class BackupViewModel : ViewModelBase
     {
-        private LoggerFactory _loggerFactory;
+        private LoggerContext _loggerStrategy;
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
         private IServerService _serverService;
         private IDailyLogService _dailyLogService;
-        private ILogger _logger;
         private List<BackupJob> _backupJobs;
         private BackupJob _selectedJobBeforeUpdate;
         private static readonly object _lock = new object();
@@ -110,11 +109,11 @@ namespace EasySaveWPF.ViewModel
         }
         #endregion
 
-        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService, IServerService serverService)
+        public BackupViewModel(LoggerContext loggerStrategy, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService, IServerService serverService)
         {
             #region Init
-            _loggerFactory = loggerFactory;
-            _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
+            _loggerStrategy = loggerStrategy;
+            _loggerStrategy.SetStrategy(new JsonService());
             _backupJobService = backupJobService;
             _backupService = backupService;
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;

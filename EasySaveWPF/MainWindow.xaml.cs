@@ -24,7 +24,7 @@ namespace EasySaveWPF
         private IDailyLogService _dailyLogService;
         private IServerService _serverService;
 
-        public MainWindow(IBackupJobService backupJobService, IBackupService backupService, LoggerFactory loggerFactory, IDailyLogService dailyLogService, IServerService serverService)
+        public MainWindow(IBackupJobService backupJobService, IBackupService backupService, LoggerContext loggerContext, IDailyLogService dailyLogService, IServerService serverService)
         {
             _backupJobService = backupJobService;
             _backupService = backupService;
@@ -33,7 +33,7 @@ namespace EasySaveWPF
             InitializeComponent();
 
 
-            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_dailyLogService, _serverService);
+            DataContext = new MainViewModel(loggerContext, _backupJobService, _backupService,_dailyLogService, _serverService);
 
         }
 
