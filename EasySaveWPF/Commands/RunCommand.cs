@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace EasySaveWPF.Commands
 {
-    public class RunFactoCommand : CommandBase
+    public class RunCommand : CommandBase
     {
         private readonly IBackupService _backupService;
         private readonly IDailyLogService _dailyLogService;
@@ -23,7 +23,7 @@ namespace EasySaveWPF.Commands
         private string _processName;
         Notifications.Notifications notifications = new Notifications.Notifications();
         private readonly object _logLock = new object();
-        public RunFactoCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
+        public RunCommand(IBackupService backupService, IDailyLogService dailyLogService, BackupViewModel vm)
         {
             _backupViewModel = vm;
 
@@ -60,6 +60,7 @@ namespace EasySaveWPF.Commands
                 if (job.State.State == Model.Enum.StateEnum.PAUSED)
                 {
                     job.State.State = Model.Enum.StateEnum.ACTIVE;
+                    _backupService.AddBarrierParticipant();
                     job.ResetEvent.Set();
                 }
                 else

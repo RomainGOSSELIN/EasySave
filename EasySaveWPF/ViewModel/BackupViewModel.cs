@@ -43,7 +43,7 @@ namespace EasySaveWPF.ViewModel
         #region Commands
         public ICommand DeleteCommand { get; set; }
 
-        public ICommand RunFactoCommand { get; set; }
+        public ICommand RunCommand { get; set; }
         public ICommand PauseCommand { get; set; }
         public ICommand StopCommand { get; set; }
         #endregion
@@ -122,8 +122,8 @@ namespace EasySaveWPF.ViewModel
 
             RunOperation = "to";
             DeleteCommand = new DeleteJobCommand(_backupJobService, this);
-            RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
-            PauseCommand = new PauseCommand(this);
+            RunCommand = new RunCommand(_backupService, _dailyLogService, this);
+            PauseCommand = new PauseCommand(this, _backupService);
             StopCommand = new StopCommand();
             #endregion
 
@@ -134,6 +134,7 @@ namespace EasySaveWPF.ViewModel
             //Lancement thread de vérif de l'état du logiciel métier :
 
             checkBusinessSoftwareThread = new Thread(new ThreadStart(CheckBusinessSoftwareState));
+            checkBusinessSoftwareThread.IsBackground = true;
             checkBusinessSoftwareThread.Start();
 
 
@@ -169,7 +170,7 @@ namespace EasySaveWPF.ViewModel
                     StopCommand.Execute(BackupJobs.Single(x => x.Id == (e.Parameter)));
                     break;
                 case "run":
-                    RunFactoCommand.Execute(BackupJobs.Single(x => x.Id == (e.Parameter)));
+                    RunCommand.Execute(BackupJobs.Single(x => x.Id == (e.Parameter)));
                     break;
                 case "pause":
 
@@ -205,10 +206,7 @@ namespace EasySaveWPF.ViewModel
             }
         }
 
-        public void StopBusinessSoftwareStateCheck()
-        {
-            _businessCancellationToken.Cancel();
-        }
+
         public void CheckBusinessSoftwareState()
         {
 

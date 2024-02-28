@@ -79,7 +79,6 @@ namespace EasySaveWPF.ViewModel
                 }
             }
             
-            BackupVM.StopBusinessSoftwareStateCheck();
 
         }
 

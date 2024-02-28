@@ -1,12 +1,8 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Model.LogFactory;
 using EasySaveWPF.Services.Interfaces;
-using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Windows;
 using static EasySaveWPF.Model.Enum;
 
 namespace EasySaveWPF.Services
@@ -21,7 +17,7 @@ namespace EasySaveWPF.Services
         private static readonly object _statusLock = new object();
         private static readonly object _lock = new object();
         private static readonly object _maxSizeLock = new object();
-        private static Barrier priorityFilesBarrier = new Barrier(0);
+        public static Barrier priorityFilesBarrier = new Barrier(0);
         private static Barrier preAnalyzeBarrier = new Barrier(0);
         private int _maxFileSize = Properties.Settings.Default.MaxFileSize;
 
@@ -320,6 +316,14 @@ namespace EasySaveWPF.Services
             }
         }
 
+        public void AddBarrierParticipant()
+        {
+            priorityFilesBarrier.AddParticipant();
+        }
+        public void RemoveBarrierParticipant()
+        {
+            priorityFilesBarrier.RemoveParticipant();
+        }
 
 
         protected virtual void OnCurrentBackupStateChanged(BackupJob job)

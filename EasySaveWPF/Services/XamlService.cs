@@ -8,28 +8,52 @@
 
     public class XamlService : ILoggerStrategy
     {
+        private Notifications.Notifications _notifications = new Notifications.Notifications();
         public List<T> GetLog<T>(string directory)
         {
             List<T> logs = new List<T>();
 
-            if (File.Exists(directory) && new FileInfo(directory).Length > 0)
+            try
             {
-                using (FileStream fs = new FileStream(directory, FileMode.Open))
+                if (File.Exists(directory) && new FileInfo(directory).Length > 0)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
-                    logs = (List<T>)serializer.Deserialize(fs);
+                    using (FileStream fs = new FileStream(directory, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+                        logs = (List<T>)serializer.Deserialize(fs);
+                    }
+
                 }
+            }
+            catch (Exception ex)
+            {
+                _notifications.BackupError(ex.Message);
             }
 
             return logs;
         }
 
+
         public void SaveLog<T>(List<T> logs, string directory)
         {
-            using (FileStream fs = new FileStream(directory, FileMode.Create))
+            try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
-                serializer.Serialize(fs, logs);
+                string folderPath = Path.GetDirectoryName(directory);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                using (FileStream fs = new FileStream(directory, FileMode.Create))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+                    serializer.Serialize(fs, logs);
+                }
+            }
+            catch (Exception ex)
+            {
+                _notifications.BackupError(ex.Message);
+
             }
         }
     }

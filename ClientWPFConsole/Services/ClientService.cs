@@ -79,12 +79,7 @@ namespace ClientWPFConsole.Services
                             {
                                 string content = match.Groups[1].Value;
                                 var backupJobs = System.Text.Json.JsonSerializer.Deserialize<List<BackupJob>>(content); // Désérialiser JSON
-
                                 DataReceived?.Invoke(this, backupJobs);
-                                //Dispatcher.Invoke(() =>
-                                //{
-                                //    DataGridBackupJobs.ItemsSource = backupJobs;
-                                //});
                             }
                             data.Clear();
 

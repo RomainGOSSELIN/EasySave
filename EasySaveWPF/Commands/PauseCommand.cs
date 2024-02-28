@@ -18,10 +18,12 @@ namespace EasySaveWPF.Commands
     public class PauseCommand : CommandBase
     {
         private BackupViewModel _backupViewModel;
+        private IBackupService _backupService;
 
-        public PauseCommand(BackupViewModel vm)
+        public PauseCommand(BackupViewModel vm, IBackupService backupService)
         {
             _backupViewModel = vm;
+            _backupService = backupService;
         }
 
         public override bool CanExecute(object? parameter)
@@ -38,9 +40,7 @@ namespace EasySaveWPF.Commands
 
             Dispatcher.CurrentDispatcher.Invoke(() => _backupViewModel.BackupJobs = new List<BackupJob>(_backupViewModel.BackupJobs));
            
-
-
-
+            _backupService.RemoveBarrierParticipant();
             //job.ResetEvent.Reset();
             //job.State.State = Model.Enum.StateEnum.PAUSED;
 

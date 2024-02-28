@@ -1,5 +1,6 @@
 ﻿using EasySaveWPF.Model;
 using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Notifications;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,25 @@ namespace EasySaveWPF.Services
 {
     public class JsonService : ILoggerStrategy
     {
+        private Notifications.Notifications _notifications = new Notifications.Notifications(); 
         public List<T> GetLog<T>(string directory)
         {
             List<T> logs = new List<T>();
 
-            if (File.Exists(directory))
+            try
             {
+                if (!File.Exists(directory))
+                {
+                    return logs;
+                }
+
                 string contenu = File.ReadAllText(directory);
                 logs = JsonConvert.DeserializeObject<List<T>>(contenu);
+            }
+            catch (Exception ex)
+            {
+                _notifications.BackupError(ex.Message);
+
             }
 
             return logs;
@@ -27,11 +39,25 @@ namespace EasySaveWPF.Services
 
         public void SaveLog<T>(List<T> logs, string directory)
         {
-            string contenu = JsonConvert.SerializeObject(logs, Formatting.Indented);
-
-            using (StreamWriter writer = new StreamWriter(directory))
+            try
             {
-                writer.Write(contenu);
+                string folderPath = Path.GetDirectoryName(directory);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                string contenu = JsonConvert.SerializeObject(logs, Formatting.Indented);
+
+                using (StreamWriter writer = new StreamWriter(directory))
+                {
+                    writer.Write(contenu);
+                }
+            }
+            catch (Exception ex)
+            {
+                _notifications.BackupError(ex.Message);
+
             }
         }
 

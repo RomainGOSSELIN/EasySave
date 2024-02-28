@@ -6,6 +6,9 @@ namespace EasySaveWPF.Services.Interfaces
     {
         void ExecuteBackupJob(BackupJob job);
         event EventHandler<BackupJob> CurrentBackupStateChanged;
+        void AddBarrierParticipant();
 
+
+        void RemoveBarrierParticipant();
     }
 }
