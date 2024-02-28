@@ -6,7 +6,7 @@
     using System.Windows.Markup;
     using System.Xml.Serialization;
 
-    public class XamlService : ILogger
+    public class XamlService : ILoggerStrategy
     {
         public List<T> GetLog<T>(string directory)
         {

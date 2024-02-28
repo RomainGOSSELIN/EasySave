@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model.LogFactory;
+using EasySaveWPF.Services;
 using EasySaveWPF.Services.Interfaces;
 using EasySaveWPF.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,17 +23,18 @@ namespace EasySaveWPF
         private IBackupService _backupService;
         private IStateLogService _stateLogService;
         private IDailyLogService _dailyLogService;
+        private IServerService _serverService;
 
-
-        public MainWindow(IBackupJobService backupJobService, IBackupService backupService, LoggerFactory loggerFactory, IDailyLogService dailyLogService)
+        public MainWindow(IBackupJobService backupJobService, IBackupService backupService, LoggerContext loggerContext, IDailyLogService dailyLogService, IServerService serverService)
         {
             _backupJobService = backupJobService;
             _backupService = backupService;
             _dailyLogService = dailyLogService;
+            _serverService = serverService;
             InitializeComponent();
 
 
-            DataContext = new MainViewModel(loggerFactory, _backupJobService, _backupService,_dailyLogService);
+            DataContext = new MainViewModel(loggerContext, _backupJobService, _backupService,_dailyLogService, _serverService);
 
         }
 

@@ -454,7 +454,7 @@
             <Image Source="/Images/CheckArrow.png"/>
         </Button>
 
-        <TextBox x:Name="numberTextBox" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" PreviewTextInput="NumberValidationTextBox" Margin="200,555,0,0" BorderBrush="#FF707070" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="numberTextBox" Text="{Binding MaxFileSize}"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" PreviewTextInput="NumberValidationTextBox" Margin="200,555,0,0" BorderBrush="#FF707070" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="240,555,0,0" Height="25" Width="15">
             <Button Content="⮝" Click="IncreaseButtonClick" Width="15" Height="12.5" FontSize="7" Background="White" Foreground="#FFD7D5D5" BorderBrush="#FFEBEAEA"/>
             <Button Content="⮟" Click="DecreaseButtonClick" Width="15" Height="12.5" FontSize="7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" BorderThickness="1,1,1,1" Padding="1,1,1,1" Foreground="#FFD7D5D5" BorderBrush="#FFEBEAEA"/>

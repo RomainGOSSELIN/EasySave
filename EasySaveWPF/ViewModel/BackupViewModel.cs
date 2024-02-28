@@ -8,22 +8,25 @@ using EasySaveWPF.Core;
 using EasySaveWPF.Commands;
 using System.Diagnostics;
 using System.IO;
+using EasySaveWPF.Services;
+using System.Windows;
+using static EasySaveWPF.Services.ServerService;
 namespace EasySaveWPF.ViewModel
 {
     public class BackupViewModel : ViewModelBase
     {
-        private LoggerFactory _loggerFactory;
+        private LoggerContext _loggerStrategy;
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
-        private IStateLogService _stateLogService;
+        private IServerService _serverService;
         private IDailyLogService _dailyLogService;
-        private ILogger _logger;
         private List<BackupJob> _backupJobs;
         private BackupJob _selectedJobBeforeUpdate;
         private static readonly object _lock = new object();
         private static string _processName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.BusinessSoftwarePath);
         private Thread checkBusinessSoftwareThread;
-        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource() ;
+        private static CancellationTokenSource _businessCancellationToken = new CancellationTokenSource();
+
         public List<BackupJob> BackupJobs
         {
             get
@@ -106,23 +109,26 @@ namespace EasySaveWPF.ViewModel
         }
         #endregion
 
-        public BackupViewModel(LoggerFactory loggerFactory, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService)
+        public BackupViewModel(LoggerContext loggerStrategy, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService, IServerService serverService)
         {
             #region Init
-            _loggerFactory = loggerFactory;
-            _logger = loggerFactory.CreateLogger(Model.Enum.LogType.Json);
+            _loggerStrategy = loggerStrategy;
+            _loggerStrategy.SetStrategy(new JsonService());
             _backupJobService = backupJobService;
             _backupService = backupService;
             _backupService.CurrentBackupStateChanged += BackupService_CurrentStateChanged;
             _dailyLogService = dailyLogService;
+            _serverService = serverService;
+
             RunOperation = "to";
-            
             DeleteCommand = new DeleteJobCommand(_backupJobService, this);
             RunFactoCommand = new RunFactoCommand(_backupService, _dailyLogService, this);
-            PauseCommand = new PauseCommand();
+            PauseCommand = new PauseCommand(this);
             StopCommand = new StopCommand();
             #endregion
 
+            _serverService.Start();
+            _serverService.DataReceived += HandleDataReceived;
             LoadBackupJobs();
 
             //Lancement thread de vérif de l'état du logiciel métier :
@@ -148,8 +154,31 @@ namespace EasySaveWPF.ViewModel
                     BackupJobs[index].State = updatedJob.State;
                     BackupJobs = new List<BackupJob>(BackupJobs);
                 }
+                _serverService.SendDataToClients(BackupJobs);
+
             }
             SelectedJob = _selectedJobBeforeUpdate;
+
+        }
+
+        private void HandleDataReceived(object sender, CommandWithParameter e)
+        {
+            switch (e.Command)
+            {
+                case "stop":
+                    StopCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    break;
+                case "run":
+                    RunFactoCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    break;
+                case "pause":
+
+                    PauseCommand.Execute(BackupJobs.Single(x => x.Id == ((BackupJob)e.Parameter).Id));
+                    break;
+                default:
+                    break;
+            }
+
 
         }
 
@@ -157,6 +186,7 @@ namespace EasySaveWPF.ViewModel
         {
             BackupJobs = new List<BackupJob>(_backupJobService.GetAllJobs());
             _selectedJobBeforeUpdate = BackupJobs.FirstOrDefault();
+            _serverService.SendDataToClients(BackupJobs);
 
         }
 
@@ -181,7 +211,7 @@ namespace EasySaveWPF.ViewModel
         }
         public void CheckBusinessSoftwareState()
         {
-            
+
             bool isProcessRunning = false;
 
             while (!_businessCancellationToken.IsCancellationRequested)

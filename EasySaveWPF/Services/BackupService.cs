@@ -1,4 +1,5 @@
 ﻿using EasySaveWPF.Model;
+using EasySaveWPF.Model.LogFactory;
 using EasySaveWPF.Services.Interfaces;
 using System;
 using System.Diagnostics;
@@ -22,12 +23,13 @@ namespace EasySaveWPF.Services
         private static readonly object _maxSizeLock = new object();
         private static Barrier priorityFilesBarrier = new Barrier(0);
         private static Barrier preAnalyzeBarrier = new Barrier(0);
+        private int _maxFileSize = Properties.Settings.Default.MaxFileSize;
 
         private static string _priorityExtensions = Properties.Settings.Default.PriorityFiles;
 
-        public BackupService()
+        public BackupService(LoggerContext logger)
         {
-            _backupJobService = new BackupJobService();
+            _backupJobService = new BackupJobService(logger);
             _filesToEncrypt = Properties.Settings.Default.FilesToEncrypt;
         }
         public event EventHandler<BackupJob> CurrentBackupStateChanged;
@@ -134,7 +136,7 @@ namespace EasySaveWPF.Services
                     return;
                 }
 
-                else if (new FileInfo(sourceFile).Length > 500)
+                else if (new FileInfo(sourceFile).Length > _maxFileSize)
                 {
                     job.ResetEvent.WaitOne();
 
@@ -164,7 +166,7 @@ namespace EasySaveWPF.Services
 
                     return;
                 }
-                else if (new FileInfo(sourceFile).Length > 500)
+                else if (new FileInfo(sourceFile).Length > _maxFileSize)
                 {
                     job.ResetEvent.WaitOne();
 
@@ -207,7 +209,7 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    if (originalFile.Length > 500)
+                    if (originalFile.Length > _maxFileSize)
                     {
                         job.ResetEvent.WaitOne();
 
@@ -240,7 +242,7 @@ namespace EasySaveWPF.Services
                 }
                 else if (!destFile.Exists || originalFile.LastWriteTime > destFile.LastWriteTime)
                 {
-                    if (originalFile.Length > 500)
+                    if (originalFile.Length > _maxFileSize)
                     {
                         job.ResetEvent.WaitOne();
 

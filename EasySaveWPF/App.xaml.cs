@@ -11,6 +11,8 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices.JavaScript;
 using System.Windows;
+using System.Text.Json; 
+using System.Threading;
 
 namespace EasySaveWPF
 {
@@ -22,6 +24,7 @@ namespace EasySaveWPF
         Notifications.Notifications notifications = new Notifications.Notifications();
         private static Mutex _mutex = null;
         private ServiceProvider serviceProvider;
+        
         public App()
         {
             ServiceCollection services = new ServiceCollection();
@@ -33,11 +36,11 @@ namespace EasySaveWPF
 
         private void ConfigureServices(ServiceCollection services)
         {
-            services.AddSingleton<LoggerFactory>();
+            services.AddSingleton<LoggerContext>();
             services.AddSingleton<IDailyLogService, DailyLogService>();
             services.AddSingleton<IBackupJobService, BackupJobService>();
             services.AddSingleton<IBackupService, BackupService>();
-            //services.AddSingleton<IStateLogService, StateLogService>();
+            services.AddSingleton<IServerService,ServerService>();
             services.AddSingleton<BackupViewModel>();
             services.AddSingleton<MainWindow>();
         }
@@ -59,8 +62,14 @@ namespace EasySaveWPF
                 return;
             }
             var mainWindow = serviceProvider.GetService<MainWindow>();
+            var server = serviceProvider.GetRequiredService<IServerService>();
+
             mainWindow.Show();
 
         }
+        
+
     }
+
 }
+
