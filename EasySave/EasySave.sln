@@ -9,7 +9,9 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EasySaveSetup", "..\EasySav
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySaveWPF", "..\EasySaveWPF\EasySaveWPF.csproj", "{27E0BD53-1A02-4637-BC24-7F34A8CD7339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientWPFConsole", "..\ClientWPFConsole\ClientWPFConsole.csproj", "{58245AEF-6136-4CF4-8413-A204B52A08BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientWPFConsole", "..\ClientWPFConsole\ClientWPFConsole.csproj", "{58245AEF-6136-4CF4-8413-A204B52A08BA}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EasySaveClientSetup", "..\EasySaveClientSetup\EasySaveClientSetup.vdproj", "{F5E21E80-F0C2-47E8-94FB-B94D85DAAB4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +33,16 @@ Global
 		{58245AEF-6136-4CF4-8413-A204B52A08BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58245AEF-6136-4CF4-8413-A204B52A08BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58245AEF-6136-4CF4-8413-A204B52A08BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E21E80-F0C2-47E8-94FB-B94D85DAAB4C}.Debug|Any CPU.ActiveCfg = Debug
+		{F5E21E80-F0C2-47E8-94FB-B94D85DAAB4C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		RESX_NeutralResourcesLanguage = fr-FR
-		RESX_CultureCountyOverrides = fr=fr-KM
 		SolutionGuid = {98E1572F-3F4E-4150-9EE3-504DB1560F5C}
+		RESX_CultureCountyOverrides = fr=fr-KM
+		RESX_NeutralResourcesLanguage = fr-FR
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

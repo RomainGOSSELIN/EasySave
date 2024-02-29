@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace ClientWPFConsole.Services
@@ -15,6 +16,7 @@ namespace ClientWPFConsole.Services
 
         private static TcpClient _client ;
         private bool _isConnected;
+        private static string _serverIp;
         public bool IsConnected
         {
             get { return _isConnected; }
@@ -31,15 +33,24 @@ namespace ClientWPFConsole.Services
         public event EventHandler<List<BackupJob>> DataReceived;
         public event EventHandler<bool> StatusChanged;
 
-        string serverIp = "127.0.0.1";
         int serverPort = 8888;
+
+        public ClientService()
+        {
+
+        }
+
+        public ClientService(string serverIp)
+        {
+            _serverIp = serverIp;
+        }
 
         public void Connect()
         {
             try
             {
                 _client = new TcpClient();
-                _client.Connect(serverIp, serverPort);
+                _client.Connect(_serverIp, serverPort);
                 IsConnected = true;
                 Thread receiveDataThread = new Thread(ReceiveData);
                 receiveDataThread.IsBackground = true;
@@ -48,7 +59,8 @@ namespace ClientWPFConsole.Services
             catch (Exception ex)
             {
                 IsConnected = false;
-                Console.WriteLine($"Failed to connect to server: {ex.Message}");
+
+                MessageBox.Show($"Failed to connect to server: {ex.Message}");
             }
         }
 
@@ -65,7 +77,7 @@ namespace ClientWPFConsole.Services
                 try
                 {
 
-                    while ((bytesRead = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    while (_client.Connected && (bytesRead = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data.Append(Encoding.ASCII.GetString(bytes, 0, bytesRead));
 
@@ -90,7 +102,7 @@ namespace ClientWPFConsole.Services
                 catch (Exception ex)
                 {
                     IsConnected = false;
-                    Console.WriteLine($"Failed to receive data: {ex.Message}");
+
                 }
 
             }
@@ -124,15 +136,21 @@ namespace ClientWPFConsole.Services
             {
                 _client.Close();
                 IsConnected = false;
+                MessageBox.Show("Disconnected successfully");
 
             }
             else
             {
-                Console.WriteLine("Not connected to server.");
+                MessageBox.Show("Not connected to server");
+
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public void SetIp(string serverIp)
+        {
+            _serverIp = serverIp;
+        }
+
 
 
     }

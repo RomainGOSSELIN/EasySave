@@ -9,7 +9,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Windows;
-using static EasySaveWPF.Model.Enum;
 
 namespace ClientWPFConsole
 {

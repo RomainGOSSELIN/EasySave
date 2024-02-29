@@ -81,11 +81,13 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="serverState" Foreground="White"  Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="116" Text="Etat de la connexion : "/>
+        <TextBlock x:Name="serverState" Foreground="White"  Grid.Row="0" Margin="10,34,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="116" Text="Connection state :"/>
         <TextBlock x:Name="serverStateValue" Text="{Binding IsConnected, Mode=OneWay, Converter={StaticResource ServerStateConverter}, ConverterParameter=value}" Foreground="white" Grid.Row="0" HorizontalAlignment="Left" Margin="130,34,0,0"  Width="auto"  TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button x:Name="connect_button" Width="auto" Content="{Binding IsConnected, Mode=OneWay, Converter={StaticResource ServerStateConverter}, ConverterParameter=button}" Command="{Binding ConnectToServer}"  Margin="0,29,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" >
-            
+
         </Button>
+        <TextBox Text="{Binding ServerIp}" x:Name="serverIP" Margin="114,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+        <TextBlock HorizontalAlignment="Left"  Foreground="White" Margin="10,15,0,0" TextWrapping="Wrap" Text="Server adress : " VerticalAlignment="Top"/>
     </Grid>
 
 </Window>

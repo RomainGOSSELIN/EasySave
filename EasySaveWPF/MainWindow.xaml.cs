@@ -21,7 +21,6 @@ namespace EasySaveWPF
     {
         private IBackupJobService _backupJobService;
         private IBackupService _backupService;
-        private IStateLogService _stateLogService;
         private IDailyLogService _dailyLogService;
         private IServerService _serverService;
 

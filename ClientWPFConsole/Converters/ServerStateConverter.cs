@@ -19,9 +19,9 @@ namespace ClientWPFConsole.Converters
                 if(parameter is string sender)
                 {
                     if (sender == "value")
-                        return boolValue ? "Connecté" : "Déconnecté";
+                        return boolValue ? "Connected" : "Disconnected";
                     if (sender == "button")
-                        return boolValue ? "Déconnecter" : "Connecter";
+                        return boolValue ? "Deconnect" : "Connect";
                 }
             }
             return string.Empty;

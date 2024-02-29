@@ -1,9 +1,11 @@
-﻿using ClientWPFConsole.ViewModel;
+﻿using ClientWPFConsole.Services;
+using ClientWPFConsole.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClientWPFConsole.Commands
 {
@@ -23,10 +25,17 @@ namespace ClientWPFConsole.Commands
 
         public override void Execute(object parameter)
         {
-            if (!_mainViewModel.ClientService.IsConnected)
+            if (_mainViewModel.ClientService == null || !_mainViewModel.ClientService.IsConnected)
             {
-
-                _mainViewModel.ClientService.Connect();
+                if (_mainViewModel.ServerIp == string.Empty)
+                {
+                    MessageBox.Show("Please enter a server IP");
+                }
+                else
+                {
+                    _mainViewModel.ClientService.SetIp(_mainViewModel.ServerIp);
+                    _mainViewModel.ClientService.Connect();
+                }
             }
             else
             {

@@ -1,7 +1,6 @@
 ﻿using ClientWPFConsole.Commands;
 using ClientWPFConsole.Model;
 using ClientWPFConsole.Services;
-using EasySaveWPF.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,8 +44,20 @@ namespace ClientWPFConsole.ViewModel
                 OnPropertyChanged(nameof(IsConnected));
             }
         }
-     
 
+        private string _serverIp;
+        public string ServerIp
+        {
+            get
+            {
+                return _serverIp;
+            }
+            set
+            {
+                _serverIp = value;
+                OnPropertyChanged(nameof(ServerIp));
+            }
+        }
 
 
         public MainViewModel()
@@ -55,14 +66,15 @@ namespace ClientWPFConsole.ViewModel
             StopJobCommand = new StopJobCommand(this);
             PauseJobCommand = new PauseJobCommand(this);
             ConnectToServer = new ConnectToServerCommand(this);
-
-            ClientService = new ClientService();
+            ServerIp = "";
             BackupJobs = new ObservableCollection<BackupJob>();
+            ClientService = new ClientService();
             ClientService.DataReceived += ClientService_DataReceived;
             ClientService.StatusChanged += ClientService_StatusChanged;
+
         }
 
-        private void ClientService_DataReceived(object sender, List<BackupJob> backupJobs)
+        public void ClientService_DataReceived(object sender, List<BackupJob> backupJobs)
         {
 
             App.Current.Dispatcher.Invoke(() =>
@@ -75,10 +87,11 @@ namespace ClientWPFConsole.ViewModel
             });
         }
 
-        private void ClientService_StatusChanged(object sender, bool isConnected)
+        public void ClientService_StatusChanged(object sender, bool isConnected)
         {
             IsConnected = isConnected;
         }
+
 
 
     }
