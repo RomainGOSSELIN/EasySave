@@ -15,92 +15,56 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_08C79401B28249128B7B1384D3FEEF29"
+        "MsmKey" = "8:_257DAF755C6E4AD19F46B9B4F223DD2C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0A45849C100D44BFBE6BE1390DCEC003"
+        "MsmKey" = "8:_6E73A71788554E41B0484CCCD4EB6208"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_127B3AE1C05A416C8ABF89522F927000"
+        "MsmKey" = "8:_7227E6DF2DC94FA5BD3A1E2B37E2203F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1D5FC8E1FECD4C36B81B72E6FA0A42B5"
+        "MsmKey" = "8:_766A682B16A9436283DDCFCDEC60A4CB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_364A7E01F8894DAAAB150861E7BD0D88"
+        "MsmKey" = "8:_7805D32875474878B985654C6C237358"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_48149715D37A44F48FF8E47C3C1D4EB6"
+        "MsmKey" = "8:_A2DFE572BBDD402884B156FED3496555"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_50770347576345B4AD3481BC68079263"
+        "MsmKey" = "8:_B98FC898231D4F289140E5594184498D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_54AD9C00F034426F9B6343C45C44612E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6216E36DB46F4B8B9C1B7946998BEF3F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8D3BBA88C0264D198FFBCDAF47DB997E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE6E9D9E2B6143BB88D93DFA46BD0D63"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DC6C1F08B367446FAC94762F7A41F231"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E2234224DDD24349B18C68F26ECEC4E8"
+        "MsmKey" = "8:_C51FA9095E284B8295CFFAA0DEAD7D5C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1D5FC8E1FECD4C36B81B72E6FA0A42B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CE6E9D9E2B6143BB88D93DFA46BD0D63"
+        "OwnerKey" = "8:_C51FA9095E284B8295CFFAA0DEAD7D5C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -200,14 +164,74 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_08C79401B28249128B7B1384D3FEEF29"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_257DAF755C6E4AD19F46B9B4F223DD2C"
+            {
+            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.pdb"
+            "TargetName" = "8:ClientWPFConsole.pdb"
+            "Tag" = "8:"
+            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E73A71788554E41B0484CCCD4EB6208"
+            {
+            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\logoES_v2_remote.ico"
+            "TargetName" = "8:logoES_v2_remote.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7227E6DF2DC94FA5BD3A1E2B37E2203F"
+            {
+            "SourcePath" = "8:..\\ClientWPFConsole\\logoES_v2_remote_96.ico"
+            "TargetName" = "8:logoES_v2_remote_96.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_766A682B16A9436283DDCFCDEC60A4CB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_08C79401B28249128B7B1384D3FEEF29"
+                    "_766A682B16A9436283DDCFCDEC60A4CB"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -231,118 +255,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A45849C100D44BFBE6BE1390DCEC003"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.runtimeconfig.json"
-            "TargetName" = "8:ClientWPFConsole.runtimeconfig.json"
-            "Tag" = "8:"
-            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_127B3AE1C05A416C8ABF89522F927000"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.runtimeconfig.json"
-            "TargetName" = "8:ClientWPFConsole.runtimeconfig.json"
-            "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D5FC8E1FECD4C36B81B72E6FA0A42B5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ClientWPFConsole, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_1D5FC8E1FECD4C36B81B72E6FA0A42B5"
-                    {
-                    "Name" = "8:ClientWPFConsole.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_364A7E01F8894DAAAB150861E7BD0D88"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.exe"
-            "TargetName" = "8:ClientWPFConsole.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48149715D37A44F48FF8E47C3C1D4EB6"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.pdb"
-            "TargetName" = "8:ClientWPFConsole.pdb"
-            "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50770347576345B4AD3481BC68079263"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7805D32875474878B985654C6C237358"
             {
             "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.deps.json"
             "TargetName" = "8:ClientWPFConsole.deps.json"
@@ -362,10 +275,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54AD9C00F034426F9B6343C45C44612E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A2DFE572BBDD402884B156FED3496555"
             {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.pdb"
-            "TargetName" = "8:ClientWPFConsole.pdb"
+            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.exe"
+            "TargetName" = "8:ClientWPFConsole.exe"
             "Tag" = "8:"
             "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
             "Condition" = "8:"
@@ -382,12 +295,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6216E36DB46F4B8B9C1B7946998BEF3F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B98FC898231D4F289140E5594184498D"
             {
-            "SourcePath" = "8:..\\ClientWPFConsole\\logoES_v2.ico"
-            "TargetName" = "8:logoES_v2.ico"
+            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.runtimeconfig.json"
+            "TargetName" = "8:ClientWPFConsole.runtimeconfig.json"
             "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
+            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -402,34 +315,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D3BBA88C0264D198FFBCDAF47DB997E"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.exe"
-            "TargetName" = "8:ClientWPFConsole.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE6E9D9E2B6143BB88D93DFA46BD0D63"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C51FA9095E284B8295CFFAA0DEAD7D5C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:ClientWPFConsole, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CE6E9D9E2B6143BB88D93DFA46BD0D63"
+                    "_C51FA9095E284B8295CFFAA0DEAD7D5C"
                     {
                     "Name" = "8:ClientWPFConsole.dll"
                     "Attributes" = "3:512"
@@ -438,58 +331,7 @@
             "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DC6C1F08B367446FAC94762F7A41F231"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DC6C1F08B367446FAC94762F7A41F231"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E2234224DDD24349B18C68F26ECEC4E8"
-            {
-            "SourcePath" = "8:..\\ClientWPFConsole\\bin\\Release\\net8.0-windows\\ClientWPFConsole.deps.json"
-            "TargetName" = "8:ClientWPFConsole.deps.json"
-            "Tag" = "8:"
-            "Folder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
+            "Folder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -542,147 +384,136 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_932C65A08EA54AF0876FDEC2F6C90ED5"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3F8A731B46B94B8DBF68A85EE3D69D26"
                     {
-                    "Name" = "8:EasySaveClient"
+                    "Name" = "8:fr-FR"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_C72630D8E81E41038619163F55901014"
+                    "Property" = "8:_D28571FCA1024E20BBC1AAAF1C9C9E7D"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_4604CCEF77E54C85A6C0B7A8587AC211"
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A748B4A85D9A40DDAF02F29BA5144B22"
+                    {
+                    "Name" = "8:es-ES"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_4F63E60D71DF4491904ADC29FCD7F0F0"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_ABB44DADBAF54FAB9736B1DC7F9C3102"
+                    {
+                    "Name" = "8:de-DE"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_BCEF92F0766846139B25E867DA34616E"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B1D351294DA94309AB35F191B6C2CFD1"
+                    {
+                    "Name" = "8:it-IT"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_32D8186B55C545BE9623B5A0F3B71042"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D34134E0F2FB4AFF918E846B8B88DE1B"
+                    {
+                    "Name" = "8:runtimes"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_23E0458FA82F4693B90B24944F656467"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_3E65824359194016B89B14AE2E6269CA"
                             {
-                            "Name" = "8:en-US"
+                            "Name" = "8:browser"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_1FAFEB2BA0654EF3B1C6F853F5C137C4"
+                            "Property" = "8:_BC60F8EC37AD498A91A70D93CBFC0F5B"
                                 "Folders"
                                 {
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_542C8599804441A2A8ED326978FAF91C"
-                            {
-                            "Name" = "8:fr-FR"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_9712CA65B43741729D9523F6D6630DD8"
-                                "Folders"
-                                {
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_679BD2A372BF45B487DE8009E2ED9B30"
-                            {
-                            "Name" = "8:runtimes"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_9E501E57F49244CB94A60F8A3723468B"
-                                "Folders"
-                                {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_CBF7F95BC4C64886A366F387EA6E0E55"
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_6A125EB4B015463C88C9B11A96BAC8D4"
                                     {
-                                    "Name" = "8:browser"
+                                    "Name" = "8:lib"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
-                                    "Property" = "8:_66E5173531A64E0EA07B9D3DF7DEA2BE"
+                                    "Property" = "8:_A979D6552882438D83210E7EE03228B1"
                                         "Folders"
                                         {
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_95AFA54AAEB6470DAB5420D5ED2A1B2A"
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_BD456CA9294B4152843F6A22A8DE57A7"
                                             {
-                                            "Name" = "8:lib"
+                                            "Name" = "8:net8.0"
                                             "AlwaysCreate" = "11:FALSE"
                                             "Condition" = "8:"
                                             "Transitive" = "11:FALSE"
-                                            "Property" = "8:_226E2248914C4CA8BA503F1D263D6D39"
+                                            "Property" = "8:_69CE685BCDA7407FA63BF87222B3D5E3"
                                                 "Folders"
                                                 {
-                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_7BA4DA6A9024445DA6E579901286D564"
-                                                    {
-                                                    "Name" = "8:net8.0"
-                                                    "AlwaysCreate" = "11:FALSE"
-                                                    "Condition" = "8:"
-                                                    "Transitive" = "11:FALSE"
-                                                    "Property" = "8:_E5FF7F330B3D4DFA943B7EB0AE094119"
-                                                        "Folders"
-                                                        {
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F00C973994F7415D82C0C52114A33612"
-                                    {
-                                    "Name" = "8:win"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_5A257F93A6FD47048FCBA76DA5254183"
-                                        "Folders"
-                                        {
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6670357CABDD4EF28BFD0A1C418EA7A3"
-                                            {
-                                            "Name" = "8:lib"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_02D400667B8D46B68AB779874F81E1F9"
-                                                "Folders"
-                                                {
-                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_414FB6E08B56475F9ED98ED08AB352B3"
-                                                    {
-                                                    "Name" = "8:net8.0"
-                                                    "AlwaysCreate" = "11:FALSE"
-                                                    "Condition" = "8:"
-                                                    "Transitive" = "11:FALSE"
-                                                    "Property" = "8:_0822CF230D844CB49206FAD2F7D1F0D9"
-                                                        "Folders"
-                                                        {
-                                                        }
-                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6A4FDBB19C014CA1A3854CC5E8F4042C"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6FC8B36B0B5D4BC3A45608ED2697BB72"
                             {
-                            "Name" = "8:de-DE"
+                            "Name" = "8:win"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_62F9CDB1BD38406DA3660034A115913B"
+                            "Property" = "8:_0FCB5996FCCD4EBFAD91429821F036D8"
                                 "Folders"
                                 {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_98B4FDCAB24B47989D6CF33C2BE18A1A"
+                                    {
+                                    "Name" = "8:lib"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_277B70669F654E3381598E4E6B262ECF"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_FDC482DAED914838B19985161AEFF58D"
+                                            {
+                                            "Name" = "8:net8.0"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_5969EA968FB74E96831536F5F54EC592"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_73372D3857C7477480EFA5FB88E039BD"
-                            {
-                            "Name" = "8:it-IT"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_516DC793AC284083BF46BD8382549519"
-                                "Folders"
-                                {
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E0D60584E931414BAF87A7E9539175DD"
-                            {
-                            "Name" = "8:es-ES"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_2CABC9D901AF4CF7BEFB1AD8D1106E3D"
-                                "Folders"
-                                {
-                                }
-                            }
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_FA574992F7B94EC389F561DC65390FC7"
+                    {
+                    "Name" = "8:en-US"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_12684793E50F4DB08906EB5EFD66988B"
+                        "Folders"
+                        {
                         }
                     }
                 }
@@ -715,7 +546,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasySaveClient"
         "ProductCode" = "8:{9DAE4828-6C43-4DDC-AC97-943213295D58}"
-        "PackageCode" = "8:{2684B495-4998-4C2D-BFCE-C4A2ED61DA99}"
+        "PackageCode" = "8:{A0F6D797-B281-4E92-8FCA-9658C6E92243}"
         "UpgradeCode" = "8:{70AC66F7-9DED-41B6-9D08-7ADE12855A4A}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -732,7 +563,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_6216E36DB46F4B8B9C1B7946998BEF3F"
+        "ARPPRODUCTICON" = "8:_6E73A71788554E41B0484CCCD4EB6208"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -835,7 +666,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6296E091070240538EA8F27C76E68FD9"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_61B8027B55D74DA1B3E33B9BEFEE6CF3"
             {
             "Name" = "8:EasySaveClient"
             "Arguments" = "8:"
@@ -843,13 +674,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8D3BBA88C0264D198FFBCDAF47DB997E"
-            "Folder" = "8:_5364543C18FE49989DC137FEB2EF498A"
-            "WorkingFolder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Icon" = "8:_6216E36DB46F4B8B9C1B7946998BEF3F"
+            "Target" = "8:_A2DFE572BBDD402884B156FED3496555"
+            "Folder" = "8:_AA144CF06FA24B6EA3C218C0EBB2B401"
+            "WorkingFolder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
+            "Icon" = "8:_7227E6DF2DC94FA5BD3A1E2B37E2203F"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FF747C2559A349A98A091E12FB8105B1"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_95D3B9F0DA794AF5AD4CC1A97FA9E63A"
             {
             "Name" = "8:EasySaveClient"
             "Arguments" = "8:"
@@ -857,10 +688,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8D3BBA88C0264D198FFBCDAF47DB997E"
-            "Folder" = "8:_AA144CF06FA24B6EA3C218C0EBB2B401"
-            "WorkingFolder" = "8:_932C65A08EA54AF0876FDEC2F6C90ED5"
-            "Icon" = "8:_6216E36DB46F4B8B9C1B7946998BEF3F"
+            "Target" = "8:_A2DFE572BBDD402884B156FED3496555"
+            "Folder" = "8:_5364543C18FE49989DC137FEB2EF498A"
+            "WorkingFolder" = "8:_48C6FDB590C54E34A9058F028C41F4E8"
+            "Icon" = "8:_7227E6DF2DC94FA5BD3A1E2B37E2203F"
             "Feature" = "8:"
             }
         }
