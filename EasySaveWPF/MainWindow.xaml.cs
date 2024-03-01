@@ -42,6 +42,11 @@ namespace EasySaveWPF
 
         }
 
+        public void BackupView_Checked(object sender)
+        {
+            AddButton.IsChecked = true;
+        }
+
         private void OpenLinkButton_Click(object sender, RoutedEventArgs e)
         {
             string url = "https://github.com/RomainGOSSELIN/EasySave/wiki/Accueil";

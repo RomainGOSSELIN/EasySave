@@ -33,6 +33,20 @@ namespace EasySaveWPF.ViewModel
 
         }
 
+        private bool _backupButton;
+        public bool BackupViewButton
+        {
+            get
+            {
+                return _backupButton;
+            }
+            set
+            {
+                _backupButton = value;
+                OnPropertyChanged(nameof(BackupViewButton));
+            }
+        }
+
         public MainViewModel(LoggerContext loggerStrategy, IBackupJobService backupJobService, IBackupService backupService, IDailyLogService dailyLogService, IServerService serverService)
         {
             App.Current.MainWindow.Closing += new CancelEventHandler(OnWindowClosing);
@@ -43,10 +57,12 @@ namespace EasySaveWPF.ViewModel
             CreateBackupVM = new CreateBackupViewModel(backupJobService, this);
 
             CurrentView = BackupVM;
+            BackupViewButton = true;
 
             BackupViewCommand = new RelayCommand(o =>
             {
                 BackupVM.LoadBackupJobs();
+                BackupViewButton = true;
                 CurrentView = BackupVM;
 
             });

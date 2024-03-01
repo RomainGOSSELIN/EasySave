@@ -546,7 +546,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasySaveClient"
         "ProductCode" = "8:{9DAE4828-6C43-4DDC-AC97-943213295D58}"
-        "PackageCode" = "8:{A0F6D797-B281-4E92-8FCA-9658C6E92243}"
+        "PackageCode" = "8:{7B75A736-6BEB-400C-8FDF-871D73014475}"
         "UpgradeCode" = "8:{70AC66F7-9DED-41B6-9D08-7ADE12855A4A}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

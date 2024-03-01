@@ -40,7 +40,7 @@
                              Content="{x:Static t:Translation.backups_button}"
                              Margin="0 60 0 0"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
+                             IsChecked="{Binding BackupViewButton}"
                              Command="{Binding BackupViewCommand}" Width="201" 
                             Cursor="Hand"/>
 
