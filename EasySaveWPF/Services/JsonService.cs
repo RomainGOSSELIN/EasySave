@@ -26,11 +26,13 @@ namespace EasySaveWPF.Services
                 }
 
                 string contenu = File.ReadAllText(directory);
-                logs = JsonConvert.DeserializeObject<List<T>>(contenu);
+                if(contenu != string.Empty)
+                {
+                    logs = JsonConvert.DeserializeObject<List<T>>(contenu);
+                }
             }
-            catch (Exception ex)
+            catch 
             {
-                _notifications.BackupError(ex.Message);
 
             }
 
@@ -54,9 +56,8 @@ namespace EasySaveWPF.Services
                     writer.Write(contenu);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                _notifications.BackupError(ex.Message);
 
             }
         }

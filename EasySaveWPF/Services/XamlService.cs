@@ -22,12 +22,11 @@
                         XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
                         logs = (List<T>)serializer.Deserialize(fs);
                     }
-
                 }
+
             }
-            catch (Exception ex)
+            catch 
             {
-                _notifications.BackupError(ex.Message);
             }
 
             return logs;
@@ -50,9 +49,8 @@
                     serializer.Serialize(fs, logs);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                _notifications.BackupError(ex.Message);
 
             }
         }
